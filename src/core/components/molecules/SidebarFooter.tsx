@@ -10,7 +10,11 @@ function SidebarFooter() {
           </a>
         </li>
       </ul>
-      <span className="text-sm text-gray-500"><a href=""></a>created by chihiro.suzurikawa</span>
+      <span className="text-sm text-gray-500">
+        <a href="https://example.com">
+          created by chihiro.suzurikawa
+        </a>
+      </span>
     </footer>
   );
 }
