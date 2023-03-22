@@ -1,12 +1,12 @@
 import Button from "../../../core/components/molecules/Button";
-import Aside from "../../../core/components/molecules/Sidebar";
+import Sidebar from "../../../core/components/organisms/Sidebar";
 import MainContent from "../../../core/components/organisms/MainContent";
 
 function Top() {
   return (
     <div>
       <Button />
-      <Aside />
+      <Sidebar />
       <MainContent />
     </div>
   );
