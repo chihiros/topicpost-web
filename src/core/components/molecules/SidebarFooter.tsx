@@ -9,9 +9,6 @@ function SidebarFooter() {
             </svg>
           </a>
         </li>
-        <li>
-          <a href="" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
-        </li>
       </ul>
       <span className="text-sm text-gray-500"><a href=""></a>created by chihiro.suzurikawa</span>
     </footer>
