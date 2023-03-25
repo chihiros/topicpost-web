@@ -7,7 +7,7 @@ type Props = {
   link: string;
 }
 
-const SidebarContent: React.FC<Props> = ({ icon, label, link }) => {
+const SidebarLabel: React.FC<Props> = ({ icon, label, link }) => {
   return (
     <ul className="">
       <li className="flex p-3 h-17 border-b-2 hover:bg-gray-100">
@@ -22,4 +22,4 @@ const SidebarContent: React.FC<Props> = ({ icon, label, link }) => {
   );
 }
 
-export default SidebarContent;
+export default SidebarLabel;
