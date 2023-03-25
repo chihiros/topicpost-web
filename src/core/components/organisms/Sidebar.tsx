@@ -1,5 +1,5 @@
-import SidebarMenu from "../molecules/SidebarMenu";
-import SidebarFooter from "../molecules/SidebarFooter";
+import SidebarMenu from "../molecules/Sidebar/SidebarMenu";
+import SidebarFooter from "../molecules/Sidebar/SidebarFooter";
 
 const Sidebar = () => {
   return (
