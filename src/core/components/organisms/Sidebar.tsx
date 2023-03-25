@@ -21,14 +21,13 @@ const Sidebar = () => {
         </a>
         <SidebarLogin />
         <ul className="">
-          <SidebarContent
+          {labels.map((item, index) => (
+            <SidebarContent
               key={index}
               icon={item.icon}
               label={item.label}
             />
-          <SidebarContent
-            label="活動日記"
-          />
+          ))}
         </ul>
       </div>
       <SidebarFooter />
