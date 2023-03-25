@@ -8,8 +8,13 @@ function Sidebar() {
       <SiteLogo />
       <Login />
 
-      <ul className="space-y-0">
-        <SidebarContent />
+      <ul className="">
+        <SidebarContent
+          title="レクリエーション"
+        />
+        <SidebarContent
+          title="活動日記"
+        />
       </ul>
     </div>
   );
