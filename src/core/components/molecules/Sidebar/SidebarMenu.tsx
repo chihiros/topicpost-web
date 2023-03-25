@@ -1,6 +1,6 @@
-import SiteLogo from "../../atoms/SidebarLogo";
+import SiteLogo from "./SidebarLogo";
 import Login from "../Login";
-import SidebarContent from "../../atoms/SidebarContent";
+import SidebarContent from "./SidebarContent";
 
 const Sidebar = () => {
   return (
