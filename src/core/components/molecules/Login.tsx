@@ -1,4 +1,4 @@
-function Login() {
+const Login = () => {
   return (
     <div>
       <div className="hover:bg-gray-100 rounded-md p-3 mx-3">

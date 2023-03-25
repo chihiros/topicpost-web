@@ -1,4 +1,4 @@
-function IconUserAdd() {
+const IconUserAdd = () => {
   return (
     // <svg width="24" height="24" viewBox="0 0 1452 1224" fill="#577381" xmlns="http://www.w3.org/2000/svg">
     //   <path d="M0 375.5C0 358.103 14.103 344 31.5 344H440.5C457.897 344 472 358.103 472 375.5C472 392.897 457.897 407 440.5 407H31.5C14.103 407 0 392.897 0 375.5Z" fill="" />

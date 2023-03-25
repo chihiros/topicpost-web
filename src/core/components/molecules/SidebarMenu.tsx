@@ -2,7 +2,7 @@ import SiteLogo from "../atoms/SidebarLogo";
 import Login from "../molecules/Login";
 import SidebarContent from "../atoms/SidebarContent";
 
-function Sidebar() {
+const Sidebar = () => {
   return (
     <div className="h-full py-4 overflow-y-auto bg-gray-50">
       <SiteLogo />

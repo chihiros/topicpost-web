@@ -1,4 +1,4 @@
-function SiteLogo() {
+const SiteLogo = () => {
   return (
     <div>
       <a href="#" className="flex justify-center pt-2 pb-4">
