@@ -6,7 +6,7 @@ const labels = [
   {
     icon: "🏠",
     label: "レクリエーション",
-    link: "/"
+    link: "/recreation"
   }, {
     icon: "📚",
     label: "活動日記",
