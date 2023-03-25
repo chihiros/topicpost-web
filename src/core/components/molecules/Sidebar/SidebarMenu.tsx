@@ -10,10 +10,10 @@ const Sidebar = () => {
 
       <ul className="">
         <SidebarContent
-          title="レクリエーション"
+          label="レクリエーション"
         />
         <SidebarContent
-          title="活動日記"
+          label="活動日記"
         />
       </ul>
     </div>
