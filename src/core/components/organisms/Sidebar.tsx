@@ -2,6 +2,16 @@ import SidebarLogin from "../molecules/Sidebar/SidebarLogin";
 import SidebarContent from "../molecules/Sidebar/SidebarLabel";
 import SidebarFooter from "../molecules/Sidebar/SidebarFooter";
 
+const labels = [
+  {
+    icon: "🏠",
+    label: "レクリエーション"
+  }, {
+    icon: "📚",
+    label: "活動日記"
+  }
+];
+
 const Sidebar = () => {
   return (
     <aside id="logo-sidebar" className="fixed top-0 left-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 shadow" aria-label="Sidebar">
@@ -12,8 +22,10 @@ const Sidebar = () => {
         <SidebarLogin />
         <ul className="">
           <SidebarContent
-            label="レクリエーション"
-          />
+              key={index}
+              icon={item.icon}
+              label={item.label}
+            />
           <SidebarContent
             label="活動日記"
           />
