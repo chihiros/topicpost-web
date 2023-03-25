@@ -5,7 +5,7 @@ type TwemojiIconProps = {
 };
 
 const TwemojiIcon = ({ children }: TwemojiIconProps) => {
-  return <Twemoji options={{ className:'twemoji'}}>{children}</Twemoji>;
+  return <Twemoji options={{ className: 'twemoji' }}>{children}</Twemoji>;
 };
 
 export default TwemojiIcon;
