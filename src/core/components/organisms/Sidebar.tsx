@@ -22,16 +22,14 @@ const Sidebar = () => {
           <span className="text-3xl font-semibold hover:text-gray-400">TopicPost</span>
         </a>
         <SidebarLogin />
-        <ul className="">
-          {labels.map((item, index) => (
-            <SidebarContent
-              key={index}
-              icon={item.icon}
-              label={item.label}
-              link={item.link}
-            />
-          ))}
-        </ul>
+        {labels.map((item, index) => (
+          <SidebarContent
+            key={index}
+            icon={item.icon}
+            label={item.label}
+            link={item.link}
+          />
+        ))}
       </div>
       <SidebarFooter />
     </aside>
