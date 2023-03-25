@@ -1,15 +1,17 @@
 import React from "react";
+import Twemoji from "../../atoms/Icon/Twemoji";
 
 type Props = {
+    icon: string;
   　label: string;
 }
 
-const SidebarContent: React.FC<Props> = ({ label }) => {
+const SidebarContent: React.FC<Props> = ({ icon, label }) => {
   return (
     <li className="flex p-3 h-17 border-b-2 hover:bg-gray-100">
       <a href="#" className="flex items-center text-gray-500">
-        <div className="bg-zinc-200 rounded-md">
-          <svg aria-hidden="true" className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
+        <div className="flex rounded-md w-10 h-10 items-center justify-center">
+          <Twemoji children={icon} />
         </div>
         <span className="ml-4 text-lg font-semibold">{label}</span>
       </a>
