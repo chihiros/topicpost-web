@@ -22,3 +22,7 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+function NotFound() {
+  return <h1>404 Not Found</h1>;
+}
