@@ -10,12 +10,12 @@ type Props = {
 const SidebarLabel: React.FC<Props> = ({ icon, label, link }) => {
   return (
     <ul className="">
-      <a href={link} className="flex items-center text-gray-500">
-        <li className="flex p-3 h-17 border-b-2 hover:bg-gray-100">
-          <div className="flex rounded-md w-10 h-10 items-center justify-center">
+      <a href={link}>
+        <li className="flex p-3 h-17 border-b-2 hover:bg-gray-100 items-center">
+          <div className="flex rounded-md w-10 h-10">
             <Twemoji children={icon} />
           </div>
-          <span className="ml-4 text-lg font-semibold">{label}</span>
+          <span className="ml-4 text-lg text-gray-500 font-semibold">{label}</span>
         </li>
       </a>
     </ul>
