@@ -1,4 +1,4 @@
-function SidebarContent() {
+const SidebarContent = () => {
   return (
     <li className="flex p-3 h-17 border-b-2 hover:bg-gray-100">
       <a href="#" className="flex items-center text-gray-500">
