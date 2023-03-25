@@ -1,4 +1,4 @@
-const Login = () => {
+const SidebarLogin = () => {
   return (
     <div>
       <div className="hover:bg-gray-100 rounded-md p-3 mx-3">
@@ -28,4 +28,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default SidebarLogin;
