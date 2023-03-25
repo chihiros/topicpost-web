@@ -1,7 +1,7 @@
 import Sidebar from "../../../core/components/organisms/Sidebar";
 import MainContent from "../../../core/components/organisms/MainContent";
 
-function Top() {
+const Top = () => {
   return (
     <div>
       <Sidebar />
