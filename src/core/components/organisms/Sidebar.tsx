@@ -5,10 +5,12 @@ import SidebarFooter from "../molecules/Sidebar/SidebarFooter";
 const labels = [
   {
     icon: "🏠",
-    label: "レクリエーション"
+    label: "レクリエーション",
+    link: "/"
   }, {
     icon: "📚",
-    label: "活動日記"
+    label: "活動日記",
+    link: "/diary"
   }
 ];
 
@@ -26,6 +28,7 @@ const Sidebar = () => {
               key={index}
               icon={item.icon}
               label={item.label}
+              link={item.link}
             />
           ))}
         </ul>
