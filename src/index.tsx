@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Top from './apps/components/templates/Top';
+import Top from './apps/components/templates/Sidebar';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
