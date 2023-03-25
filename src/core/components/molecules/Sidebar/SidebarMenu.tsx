@@ -1,6 +1,6 @@
 import SiteLogo from "./SidebarLogo";
 import Login from "./SidebarLogin";
-import SidebarContent from "./SidebarContent";
+import SidebarContent from "./SidebarLabel";
 
 const Sidebar = () => {
   return (
