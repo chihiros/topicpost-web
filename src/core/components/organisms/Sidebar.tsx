@@ -11,6 +11,10 @@ const labels = [
     icon: "📚",
     label: "活動日記",
     link: "/diary"
+  }, {
+    icon: "📝",
+    label: "お問い合わせ",
+    link: "/contact"
   }
 ];
 
