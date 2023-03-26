@@ -5,7 +5,7 @@ const ContactForm: React.FC = () => {
     <div className="p-4 sm:ml-64">
       <Header />
 
-      <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+        <div className="flex mb-5 text-3xl">お問い合わせ</div>
         <form>
           <div className="mb-6">
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
