@@ -1,6 +1,7 @@
 import React from 'react';
 import InputText from '../molecules/Input/InputText';
 import InputTextarea from '../molecules/Input/InputTextarea';
+import SubmitButton from '../atoms/Button/SubmitButton';
 
 const ContactForm: React.FC = () => {
   return (
@@ -48,7 +49,7 @@ const ContactForm: React.FC = () => {
               placeholder="お問い合わせ内容を入力してください。"
               required={true} />
           </div>
-          <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5">送信</button>
+          <SubmitButton>送信</SubmitButton>
         </form>
       </div>
     </div>
