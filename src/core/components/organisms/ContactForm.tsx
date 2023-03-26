@@ -23,12 +23,12 @@ const ContactForm: React.FC = () => {
         <div className="flex mb-5 text-3xl">お問い合わせ</div>
         <form>
           <div className="mb-6">
-            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">Your email</label>
-            <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@flowbite.com" required />
+            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">お名前</label>
+            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="テスト太郎" required />
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">Your password</label>
-            <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required />
+            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">連絡先</label>
+            <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="contact@example.com" required />
           </div>
           <div className="flex items-start mb-6">
             <div className="flex items-center h-5">
