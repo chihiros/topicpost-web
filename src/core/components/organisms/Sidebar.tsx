@@ -26,11 +26,11 @@ const Sidebar = () => {
           <span className="text-3xl font-semibold hover:text-gray-400">TopicPost</span>
         </a>
         <SidebarLogin />
-        {labels.map((item, _) => (
+        {labels.map((label, _) => (
           <SidebarLabel
-            icon={item.icon}
-            label={item.label}
-            link={item.link}
+            icon={label.icon}
+            label={label.label}
+            link={label.link}
           />
         ))}
       </div>
