@@ -4,6 +4,10 @@ import SidebarFooter from "../molecules/Sidebar/SidebarFooter";
 
 const labels = [
   {
+    icon: "🔔",
+    label: "お知らせ",
+    link: "/news"
+  }, {
     icon: "🏠",
     label: "レクリエーション",
     link: "/recreation"
