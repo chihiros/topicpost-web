@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Header from '../molecules/Header/Header';
 import InputText from '../molecules/Input/InputText';
 import InputTextarea from '../molecules/Input/InputTextarea';
@@ -17,6 +18,29 @@ const ContactForm: React.FC = () => {
     setEmailValue(e.target.value);
   };
 
+  const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessageValue(e.target.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const url = 'https://api.topicpost.net/v1/contact';
+    const data = {
+      name: nameValue,
+      email: emailValue,
+      content: messageValue,
+    };
+
+    axios.post(url, data)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
   return (
     <div className="p-4 sm:ml-64">
       <Header
@@ -27,7 +51,7 @@ const ContactForm: React.FC = () => {
 
       <div className="p-4 shadow-md bg-gray-50 rounded-lg">
         <div className="flex mb-5 text-3xl">お問い合わせ</div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <InputText
               id="name"
