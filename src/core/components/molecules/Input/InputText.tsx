@@ -6,7 +6,7 @@ type InputTextProps = {
   id: string;
   type: string;
   label: string;
-  placeholder: string;
+  placeholder?: string;
   required?: boolean;
 };
 

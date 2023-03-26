@@ -3,7 +3,7 @@ import React from 'react';
 type TextProps = {
   id: string;
   type: string;
-  placeholder: string;
+  placeholder?: string;
   required?: boolean;
 };
 
