@@ -5,6 +5,7 @@ import Top from './apps/components/templates/Top';
 import Recreation from './apps/components/templates/Recreation';
 import Diary from './apps/components/templates/Diary';
 import Contact from './apps/components/templates/Contact';
+import NotFound from './apps/components/templates/NotFound';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
@@ -23,7 +24,3 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
-function NotFound() {
-  return <h1>404 Not Found</h1>;
-}
