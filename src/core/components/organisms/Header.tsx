@@ -1,6 +1,6 @@
 const Header: React.FC = () => {
   return (
-    <nav className="flex mb-6 px-5 py-3 border border-gray-200 rounded-lg bg-gray-50" aria-label="Breadcrumb">
+    <nav className="flex mb-6 px-5 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-500" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
         <li className="inline-flex items-center">
           <a href="/" className="inline-flex items-center text-sm font-medium">
