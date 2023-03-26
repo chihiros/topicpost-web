@@ -1,3 +1,6 @@
+import React from 'react';
+import InputText from '../molecules/Input/InputText';
+
 const ContactForm: React.FC = () => {
   return (
     <div className="p-4 sm:ml-64">
@@ -23,12 +26,20 @@ const ContactForm: React.FC = () => {
         <div className="flex mb-5 text-3xl">お問い合わせ</div>
         <form>
           <div className="mb-6">
-            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">お名前</label>
-            <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="テスト太郎" required />
+            <InputText
+              id="name"
+              type="text"
+              label="お名前"
+              placeholder="テスト太郎"
+              required={true} />
           </div>
           <div className="mb-6">
-            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">連絡先</label>
-            <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="contact@example.com" required />
+            <InputText
+              id="email"
+              type="email"
+              label="連絡先"
+              placeholder="contact@example.com"
+              required={true} />
           </div>
           <div className="mb-6">
             <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900">お問い合わせ内容</label>
