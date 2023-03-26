@@ -24,7 +24,7 @@ const ContactForm: React.FC = () => {
         <form>
           <div className="mb-6">
             <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">お名前</label>
-            <input type="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="テスト太郎" required />
+            <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="テスト太郎" required />
           </div>
           <div className="mb-6">
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">連絡先</label>
