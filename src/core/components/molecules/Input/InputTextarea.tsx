@@ -7,9 +7,11 @@ type InputTextareaProps = {
   label: string;
   placeholder?: string;
   required?: boolean;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
-const InputTextarea: React.FC<InputTextareaProps> = ({ id, label, placeholder, required }) => {
+const InputTextarea: React.FC<InputTextareaProps> = ({ id, label, placeholder, required, value, onChange }) => {
   return (
     <div>
       <Label htmlFor={id}>{label}</Label>
@@ -17,6 +19,8 @@ const InputTextarea: React.FC<InputTextareaProps> = ({ id, label, placeholder, r
         id={id}
         placeholder={placeholder}
         required={required}
+        value={value}
+        onChange={onChange}
       />
     </div>
   );

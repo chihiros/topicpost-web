@@ -7,6 +7,7 @@ import SubmitButton from '../atoms/Button/SubmitButton';
 const ContactForm: React.FC = () => {
   const [nameValue, setTextValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
+  const [messageValue, setMessageValue] = useState('');
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextValue(e.target.value);
@@ -54,7 +55,10 @@ const ContactForm: React.FC = () => {
               id="message"
               label="お問い合わせ内容"
               placeholder="お問い合わせ内容を入力してください。"
-              required={true} />
+              required={true}
+              value={messageValue}
+              onChange={handleMessageChange}
+            />
           </div>
           <SubmitButton>送信</SubmitButton>
         </form>
