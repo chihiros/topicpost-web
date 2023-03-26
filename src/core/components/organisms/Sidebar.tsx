@@ -1,5 +1,5 @@
 import SidebarLogin from "../molecules/Sidebar/SidebarLogin";
-import SidebarContent from "../molecules/Sidebar/SidebarLabel";
+import SidebarLabel from "../molecules/Sidebar/SidebarLabel";
 import SidebarFooter from "../molecules/Sidebar/SidebarFooter";
 
 const labels = [
@@ -27,7 +27,7 @@ const Sidebar = () => {
         </a>
         <SidebarLogin />
         {labels.map((item, _) => (
-          <SidebarContent
+          <SidebarLabel
             icon={item.icon}
             label={item.label}
             link={item.link}
