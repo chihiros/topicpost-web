@@ -8,9 +8,11 @@ type InputTextProps = {
   label: string;
   placeholder?: string;
   required?: boolean;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const InputText: React.FC<InputTextProps> = ({ id, type, label, placeholder, required }) => {
+const InputText: React.FC<InputTextProps> = ({ id, type, label, placeholder, required, value, onChange }) => {
   return (
     <div>
       <Label htmlFor={id}>{label}</Label>
@@ -19,6 +21,8 @@ const InputText: React.FC<InputTextProps> = ({ id, type, label, placeholder, req
         type={type}
         placeholder={placeholder}
         required={required}
+        value={value}
+        onChange={onChange}
       />
     </div>
   );

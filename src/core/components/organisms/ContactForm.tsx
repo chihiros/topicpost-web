@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../molecules/Header/Header';
 import InputText from '../molecules/Input/InputText';
 import InputTextarea from '../molecules/Input/InputTextarea';
 import SubmitButton from '../atoms/Button/SubmitButton';
 
 const ContactForm: React.FC = () => {
+  const [nameValue, setTextValue] = useState('');
+  const [emailValue, setEmailValue] = useState('');
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTextValue(e.target.value);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailValue(e.target.value);
+  };
+
   return (
     <div className="p-4 sm:ml-64">
       <Header
@@ -22,7 +33,10 @@ const ContactForm: React.FC = () => {
               type="text"
               label="お名前"
               placeholder="テスト太郎"
-              required={true} />
+              required={true}
+              value={nameValue}
+              onChange={handleTextChange}
+            />
           </div>
           <div className="mb-6">
             <InputText
@@ -30,7 +44,10 @@ const ContactForm: React.FC = () => {
               type="email"
               label="連絡先"
               placeholder="contact@example.com"
-              required={true} />
+              required={true}
+              value={emailValue}
+              onChange={handleEmailChange}
+            />
           </div>
           <div className="mb-3">
             <InputTextarea
