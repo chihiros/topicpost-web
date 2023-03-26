@@ -13,7 +13,7 @@ const SidebarLabel: React.FC<Props> = ({ icon, label, link }) => {
       <a href={link}>
         <li className="flex p-3 h-17 border-b-2 hover:bg-gray-100 items-center">
           <div className="flex rounded-md w-10 h-10">
-            <Twemoji children={icon} />
+            <Twemoji>{icon}</Twemoji>
           </div>
           <span className="ml-4 text-lg text-gray-500 font-semibold">{label}</span>
         </li>
