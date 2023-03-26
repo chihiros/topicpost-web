@@ -19,6 +19,7 @@ const ContactForm: React.FC = () => {
       </nav>
 
 
+      <div className="p-4 shadow-md bg-gray-50 rounded-lg">
         <div className="flex mb-5 text-3xl">お問い合わせ</div>
         <form>
           <div className="mb-6">
