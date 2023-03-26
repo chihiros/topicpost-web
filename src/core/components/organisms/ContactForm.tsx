@@ -7,7 +7,11 @@ import SubmitButton from '../atoms/Button/SubmitButton';
 const ContactForm: React.FC = () => {
   return (
     <div className="p-4 sm:ml-64">
-      <Header />
+      <Header
+        breadcrumb={[
+          { href: '/contact', label: 'お問い合わせ' },
+        ]}
+      />
 
       <div className="p-4 shadow-md bg-gray-50 rounded-lg">
         <div className="flex mb-5 text-3xl">お問い合わせ</div>
