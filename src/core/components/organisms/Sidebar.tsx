@@ -30,8 +30,9 @@ const Sidebar = () => {
           <span className="text-3xl font-semibold hover:text-gray-400">TopicPost</span>
         </a>
         <SidebarLogin />
-        {labels.map((label, _) => (
+        {labels.map((label, index) => (
           <SidebarLabel
+            key={index}
             icon={label.icon}
             label={label.label}
             link={label.link}
