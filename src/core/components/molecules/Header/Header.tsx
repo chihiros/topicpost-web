@@ -17,13 +17,15 @@ const Header: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }) =>
             Home
           </a>
         </li>
-        {breadcrumb && breadcrumb.map((item, index) =>  {
+        {breadcrumb && breadcrumb.map((item, index) => {
           if (breadcrumb.length - 1 !== index) {
             return (
               <li>
                 <div className="flex items-center">
-                <ArrowRight />
-                  <a href={item.href} className="ml-1 text-sm font-medium md:ml-2 hover:text-blue-600">{item.label}</a>
+                  <ArrowRight />
+                  <a href={item.href} className="ml-1 text-sm font-medium md:ml-2 hover:text-blue-600">
+                    {item.label}
+                  </a>
                 </div>
               </li>
             );
@@ -32,7 +34,9 @@ const Header: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }) =>
               <li aria-current="page">
                 <div className="flex items-center">
                   <ArrowRight />
-                  <span className="ml-1 text-sm font-medium md:ml-2">{item.label}</span>
+                  <span className="ml-1 text-sm font-medium md:ml-2">
+                    {item.label}
+                  </span>
                 </div>
               </li>
             );
