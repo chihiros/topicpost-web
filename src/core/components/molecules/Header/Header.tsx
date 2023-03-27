@@ -7,7 +7,7 @@ type BreadcrumbProps = {
 
 const Header: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }) => {
   return (
-    <nav className="flex mb-5 px-5 p-4 py-3 shadow rounded-lg bg-gray-50 text-gray-500" aria-label="Breadcrumb">
+    <nav className="flex h-12 mb-5 px-5 p-4 py-3 shadow rounded-lg bg-gray-50 text-gray-500" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
         {/* Homeは固定で入れておく */}
         <li className="inline-flex items-center">
