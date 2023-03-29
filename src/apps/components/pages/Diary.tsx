@@ -1,10 +1,10 @@
-import Sidebar from "../../../core/components/organisms/Sidebar";
+import SidebarPage from "./SidebarPage";
 import DiaryContent from "../../../core/components/organisms/DiaryContent";
 
 const Diary = () => {
   return (
     <div>
-      <Sidebar />
+      <SidebarPage />
       <DiaryContent />
     </div>
   );

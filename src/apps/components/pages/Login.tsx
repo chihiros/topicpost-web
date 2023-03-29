@@ -1,9 +1,9 @@
-import Sidebar from "../../../core/components/organisms/Sidebar";
+import SidebarPage from "./SidebarPage";
 
 const Login = () => {
   return (
     <div>
-      <Sidebar />
+      <SidebarPage />
     </div>
   );
 }

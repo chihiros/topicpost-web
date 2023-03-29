@@ -1,9 +1,9 @@
-import Sidebar from "../../../core/components/organisms/Sidebar";
+import SidebarPage from "./SidebarPage";
 import ReacreationForm from "../../../core/components/organisms/RecreationContent";
 const Recreation = () => {
   return (
     <div>
-      <Sidebar />
+      <SidebarPage />
       <ReacreationForm />
     </div>
   );

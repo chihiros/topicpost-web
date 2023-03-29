@@ -1,10 +1,11 @@
-
+import React from "react";
+import SidebarPage from "./SidebarPage";
 import MainContent from "../../../core/components/organisms/MainContent";
 
 const Top: React.FC = () => {
   return (
     <div>
-      <Sidebar />
+      <SidebarPage />
       <MainContent />
     </div>
   );

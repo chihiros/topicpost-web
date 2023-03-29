@@ -1,11 +1,11 @@
-import Sidebar from "../../../core/components/organisms/Sidebar";
+import SidebarPage from "./SidebarPage";
 
 const NotFoundImage = `${process.env.PUBLIC_URL}/images/not_found_404.png`;
 
 const NotFound: React.FC = () => {
   return (
     <div>
-      <Sidebar />
+      <SidebarPage />
       <div className="sm:ml-64">
         <div className="flex mt-20 mb-6 justify-center">
           <img className="" src={NotFoundImage} alt="" />
