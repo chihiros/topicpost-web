@@ -6,25 +6,44 @@ import RecreationPage from './apps/components/pages/RecreationPage';
 import DiaryPage from './apps/components/pages/DiaryPage';
 import ContactPage from './apps/components/pages/ContactPage';
 import NotFoundPage from './apps/components/pages/NotFoundPage';
-import Pages from './apps/components/pages/Pages';
+import Pages, { PagesProps } from './apps/components/pages/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcrumb';
 
-const routes = [
+type RouteType = {
+  path?: string;
+  component: React.FC<PagesProps>;
+  breadcrumb?: BreadcrumbProps[];
+};
+
+const routes: RouteType[] = [
   {
     path: "/",
     component: TopPage
   }, {
     path: "/recreation",
-    component: RecreationPage
+    component: RecreationPage,
+    breadcrumb: [
+      { href: '/recreation', context: 'レクリエーション' },
+    ]
   }, {
     path: "/diary",
-    component: DiaryPage
+    component: DiaryPage,
+    breadcrumb: [
+      { href: '/diary', context: '活動日記' },
+    ]
   }, {
     path: "/contact",
-    component: ContactPage
+    component: ContactPage,
+    breadcrumb: [
+      { href: '/contact', context: 'お問い合わせ' },
+    ]
   }, {
     path: "/example",
-    component: Pages
+    component: Pages,
+    breadcrumb: [
+      { href: '/example', context: 'サンプル' },
+    ]
   }, {
     component: NotFoundPage
   }
