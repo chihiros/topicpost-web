@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Top from './apps/components/pages/TopPage';
-import Recreation from './apps/components/pages/RecreationPage';
-import Diary from './apps/components/pages/DiaryPage';
-import Contact from './apps/components/pages/ContactPage';
-import NotFound from './apps/components/pages/NotFoundPage';
+import TopPage from './apps/components/pages/TopPage';
+import RecreationPage from './apps/components/pages/RecreationPage';
+import DiaryPage from './apps/components/pages/DiaryPage';
+import ContactPage from './apps/components/pages/ContactPage';
+import NotFoundPage from './apps/components/pages/NotFoundPage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
@@ -15,11 +15,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Top} />
-        <Route path="/recreation" component={Recreation} />
-        <Route path="/diary" component={Diary} />
-        <Route path="/contact" component={Contact} />
-        <Route component={NotFound} />
+        <Route exact path="/" component={TopPage} />
+        <Route path="/recreation" component={RecreationPage} />
+        <Route path="/diary" component={DiaryPage} />
+        <Route path="/contact" component={ContactPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>
