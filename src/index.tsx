@@ -6,6 +6,7 @@ import RecreationPage from './apps/components/pages/RecreationPage';
 import DiaryPage from './apps/components/pages/DiaryPage';
 import ContactPage from './apps/components/pages/ContactPage';
 import NotFoundPage from './apps/components/pages/NotFoundPage';
+import Pages from './apps/components/pages/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const routes = [
@@ -21,6 +22,9 @@ const routes = [
   }, {
     path: "/contact",
     component: ContactPage
+  }, {
+    path: "/example",
+    component: Pages
   }, {
     component: NotFoundPage
   }
