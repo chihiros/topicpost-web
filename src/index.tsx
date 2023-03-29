@@ -11,41 +11,39 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcrumb';
 
 type RouteType = {
-  path?: string;
-  component: React.FC<PagesProps>;
+  path: string;
+  template: React.FC<PagesProps>;
   breadcrumb?: BreadcrumbProps[];
 };
 
 const routes: RouteType[] = [
   {
     path: "/",
-    component: TopPage
+    template: TopPage
   }, {
     path: "/recreation",
-    component: RecreationPage,
+    template: RecreationPage,
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
     ]
   }, {
     path: "/diary",
-    component: DiaryPage,
+    template: DiaryPage,
     breadcrumb: [
       { href: '/diary', context: '活動日記' },
     ]
   }, {
     path: "/contact",
-    component: ContactPage,
+    template: ContactPage,
     breadcrumb: [
       { href: '/contact', context: 'お問い合わせ' },
     ]
   }, {
     path: "/example",
-    component: Pages,
+    template: Pages,
     breadcrumb: [
       { href: '/example', context: 'サンプル' },
     ]
-  }, {
-    component: NotFoundPage
   }
 ];
 
@@ -59,14 +57,17 @@ root.render(
         {routes.map((item, index) => {
           return (
             <Route
+              key={index}
               exact={index === 0}
               path={item.path}
-              render={() => <item.component
+              render={() => <Pages
                 breadcrumb={item.breadcrumb}
+                template={item.template}
               />}
             />
           );
         })}
+        <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>

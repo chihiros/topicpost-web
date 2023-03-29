@@ -4,10 +4,10 @@ import Breadcrumb, { BreadcrumbProps } from "../../../core/components/molecules/
 
 export type PagesProps = {
   breadcrumb?: BreadcrumbProps[];
-  component?: React.ReactNode;
+  template: React.FC<PagesProps>;
 }
 
-const Pages: React.FC<PagesProps> = ({ breadcrumb }) => {
+const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
   return (
     <div>
       <SidebarPage />
