@@ -62,7 +62,7 @@ root.render(
               exact={index === 0}
               path={item.path}
               render={() => <item.component
-                breadcrumbList={item.breadcrumb}
+                breadcrumb={item.breadcrumb}
               />}
             />
           );
