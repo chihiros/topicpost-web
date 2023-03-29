@@ -1,6 +1,6 @@
-import SidebarLogin from "../molecules/Sidebar/SidebarLogin";
-import SidebarLabel from "../molecules/Sidebar/SidebarLabel";
-import SidebarFooter from "../molecules/Sidebar/SidebarFooter";
+import SidebarLogin from "./Sidebar/SidebarLogin";
+import SidebarLabel from "./Sidebar/SidebarLabel";
+import SidebarFooter from "./Sidebar/SidebarFooter";
 
 // const labels = [
 //   {
@@ -28,7 +28,7 @@ type Label = {
   link: string;
 }
 
-const Sidebar: React.FC<{ labels: Label[] }> = ({ labels }) => {
+const Sidebar: React.FC = () => {
   return (
     <aside id="logo-sidebar" className="fixed top-0 left-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 shadow" aria-label="Sidebar">
       <div className="h-full py-4 overflow-y-auto bg-gray-50">
