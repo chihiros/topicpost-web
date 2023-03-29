@@ -8,6 +8,19 @@ import ContactPage from './apps/components/pages/ContactPage';
 import NotFoundPage from './apps/components/pages/NotFoundPage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+const routes = [
+  {
+    path: "/recreation",
+    component: RecreationPage
+  }, {
+    path: "/diary",
+    component: DiaryPage
+  }, {
+    path: "/contact",
+    component: ContactPage
+  }
+];
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -16,9 +29,9 @@ root.render(
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={TopPage} />
-        <Route path="/recreation" component={RecreationPage} />
-        <Route path="/diary" component={DiaryPage} />
-        <Route path="/contact" component={ContactPage} />
+        {routes.map((item) => {
+          return <Route path={item.path} component={item.component} />
+        })}
         <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
