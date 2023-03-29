@@ -57,7 +57,15 @@ root.render(
     <BrowserRouter>
       <Switch>
         {routes.map((item, index) => {
-          return <Route exact={index === 0} path={item.path} component={item.component} />
+          return (
+            <Route
+              exact={index === 0}
+              path={item.path}
+              render={() => <item.component
+                breadcrumbList={item.breadcrumb}
+              />}
+            />
+          );
         })}
       </Switch>
     </BrowserRouter>
