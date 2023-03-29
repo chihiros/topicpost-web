@@ -6,7 +6,7 @@ const DiaryContent: React.FC = () => {
     <div className="p-4 sm:ml-64">
       <Breadcrumb
         breadcrumb={[
-          { href: '/diary', label: '活動日記' },
+          { href: '/diary', context: '活動日記' },
         ]}
       />
     </div>

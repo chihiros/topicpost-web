@@ -6,7 +6,7 @@ const RecreationForm: React.FC = () => {
     <div className="p-4 sm:ml-64">
       <Breadcrumb
         breadcrumb={[
-          { href: '/recreation', label: 'レクリエーション' },
+          { href: '/recreation', context: 'レクリエーション' },
         ]}
       />
     </div>

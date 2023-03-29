@@ -45,7 +45,7 @@ const ContactForm: React.FC = () => {
     <div className="p-4 sm:ml-64">
       <Breadcrumb
         breadcrumb={[
-          { href: '/contact', label: 'お問い合わせ' },
+          { href: '/contact', context: 'お問い合わせ' },
         ]}
       />
 
