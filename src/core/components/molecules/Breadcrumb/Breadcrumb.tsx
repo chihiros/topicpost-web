@@ -3,7 +3,7 @@ import ArrowRight from '../../atoms/Icon/Arrow';
 
 type BreadcrumbProps = {
   href: string;
-  label: string;
+  context: string;
 }
 
 const Breadcrumb: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }) => {
@@ -24,7 +24,7 @@ const Breadcrumb: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }
                 <div className="flex items-center">
                   <ArrowRight />
                   <a href={item.href} className="ml-1 text-sm font-medium md:ml-2 hover:text-blue-600">
-                    {item.label}
+                    {item.context}
                   </a>
                 </div>
               </li>
@@ -35,7 +35,7 @@ const Breadcrumb: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }
                 <div className="flex items-center">
                   <ArrowRight />
                   <span className="ml-1 text-sm font-medium md:ml-2">
-                    {item.label}
+                    {item.context}
                   </span>
                 </div>
               </li>
