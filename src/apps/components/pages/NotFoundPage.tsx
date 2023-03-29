@@ -1,3 +1,4 @@
+import React from "react";
 import SidebarPage from "./SidebarPage";
 
 const NotFoundImage = `${process.env.PUBLIC_URL}/images/not_found_404.png`;

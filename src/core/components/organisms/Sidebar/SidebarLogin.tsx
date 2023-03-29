@@ -1,4 +1,6 @@
-const SidebarLogin = () => {
+import React from 'react';
+
+const SidebarLogin: React.FC = () => {
   return (
     <div>
       <div className="hover:bg-gray-100 rounded-md p-3 mx-3">

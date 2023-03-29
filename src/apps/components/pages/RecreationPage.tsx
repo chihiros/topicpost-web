@@ -1,6 +1,7 @@
+import React from "react";
 import SidebarPage from "./SidebarPage";
 import ReacreationForm from "../../../core/components/organisms/RecreationContent";
-const Recreation = () => {
+const Recreation: React.FC = () => {
   return (
     <div>
       <SidebarPage />
