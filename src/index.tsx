@@ -10,6 +10,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const routes = [
   {
+    path: "/",
+    component: TopPage
+  }, {
     path: "/recreation",
     component: RecreationPage
   }, {
@@ -18,6 +21,8 @@ const routes = [
   }, {
     path: "/contact",
     component: ContactPage
+  }, {
+    component: NotFoundPage
   }
 ];
 
@@ -28,11 +33,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={TopPage} />
-        {routes.map((item) => {
-          return <Route path={item.path} component={item.component} />
+        {routes.map((item, index) => {
+          return <Route exact={index === 0} path={item.path} component={item.component} />
         })}
-        <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>
