@@ -1,14 +1,8 @@
 import React from "react";
-import SidebarPage from "../pages/SidebarPage";
 import MainContent from "../../../core/components/organisms/MainContent";
 
 const Top: React.FC = () => {
-  return (
-    <div>
-      <SidebarPage />
-      <MainContent />
-    </div>
-  );
+  return <MainContent />;
 }
 
 export default Top;
