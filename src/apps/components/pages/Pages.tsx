@@ -2,7 +2,7 @@ import React from "react";
 import SidebarPage from "./SidebarPage";
 import Breadcrumb, { BreadcrumbProps } from "../../../core/components/molecules/Breadcrumb/Breadcrumb";
 
-interface PagesProps {
+export interface PagesProps {
   breadcrumb: BreadcrumbProps;
 }
 
