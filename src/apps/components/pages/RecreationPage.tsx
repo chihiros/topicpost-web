@@ -1,11 +1,11 @@
 import React from "react";
 import SidebarPage from "./SidebarPage";
-import ReacreationForm from "../../../core/components/organisms/RecreationContent";
+import RecreationForm from "../../../core/components/organisms/RecreationContent";
 const Recreation: React.FC = () => {
   return (
     <div>
       <SidebarPage />
-      <ReacreationForm />
+      <RecreationForm />
     </div>
   );
 }
