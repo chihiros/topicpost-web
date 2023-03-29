@@ -1,5 +1,5 @@
 import React from "react";
-import SidebarPage from "./SidebarPage";
+import SidebarPage from "../pages/SidebarPage";
 import MainContent from "../../../core/components/organisms/MainContent";
 
 const Top: React.FC = () => {

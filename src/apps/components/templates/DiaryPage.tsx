@@ -1,5 +1,5 @@
 import React from "react";
-import SidebarPage from "./SidebarPage";
+import SidebarPage from "../pages/SidebarPage";
 import DiaryContent from "../../../core/components/organisms/DiaryContent";
 
 const Diary: React.FC = () => {
