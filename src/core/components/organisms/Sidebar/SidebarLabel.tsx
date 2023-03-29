@@ -1,13 +1,8 @@
 import React from "react";
 import Twemoji from "../../atoms/Icon/Twemoji";
+import { SidebarProps } from "../../../../apps/components/pages/sidebar";
 
-type Props = {
-  icon: string;
-  label: string;
-  link: string;
-}
-
-const SidebarLabel: React.FC<Props> = ({ icon, label, link }) => {
+const SidebarLabel: React.FC<SidebarProps> = ({ icon, label, link }) => {
   return (
     <ul className="">
       <a href={link}>
