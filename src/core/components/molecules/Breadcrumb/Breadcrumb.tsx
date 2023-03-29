@@ -1,7 +1,7 @@
 import React from 'react';
 import ArrowRight from '../../atoms/Icon/Arrow';
 
-type BreadcrumbProps = {
+export type BreadcrumbProps = {
   href: string;
   context: string;
 }
