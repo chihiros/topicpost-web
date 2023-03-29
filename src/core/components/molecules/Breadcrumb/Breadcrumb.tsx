@@ -6,7 +6,7 @@ type BreadcrumbProps = {
   label: string;
 }
 
-const Header: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }) => {
+const Breadcrumb: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }) => {
   return (
     <nav className="flex h-12 mb-5 px-5 p-4 py-3 shadow rounded-lg bg-gray-50 text-gray-500" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
@@ -47,4 +47,4 @@ const Header: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }) =>
   );
 }
 
-export default Header;
+export default Breadcrumb;

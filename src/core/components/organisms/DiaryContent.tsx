@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../molecules/Header/Header';
+import Breadcrumb from '../molecules/Breadcrumb/Breadcrumb';
 
 const DiaryContent: React.FC = () => {
   return (
     <div className="p-4 sm:ml-64">
-      <Header
+      <Breadcrumb
         breadcrumb={[
           { href: '/diary', label: '活動日記' },
         ]}
