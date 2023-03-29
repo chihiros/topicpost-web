@@ -1,7 +1,7 @@
 import Sidebar from "../../../core/components/organisms/Sidebar";
 import MainContent from "../../../core/components/organisms/MainContent";
 
-const Top = () => {
+const Top: React.FC = () => {
   return (
     <div>
       <Sidebar />
