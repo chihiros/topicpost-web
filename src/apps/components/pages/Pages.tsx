@@ -12,9 +12,7 @@ const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
     <div>
       <SidebarPage />
       <div className="p-4 sm:ml-64">
-        <Breadcrumb
-          breadcrumb={breadcrumb}
-        />
+        <Breadcrumb　breadcrumb={breadcrumb}　/>
       </div>
     </div>
   );
