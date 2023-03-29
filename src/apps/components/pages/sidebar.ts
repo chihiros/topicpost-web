@@ -21,9 +21,5 @@ export const sidebar: SidebarProps[] = [
     icon: "📝",
     label: "お問い合わせ",
     link: "/contact"
-  }, {
-    icon: "🎉",
-    label: "Example",
-    link: "/example"
   }
 ];

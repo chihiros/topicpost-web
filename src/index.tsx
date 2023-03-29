@@ -38,12 +38,6 @@ const routes: RouteType[] = [
     breadcrumb: [
       { href: '/contact', context: 'お問い合わせ' },
     ]
-  }, {
-    path: "/example",
-    template: Pages,
-    breadcrumb: [
-      { href: '/example', context: 'サンプル' },
-    ]
   }
 ];
 
