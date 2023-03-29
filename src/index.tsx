@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import TopPage from './apps/components/pages/TopPage';
-import RecreationPage from './apps/components/pages/RecreationPage';
-import DiaryPage from './apps/components/pages/DiaryPage';
-import ContactPage from './apps/components/pages/ContactPage';
+import TopPage from './apps/components/templates/TopPage';
+import RecreationPage from './apps/components/templates/RecreationPage';
+import DiaryPage from './apps/components/templates/DiaryPage';
+import ContactPage from './apps/components/templates/ContactPage';
 import NotFoundPage from './apps/components/pages/NotFoundPage';
 import Pages, { PagesProps } from './apps/components/pages/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
