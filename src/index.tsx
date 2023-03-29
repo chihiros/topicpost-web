@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Top from './apps/components/pages/Top';
-import Recreation from './apps/components/pages/Recreation';
-import Diary from './apps/components/pages/Diary';
-import Contact from './apps/components/pages/Contact';
-import NotFound from './apps/components/pages/NotFound';
+import Top from './apps/components/pages/TopPage';
+import Recreation from './apps/components/pages/RecreationPage';
+import Diary from './apps/components/pages/DiaryPage';
+import Contact from './apps/components/pages/ContactPage';
+import NotFound from './apps/components/pages/NotFoundPage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
