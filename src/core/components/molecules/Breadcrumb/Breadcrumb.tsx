@@ -20,7 +20,7 @@ const Breadcrumb: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }
         {breadcrumb && breadcrumb.map((item, index) => {
           if (breadcrumb.length - 1 !== index) {
             return (
-              <li>
+              <li key={index}>
                 <div className="flex items-center">
                   <ArrowRight />
                   <a href={item.href} className="ml-1 text-sm font-medium md:ml-2 hover:text-blue-600">
@@ -31,7 +31,7 @@ const Breadcrumb: React.FC<{ breadcrumb?: BreadcrumbProps[] }> = ({ breadcrumb }
             );
           } else {
             return (
-              <li aria-current="page">
+              <li key={index} aria-current="page">
                 <div className="flex items-center">
                   <ArrowRight />
                   <span className="ml-1 text-sm font-medium md:ml-2">
