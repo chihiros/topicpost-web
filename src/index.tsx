@@ -61,7 +61,10 @@ root.render(
             />
           );
         })}
-        <Route component={NotFoundPage} />
+        <Route render={() => <Pages
+          breadcrumb={[{ href: '', context: '404 Not Found' }] }
+          template={NotFoundPage}
+        />} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>
