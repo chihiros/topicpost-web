@@ -7,7 +7,7 @@ const SidebarFooter = () => {
         created by chihiro.suzurikawa
       </span>
       <div className="flex mt-4 space-x-6 justify-center">
-        <a href="https://github.com/topics/topicpost" target="_self" className="text-gray-500 hover:text-gray-900">
+        <a href="https://github.com/topics/topicpost" rel="noreferrer" target="_blank" className="text-gray-500 hover:text-gray-900">
           <BsGithub size={20} />
           <span className="sr-only">GitHub account</span>
         </a>
