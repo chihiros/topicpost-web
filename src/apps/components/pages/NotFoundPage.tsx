@@ -34,10 +34,8 @@ const NotFound: React.FC = () => {
       <LoginModal
         isOpen={showLoginModal}
         onClose={handleModalClose}
-        onSubmit={() => {}}
+        onSubmit={() => { }}
       />
-
-
     </>
   );
 }

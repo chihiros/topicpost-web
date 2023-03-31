@@ -1,7 +1,7 @@
 export type SidebarProps = {
-  icon : string;
-  label : string;
-  link : string;
+  icon: string;
+  label: string;
+  link: string;
 };
 
 export const sidebar: SidebarProps[] = [
