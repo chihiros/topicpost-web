@@ -2,9 +2,9 @@ import React from 'react';
 
 const SidebarLogin: React.FC = () => {
   return (
-    <div>
-      <div className="hover:bg-gray-100 rounded-md p-3 mx-3">
-        <a href="/">
+    <>
+      <div className="flex items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3">
+        <button>
           <div className="flex bg-gray-200 w-12 h-12 mx-auto p-3 mb-3 rounded-full">
             <svg width="24" height="24" viewBox="0 0 1453 1254" fill="#577381" xmlns="http://www.w3.org/2000/svg">
               <rect y="329" width="472" height="93" rx="36" fill="" />
@@ -19,14 +19,14 @@ const SidebarLogin: React.FC = () => {
             alt=""
           /> */}
           <div className="flex justify-center text-sm text-slate-500">新規登録／ログイン</div>
-        </a>
+        </button>
       </div>
       <div className="p-1 m-2">
         <a href="/" target="_self" rel="noopener noreferrer">
           <div className="flex justify-center text-xs text-slate-500">ログインすると？</div>
         </a>
       </div>
-    </div>
+    </>
   );
 }
 
