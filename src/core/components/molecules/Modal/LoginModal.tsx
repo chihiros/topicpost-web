@@ -21,7 +21,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
             onClick={handleOverlayClick}
           >
-            <div className="relative w-full h-full max-w-md md:h-auto">
+            <div className="relative w-full h-full max-w-2xl md:h-auto">
               {/* <!-- Modal content --> */}
               <div className="relative bg-white rounded-lg shadow">
                 <button
