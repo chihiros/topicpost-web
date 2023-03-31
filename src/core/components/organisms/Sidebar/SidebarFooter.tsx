@@ -1,4 +1,5 @@
 import { BsGithub } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const SidebarFooter = () => {
   return (
@@ -7,10 +8,10 @@ const SidebarFooter = () => {
         created by chihiro.suzurikawa
       </span>
       <div className="flex mt-4 space-x-6 justify-center">
-        <a href="https://github.com/topics/topicpost" rel="noreferrer" target="_blank" className="text-gray-500 hover:text-gray-900">
+        <Link to="https://github.com/topics/topicpost" rel="noreferrer" target="_blank" className="text-gray-500 hover:text-gray-900">
           <BsGithub size={20} />
           <span className="sr-only">GitHub account</span>
-        </a>
+        </Link>
       </div>
     </footer>
   );

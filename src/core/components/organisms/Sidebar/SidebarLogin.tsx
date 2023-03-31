@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SidebarLogin: React.FC = () => {
   return (
@@ -22,9 +23,9 @@ const SidebarLogin: React.FC = () => {
         </button>
       </div>
       <div className="p-1 m-2">
-        <a href="/" target="_self" rel="noopener noreferrer">
+        <Link to="/" target="_self" rel="noopener noreferrer">
           <div className="flex justify-center text-xs text-slate-500">ログインすると？</div>
-        </a>
+        </Link>
       </div>
     </>
   );
