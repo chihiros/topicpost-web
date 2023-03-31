@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthProviderButton, AuthProviderProps } from "./LoginAuthProviderButton";
-import { BsGithub, BsGoogle } from "react-icons/bs";
+import { BsGithub, BsGoogle, BsTwitter, BsFacebook } from "react-icons/bs";
 
 export interface LoginModalProps {
   isOpen: boolean;
@@ -27,6 +27,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
       children: "Sign in with GitHub",
       color: "gray",
       link: "/auth/github",
+    }, {
+      icon: <BsTwitter />,
+      children: "Sign in with Twitter",
+      color: "blue",
+      link: "/auth/twitter",
+    }, {
+      icon: <BsFacebook />,
+      children: "Sign in with Facebook",
+      color: "blue",
+      link: "/auth/facebook",
     }
   ];
 
