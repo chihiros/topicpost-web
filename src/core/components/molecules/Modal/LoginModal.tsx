@@ -4,7 +4,6 @@ export interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (email: string, password: string) => void;
-  modalOpen: () => void;
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) => {
