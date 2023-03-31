@@ -1,8 +1,15 @@
 import React from "react";
+import LoginModal from "../../../core/components/molecules/Modal/LoginModal";
 
 const NotFoundImage = `${process.env.PUBLIC_URL}/images/not_found_404.png`;
 
 const NotFound: React.FC = () => {
+  const [showLoginModal, setShowLoginModal] = React.useState(false);
+
+  const handleModalClose = () => {
+    setShowLoginModal(false);
+  };
+
   return (
     <>
       <div className="flex mt-20 mb-6 justify-center">
@@ -18,9 +25,18 @@ const NotFound: React.FC = () => {
       <button
         className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
+        onClick={() => setShowLoginModal(true)}
       >
         Open regular modal
       </button>
+
+      <LoginModal
+        isOpen={showLoginModal}
+        onClose={handleModalClose}
+        onSubmit={() => {}}
+      />
+
+
     </>
   );
 }
