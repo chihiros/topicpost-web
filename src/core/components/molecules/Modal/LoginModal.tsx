@@ -1,6 +1,5 @@
 import React from "react";
-import { AuthProviderButton, AuthProviderProps } from "./LoginAuthProviderButton";
-import { BsGithub, BsGoogle, BsTwitter, BsFacebook } from "react-icons/bs";
+import { AuthProviderButton, AuthProviderProps } from "./SocialLoginButton";
 
 export interface LoginModalProps {
   isOpen: boolean;
