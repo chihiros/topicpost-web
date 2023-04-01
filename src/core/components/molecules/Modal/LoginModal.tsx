@@ -67,7 +67,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
                   <span className="sr-only">Close modal</span>
                 </button>
                 <div className="px-6 py-6">
-                  <h3 className="mb-4 text-xl font-medium text-gray-900">Sign in to our platform</h3>
+                  <h3 className="mb-4 text-xl font-medium text-gray-900">TopicPostにログインする</h3>
                   <div className="grid grid-cols-2">
                     {/* 左側にはSSOログインを設定する */}
                     <div className="flex flex-col justify-center space-y-4 pr-6">
