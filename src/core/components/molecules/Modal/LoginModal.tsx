@@ -71,8 +71,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
                   <div className="grid grid-cols-2">
                     {/* 左側にはSSOログインを設定する */}
                     <div className="flex flex-col justify-center space-y-4 pr-6">
-                      {SocialLogins.map((social) => (
-                        <SocialLoginButton {...social} />
+                      {SocialLogins.map((social, index) => (
+                        <SocialLoginButton key={index} {...social} />
                       ))}
                     </div>
                     {/* 右側にはEmail/Passwordのログインを設定する */}
