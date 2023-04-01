@@ -18,20 +18,30 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
 
   const AuthProviders: AuthProviderProps[] = [
     {
-      // icon: BsGoogle,
-      icon: <FcGoogle />,
+      icon: <FcGoogle
+              size={20}
+            />,
       children: "Sign in with Google",
       link: "/auth/google",
     }, {
-      icon: <BsGithub />,
+      icon: <BsGithub
+              size={20}
+              color="#333"
+            />,
       children: "Sign in with GitHub",
       link: "/auth/github",
     }, {
-      icon: <BsTwitter />,
+      icon: <BsTwitter
+              size={20}
+              color="#1DA1F2"
+            />,
       children: "Sign in with Twitter",
       link: "/auth/twitter",
     }, {
-      icon: <BsFacebook />,
+      icon: <BsFacebook
+              size={20}
+              color="#4267B2"
+            />,
       children: "Sign in with Facebook",
       link: "/auth/facebook",
     }
