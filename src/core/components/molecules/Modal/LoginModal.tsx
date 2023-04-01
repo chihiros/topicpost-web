@@ -19,7 +19,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
   const AuthProviders: AuthProviderProps[] = [
     {
       icon: <FcGoogle
-              size={20}
+              size={24}
             />,
       children: "Sign in with Google",
       link: "/auth/google",
