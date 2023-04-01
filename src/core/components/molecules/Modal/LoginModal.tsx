@@ -67,7 +67,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
                       {AuthProviders.map((provider) => (
                         <AuthProviderButton {...provider} />
                       ))}
-
                     </div>
                     {/* 右側にはEmail/Passwordのログインを設定する */}
                     <div className="h-auto max-w-full border-l-2 pl-6">

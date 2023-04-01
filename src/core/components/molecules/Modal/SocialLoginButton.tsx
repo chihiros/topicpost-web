@@ -7,7 +7,7 @@ export interface AuthProviderProps {
   link: string;
 }
 
-export const AuthProviderButton: React.FC<AuthProviderProps> = ({ icon, children, color, link}) => {
+export const AuthProviderButton: React.FC<AuthProviderProps> = ({ icon, children, color, link }) => {
   return (
     <button className="group w-full h-10 px-4 border-2 border-gray-300 rounded-full transition duration-300
                        hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
