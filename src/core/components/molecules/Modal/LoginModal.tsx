@@ -1,5 +1,7 @@
 import React from "react";
 import { AuthProviderButton, AuthProviderProps } from "./SocialLoginButton";
+import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 
 export interface LoginModalProps {
   isOpen: boolean;
@@ -17,7 +19,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
   const AuthProviders: AuthProviderProps[] = [
     {
       // icon: BsGoogle,
-      icon: <BsGoogle />,
+      icon: <FcGoogle />,
       children: "Sign in with Google",
       color: "red",
       link: "/auth/google",
