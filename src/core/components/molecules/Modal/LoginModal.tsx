@@ -21,22 +21,18 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
       // icon: BsGoogle,
       icon: <FcGoogle />,
       children: "Sign in with Google",
-      color: "red",
       link: "/auth/google",
     }, {
       icon: <BsGithub />,
       children: "Sign in with GitHub",
-      color: "gray",
       link: "/auth/github",
     }, {
       icon: <BsTwitter />,
       children: "Sign in with Twitter",
-      color: "blue",
       link: "/auth/twitter",
     }, {
       icon: <BsFacebook />,
       children: "Sign in with Facebook",
-      color: "blue",
       link: "/auth/facebook",
     }
   ];
