@@ -5,6 +5,7 @@ import TopPage from './apps/components/templates/TopTemplate';
 import RecreationPage from './apps/components/templates/RecreationTemplate';
 import DiaryPage from './apps/components/templates/DiaryTemplate';
 import ContactPage from './apps/components/templates/ContactTemplate';
+import SignUpPage from './apps/components/templates/SignUpTemplate';
 import NotFoundPage from './apps/components/pages/NotFoundPage';
 import Pages, { PagesProps } from './apps/components/pages/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -37,6 +38,12 @@ const routes: RouteType[] = [
     template: ContactPage,
     breadcrumb: [
       { href: '/contact', context: 'お問い合わせ' },
+    ]
+  }, {
+    path: "/signup",
+    template: SignUpPage,
+    breadcrumb: [
+      { href: '/signup', context: 'アカウント新規登録' },
     ]
   }
 ];
