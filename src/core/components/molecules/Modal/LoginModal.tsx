@@ -1,5 +1,5 @@
 import React from "react";
-import { AuthProviderButton, AuthProviderProps } from "./SocialLoginButton";
+import { SocialLoginButton, SocialLoginProps } from "./SocialLoginButton";
 import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 
@@ -16,7 +16,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
     }
   };
 
-  const AuthProviders: AuthProviderProps[] = [
+  const SocialLogins: SocialLoginProps[] = [
     {
       icon: <FcGoogle
               size={24}
@@ -70,8 +70,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
                   <div className="grid grid-cols-2">
                     {/* 左側にはSSOログインを設定する */}
                     <div className="flex flex-col justify-center space-y-4 pr-6">
-                      {AuthProviders.map((provider) => (
-                        <AuthProviderButton {...provider} />
+                      {SocialLogins.map((social) => (
+                        <SocialLoginButton {...social} />
                       ))}
                     </div>
                     {/* 右側にはEmail/Passwordのログインを設定する */}
