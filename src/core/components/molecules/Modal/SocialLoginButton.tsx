@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-export interface AuthProviderProps {
+export interface SocialLoginProps {
   icon: ReactNode;
   children: string;
   link: string;
