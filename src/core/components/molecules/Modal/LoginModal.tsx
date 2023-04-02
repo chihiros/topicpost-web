@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoginModal } from "../../../../context/LoginModalContext";
 import { Link } from "react-router-dom";
 import { SocialLoginButton, SocialLoginProps } from "./SocialLoginButton";
@@ -7,7 +7,17 @@ import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 
 const LoginModal: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { isOpen, toggle } = useLoginModal();
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
