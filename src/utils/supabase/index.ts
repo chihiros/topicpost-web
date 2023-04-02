@@ -1,3 +1,11 @@
-import { supabaseClient } from './Supabase'
+import {
+  supabaseClient,
+  SupabaseSignUp,
+  SupabaseSignInWithPassword
+} from './Supabase'
 
-export { supabaseClient }
+export {
+  supabaseClient,
+  SupabaseSignUp,
+  SupabaseSignInWithPassword
+}
