@@ -151,7 +151,7 @@ const LoginModal: React.FC = () => {
                         >
                           TopicPost にログイン
                         </div>
-                        <div className="text-sm font-medium text-gray-500300">
+                        <div className="text-sm font-medium text-gray-500">
                           <Link to="/signup" className="text-blue-700 hover:underline">TopicPostのアカウントを作成する</Link>
                         </div>
                       </form>
