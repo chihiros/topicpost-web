@@ -45,6 +45,12 @@ const routes: RouteType[] = [
     breadcrumb: [
       { href: '/signup', context: 'アカウント新規登録' },
     ]
+  }, {
+    path: "/forget",
+    template: SignUpPage,
+    breadcrumb: [
+      { href: '/forget', context: 'パスワード再設定' },
+    ]
   }
 ];
 
