@@ -26,6 +26,27 @@ const LoginModal: React.FC = () => {
     }
   };
 
+  // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
+  const handleSignInWithPasswordClick = () => {
+    console.log("ログイン処理を行う");
+    // メールアドレスの値を取得する
+    const emailValue = email;
+    // パスワードの値を取得する
+    const passwordValue = password;
+
+    console.log("email", emailValue);
+    console.log("password", passwordValue);
+
+    // メールアドレスとパスワードを使ってログインする
+    SupabaseSignInWithPassword(emailValue, passwordValue);
+
+    // // ログインに成功したらモーダルを閉じる
+    // toggle();
+
+    // // ログインに成功したらトップページに遷移する
+    // window.location.href = "/";
+  };
+
   const SocialLogins: SocialLoginProps[] = [
     {
       icon: <FcGoogle
@@ -126,7 +147,7 @@ const LoginModal: React.FC = () => {
                         </div>
                         <div
                           className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                          onClick={handleLoginClick}
+                          onClick={handleSignInWithPasswordClick}
                         >
                           TopicPost にログイン
                         </div>
