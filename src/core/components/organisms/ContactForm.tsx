@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Label from '../atoms/Label';
-import Text from '../atoms/Input/Text';
-import Textarea from '../atoms/Input/Textarea';
+import {Text, Textarea } from '../atoms/Input';
 import SubmitButton from '../atoms/Button/SubmitButton';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
