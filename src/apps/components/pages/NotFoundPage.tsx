@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import LoginModal from "../../../core/components/molecules/Modal/LoginModal";
 import LoginModalContext from "../../../context/LoginModalContext";
