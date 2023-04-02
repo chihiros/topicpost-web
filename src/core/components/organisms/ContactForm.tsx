@@ -36,6 +36,7 @@ const ContactForm: React.FC = () => {
     axios.post(url, data)
       .then(response => {
         console.log(response.data);
+        toast.success('送信が完了しました');
       })
       .catch(error => {
         console.error(error);
