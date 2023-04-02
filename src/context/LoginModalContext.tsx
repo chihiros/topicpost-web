@@ -14,10 +14,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-interface Props {
-  children: React.ReactNode;
-}
-
 export const LoginModalProvider = ({ children }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
