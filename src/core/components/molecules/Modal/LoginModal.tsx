@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import LoginModalContext from "../../../../context/LoginModalContext";
+import React from "react";
+import { useLoginModal } from "../../../../context/LoginModalContext";
 import { Link } from "react-router-dom";
 import { SocialLoginButton, SocialLoginProps } from "./SocialLoginButton";
 import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 
 const LoginModal: React.FC = () => {
-  const { isOpen, toggle } = useContext(LoginModalContext);
+  const { isOpen, toggle } = useLoginModal();
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
