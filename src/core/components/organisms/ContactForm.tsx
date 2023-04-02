@@ -3,6 +3,8 @@ import axios from 'axios';
 import InputText from '../molecules/Input/InputText';
 import InputTextarea from '../molecules/Input/InputTextarea';
 import SubmitButton from '../atoms/Button/SubmitButton';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactForm: React.FC = () => {
   const [nameValue, setTextValue] = useState('');
@@ -37,12 +39,14 @@ const ContactForm: React.FC = () => {
       })
       .catch(error => {
         console.error(error);
+        toast.error('送信に失敗しました');
       });
   };
 
   return (
     <div className="p-4 shadow-md bg-gray-50 rounded-lg">
       <div className="flex mb-5 text-3xl">お問い合わせ</div>
+      <ToastContainer />
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
           <InputText
