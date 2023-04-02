@@ -37,6 +37,11 @@ const ContactForm: React.FC = () => {
       .then(response => {
         console.log(response.data);
         toast.success('送信が完了しました');
+
+        // フォームの初期化
+        setTextValue('');
+        setEmailValue('');
+        setMessageValue('');
       })
       .catch(error => {
         console.error(error);
