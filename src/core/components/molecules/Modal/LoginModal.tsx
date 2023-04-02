@@ -5,6 +5,7 @@ import { SocialLoginButton, SocialLoginProps } from "./SocialLoginButton";
 import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
+import { SupabaseSignUp, SupabaseSignInWithPassword } from "../../../../utils/supabase";
 
 const LoginModal: React.FC = () => {
   const [email, setEmail] = useState("");
