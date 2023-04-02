@@ -1,23 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Twemoji from "../../atoms/Icon/Twemoji";
+import { SidebarProps } from "../../../../apps/components/pages/sidebar";
 
-type Props = {
-  icon: string;
-  label: string;
-  link: string;
-}
-
-const SidebarLabel: React.FC<Props> = ({ icon, label, link }) => {
+const SidebarLabel: React.FC<SidebarProps> = ({ icon, label, link }) => {
   return (
     <ul className="">
-      <a href={link}>
+      <Link to={link}>
         <li className="flex p-3 h-17 border-b-2 hover:bg-gray-100 items-center">
           <div className="flex rounded-md w-10 h-10">
             <Twemoji>{icon}</Twemoji>
           </div>
           <span className="ml-4 text-lg text-gray-500 font-semibold">{label}</span>
         </li>
-      </a>
+      </Link>
     </ul>
   );
 }
