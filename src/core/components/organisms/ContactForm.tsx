@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import InputText from '../molecules/Input/InputText';
-import InputTextarea from '../molecules/Input/InputTextarea';
+import Label from '../atoms/Label';
+import Text from '../atoms/Input/Text';
+import Textarea from '../atoms/Input/Textarea';
 import SubmitButton from '../atoms/Button/SubmitButton';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -55,10 +56,10 @@ const ContactForm: React.FC = () => {
       <ToastContainer />
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
-          <InputText
+          <Label htmlFor="name">お名前</Label>
+          <Text
             id="name"
             type="text"
-            label="お名前"
             placeholder="テスト太郎"
             required={true}
             value={nameValue}
@@ -66,20 +67,20 @@ const ContactForm: React.FC = () => {
           />
         </div>
         <div className="mb-6">
-          <InputText
+          <Label htmlFor="email">連絡先</Label>
+          <Text
             id="email"
             type="email"
-            label="連絡先"
-            placeholder="contact@example.com"
+            placeholder="contact@example.cpm"
             required={true}
             value={emailValue}
             onChange={handleEmailChange}
           />
         </div>
         <div className="mb-3">
-          <InputTextarea
+          <Label htmlFor="message">お問い合わせ内容</Label>
+          <Textarea
             id="message"
-            label="お問い合わせ内容"
             placeholder="お問い合わせ内容を入力してください。"
             required={true}
             value={messageValue}
