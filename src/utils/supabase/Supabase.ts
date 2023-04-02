@@ -12,7 +12,7 @@ if (!supabaseKey) {
 
 export const supabaseClient = createClient(supabaseUrl, supabaseKey)
 
-export const SupabaseLogin = async (email: string, password: string) => {
+export const SupabaseSignInWithPassword = async (email: string, password: string) => {
   const { data, error } = await supabaseClient.auth.signInWithPassword({
     email,
     password,
