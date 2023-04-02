@@ -1,20 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import LoginModalContext from "../../../../context/LoginModalContext";
 import { Link } from "react-router-dom";
 import { SocialLoginButton, SocialLoginProps } from "./SocialLoginButton";
 import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 
-export interface LoginModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onSubmit: (email: string, password: string) => void;
-}
+const LoginModal: React.FC = () => {
+  const { isOpen, toggle } = useContext(LoginModalContext);
 
-const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) => {
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
-      onClose();
+      toggle();
     }
   };
 
@@ -61,7 +58,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSubmit }) =>
               {/* <!-- Modal content --> */}
               <div className="relative bg-white rounded-lg shadow">
                 <button
-                  onClick={onClose}
+                  onClick={toggle}
                   type="button"
                   className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
                   <RxCross2 size={20} />
