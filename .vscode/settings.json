@@ -4,6 +4,7 @@
     "editor.detectIndentation": true,
     "cSpell.ignoreWords": [
         "signup",
+        "supabase",
         "toastify"
     ]
 }
