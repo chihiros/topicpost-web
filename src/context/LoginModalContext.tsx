@@ -18,15 +18,17 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const LoginModalProvider = ({ children }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
+export const LoginModalProvider: React.FC<Props> = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(true);
 
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggle = useCallback(() => {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
+  }, []);
+
+  const value = useMemo(() => ({ isOpen, toggle }), [isOpen, toggle]);
 
   return (
-    <LoginModalContext.Provider value={{ isOpen, toggle }}>
+    <LoginModalContext.Provider value={value}>
       {children}
     </LoginModalContext.Provider>
   );
