@@ -11,3 +11,15 @@ if (!supabaseKey) {
 }
 
 export const supabaseClient = createClient(supabaseUrl, supabaseKey)
+
+export const SupabaseSignUp = async (email: string, password: string) => {
+  const { data, error } = await supabaseClient.auth.signUp({
+    email,
+    password,
+  })
+
+  console.log('data', data);
+  console.log('error', error);
+
+  return { data, error }
+}
