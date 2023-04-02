@@ -5,10 +5,14 @@ interface LoginModalContextType {
   toggle: () => void;
 }
 
-const LoginModalContext = createContext<LoginModalContextType>({
+export const LoginModalContext = createContext<LoginModalContextType>({
   isOpen: false,
   toggle: () => {},
 });
+
+export const useLoginModal = () => {
+  return useContext(LoginModalContext);
+};
 
 interface Props {
   children: React.ReactNode;
@@ -27,5 +31,3 @@ export const LoginModalProvider = ({ children }: Props) => {
     </LoginModalContext.Provider>
   );
 };
-
-export default LoginModalContext;
