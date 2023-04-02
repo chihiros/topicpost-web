@@ -19,7 +19,7 @@ interface Props {
 }
 
 export const LoginModalProvider: React.FC<Props> = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggle = useCallback(() => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
