@@ -11,6 +11,18 @@ const ContactForm: React.FC = () => {
   const [emailValue, setEmailValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
 
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTextValue(e.target.value);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailValue(e.target.value);
+  };
+
+  const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessageValue(e.target.value);
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -50,7 +62,7 @@ const ContactForm: React.FC = () => {
             placeholder="テスト太郎"
             required={true}
             value={nameValue}
-            onChange={e => setTextValue(e.target.value)}
+            onChange={handleTextChange}
           />
         </div>
         <div className="mb-6">
@@ -61,7 +73,7 @@ const ContactForm: React.FC = () => {
             placeholder="contact@example.cpm"
             required={true}
             value={emailValue}
-            onChange={e => setEmailValue(e.target.value)}
+            onChange={handleEmailChange}
           />
         </div>
         <div className="mb-3">
@@ -71,7 +83,7 @@ const ContactForm: React.FC = () => {
             placeholder="お問い合わせ内容を入力してください。"
             required={true}
             value={messageValue}
-            onChange={e => setMessageValue(e.target.value)}
+            onChange={handleMessageChange}
           />
         </div>
         <SubmitButton>送信</SubmitButton>
