@@ -1,5 +1,8 @@
 {
     "editor.formatOnSave": false,
     "editor.tabSize": 2,
-    "editor.detectIndentation": true
+    "editor.detectIndentation": true,
+    "cSpell.ignoreWords": [
+        "signup"
+    ]
 }
