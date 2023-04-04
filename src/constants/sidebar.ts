@@ -1,8 +1,4 @@
-export type SidebarProps = {
-  icon: string;
-  label: string;
-  link: string;
-};
+import { SidebarProps } from "../core/components/organisms/Sidebar/SidebarLabel";
 
 export const sidebar: SidebarProps[] = [
   {
