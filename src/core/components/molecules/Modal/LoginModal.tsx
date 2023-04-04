@@ -116,7 +116,7 @@ const LoginModal: React.FC = () => {
                             id="email"
                             value={email}
                             onChange={handleEmailChange}
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="example@topicpost.net"
                             required
                           />
@@ -130,7 +130,7 @@ const LoginModal: React.FC = () => {
                             value={password}
                             onChange={handlePasswordChange}
                             placeholder="••••••••"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             required
                           />
                         </div>
