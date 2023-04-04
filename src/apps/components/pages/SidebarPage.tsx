@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import SidebarLogin from '../../../core/components/organisms/Sidebar/SidebarLogin';
 import SidebarLabel from '../../../core/components/organisms/Sidebar/SidebarLabel';
 import SidebarFooter from '../../../core/components/organisms/Sidebar/SidebarFooter';
-import { sidebar } from './sidebar';
+import { sidebar } from '../../../constants/sidebar';
 
 const SidebarPage: React.FC = () => {
   return (

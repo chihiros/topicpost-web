@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Twemoji from "../../atoms/Icon/Twemoji";
-import { SidebarProps } from "../../../../apps/components/pages/sidebar";
+import { SidebarProps } from "../../../../constants/sidebar";
 
 const SidebarLabel: React.FC<SidebarProps> = ({ icon, label, link }) => {
   return (
