@@ -58,6 +58,7 @@ const ContactForm: React.FC = () => {
           <Text
             id="name"
             type="text"
+            className="bg-gray-50"
             placeholder="テスト太郎"
             required={true}
             value={nameValue}
@@ -69,6 +70,7 @@ const ContactForm: React.FC = () => {
           <Text
             id="email"
             type="email"
+            className="bg-gray-50"
             placeholder="contact@example.cpm"
             required={true}
             value={emailValue}
