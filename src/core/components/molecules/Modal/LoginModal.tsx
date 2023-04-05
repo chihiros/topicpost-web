@@ -122,15 +122,13 @@ const LoginModal: React.FC = () => {
                         </div>
                         <div>
                           <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">パスワード</label>
-                          <input
+                          <Text
                             type="password"
-                            name="password"
                             id="password"
                             value={password}
                             onChange={handlePasswordChange}
                             placeholder="••••••••"
-                            className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            required
+                            required={true}
                           />
                         </div>
                         <div className="flex justify-between">
