@@ -6,6 +6,7 @@ import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 import { SupabaseSignInWithPassword } from "../../../../utils/supabase";
+import { Text } from "../../atoms/Input";
 
 const LoginModal: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -110,22 +111,13 @@ const LoginModal: React.FC = () => {
                       <form className="space-y-6" action="#">
                         <div>
                           <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">メールアドレス</label>
-                          <input
+                          <Text
                             type="email"
-                            name="email"
                             id="email"
                             value={email}
                             onChange={handleEmailChange}
-                            className="border border-gray-300
-                                      text-gray-900 text-sm
-                                      rounded-lg
-                                      focus:ring-blue-500 focus:border-blue-500
-                                      block
-                                      w-full
-                                      p-2.5
-                                      "
                             placeholder="example@topicpost.net"
-                            required
+                            required={true}
                           />
                         </div>
                         <div>
