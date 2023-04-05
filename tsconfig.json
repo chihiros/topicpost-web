@@ -21,5 +21,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src", "src/core/components/organisms/Content.tsx", "src/core/components/organisms/Sidebar.tsx"  ]
+    "src", "src/core/components/organisms/Content.tsx", "src/core/components/organisms/Sidebar.tsx"
+  ]
 }
