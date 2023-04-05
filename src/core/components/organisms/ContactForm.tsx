@@ -81,6 +81,7 @@ const ContactForm: React.FC = () => {
           <Label htmlFor="message">お問い合わせ内容</Label>
           <Textarea
             id="message"
+            className="bg-gray-50"
             placeholder="お問い合わせ内容を入力してください。"
             required={true}
             value={messageValue}
