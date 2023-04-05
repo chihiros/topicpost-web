@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useLoginModal } from "../../../../context/LoginModalContext";
-import { Link } from "react-router-dom";
 import { SocialLoginButton, SocialLoginProps } from "./SocialLoginButton";
 import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 import { SupabaseSignInWithPassword } from "../../../../utils/supabase";
-import { Text } from "../../atoms/Input";
+import { EmailPassword } from "./EmailPassword";
 
 const LoginModal: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -108,62 +107,14 @@ const LoginModal: React.FC = () => {
                     </div>
                     {/* 右側にはEmail/Passwordのログインを設定する */}
                     <div className="h-auto max-w-full border-l-2 pl-6">
-                      <form className="space-y-6" action="#">
-                        <div>
-                          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">メールアドレス</label>
-                          <Text
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={handleEmailChange}
-                            placeholder="example@topicpost.net"
-                            required={true}
-                          />
-                        </div>
-                        <div>
-                          <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">パスワード</label>
-                          <Text
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                            placeholder="••••••••"
-                            required={true}
-                          />
-                        </div>
-                        <div className="flex justify-between">
-                          <div className="flex items-start">
-                            <div className="flex items-center h-5">
-                              <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" />
-                            </div>
-                            <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900">パスワードを記憶する</label>
-                          </div>
-                        </div>
-                        <div className="flex justify-end">
-                          <Link
-                            to="/forget"
-                            className="text-sm text-blue-700 hover:underline"
-                            onClick={toggle}
-                          >
-                            パスワードを忘れましたか？
-                          </Link>
-                        </div>
-                        <div
-                          className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                          onClick={handleSignInWithPasswordClick}
-                        >
-                          TopicPost にログイン
-                        </div>
-                        <div className="text-sm font-medium text-gray-500">
-                          <Link
-                            to="/signup"
-                            className="text-blue-700 hover:underline"
-                            onClick={toggle}
-                          >
-                            TopicPostのアカウントを作成する
-                          </Link>
-                        </div>
-                      </form>
+                      <EmailPassword
+                        email={email}
+                        password={password}
+                        onChangeEmail={handleEmailChange}
+                        onChangePassword={handlePasswordChange}
+                        toggle={toggle}
+                        onClick={handleSignInWithPasswordClick}
+                      />
                     </div>
                   </div>
                 </div>
