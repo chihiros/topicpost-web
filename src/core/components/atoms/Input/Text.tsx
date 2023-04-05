@@ -21,13 +21,13 @@ const Text: React.FC<TextProps> = ({ id, type, style, placeholder, required, val
     setIsFocused(false);
   };
 
-  const borderColor = isFocused ? 'border-blue-500' : 'border-gray-300';
+  const borderColor = isFocused ? 'border-blue-500 ring-1 ring-blue-500' : 'border-gray-300';
 
   return (
     <input
       type={type}
       id={id}
-      className={`border text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 ${borderColor} ${style || ''}`}
+      className={`border text-gray-900 text-sm rounded-lg block w-full p-2.5 ${borderColor} ${style || ''}`}
       {...(placeholder ? { placeholder } : {})}
       {...(required ? { required } : {})}
       {...(value ? { value } : {})}
