@@ -5,8 +5,8 @@ import { SubmitButton } from "../../atoms/Button";
 
 import Toast from "../../../../utils/Toast";
 import { getErrorMessage } from "../../../../utils/ErrorMessage";
-import { Redirect } from "react-router-dom";
 import { SupabaseLoginWithPassword } from "../../../../utils/supabase";
+import { useHistory } from 'react-router-dom';
 
 type EmailPasswordProps = {
   toggle: () => void;
@@ -26,6 +26,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   };
 
   // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
+  const history = useHistory();
   const handleLoginWithPasswordClick: () => void = async () => {
     console.log("ログイン処理を行う");
     // メールアドレスの値を取得する
@@ -50,6 +51,9 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
 
     // // ログインに成功したらモーダルを閉じる
     toggle();
+
+    // // ログインに成功したらトップページに遷移する
+    history.push("/");
   };
 
   return (
