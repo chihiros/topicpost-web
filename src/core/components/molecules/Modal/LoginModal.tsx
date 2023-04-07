@@ -4,7 +4,7 @@ import { SocialLoginButton, SocialLoginProps } from "./SocialLoginButton";
 import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
-import { SupabaseSignInWithPassword } from "../../../../utils/supabase";
+import { SupabaseLoginWithPassword } from "../../../../utils/supabase";
 import { EmailPassword } from "./EmailPassword";
 
 const LoginModal: React.FC = () => {
@@ -27,7 +27,7 @@ const LoginModal: React.FC = () => {
   };
 
   // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
-  const handleSignInWithPasswordClick = () => {
+  const handleLoginWithPasswordClick = () => {
     console.log("ログイン処理を行う");
     // メールアドレスの値を取得する
     const emailValue = email;
@@ -38,7 +38,7 @@ const LoginModal: React.FC = () => {
     console.log("password", passwordValue);
 
     // メールアドレスとパスワードを使ってログインする
-    SupabaseSignInWithPassword(emailValue, passwordValue);
+    SupabaseLoginWithPassword(emailValue, passwordValue);
 
     // // ログインに成功したらモーダルを閉じる
     // toggle();
@@ -113,7 +113,7 @@ const LoginModal: React.FC = () => {
                         onChangeEmail={handleEmailChange}
                         onChangePassword={handlePasswordChange}
                         toggle={toggle}
-                        onClick={handleSignInWithPasswordClick}
+                        onClick={handleLoginWithPasswordClick}
                       />
                     </div>
                   </div>
