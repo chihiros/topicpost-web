@@ -16,7 +16,7 @@ type EmailPasswordProps = {
 export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cookies, setCookie] = useCookies();
+  const [, setCookie] = useCookies();
 
   const toast = new Toast();
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
