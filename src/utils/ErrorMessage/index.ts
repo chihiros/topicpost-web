@@ -3,7 +3,7 @@ type ErrorMessageType = {
 }
 
 export const ErrorMessage: ErrorMessageType = {
-  "Invalid login credentials": "ログイン情報が間違っています",
+  "Invalid login credentials": "ログインに失敗しました",
 }
 
 export const getErrorMessage = (error: string) => {
