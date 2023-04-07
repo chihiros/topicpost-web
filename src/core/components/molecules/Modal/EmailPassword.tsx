@@ -45,14 +45,12 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
       toast.error(getErrorMessage(error.message));
       return;
     }
-
     console.log("data", data);
 
-
-    // // ログインに成功したらモーダルを閉じる
+    // ログインに成功したらモーダルを閉じる
     toggle();
 
-    // // ログインに成功したらトップページに遷移する
+    // ログインに成功したらトップページに遷移する
     history.push("/");
   };
 
