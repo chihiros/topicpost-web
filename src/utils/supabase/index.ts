@@ -1,11 +1,13 @@
 import {
   supabaseClient,
   SupabaseSignUp,
-  SupabaseSignInWithPassword
+  SupabaseSignInWithPassword,
+  SupabaseSignOut
 } from './Supabase'
 
 export {
   supabaseClient,
   SupabaseSignUp,
-  SupabaseSignInWithPassword
+  SupabaseSignInWithPassword,
+  SupabaseSignOut
 }
