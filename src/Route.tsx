@@ -4,7 +4,7 @@ import DiaryPage from './apps/components/templates/DiaryTemplate';
 import ContactPage from './apps/components/templates/ContactTemplate';
 import SignUpPage from './apps/components/templates/SignUpTemplate';
 import NotFoundPage from './apps/components/pages/NotFoundPage';
-import Pages, { PagesProps } from './apps/components/pages/Pages';
+import Pages, { PagesProps } from './Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcrumb';
 

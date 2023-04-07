@@ -1,8 +1,8 @@
 import React from "react";
-import SidebarPage from "./SidebarPage";
-import Breadcrumb, { BreadcrumbProps } from "../../../core/components/molecules/Breadcrumb/Breadcrumb";
-import { LoginModalProvider } from "../../../context/LoginModalContext";
-import LoginModal from "../../../core/components/molecules/Modal/LoginModal";
+import SidebarPage from "./apps/components/pages/SidebarPage";
+import Breadcrumb, { BreadcrumbProps } from "./core/components/molecules/Breadcrumb/Breadcrumb";
+import { LoginModalProvider } from "./context/LoginModalContext";
+import LoginModal from "./core/components/molecules/Modal/LoginModal";
 import { ToastContainer } from "react-toastify";
 
 export type PagesProps = {
