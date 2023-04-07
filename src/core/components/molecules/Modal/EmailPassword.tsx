@@ -7,6 +7,7 @@ import Toast from "../../../../utils/Toast";
 import { getErrorMessage } from "../../../../utils/ErrorMessage";
 import { SupabaseLoginWithPassword } from "../../../../utils/supabase";
 import { useHistory } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 
 type EmailPasswordProps = {
   toggle: () => void;
@@ -15,6 +16,7 @@ type EmailPasswordProps = {
 export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [cookies, setCookie] = useCookies();
 
   const toast = new Toast();
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
