@@ -7,7 +7,13 @@ const RecreationForm: React.FC = () => {
       <div className='mb-2 ml-2'>
         新着情報
       </div>
-      <div className="flex flex-nowrap overflow-x-auto gap-4">
+      <div className="flex overflow-x-auto gap-4">
+        <NewCard />
+        <NewCard />
+        <NewCard />
+        <NewCard />
+        <NewCard />
+        <NewCard />
         <NewCard />
         <NewCard />
         <NewCard />
