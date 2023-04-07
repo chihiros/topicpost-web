@@ -27,8 +27,8 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
     setPassword(event.target.value);
   };
 
-  // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
   const history = useHistory();
+  // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
   const handleLoginWithPasswordClick: () => void = async () => {
     // console.log("ログイン処理を行う");
     // メールアドレスの値を取得する
