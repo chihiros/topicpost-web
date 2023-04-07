@@ -4,6 +4,7 @@ import Breadcrumb, { BreadcrumbProps } from "./core/components/molecules/Breadcr
 import { LoginModalProvider } from "./context/LoginModalContext";
 import LoginModal from "./core/components/molecules/Modal/LoginModal";
 import { ToastContainer } from "react-toastify";
+import { CookiesProvider } from "react-cookie";
 
 export type PagesProps = {
   breadcrumb?: BreadcrumbProps[];
@@ -12,17 +13,19 @@ export type PagesProps = {
 
 const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
   return (
-    <LoginModalProvider>
-      <div>
-        <ToastContainer />
-        <SidebarPage />
-        <div className="p-4 sm:ml-64">
-          <Breadcrumb breadcrumb={breadcrumb} />
-          {template({ template })}
-          <LoginModal />
+    <CookiesProvider>
+      <LoginModalProvider>
+        <div>
+          <ToastContainer />
+          <SidebarPage />
+          <div className="p-4 sm:ml-64">
+            <Breadcrumb breadcrumb={breadcrumb} />
+            {template({ template })}
+            <LoginModal />
+          </div>
         </div>
-      </div>
-    </LoginModalProvider>
+      </LoginModalProvider>
+    </CookiesProvider>
   );
 };
 
