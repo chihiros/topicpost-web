@@ -6,13 +6,21 @@ type ButtonProps = {
 };
 
 export const SuccessButton: React.FC<ButtonProps> = ({ children }) => {
-  return <Button success>{children}</Button>;
+  return <Button
+           className='bg-green-500 hover:bg-green-600'
+         >{children}</Button>;
 };
 
 export const WarnButton: React.FC<ButtonProps> = ({ children }) => {
-  return <Button warn>{children}</Button>;
+  return <Button
+           className='bg-yellow-500 hover:bg-yellow-600'
+         >{children}</Button>;
 };
 
 export const ErrorButton: React.FC<ButtonProps> = ({ children }) => {
-  return <Button error>{children}</Button>;
+  return <Button
+           className='bg-red-500 hover:bg-red-600'
+         >{children}</Button>;
+};
+
 };
