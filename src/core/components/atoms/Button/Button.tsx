@@ -8,7 +8,7 @@ type ButtonProps = {
 };
 
 const Button: React.FC<ButtonProps> = ({ children, success, warn, error }) => {
-  let className = 'bg-gray-200 hover:bg-gray-300';
+  let className = '';
   if (success) {
     className = 'bg-green-500 hover:bg-green-600';
   } else if (warn) {
