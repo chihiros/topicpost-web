@@ -6,12 +6,15 @@ import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 import { SupabaseLoginWithPassword } from "../../../../utils/supabase";
 import { EmailPassword } from "./EmailPassword";
+import Toast from "../../../../utils/Toast";
+import { getErrorMessage } from "../../../../utils/ErrorMessage";
 
 const LoginModal: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isOpen, toggle } = useLoginModal();
 
+  const toast = new Toast();
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
@@ -38,7 +41,16 @@ const handleLoginWithPasswordClick: () => void = async () => {
     console.log("password", passwordValue);
 
     // メールアドレスとパスワードを使ってログインする
-    SupabaseLoginWithPassword(emailValue, passwordValue);
+    const { data, error } = await SupabaseLoginWithPassword(emailValue, passwordValue);
+
+    if (error) {
+      // console.log("error", error);
+      toast.error(getErrorMessage(error.message));
+      return;
+    }
+
+    console.log("data", data);
+
 
     // // ログインに成功したらモーダルを閉じる
     // toggle();
