@@ -27,10 +27,10 @@ const Button: React.FC<ButtonProps> = ({
   submit,
 }) => {
   className += ' ';
-  className = success ? Styles.success : className;
-  className = warn ? Styles.warn : className;
-  className = error ? Styles.error : className;
-  className = submit ? Styles.submit : className;
+  className += success ? Styles.success : '';
+  className += warn ? Styles.warn : '';
+  className += error ? Styles.error : '';
+  className += submit ? Styles.submit : '';
 
   return (
     <button
