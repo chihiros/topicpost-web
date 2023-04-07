@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Label from '../atoms/Label';
 import { Text, Textarea } from '../atoms/Input';
-import SubmitButton from '../atoms/Button/SubmitButton';
+import { SubmitButton } from '../atoms/Button';
 import Toast from '../../../utils/Toast';
 
 const ContactForm: React.FC = () => {
