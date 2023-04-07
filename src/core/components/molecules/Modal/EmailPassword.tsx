@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Text } from "../../atoms/Input";
 import { SubmitButton } from "../../atoms/Button";
 
-import Toast from "../../../../utils/Toast";
+import Toast from "../../../../utils/toast";
 import { getErrorMessage } from "../../../../utils/ErrorMessage";
 import { supabaseClient } from "../../../../utils/supabase";
 import { useHistory } from 'react-router-dom';
