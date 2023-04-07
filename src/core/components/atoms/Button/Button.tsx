@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 type ButtonProps = {
   onClick?: () => void;
   children: ReactNode;
+  className?: string;
   success?: boolean;
   warn?: boolean;
   error?: boolean;
@@ -19,12 +20,13 @@ const Styles = {
 const Button: React.FC<ButtonProps> = ({
   onClick,
   children,
+  className,
   success,
   warn,
   error,
   submit,
 }) => {
-  let className = '';
+  className += ' ';
   className = success ? Styles.success : className;
   className = warn ? Styles.warn : className;
   className = error ? Styles.error : className;
