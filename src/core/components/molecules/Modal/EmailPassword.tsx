@@ -27,7 +27,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
 
 
   // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
-const handleLoginWithPasswordClick: () => void = async () => {
+  const handleLoginWithPasswordClick: () => void = async () => {
     console.log("ログイン処理を行う");
     // メールアドレスの値を取得する
     const emailValue = email;
@@ -51,10 +51,6 @@ const handleLoginWithPasswordClick: () => void = async () => {
 
     // // ログインに成功したらモーダルを閉じる
     toggle();
-
-    // // ログインに成功したらトップページに遷移する
-    // window.location.href = "/";
-    return <Redirect to="/" />
   };
 
   return (
