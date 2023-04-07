@@ -30,27 +30,17 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   const history = useHistory();
   // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
   const handleLoginWithPasswordClick: () => void = async () => {
-    // console.log("ログイン処理を行う");
-    // メールアドレスの値を取得する
     const emailValue = email;
-    // パスワードの値を取得する
     const passwordValue = password;
-
-    // console.log("email", emailValue);
-    // console.log("password", passwordValue);
-
-    // メールアドレスとパスワードを使ってログインする
     const { data, error } = await supabaseClient.auth.signInWithPassword({
       email: emailValue,
       password: passwordValue,
     });
 
     if (error) {
-      // console.log("error", error);
       toast.error(getErrorMessage(error.message));
       return;
     }
-    // console.log("data", data);
     setCookie("access_token", data.session?.access_token);
     setCookie("refresh_token", data.session?.refresh_token);
     sessionStorage.setItem("last_access_date", new Date().toISOString());
