@@ -10,6 +10,12 @@ const ContactForm: React.FC = () => {
   const [emailValue, setEmailValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
 
+  const clearForm = () => {
+    setTextValue('');
+    setEmailValue('');
+    setMessageValue('');
+  }
+
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextValue(e.target.value);
   };
@@ -39,9 +45,7 @@ const ContactForm: React.FC = () => {
         toast.success('送信が完了しました');
 
         // フォームの初期化
-        setTextValue('');
-        setEmailValue('');
-        setMessageValue('');
+        clearForm();
       })
       .catch(error => {
         console.error(error);
