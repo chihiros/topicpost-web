@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 
 type ButtonProps = {
+  onClick?: () => void;
   children: ReactNode;
   success?: boolean;
   warn?: boolean;
@@ -16,6 +17,7 @@ const Styles = {
 }
 
 const Button: React.FC<ButtonProps> = ({
+  onClick,
   children,
   success,
   warn,
@@ -29,7 +31,10 @@ const Button: React.FC<ButtonProps> = ({
   className = submit ? Styles.submit : className;
 
   return (
-    <button className={`${className} py-2 px-4 rounded`} type="button">
+    <button
+      onClick={onClick ? onClick : () => {}}
+      className={`${className} py-2 px-4 rounded`}
+      type="button">
       {children}
     </button>
   );
