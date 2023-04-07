@@ -27,7 +27,7 @@ const LoginModal: React.FC = () => {
   };
 
   // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
-  const handleLoginWithPasswordClick = () => {
+const handleLoginWithPasswordClick: () => void = async () => {
     console.log("ログイン処理を行う");
     // メールアドレスの値を取得する
     const emailValue = email;
