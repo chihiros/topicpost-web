@@ -34,8 +34,8 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
     // パスワードの値を取得する
     const passwordValue = password;
 
-    console.log("email", emailValue);
-    console.log("password", passwordValue);
+    // console.log("email", emailValue);
+    // console.log("password", passwordValue);
 
     // メールアドレスとパスワードを使ってログインする
     const { data, error } = await SupabaseLoginWithPassword(emailValue, passwordValue);
@@ -45,7 +45,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
       toast.error(getErrorMessage(error.message));
       return;
     }
-    console.log("data", data);
+    // console.log("data", data);
 
     // ログインに成功したらモーダルを閉じる
     toggle();
