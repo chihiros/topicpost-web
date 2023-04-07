@@ -5,7 +5,7 @@ import { SubmitButton } from "../../atoms/Button";
 
 import Toast from "../../../../utils/Toast";
 import { getErrorMessage } from "../../../../utils/ErrorMessage";
-import { SupabaseLoginWithPassword } from "../../../../utils/supabase";
+import { supabaseClient } from "../../../../utils/supabase";
 import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
@@ -40,7 +40,10 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
     // console.log("password", passwordValue);
 
     // メールアドレスとパスワードを使ってログインする
-    const { data, error } = await SupabaseLoginWithPassword(emailValue, passwordValue);
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: emailValue,
+      password: passwordValue,
+    });
 
     if (error) {
       // console.log("error", error);
