@@ -75,9 +75,7 @@ const LoginModal: React.FC = () => {
                     </div>
                     {/* 右側にはEmail/Passwordのログインを設定する */}
                     <div className="h-auto max-w-full border-l-2 pl-6">
-                      <EmailPassword
-                        toggle={toggle}
-                      />
+                      <EmailPassword toggle={toggle} />
                     </div>
                   </div>
                 </div>
