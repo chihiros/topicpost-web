@@ -1,62 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLoginModal } from "../../../../context/LoginModalContext";
 import { SocialLoginButton, SocialLoginProps } from "./SocialLoginButton";
 import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
-import { SupabaseLoginWithPassword } from "../../../../utils/supabase";
 import { EmailPassword } from "./EmailPassword";
-import Toast from "../../../../utils/Toast";
-import { getErrorMessage } from "../../../../utils/ErrorMessage";
 
 const LoginModal: React.FC = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const { isOpen, toggle } = useLoginModal();
-
-  const toast = new Toast();
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
 
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       toggle();
     }
-  };
-
-  // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
-const handleLoginWithPasswordClick: () => void = async () => {
-    console.log("ログイン処理を行う");
-    // メールアドレスの値を取得する
-    const emailValue = email;
-    // パスワードの値を取得する
-    const passwordValue = password;
-
-    console.log("email", emailValue);
-    console.log("password", passwordValue);
-
-    // メールアドレスとパスワードを使ってログインする
-    const { data, error } = await SupabaseLoginWithPassword(emailValue, passwordValue);
-
-    if (error) {
-      // console.log("error", error);
-      toast.error(getErrorMessage(error.message));
-      return;
-    }
-
-    console.log("data", data);
-
-
-    // // ログインに成功したらモーダルを閉じる
-    // toggle();
-
-    // // ログインに成功したらトップページに遷移する
-    // window.location.href = "/";
   };
 
   const SocialLogins: SocialLoginProps[] = [
@@ -120,12 +76,7 @@ const handleLoginWithPasswordClick: () => void = async () => {
                     {/* 右側にはEmail/Passwordのログインを設定する */}
                     <div className="h-auto max-w-full border-l-2 pl-6">
                       <EmailPassword
-                        email={email}
-                        password={password}
-                        onChangeEmail={handleEmailChange}
-                        onChangePassword={handlePasswordChange}
                         toggle={toggle}
-                        onClick={handleLoginWithPasswordClick}
                       />
                     </div>
                   </div>

@@ -1,19 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { Text } from "../../atoms/Input";
 import { SubmitButton } from "../../atoms/Button";
 
+import Toast from "../../../../utils/Toast";
+import { getErrorMessage } from "../../../../utils/ErrorMessage";
+import { Redirect } from "react-router-dom";
+import { SupabaseLoginWithPassword } from "../../../../utils/supabase";
+
 type EmailPasswordProps = {
-  email: string;
-  password: string;
-  onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangePassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
   toggle: () => void;
-  onClick: () => void;
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-export const EmailPassword: React.FC<EmailPasswordProps> = ({ email, password, onChangeEmail, onChangePassword, toggle, onClick, onSubmit }) => {
+export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const toast = new Toast();
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
+
+  // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
+const handleLoginWithPasswordClick: () => void = async () => {
+    console.log("ログイン処理を行う");
+    // メールアドレスの値を取得する
+    const emailValue = email;
+    // パスワードの値を取得する
+    const passwordValue = password;
+
+    console.log("email", emailValue);
+    console.log("password", passwordValue);
+
+    // メールアドレスとパスワードを使ってログインする
+    const { data, error } = await SupabaseLoginWithPassword(emailValue, passwordValue);
+
+    if (error) {
+      // console.log("error", error);
+      toast.error(getErrorMessage(error.message));
+      return;
+    }
+
+    console.log("data", data);
+
+
+    // // ログインに成功したらモーダルを閉じる
+    toggle();
+
+    // // ログインに成功したらトップページに遷移する
+    // window.location.href = "/";
+    return <Redirect to="/" />
+  };
+
   return (
     <form className="space-y-6" action="#">
       <div>
@@ -22,7 +65,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ email, password, o
           type="email"
           id="email"
           value={email}
-          onChange={onChangeEmail}
+          onChange={handleEmailChange}
           placeholder="example@topicpost.net"
           required={true}
         />
@@ -33,7 +76,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ email, password, o
           type="password"
           id="password"
           value={password}
-          onChange={onChangePassword}
+          onChange={handlePasswordChange}
           placeholder="••••••••"
           required={true}
         />
@@ -57,7 +100,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ email, password, o
       </div>
       <SubmitButton
         className="w-full"
-        onClick={onClick}
+        onClick={handleLoginWithPasswordClick}
       >
         TopicPost にログイン
       </SubmitButton>
