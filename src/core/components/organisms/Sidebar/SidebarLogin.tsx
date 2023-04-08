@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLoginModal } from "../../../../context/LoginModalContext";
 
-
 const SidebarLogin: React.FC = () => {
   const { toggle } = useLoginModal();
   return (

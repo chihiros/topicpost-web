@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Label from '../atoms/Label';
 import { Text, Textarea } from '../atoms/Input';
-import SubmitButton from '../atoms/Button/SubmitButton';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { SubmitButton } from '../atoms/Button';
+import Toast from '../../../utils/Toast';
 
 const ContactForm: React.FC = () => {
   const [nameValue, setTextValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
+
+  const clearForm = () => {
+    setTextValue('');
+    setEmailValue('');
+    setMessageValue('');
+  }
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextValue(e.target.value);
@@ -33,15 +38,14 @@ const ContactForm: React.FC = () => {
       content: messageValue,
     };
 
+    const toast = new Toast();
     axios.post(url, data)
       .then(response => {
         console.log(response.data);
         toast.success('送信が完了しました');
 
         // フォームの初期化
-        setTextValue('');
-        setEmailValue('');
-        setMessageValue('');
+        clearForm();
       })
       .catch(error => {
         console.error(error);
@@ -52,13 +56,13 @@ const ContactForm: React.FC = () => {
   return (
     <div className="p-4 shadow-md bg-gray-50 rounded-lg">
       <div className="flex mb-5 text-3xl">お問い合わせ</div>
-      <ToastContainer />
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
           <Label htmlFor="name">お名前</Label>
           <Text
             id="name"
             type="text"
+            className="bg-gray-50"
             placeholder="テスト太郎"
             required={true}
             value={nameValue}
@@ -70,6 +74,7 @@ const ContactForm: React.FC = () => {
           <Text
             id="email"
             type="email"
+            className="bg-gray-50"
             placeholder="contact@example.cpm"
             required={true}
             value={emailValue}
@@ -80,6 +85,7 @@ const ContactForm: React.FC = () => {
           <Label htmlFor="message">お問い合わせ内容</Label>
           <Textarea
             id="message"
+            className="bg-gray-50"
             placeholder="お問い合わせ内容を入力してください。"
             required={true}
             value={messageValue}

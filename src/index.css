@@ -5,3 +5,8 @@
 body {
     background-color: #e2e8eb;
 }
+
+/* Chromeのデフォルトでついている輪郭の設定をオフにするCSS */
+*:focus {
+    outline: none;
+}

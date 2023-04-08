@@ -11,3 +11,32 @@ if (!supabaseKey) {
 }
 
 export const supabaseClient = createClient(supabaseUrl, supabaseKey)
+
+export const SupabaseLoginWithPassword = async (email: string, password: string) => {
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password,
+  })
+
+  // console.log('data', data);
+  // console.log('error', error);
+  return { data, error }
+}
+
+export const SupabaseSignUp = async (email: string, password: string) => {
+  const { data, error } = await supabaseClient.auth.signUp({
+    email,
+    password,
+  })
+
+  // console.log('data', data);
+  // console.log('error', error);
+  return { data, error }
+}
+
+export const SupabaseLogout = async () => {
+  const error = await supabaseClient.auth.signOut()
+
+  // console.log('error', error);
+  return error
+}
