@@ -28,6 +28,11 @@ const SidebarPage: React.FC = () => {
             ログインしています
           </div>
         )}
+        {!loggedIn && (
+          <div>
+            ログインしていません
+          </div>
+        )}
 
         <SidebarLogin />
         <div className="p-1 m-2">
