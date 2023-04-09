@@ -78,7 +78,8 @@ const ContactForm: React.FC = () => {
     console.log(data?.user);
     console.log(data?.user?.id);
 
-    toast.success("問題なし")
+    toast.success("アカウントの登録が完了しました")
+    clearForm();
   };
 
   return (
