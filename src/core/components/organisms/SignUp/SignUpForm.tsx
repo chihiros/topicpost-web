@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import Label from '../../atoms/Label';
 import { Text, Annotation } from '../../atoms/Input';
 import { SubmitButton } from '../../atoms/Button';
 import Toast from '../../../../utils/Toast';
+import { supabaseClient } from '../../../../utils/supabase';
 
 const ContactForm: React.FC = () => {
   const [nicknameValue, setNicknameValue] = useState('');
@@ -34,29 +34,52 @@ const ContactForm: React.FC = () => {
     setPasswordValue(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // event.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const toast = new Toast();
 
-    // const url = 'https://api.topicpost.net/v1/contact';
-    // const data = {
-    //   name: nameValue,
-    //   email: emailValue,
-    //   content: messageValue,
-    // };
+    // ニックネームが空かの確認
+    if (nicknameValue === '') {
+      toast.error('ニックネームを入力してください');
+      return;
+    }
 
-    // const toast = new Toast();
-    // axios.post(url, data)
-    //   .then(response => {
-    //     console.log(response.data);
-    //     toast.success('送信が完了しました');
+    // メールアドレスが一致しているかの確認
+    if (emailValue !== emailConfirm) {
+      toast.error('メールアドレスが一致しません');
+      return;
+    }
 
-    //     // フォームの初期化
-    //     clearForm();
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //     toast.error('送信に失敗しました');
-    //   });
+    // パスワードが8文字以上64文字以下かの確認
+    if (passwordValue.length < 8 || passwordValue.length > 64) {
+      toast.error('パスワードは8文字以上64文字以下で入力してください');
+      return;
+    }
+
+    // パスワードに半角英数字, 記号以外の文字が含まれていないかの確認
+    const regex = /^[a-zA-Z0-9!-/:-@¥[-`{-~]+$/;
+    if (!regex.test(passwordValue)) {
+      toast.error('パスワードに利用できるのは半角英数字と記号のみです');
+      return;
+    }
+
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: emailValue,
+      password: passwordValue,
+    });
+
+
+    if (error) {
+      console.log(error.message);
+      toast.error(error.message);
+      return;
+    }
+    console.log(data);
+    console.log(data?.user);
+    console.log(data?.user?.id);
+
+    toast.success("アカウントの登録が完了しました")
+    clearForm();
   };
 
   return (
@@ -119,7 +142,7 @@ const ContactForm: React.FC = () => {
             value={passwordValue}
             onChange={handlePasswordChange}
           />
-          <Annotation>パスワードは8文字以上64文字以下で入力してください</Annotation>
+          <Annotation>パスワードは8文字以上64文字以下で入力してください<br/>半角英数と記号が利用できます</Annotation>
         </div>
         <SubmitButton>送信</SubmitButton>
       </form>

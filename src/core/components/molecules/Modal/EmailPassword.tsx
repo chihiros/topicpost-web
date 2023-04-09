@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { Text } from "../../atoms/Input";
+import Label from '../../atoms/Label';
+
 import { SubmitButton } from "../../atoms/Button";
 
 import Toast from "../../../../utils/Toast";
@@ -8,43 +10,49 @@ import { getErrorMessage } from "../../../../utils/ErrorMessage";
 import { supabaseClient } from "../../../../utils/supabase";
 import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import { useAuthContext } from '../../../../context/AuthContext';
 
 type EmailPasswordProps = {
   toggle: () => void;
 };
 
 export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [modalEmail, setModalEmail] = useState<string>(''); // value属性を型付きのstringで初期化する
+  const [modalPassword, setModalPassword] = useState<string>(''); // value属性を型付きのstringで初期化する
   const [, setCookie] = useCookies();
+  const { setLoggedIn } = useAuthContext();
 
   const toast = new Toast();
+
+  const history = useHistory();
+
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
+    setModalEmail(event.target.value);
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
+    setModalPassword(event.target.value);
   };
 
-  const history = useHistory();
   // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
-  const handleLoginWithPasswordClick: () => void = async () => {
-    const emailValue = email;
-    const passwordValue = password;
+  const handleLoginWithPassword = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: emailValue,
-      password: passwordValue,
+      email: modalEmail,
+      password: modalPassword
     });
 
     if (error) {
       toast.error(getErrorMessage(error.message));
       return;
     }
+
     setCookie("access_token", data.session?.access_token);
     setCookie("refresh_token", data.session?.refresh_token);
     sessionStorage.setItem("last_access_date", new Date().toISOString());
+    setLoggedIn(true);
 
+    console.log(data);
     // ログインに成功したらモーダルを閉じる
     toggle();
 
@@ -53,24 +61,24 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   };
 
   return (
-    <form className="space-y-6" action="#">
+    <form className="space-y-6" action="#" onSubmit={handleLoginWithPassword}>
       <div>
-        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">メールアドレス</label>
+        <Label htmlFor="modalEmail">メールアドレス</Label>
         <Text
           type="email"
-          id="email"
-          value={email}
+          id="modalEmail"
+          value={modalEmail}
           onChange={handleEmailChange}
           placeholder="example@topicpost.net"
           required={true}
         />
       </div>
       <div>
-        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">パスワード</label>
+        <Label htmlFor="modalPassword">パスワード</Label>
         <Text
           type="password"
-          id="password"
-          value={password}
+          id="modalPassword"
+          value={modalPassword}
           onChange={handlePasswordChange}
           placeholder="••••••••"
           required={true}
@@ -93,10 +101,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
           パスワードを忘れましたか？
         </Link>
       </div>
-      <SubmitButton
-        className="w-full"
-        onClick={handleLoginWithPasswordClick}
-      >
+      <SubmitButton className="w-full">
         TopicPost にログイン
       </SubmitButton>
       <div className="text-sm font-medium text-gray-500">

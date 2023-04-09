@@ -36,7 +36,8 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick ? onClick : () => {}}
       className={`${className} py-2 px-4 rounded-lg`}
-      type="button">
+      type={submit ? 'submit' : 'button'}
+    >
       {children}
     </button>
   );
