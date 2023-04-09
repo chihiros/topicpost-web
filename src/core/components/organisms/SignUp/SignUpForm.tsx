@@ -40,12 +40,6 @@ const ContactForm: React.FC = () => {
 
     const toast = new Toast();
     // const url = 'https://api.topicpost.net/v1/contact';
-    const data = {
-      nickname: nicknameValue,
-      email: emailValue,
-      email_confirm: emailConfirm,
-      password: passwordValue,
-    };
 
     // ニックネームが空かの確認
     if (nicknameValue === '') {
