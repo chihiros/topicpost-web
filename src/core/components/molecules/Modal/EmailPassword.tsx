@@ -103,10 +103,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
           パスワードを忘れましたか？
         </Link>
       </div>
-      <SubmitButton
-        className="w-full"
-        onClick={handleLoginWithPasswordClick}
-      >
+      <SubmitButton className="w-full">
         TopicPost にログイン
       </SubmitButton>
       <div className="text-sm font-medium text-gray-500">
