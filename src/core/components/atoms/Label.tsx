@@ -2,7 +2,7 @@ import React from 'react';
 
 type LabelProps = {
   htmlFor: string;
-  children: string;
+  children: React.ReactNode;
 };
 
 const Label: React.FC<LabelProps> = ({ htmlFor, children }) => {
