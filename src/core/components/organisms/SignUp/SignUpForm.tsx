@@ -60,7 +60,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="p-4 shadow-md bg-gray-50 rounded-lg">
+    <div className="p-4 bg-gray-50 rounded-lg">
       <div className="flex mb-5 text-3xl">新規アカウントの登録</div>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
