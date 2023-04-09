@@ -17,27 +17,28 @@ const SidebarPage: React.FC = () => {
         </Link>
 
         {getLoggedIn() && (
-          <div>
-            ログインしています
-          </div>
+          <>
+            <button onClick={() => {
+              supabaseClient.auth.signOut();
+              setLoggedIn(false);
+              sessionStorage.removeItem('last_access_date');
+            }}>ログアウト</button>
+            <div>
+
+            </div>
+            </>
         )}
         {!getLoggedIn() && (
-          <div>
-            ログインしていません
-          </div>
+          <>
+            <SidebarLogin />
+            <div className="p-1 m-2">
+              <Link to="/" target="_self" rel="noopener noreferrer">
+                <div className="flex justify-center text-xs text-slate-500">ログインすると？</div>
+              </Link>
+            </div>
+          </>
         )}
 
-        <SidebarLogin />
-        <div className="p-1 m-2">
-          <Link to="/" target="_self" rel="noopener noreferrer">
-            <div className="flex justify-center text-xs text-slate-500">ログインすると？</div>
-          </Link>
-        </div>
-        <button onClick={() => {
-          supabaseClient.auth.signOut();
-          setLoggedIn(false);
-          sessionStorage.removeItem('last_access_date');
-        }}>ログアウト</button>
         {sidebar.map((label, index) => (
           <SidebarLabel
             key={index}
