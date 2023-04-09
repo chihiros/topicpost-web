@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Twemoji from "../../atoms/Icon/Twemoji";
+import Twemoji from 'react-twemoji';
 
 export type SidebarProps = {
   icon: string;
