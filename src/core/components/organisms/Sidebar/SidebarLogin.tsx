@@ -17,11 +17,6 @@ const SidebarLogin: React.FC = () => {
             <path d="M1453 1036.82C1453 1251.56 1194.67 1254 876 1254C557.332 1254 299 1251.56 299 1036.82C299 822.079 557.332 648 876 648C1194.67 648 1453 822.079 1453 1036.82Z" fill="" />
           </svg>
         </div>
-        {/* <img
-            className="flex w-12 h-12 mx-auto mb-3 rounded-full"
-            src="https://ca.slack-edge.com/T02DB7DEGV8-U02L7F0LE56-b5f9688cbca2-512"
-            alt=""
-          /> */}
         <div className="flex justify-center text-sm text-slate-500">新規登録／ログイン</div>
       </div>
     </>
