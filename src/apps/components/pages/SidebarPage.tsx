@@ -18,15 +18,7 @@ const SidebarPage: React.FC = () => {
 
         {getLoggedIn() && (
           <>
-            <button onClick={() => {
-              supabaseClient.auth.signOut();
-              setLoggedIn(false);
-              sessionStorage.removeItem('last_access_date');
-            }}>ログアウト</button>
-            <div>
-
-            </div>
-            </>
+          </>
         )}
         {!getLoggedIn() && (
           <>
@@ -47,6 +39,11 @@ const SidebarPage: React.FC = () => {
             link={label.link}
           />
         ))}
+        <button onClick={() => {
+          supabaseClient.auth.signOut();
+          setLoggedIn(false);
+          sessionStorage.removeItem('last_access_date');
+        }}>ログアウト</button>
       </div>
     </aside>
   );
