@@ -46,10 +46,10 @@ const Text: React.FC<TextProps> = ({ id, type, className, placeholder, required,
       {type === 'password' && (
         <button
           type="button"
-          className="absolute right-2 top-2 transform translate-y-1/2 cursor-pointer focus:outline-none"
+          className="absolute top-1/2 transform -translate-y-1/2 right-3"
           onClick={handleToggleShowPassword}
         >
-          <span role="img" aria-label="Toggle password visibility">
+          <span role="img" aria-label="Toggle password visibility" className='text-2xl'>
             {icon}
           </span>
         </button>
