@@ -1,20 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import SidebarLogin from '../../../core/components/organisms/Sidebar/SidebarLogin';
 import SidebarLabel from '../../../core/components/organisms/Sidebar/SidebarLabel';
 import { sidebar } from '../../../constants/sidebar';
 import { supabaseClient } from '../../../utils/supabase';
+import { useAuthContext } from '../../../context/AuthContext';
 
 const SidebarPage: React.FC = () => {
-  const [loggedIn, setLoggedIn] = React.useState(false);
-
-  useEffect(() => {
-    const checkSession = async () => {
-      const { data: { session } } = await supabaseClient.auth.getSession();
-      setLoggedIn(session !== null);
-    };
-    checkSession();
-  }, []);
+  const { isLoggedIn, setLoggedIn } = useAuthContext();
+  console.log('SidebarPage:', isLoggedIn);
 
   return (
     <aside id="logo-sidebar" className="fixed top-0 left-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 shadow" aria-label="Sidebar">
@@ -23,12 +17,12 @@ const SidebarPage: React.FC = () => {
           <span className="text-3xl font-semibold hover:text-gray-400">TopicPost</span>
         </Link>
 
-        {loggedIn && (
+        {isLoggedIn && (
           <div>
             ログインしています
           </div>
         )}
-        {!loggedIn && (
+        {!isLoggedIn && (
           <div>
             ログインしていません
           </div>

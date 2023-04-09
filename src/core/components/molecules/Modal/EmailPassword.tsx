@@ -10,6 +10,7 @@ import { getErrorMessage } from "../../../../utils/ErrorMessage";
 import { supabaseClient } from "../../../../utils/supabase";
 import { useHistory } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import { useAuthContext } from '../../../../context/AuthContext';
 
 type EmailPasswordProps = {
   toggle: () => void;
@@ -19,6 +20,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   const [modalEmail, setModalEmail] = useState<string>(''); // value属性を型付きのstringで初期化する
   const [modalPassword, setModalPassword] = useState<string>(''); // value属性を型付きのstringで初期化する
   const [, setCookie] = useCookies();
+  const { setLoggedIn } = useAuthContext();
 
   const toast = new Toast();
 
@@ -46,6 +48,8 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
     setCookie("access_token", data.session?.access_token);
     setCookie("refresh_token", data.session?.refresh_token);
     sessionStorage.setItem("last_access_date", new Date().toISOString());
+
+    setLoggedIn(true);
 
     console.log(data);
     // ログインに成功したらモーダルを閉じる
