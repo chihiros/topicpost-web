@@ -29,7 +29,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
 
   const history = useHistory();
   // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
-  const handleLoginWithPasswordClick: () => void = async () => {
+  const handleLoginWithPasswordClick = async () => {
     const emailValue = email;
     const passwordValue = password;
     const { data, error } = await supabaseClient.auth.signInWithPassword({
