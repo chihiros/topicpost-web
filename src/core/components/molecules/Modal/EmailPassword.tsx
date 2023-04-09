@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { Text } from "../../atoms/Input";
+import Label from '../../atoms/Label';
+
 import { SubmitButton } from "../../atoms/Button";
 
 import Toast from "../../../../utils/Toast";
@@ -55,10 +57,10 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   return (
     <form className="space-y-6" action="#">
       <div>
-        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">メールアドレス</label>
+        <Label htmlFor="modalEmail">メールアドレス</Label>
         <Text
           type="email"
-          id="email"
+          id="modalEmail"
           value={email}
           onChange={handleEmailChange}
           placeholder="example@topicpost.net"
@@ -66,10 +68,10 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
         />
       </div>
       <div>
-        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">パスワード</label>
+        <Label htmlFor="modalPassword">パスワード</Label>
         <Text
           type="password"
-          id="password"
+          id="modalPasswoxrd"
           value={password}
           onChange={handlePasswordChange}
           placeholder="••••••••"
