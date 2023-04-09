@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SidebarLoggedIn from '../../../core/components/organisms/Sidebar/SidebarLoggedIn';
+import { SidebarQuestion } from '../../../core/components/organisms/Sidebar/SidebarQuestion';
 import SidebarLogin from '../../../core/components/organisms/Sidebar/SidebarLogin';
 import SidebarLabel from '../../../core/components/organisms/Sidebar/SidebarLabel';
 import { sidebar } from '../../../constants/sidebar';
