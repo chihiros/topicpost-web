@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SidebarLoggedIn from '../../../core/components/organisms/Sidebar/SidebarLoggedIn';
+import { SidebarQuestion } from '../../../core/components/organisms/Sidebar/SidebarQuestion';
 import SidebarLogin from '../../../core/components/organisms/Sidebar/SidebarLogin';
 import SidebarLabel from '../../../core/components/organisms/Sidebar/SidebarLabel';
 import { sidebar } from '../../../constants/sidebar';
@@ -17,27 +19,16 @@ const SidebarPage: React.FC = () => {
         </Link>
 
         {getLoggedIn() && (
-          <div>
-            ログインしています
-          </div>
+          <>
+            <SidebarLoggedIn />
+          </>
         )}
         {!getLoggedIn() && (
-          <div>
-            ログインしていません
-          </div>
+          <>
+            <SidebarLogin />
+          </>
         )}
 
-        <SidebarLogin />
-        <div className="p-1 m-2">
-          <Link to="/" target="_self" rel="noopener noreferrer">
-            <div className="flex justify-center text-xs text-slate-500">ログインすると？</div>
-          </Link>
-        </div>
-        <button onClick={() => {
-          supabaseClient.auth.signOut();
-          setLoggedIn(false);
-          sessionStorage.removeItem('last_access_date');
-        }}>ログアウト</button>
         {sidebar.map((label, index) => (
           <SidebarLabel
             key={index}
@@ -46,6 +37,11 @@ const SidebarPage: React.FC = () => {
             link={label.link}
           />
         ))}
+        <button onClick={() => {
+          supabaseClient.auth.signOut();
+          setLoggedIn(false);
+          sessionStorage.removeItem('last_access_date');
+        }}>ログアウト</button>
       </div>
     </aside>
   );

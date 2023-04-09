@@ -52,7 +52,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
     sessionStorage.setItem("last_access_date", new Date().toISOString());
     setLoggedIn(true);
 
-    console.log(data);
+    // console.log(data);
     // ログインに成功したらモーダルを閉じる
     toggle();
 
@@ -61,7 +61,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   };
 
   return (
-    <form className="space-y-6" action="#" onSubmit={handleLoginWithPassword}>
+    <form className="space-y-6" onSubmit={handleLoginWithPassword}>
       <div>
         <Label htmlFor="modalEmail">メールアドレス</Label>
         <Text
