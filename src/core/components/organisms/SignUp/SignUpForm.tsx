@@ -1,0 +1,130 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+import Label from '../../atoms/Label';
+import { Text, Annotation } from '../../atoms/Input';
+import { SubmitButton } from '../../atoms/Button';
+import Toast from '../../../../utils/Toast';
+
+const ContactForm: React.FC = () => {
+  const [nicknameValue, setNicknameValue] = useState('');
+  const [emailValue, setEmailValue] = useState('');
+  const [emailConfirm, setEmailConfirm] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
+
+  const clearForm = () => {
+    setNicknameValue('');
+    setEmailValue('');
+    setEmailConfirm('');
+    setPasswordValue('');
+  }
+
+  const handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNicknameValue(event.target.value);
+  };
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailValue(event.target.value);
+  };
+
+  const handleEmailConfirmChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailConfirm(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPasswordValue(event.target.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    // event.preventDefault();
+
+    // const url = 'https://api.topicpost.net/v1/contact';
+    // const data = {
+    //   name: nameValue,
+    //   email: emailValue,
+    //   content: messageValue,
+    // };
+
+    // const toast = new Toast();
+    // axios.post(url, data)
+    //   .then(response => {
+    //     console.log(response.data);
+    //     toast.success('送信が完了しました');
+
+    //     // フォームの初期化
+    //     clearForm();
+    //   })
+    //   .catch(error => {
+    //     console.error(error);
+    //     toast.error('送信に失敗しました');
+    //   });
+  };
+
+  return (
+    <div className="p-4 shadow-md bg-gray-50 rounded-lg">
+      <div className="flex mb-5 text-3xl">新規アカウントの登録</div>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <Label htmlFor="name">
+            ニックネーム<sup className='text-red-600'>*必須</sup>
+          </Label>
+          <Text
+            id="name"
+            type="text"
+            className="bg-gray-50"
+            required={true}
+            value={nicknameValue}
+            onChange={handleNicknameChange}
+          />
+        </div>
+
+
+        <div className="grid grid-cols-12 gap-4 mb-4">
+          <div className="col-span-6">
+            <Label htmlFor="email">
+              メールアドレス<sup className='text-red-600'>*必須</sup>
+            </Label>
+            <Text
+              id="email"
+              type="email"
+              className="bg-gray-50"
+              required={true}
+              value={emailValue}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <div className="col-span-6">
+            <Label htmlFor="emailConfirm">
+              メールアドレス(確認用)<sup className='text-red-600'>*必須</sup>
+            </Label>
+            <Text
+              id="emailConfirm"
+              type="email"
+              className="bg-gray-50"
+              required={true}
+              value={emailConfirm}
+              onChange={handleEmailConfirmChange}
+            />
+          </div>
+        </div>
+        <div className="mb-4">
+          <Label htmlFor="password">
+            パスワード<sup className='text-red-600'>*必須</sup>
+          </Label>
+          <Text
+            id="password"
+            type="password"
+            className="bg-gray-50"
+            placeholder=""
+            required={true}
+            value={passwordValue}
+            onChange={handlePasswordChange}
+          />
+          <Annotation>パスワードは8文字以上64文字以下で入力してください</Annotation>
+        </div>
+        <SubmitButton>送信</SubmitButton>
+      </form>
+    </div>
+  );
+}
+
+export default ContactForm;
