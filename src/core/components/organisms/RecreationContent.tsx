@@ -45,7 +45,7 @@ const RecreationForm: React.FC = () => {
           <NewCard />
           <NewCard />
         </div>
-        <div className="absolute top-0 left-0 w-full flex justify-between mt-4">
+        <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between">
           <button className="bg-gray-200 hover:bg-gray-300 rounded-lg py-2 px-4" onClick={
             function () {
               const element = document.querySelector('.aaaaaaaaaaa')
