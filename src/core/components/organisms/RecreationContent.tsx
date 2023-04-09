@@ -30,41 +30,43 @@ const RecreationForm: React.FC = () => {
       <div className='mb-2 ml-2'>
         新着情報
       </div>
-      <div className="flex overflow-x-auto gap-4 mb-4 aaaaaaaaaaa">
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-
-      </div>
-      <div className="flex justify-between mt-4">
-        <button className="bg-gray-200 hover:bg-gray-300 rounded-lg py-2 px-4" onClick={
-          function () {
-            const element = document.querySelector('.aaaaaaaaaaa')
-            if (element) {
-              smoothScroll(element, -400, 500) // -400px左に移動して0.5秒かけて移動する
+      <div className="relative">
+        <div className="flex overflow-x-auto gap-4 mb-4 aaaaaaaaaaa">
+          {/* ここはAPIの通信で10個ほどの値を取得する */}
+          <NewCard />
+          <NewCard />
+          <NewCard />
+          <NewCard />
+          <NewCard />
+          <NewCard />
+          <NewCard />
+          <NewCard />
+          <NewCard />
+          <NewCard />
+          <NewCard />
+        </div>
+        <div className="absolute top-0 left-0 w-full flex justify-between mt-4">
+          <button className="bg-gray-200 hover:bg-gray-300 rounded-lg py-2 px-4" onClick={
+            function () {
+              const element = document.querySelector('.aaaaaaaaaaa')
+              if (element) {
+                smoothScroll(element, -400, 500) // -200px左に移動して0.5秒かけて移動する
+              }
             }
-          }
-        }>
-          ←
-        </button>
-        <button className="bg-gray-200 hover:bg-gray-300 rounded-lg py-2 px-4" onClick={
-          function () {
-            const element = document.querySelector('.aaaaaaaaaaa')
-            if (element) {
-              smoothScroll(element, 400, 500) // +400px左に移動して0.5秒かけて移動する
+          }>
+            ←
+          </button>
+          <button className="bg-gray-200 hover:bg-gray-300 rounded-lg py-2 px-4" onClick={
+            function () {
+              const element = document.querySelector('.aaaaaaaaaaa')
+              if (element) {
+                smoothScroll(element, 400, 500) // +200px左に移動して0.5秒かけて移動する
+              }
             }
-          }
-        }>
-          →
-        </button>
+          }>
+            →
+          </button>
+        </div>
       </div>
 
       </div>
