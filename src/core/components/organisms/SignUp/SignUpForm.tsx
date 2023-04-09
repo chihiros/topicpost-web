@@ -160,7 +160,7 @@ const ContactForm: React.FC = () => {
             value={passwordValue}
             onChange={handlePasswordChange}
           />
-          <Annotation>パスワードは8文字以上64文字以下で入力してください</Annotation>
+          <Annotation>パスワードは8文字以上64文字以下で入力してください<br/>半角英数と記号が利用できます</Annotation>
         </div>
         <button type="submit">送信</button>
       </form>
