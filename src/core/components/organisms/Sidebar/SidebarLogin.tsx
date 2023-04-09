@@ -5,7 +5,7 @@ const SidebarLogin: React.FC = () => {
   const { toggle } = useLoginModal();
   return (
     <div
-      className="flex flex-col items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3"
+      className="flex flex-col items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3 h-24"
       onClick={() => toggle()}
     >
       <div className="flex bg-gray-200 w-12 h-12 mx-auto p-3 mb-3 rounded-full">
