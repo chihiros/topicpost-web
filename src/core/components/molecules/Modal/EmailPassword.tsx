@@ -71,7 +71,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
         <Label htmlFor="modalPassword">パスワード</Label>
         <Text
           type="password"
-          id="modalPasswoxrd"
+          id="modalPassword"
           value={password}
           onChange={handlePasswordChange}
           placeholder="••••••••"
