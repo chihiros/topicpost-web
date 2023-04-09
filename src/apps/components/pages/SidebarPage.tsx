@@ -37,6 +37,7 @@ const SidebarPage: React.FC = () => {
         <button onClick={() => {
           supabaseClient.auth.signOut();
           setLoggedIn(false);
+          sessionStorage.removeItem('last_access_date');
         }}>ログアウト</button>
         {sidebar.map((label, index) => (
           <SidebarLabel
