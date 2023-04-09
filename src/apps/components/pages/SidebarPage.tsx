@@ -7,8 +7,7 @@ import { supabaseClient } from '../../../utils/supabase';
 import { useAuthContext } from '../../../context/AuthContext';
 
 const SidebarPage: React.FC = () => {
-  const { isLoggedIn, setLoggedIn } = useAuthContext();
-  console.log('SidebarPage:', isLoggedIn);
+  const { setLoggedIn, getLoggedIn } = useAuthContext();
 
   return (
     <aside id="logo-sidebar" className="fixed top-0 left-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 shadow" aria-label="Sidebar">
@@ -17,12 +16,12 @@ const SidebarPage: React.FC = () => {
           <span className="text-3xl font-semibold hover:text-gray-400">TopicPost</span>
         </Link>
 
-        {isLoggedIn && (
+        {getLoggedIn() && (
           <div>
             ログインしています
           </div>
         )}
-        {!isLoggedIn && (
+        {!getLoggedIn() && (
           <div>
             ログインしていません
           </div>
