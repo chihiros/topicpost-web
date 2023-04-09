@@ -20,7 +20,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   const [modalEmail, setModalEmail] = useState<string>(''); // value属性を型付きのstringで初期化する
   const [modalPassword, setModalPassword] = useState<string>(''); // value属性を型付きのstringで初期化する
   const [, setCookie] = useCookies();
-  const { setLoggedIn } = useAuthContext();
+  const { setLoggedIn, getLoggedIn } = useAuthContext();
 
   const toast = new Toast();
 
@@ -50,6 +50,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
     sessionStorage.setItem("last_access_date", new Date().toISOString());
 
     setLoggedIn(true);
+    console.log(getLoggedIn());
 
     console.log(data);
     // ログインに成功したらモーダルを閉じる
