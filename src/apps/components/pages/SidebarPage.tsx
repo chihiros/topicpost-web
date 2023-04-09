@@ -40,6 +40,10 @@ const SidebarPage: React.FC = () => {
             <div className="flex justify-center text-xs text-slate-500">ログインすると？</div>
           </Link>
         </div>
+        <button onClick={() => {
+          supabaseClient.auth.signOut();
+          setLoggedIn(false);
+        }}>ログアウト</button>
         {sidebar.map((label, index) => (
           <SidebarLabel
             key={index}
