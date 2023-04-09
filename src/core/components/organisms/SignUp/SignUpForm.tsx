@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Label from '../../atoms/Label';
 import { Text, Annotation } from '../../atoms/Input';
+import { SubmitButton } from '../../atoms/Button';
 import Toast from '../../../../utils/Toast';
 import { supabaseClient } from '../../../../utils/supabase';
 
@@ -34,11 +35,8 @@ const ContactForm: React.FC = () => {
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    console.log('submit');
     event.preventDefault();
-
     const toast = new Toast();
-    // const url = 'https://api.topicpost.net/v1/contact';
 
     // ニックネームが空かの確認
     if (nicknameValue === '') {
@@ -79,21 +77,6 @@ const ContactForm: React.FC = () => {
     console.log(data);
     console.log(data?.user);
     console.log(data?.user?.id);
-
-
-
-    // axios.post(url, data)
-    //   .then(response => {
-    //     console.log(response.data);
-    //     toast.success('送信が完了しました');
-
-    //     // フォームの初期化
-    //     clearForm();
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //     toast.error('送信に失敗しました');
-    //   });
 
     toast.success("問題なし")
   };
