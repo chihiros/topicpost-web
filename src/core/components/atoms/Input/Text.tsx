@@ -27,7 +27,7 @@ const Text: React.FC<TextProps> = ({ id, type, className, placeholder, required,
   };
 
   const inputType = type === 'password' && showPassword ? 'text' : type;
-  const icon = showPassword ? '🙈' : '🙉';
+  const icon = showPassword ? '🙉' : '🙈';
   const borderColor = isFocused ? 'border-blue-500 ring-1 ring-blue-500' : 'border-gray-300';
 
   return (
