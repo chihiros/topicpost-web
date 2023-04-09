@@ -20,7 +20,7 @@ interface Props {
 }
 
 export const AuthContextProvider: React.FC<Props> = ({ children }) => {
-  const [, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     const checkSession = async () => {
@@ -31,7 +31,7 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn: false, setLoggedIn }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );
