@@ -23,11 +23,6 @@ const SidebarPage: React.FC = () => {
         {!getLoggedIn() && (
           <>
             <SidebarLogin />
-            <div className="p-1 m-2">
-              <Link to="/" target="_self" rel="noopener noreferrer">
-                <div className="flex justify-center text-xs text-slate-500">ログインすると？</div>
-              </Link>
-            </div>
           </>
         )}
 
