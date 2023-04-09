@@ -25,6 +25,30 @@ const RecreationForm: React.FC = () => {
     requestAnimationFrame(animate)
   }
 
+  const RecreationList = [
+    {
+      id: 1,
+      title: 'ジョンブランのおじさん',
+      content: 'ジョンブランのおじさんの内容',
+      image: 'https://picsum.photos/200/300',
+      url: 'https://www.google.com/',
+    },
+    {
+      id: 2,
+      title: 'ジョンブランのおじさん',
+      content: 'ジョンブランのおじさんの内容',
+      image: 'https://picsum.photos/200/300',
+      url: 'https://www.google.com/',
+    },
+    {
+      id: 3,
+      title: 'ジョンブランのおじさん',
+      content: 'ジョンブランのおじさんの内容',
+      image: 'https://picsum.photos/200/300',
+      url: 'https://www.google.com/',
+    }
+  ];
+
   return (
     <div className="text-2xl">
       <div className='mb-2 ml-2'>
@@ -69,6 +93,47 @@ const RecreationForm: React.FC = () => {
         </div>
       </div>
 
+
+      <div className='mb-2 ml-2'>
+        新着情報
+      </div>
+      <div className="relative overflow-x-auto rounded-lg">
+        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                レクの名前
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Color
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Category
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Price
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {RecreationList.map((recreation) => (
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  {recreation.title}
+                </th>
+                <td className="px-6 py-4">
+                  Silver
+                </td>
+                <td className="px-6 py-4">
+                  Laptop
+                </td>
+                <td className="px-6 py-4">
+                  $2999
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
     </div>
