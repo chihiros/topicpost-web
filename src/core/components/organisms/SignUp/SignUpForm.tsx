@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import Label from '../../atoms/Label';
 import { Text, Annotation } from '../../atoms/Input';
-import { SubmitButton } from '../../atoms/Button';
 import Toast from '../../../../utils/Toast';
 import { supabaseClient } from '../../../../utils/supabase';
 
