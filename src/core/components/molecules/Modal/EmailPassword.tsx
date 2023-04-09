@@ -47,6 +47,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
     setCookie("refresh_token", data.session?.refresh_token);
     sessionStorage.setItem("last_access_date", new Date().toISOString());
 
+    console.log(data);
     // ログインに成功したらモーダルを閉じる
     toggle();
 
