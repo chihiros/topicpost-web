@@ -6,7 +6,7 @@ type TextProps = {
   className?: string;
   placeholder?: string;
   required?: boolean;
-  value?: string;
+  value?: string | null;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -38,7 +38,7 @@ const Text: React.FC<TextProps> = ({ id, type, className, placeholder, required,
         className={`border text-gray-900 text-sm rounded-lg block w-full p-2.5 ${borderColor} ${className}`}
         {...(placeholder ? { placeholder } : {})}
         {...(required ? { required } : {})}
-        {...(value ? { value } : {})}
+        {...(value !== null ? { value } : {})}
         {...(onChange ? { onChange } : {})}
         onFocus={handleFocus}
         onBlur={handleBlur}
