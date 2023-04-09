@@ -35,7 +35,8 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   };
 
   // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
-  const handleLoginWithPasswordClick = async () => {
+  const handleLoginWithPassword = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const { data, error } = await supabaseClient.auth.signInWithPassword({
       email: modalEmail,
       password: modalPassword
@@ -61,7 +62,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   };
 
   return (
-    <form className="space-y-6" action="#">
+    <form className="space-y-6" action="#" onSubmit={handleLoginWithPassword}>
       <div>
         <Label htmlFor="modalEmail">メールアドレス</Label>
         <Text
