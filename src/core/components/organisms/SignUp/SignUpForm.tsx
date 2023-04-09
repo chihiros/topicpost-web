@@ -60,9 +60,10 @@ const ContactForm: React.FC = () => {
       return;
     }
 
-    // パスワードに半角英数字以外の文字が含まれていないかの確認
-    if (!passwordValue.match(/^[a-zA-Z0-9]+$/)) {
-      toast.error('パスワードには半角英数字のみ使用できます');
+    // パスワードに半角英数字, 記号以外の文字が含まれていないかの確認
+    const regex = /^[a-zA-Z0-9!-/:-@¥[-`{-~]+$/;
+    if (!regex.test(passwordValue)) {
+      toast.error('パスワードに利用できるのは半角英数字と記号のみです');
       return;
     }
 
