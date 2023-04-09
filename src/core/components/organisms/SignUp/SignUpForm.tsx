@@ -65,7 +65,20 @@ const ContactForm: React.FC = () => {
       return;
     }
 
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: emailValue,
+      password: passwordValue,
+    });
 
+
+    if (error) {
+      console.log(error.message);
+      toast.error(error.message);
+      return;
+    }
+    console.log(data);
+    console.log(data?.user);
+    console.log(data?.user?.id);
 
 
 
