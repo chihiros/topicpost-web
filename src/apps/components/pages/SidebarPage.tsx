@@ -20,6 +20,7 @@ const SidebarPage: React.FC = () => {
 
         {getLoggedIn() && (
           <>
+            <SidebarLoggedIn />
           </>
         )}
         {!getLoggedIn() && (
