@@ -50,9 +50,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
     setCookie("access_token", data.session?.access_token);
     setCookie("refresh_token", data.session?.refresh_token);
     sessionStorage.setItem("last_access_date", new Date().toISOString());
-
     setLoggedIn(true);
-    console.log(getLoggedIn());
 
     console.log(data);
     // ログインに成功したらモーダルを閉じる
