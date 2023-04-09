@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SidebarLogin from '../../../core/components/organisms/Sidebar/SidebarLogin';
 import SidebarLabel from '../../../core/components/organisms/Sidebar/SidebarLabel';
 import { sidebar } from '../../../constants/sidebar';
+import { supabaseClient } from '../../../utils/supabase';
 
 const SidebarPage: React.FC = () => {
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      setLoggedIn(session !== null);
+    };
+    checkSession();
+  }, []);
+
   return (
     <aside id="logo-sidebar" className="fixed top-0 left-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 shadow" aria-label="Sidebar">
       <div className="h-full py-4 overflow-y-auto bg-gray-50">
         <Link to="/" className="flex justify-center pt-2 pb-4">
           <span className="text-3xl font-semibold hover:text-gray-400">TopicPost</span>
         </Link>
+
+        {loggedIn && (
+          <div>
+            ログインしています
+          </div>
+        )}
+
         <SidebarLogin />
         <div className="p-1 m-2">
           <Link to="/" target="_self" rel="noopener noreferrer">
