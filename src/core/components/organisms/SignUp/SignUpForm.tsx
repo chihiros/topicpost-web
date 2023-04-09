@@ -34,9 +34,8 @@ const ContactForm: React.FC = () => {
     setPasswordValue(event.target.value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     console.log('submit');
-
     event.preventDefault();
 
     const toast = new Toast();
