@@ -35,16 +35,47 @@ const ContactForm: React.FC = () => {
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // event.preventDefault();
+    console.log('submit');
 
+    event.preventDefault();
+
+    const toast = new Toast();
     // const url = 'https://api.topicpost.net/v1/contact';
-    // const data = {
-    //   name: nameValue,
-    //   email: emailValue,
-    //   content: messageValue,
-    // };
+    const data = {
+      nickname: nicknameValue,
+      email: emailValue,
+      email_confirm: emailConfirm,
+      password: passwordValue,
+    };
 
-    // const toast = new Toast();
+    // ニックネームが空かの確認
+    if (nicknameValue === '') {
+      toast.error('ニックネームを入力してください');
+      return;
+    }
+
+    // メールアドレスが一致しているかの確認
+    if (emailValue !== emailConfirm) {
+      toast.error('メールアドレスが一致しません');
+      return;
+    }
+
+    // パスワードが8文字以上64文字以下かの確認
+    if (passwordValue.length < 8 || passwordValue.length > 64) {
+      toast.error('パスワードは8文字以上64文字以下で入力してください');
+      return;
+    }
+
+    // パスワードに半角英数字以外の文字が含まれていないかの確認
+    if (!passwordValue.match(/^[a-zA-Z0-9]+$/)) {
+      toast.error('パスワードには半角英数字のみ使用できます');
+      return;
+    }
+
+
+
+
+
     // axios.post(url, data)
     //   .then(response => {
     //     console.log(response.data);
@@ -57,6 +88,8 @@ const ContactForm: React.FC = () => {
     //     console.error(error);
     //     toast.error('送信に失敗しました');
     //   });
+
+    toast.success("問題なし")
   };
 
   return (
@@ -121,7 +154,7 @@ const ContactForm: React.FC = () => {
           />
           <Annotation>パスワードは8文字以上64文字以下で入力してください</Annotation>
         </div>
-        <SubmitButton>送信</SubmitButton>
+        <button type="submit">送信</button>
       </form>
     </div>
   );
