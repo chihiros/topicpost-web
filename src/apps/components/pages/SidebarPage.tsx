@@ -12,6 +12,11 @@ const SidebarPage: React.FC = () => {
           <span className="text-3xl font-semibold hover:text-gray-400">TopicPost</span>
         </Link>
         <SidebarLogin />
+        <div className="p-1 m-2">
+          <Link to="/" target="_self" rel="noopener noreferrer">
+            <div className="flex justify-center text-xs text-slate-500">ログインすると？</div>
+          </Link>
+        </div>
         {sidebar.map((label, index) => (
           <SidebarLabel
             key={index}
