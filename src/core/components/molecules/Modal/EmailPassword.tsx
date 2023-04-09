@@ -16,27 +16,31 @@ type EmailPasswordProps = {
 };
 
 export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [modalEmail, setModalEmail] = useState<string>(''); // value属性を型付きのstringで初期化する
+  const [modalPassword, setModalPassword] = useState<string>(''); // value属性を型付きのstringで初期化する
   const [, setCookie] = useCookies();
 
   const toast = new Toast();
+
+  const history = useHistory();
+
+  // emailとpasswordのどちらかがundefinedの場合には、コントロールされていないと判断されるため、初期化値を空の文字列に設定する
+  const emailValue = modalEmail ?? "";
+  const passwordValue = modalPassword ?? "";
+
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
+    setModalEmail(event.target.value);
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
+    setModalPassword(event.target.value);
   };
 
-  const history = useHistory();
   // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
   const handleLoginWithPasswordClick = async () => {
-    const emailValue = email;
-    const passwordValue = password;
     const { data, error } = await supabaseClient.auth.signInWithPassword({
       email: emailValue,
-      password: passwordValue,
+      password: passwordValue
     });
 
     if (error) {
@@ -62,7 +66,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
         <Text
           type="email"
           id="modalEmail"
-          value={email}
+          value={modalEmail}
           onChange={handleEmailChange}
           placeholder="example@topicpost.net"
           required={true}
@@ -73,7 +77,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
         <Text
           type="password"
           id="modalPassword"
-          value={password}
+          value={modalPassword}
           onChange={handlePasswordChange}
           placeholder="••••••••"
           required={true}
