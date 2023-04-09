@@ -3,7 +3,7 @@ import React from 'react';
 type TextareaProps = {
   id: string;
   rows?: number;
-  className?: string;
+  className?: React.ReactNode;
   placeholder?: string;
   required?: boolean;
   value?: string;
