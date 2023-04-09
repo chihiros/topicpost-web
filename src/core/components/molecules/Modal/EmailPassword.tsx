@@ -24,10 +24,6 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
 
   const history = useHistory();
 
-  // emailとpasswordのどちらかがundefinedの場合には、コントロールされていないと判断されるため、初期化値を空の文字列に設定する
-  const emailValue = modalEmail ?? "";
-  const passwordValue = modalPassword ?? "";
-
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setModalEmail(event.target.value);
   };
@@ -39,8 +35,8 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   // TopicPost にログインするをクリックしたらaxiosを使ってログイン処理を行う
   const handleLoginWithPasswordClick = async () => {
     const { data, error } = await supabaseClient.auth.signInWithPassword({
-      email: emailValue,
-      password: passwordValue
+      email: modalEmail,
+      password: modalPassword
     });
 
     if (error) {
