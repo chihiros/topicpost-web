@@ -1,6 +1,6 @@
 import { BsGithub } from "react-icons/bs";
 
-const SidebarFooter = () => {
+const Footer = () => {
   return (
     <footer className="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200">
       <span className="flex text-sm text-gray-500 justify-center mb-3">
@@ -16,4 +16,4 @@ const SidebarFooter = () => {
   );
 }
 
-export default SidebarFooter;
+export default Footer;
