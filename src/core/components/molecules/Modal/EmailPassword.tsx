@@ -84,14 +84,14 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
           required={true}
         />
       </div>
-      <div className="flex justify-between">
+      {/* <div className="flex justify-between">
         <div className="flex items-start">
           <div className="flex items-center h-5">
             <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" />
           </div>
           <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900">パスワードを記憶する</label>
         </div>
-      </div>
+      </div> */}
       <div className="flex justify-end">
         <Link
           to="/forget"
