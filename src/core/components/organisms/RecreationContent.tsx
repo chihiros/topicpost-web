@@ -97,7 +97,7 @@ const RecreationForm: React.FC = () => {
 
 
       <div className='mb-2 ml-2'>
-        新着情報
+        ジャンル
       </div>
       <div className="relative overflow-x-auto rounded-lg">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
