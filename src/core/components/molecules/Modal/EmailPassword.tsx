@@ -51,7 +51,8 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
     // ログインに成功したらモーダルを閉じる
     toggle();
 
-    const url = 'http://localhost:8686/v1/profile'
+    // const url = 'http://localhost:8686/v1/profile'
+    const url = 'https://api.topicpost.net/v1/profile'
     const token = "Bearer " + data?.session?.access_token;
 
     axios.get(url, {
