@@ -48,6 +48,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
       return;
     }
 
+    console.log(data);
     // ログインに成功したらモーダルを閉じる
     toggle();
 
