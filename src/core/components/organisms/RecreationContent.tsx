@@ -50,52 +50,54 @@ const RecreationForm: React.FC = () => {
   ];
 
   return (
-    <div className="text-2xl">
-      <div className='mb-2 ml-2'>
-        新着情報
-      </div>
-      <div className="relative">
-        <div className="flex overflow-x-auto gap-4 mb-4 aaaaaaaaaaa">
-          {/* ここはAPIの通信で10個ほどの値を取得する */}
-          <NewCard />
-          <NewCard />
-          <NewCard />
-          <NewCard />
-          <NewCard />
-          <NewCard />
-          <NewCard />
-          <NewCard />
-          <NewCard />
-          <NewCard />
-          <NewCard />
+    <>
+      <div className="text-2xl">
+        <div className='mb-2 ml-2'>
+          新着情報
         </div>
-        <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between">
-          <button className="bg-gray-200 hover:bg-gray-300 rounded-full w-12 h-12 opacity-60" onClick={
-            function () {
-              const element = document.querySelector('.aaaaaaaaaaa')
-              if (element) {
-                smoothScroll(element, -400, 500) // -200px左に移動して0.5秒かけて移動する
+        <div className="relative">
+          <div className="flex overflow-x-auto gap-4 mb-4 aaaaaaaaaaa">
+            {/* ここはAPIの通信で10個ほどの値を取得する */}
+            <NewCard />
+            <NewCard />
+            <NewCard />
+            <NewCard />
+            <NewCard />
+            <NewCard />
+            <NewCard />
+            <NewCard />
+            <NewCard />
+            <NewCard />
+            <NewCard />
+          </div>
+          <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between">
+            <button className="bg-gray-200 hover:bg-gray-300 rounded-full w-12 h-12 opacity-60" onClick={
+              function () {
+                const element = document.querySelector('.aaaaaaaaaaa')
+                if (element) {
+                  smoothScroll(element, -400, 500) // -200px左に移動して0.5秒かけて移動する
+                }
               }
-            }
-          }>
-            ←
-          </button>
-          <button className="bg-gray-200 hover:bg-gray-300 rounded-full w-12 h-12 opacity-60" onClick={
-            function () {
-              const element = document.querySelector('.aaaaaaaaaaa')
-              if (element) {
-                smoothScroll(element, 400, 500) // +200px左に移動して0.5秒かけて移動する
+            }>
+              ←
+            </button>
+            <button className="bg-gray-200 hover:bg-gray-300 rounded-full w-12 h-12 opacity-60" onClick={
+              function () {
+                const element = document.querySelector('.aaaaaaaaaaa')
+                if (element) {
+                  smoothScroll(element, 400, 500) // +200px左に移動して0.5秒かけて移動する
+                }
               }
-            }
-          }>
-            →
-          </button>
+            }>
+              →
+            </button>
+          </div>
         </div>
       </div>
 
 
       <div className='mb-2 ml-2'>
-        新着情報
+        ジャンル
       </div>
       <div className="relative overflow-x-auto rounded-lg">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -116,8 +118,8 @@ const RecreationForm: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {RecreationList.map((recreation) => (
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            {RecreationList.map((recreation, index) => (
+              <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   {recreation.title}
                 </th>
@@ -135,8 +137,7 @@ const RecreationForm: React.FC = () => {
           </tbody>
         </table>
       </div>
-
-    </div>
+    </>
   );
 }
 
