@@ -55,7 +55,7 @@ const ProfileEditForm: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <Label htmlFor="name">
-            ニックネーム<sup className='text-red-600'>*必須</sup>
+            ニックネーム
           </Label>
           <Text
             id="name"
