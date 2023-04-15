@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { Text } from "../../atoms/Input";
 import Label from '../../atoms/Label';
+import axios from 'axios';
 
 import { SubmitButton } from "../../atoms/Button";
 
@@ -47,17 +48,38 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
       return;
     }
 
+    // ログインに成功したらモーダルを閉じる
+    toggle();
+
+    const url = 'http://localhost:8686/v1/profile'
+    const token = "Bearer " + data?.session?.access_token;
+
+    axios.get(url, {
+      headers: {
+        'Authorization': token
+      }
+    })
+    .then(response => {
+      console.log(response.data);
+      toast.success('ログインに成功しました');
+
     setCookie("access_token", data.session?.access_token);
     setCookie("refresh_token", data.session?.refresh_token);
     sessionStorage.setItem("last_access_date", new Date().toISOString());
     setLoggedIn(true);
 
-    // console.log(data);
-    // ログインに成功したらモーダルを閉じる
-    toggle();
-
-    // ログインに成功したらトップページに遷移する
-    history.push("/");
+      if (response.data.data.length) {
+        // 登録済みのProfileがある場合
+        history.push("/");
+      } else {
+        // Profileが登録されていない場合
+        history.push(`/profile/edit`);
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      toast.error('ログインに失敗しました');
+    });
   };
 
   return (
