@@ -3,6 +3,7 @@ import RecreationPage from './apps/components/templates/RecreationTemplate';
 import DiaryPage from './apps/components/templates/DiaryTemplate';
 import ContactPage from './apps/components/templates/ContactTemplate';
 import SignUpPage from './apps/components/templates/SignUpTemplate';
+import ProfileEditPage from './apps/components/templates/ProfileEditTemplate';
 import NotFoundPage from './apps/components/pages/NotFoundPage';
 import Pages, { PagesProps } from './Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -47,6 +48,12 @@ const routes: RouteType[] = [
     template: SignUpPage,
     breadcrumb: [
       { href: '/forget', context: 'パスワード再設定' },
+    ]
+  }, {
+    path: "/profile/edit",
+    template: ProfileEditPage,
+    breadcrumb: [
+      { href: '/profile/edit', context: 'プロフィール編集' },
     ]
   }
 ];
