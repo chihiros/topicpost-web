@@ -55,8 +55,8 @@ const ProfileEditForm: React.FC = () => {
     setDragOver(false);
   };
 
-  const toast = new Toast();
   useEffect(() => {
+    const toast = new Toast();
     GetSession().then(session => {
       console.log("log:", session?.access_token);
 
