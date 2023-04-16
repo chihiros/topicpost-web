@@ -9,6 +9,7 @@ import { GetSession } from '../../../utils/supabase';
 const ProfileEditForm: React.FC = () => {
   const [nicknameValue, setNicknameValue] = useState('');
   const [image, setImage] = useState<string | null>(null);
+  const [dragOver, setDragOver] = useState(false);
 
   const clearForm = () => {
     setNicknameValue('');
@@ -25,6 +26,33 @@ const ProfileEditForm: React.FC = () => {
     reader.onloadend = () => {
       setImage(reader.result as string);
     };
+  };
+
+  const handleDrop = (event: React.DragEvent<HTMLLabelElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const file = event.dataTransfer.files && event.dataTransfer.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        setImage(reader.result as string);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleDragOver: React.DragEventHandler<HTMLDivElement> = (event) => {
+    event.preventDefault();
+    setDragOver(true);
+  };
+
+  const handleDragLeave: React.DragEventHandler<HTMLDivElement> = (event) => {
+    event.preventDefault();
+    setDragOver(false);
   };
 
   const toast = new Toast();
