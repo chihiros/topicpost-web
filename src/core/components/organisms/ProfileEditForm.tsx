@@ -130,9 +130,9 @@ const ProfileEditForm: React.FC = () => {
         </div>
 
         <Label htmlFor="profile-icon">アイコン</Label>
-        <div className="flex">
+        <div className="grid grid-cols-2 gap-4">
           <div
-            className="flex items-center justify-center w-full"
+            className="items-center justify-center w-full"
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -168,8 +168,14 @@ const ProfileEditForm: React.FC = () => {
               <input id="dropzone-file" type="file" accept="image/*" hidden onChange={handleInputChange} />
             </label>
           </div>
-          <div className="ml-4">
-            {image && <img src={image} alt="プレビュー画像" />}
+          <div className="relative h-64">
+            {image && (
+              <img
+                src={image}
+                alt="プレビュー画像"
+                className="object-contain w-full h-full max-w-full max-h-full"
+              />
+            )}
           </div>
         </div>
 
