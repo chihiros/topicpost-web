@@ -16,6 +16,17 @@ const ProfileEditForm: React.FC = () => {
     setNicknameValue(event.target.value);
   };
 
+  useEffect(() => {
+    GetSession().then(session => {
+      console.log("log:", session?.access_token);
+
+      // if (session) {
+
+      // }　else {
+
+      // }
+    })
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
