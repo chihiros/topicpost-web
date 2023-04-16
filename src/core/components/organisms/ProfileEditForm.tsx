@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Label from '../atoms/Label';
 import { Text, Textarea } from '../atoms/Input';
 import { SubmitButton } from '../atoms/Button';
 import Toast from '../../../utils/Toast';
+import { GetSession } from '../../../utils/supabase';
 
 const ProfileEditForm: React.FC = () => {
   const [nicknameValue, setNicknameValue] = useState('');
