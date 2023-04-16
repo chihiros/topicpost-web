@@ -17,15 +17,27 @@ const ProfileEditForm: React.FC = () => {
     setNicknameValue(event.target.value);
   };
 
+  const toast = new Toast();
   useEffect(() => {
     GetSession().then(session => {
       console.log("log:", session?.access_token);
 
-      // if (session) {
+      // const url = 'http://localhost:8686/v1/profile'
+      const url = 'https://api.topicpost.net/v1/profile'
+      const token = "Bearer " + session?.access_token
 
-      // }　else {
-
-      // }
+      axios.get(url, {
+        headers: {
+          'Authorization': token
+        }
+      })
+        .then(response => {
+          setNicknameValue(response.data.data[0].nickname);
+        })
+        .catch(error => {
+          console.error(error);
+          toast.error('エラーが発生しました');
+        });
     })
   }, []);
 
