@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Label from '../atoms/Label';
-import { Text, Textarea } from '../atoms/Input';
+import { Text } from '../atoms/Input';
 import { SubmitButton } from '../atoms/Button';
 import Toast from '../../../utils/Toast';
 import { GetSession } from '../../../utils/supabase';
