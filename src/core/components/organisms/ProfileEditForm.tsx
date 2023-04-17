@@ -131,7 +131,7 @@ const ProfileEditForm: React.FC = () => {
           />
         </div>
 
-        <Label htmlFor="profile-icon">アイコン</Label>
+        {/* <Label htmlFor="profile-icon">アイコン</Label>
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div
             className="items-center justify-center w-full"
@@ -180,7 +180,7 @@ const ProfileEditForm: React.FC = () => {
               />
             )}
           </div>
-        </div>
+        </div> */}
 
         <SubmitButton>送信</SubmitButton>
       </form>
