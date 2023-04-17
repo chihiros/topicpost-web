@@ -8,8 +8,8 @@ import { GetSession } from '../../../utils/supabase';
 
 const ProfileEditForm: React.FC = () => {
   const [nicknameValue, setNicknameValue] = useState('');
-  const [image, setImage] = useState<string | null>(null);
-  const [dragOver, setDragOver] = useState(false);
+  // const [image, setImage] = useState<string | null>(null);
+  // const [dragOver, setDragOver] = useState(false);
 
   const clearForm = () => {
     setNicknameValue('');
@@ -19,41 +19,41 @@ const ProfileEditForm: React.FC = () => {
     setNicknameValue(event.target.value);
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    const file = event.target.files?.[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file as Blob);
-    reader.onloadend = () => {
-      setImage(reader.result as string);
-    };
-  };
+  // const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  //   const file = event.target.files?.[0];
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file as Blob);
+  //   reader.onloadend = () => {
+  //     setImage(reader.result as string);
+  //   };
+  // };
 
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    event.stopPropagation();
+  // const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  //   event.preventDefault();
+  //   event.stopPropagation();
 
-    const file = event.dataTransfer.files && event.dataTransfer.files[0];
+  //   const file = event.dataTransfer.files && event.dataTransfer.files[0];
 
-    if (file) {
-      const reader = new FileReader();
+  //   if (file) {
+  //     const reader = new FileReader();
 
-      reader.onloadend = () => {
-        setImage(reader.result as string);
-      };
+  //     reader.onloadend = () => {
+  //       setImage(reader.result as string);
+  //     };
 
-      reader.readAsDataURL(file);
-    }
-  };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
-  const handleDragOver: React.DragEventHandler<HTMLDivElement> = (event) => {
-    event.preventDefault();
-    setDragOver(true);
-  };
+  // const handleDragOver: React.DragEventHandler<HTMLDivElement> = (event) => {
+  //   event.preventDefault();
+  //   setDragOver(true);
+  // };
 
-  const handleDragLeave: React.DragEventHandler<HTMLDivElement> = (event) => {
-    event.preventDefault();
-    setDragOver(false);
-  };
+  // const handleDragLeave: React.DragEventHandler<HTMLDivElement> = (event) => {
+  //   event.preventDefault();
+  //   setDragOver(false);
+  // };
 
   useEffect(() => {
     const toast = new Toast();
