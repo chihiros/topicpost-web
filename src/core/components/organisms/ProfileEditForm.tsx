@@ -170,12 +170,13 @@ const ProfileEditForm: React.FC = () => {
               <input id="dropzone-file" type="file" accept="image/*" hidden onChange={handleInputChange} />
             </label>
           </div>
-          <div className="relative h-64">
+          <div className="relative h-64 square border-2 border-gray-300 border-dashed rounded-lg">
             {image && (
               <img
                 src={image}
                 alt="プレビュー画像"
                 className="object-contain w-full h-full max-w-full max-h-full"
+                style={{ objectFit: 'cover', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
               />
             )}
           </div>
