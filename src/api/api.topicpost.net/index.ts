@@ -1,10 +1,10 @@
 import { Component } from 'react';
 
 export class TopicPostAPI {
-  private baseurl: string | undefined;
+  private baseUrl: string | undefined;
 
   constructor() {
-    this.baseurl = process.env.TOPICPOST_API_URL;
+    this.baseUrl = process.env.TOPICPOST_API_URL;
   }
 
 export class TopicPostAPI extends Component<Props, State>{
