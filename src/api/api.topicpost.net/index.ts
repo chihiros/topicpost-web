@@ -37,4 +37,20 @@ export class TopicPostAPI {
     const res = await response.json();
     return res as T;
   }
+
+  async put<T>(endpoint: string, body: any): Promise<T> {
+    const session = await GetSession();
+    const url = `${this.baseUrl}${endpoint}`;
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${session?.access_token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    const res = await response.json();
+    return res as T;
+  }
 }
