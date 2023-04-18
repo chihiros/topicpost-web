@@ -76,6 +76,7 @@ const ProfileEditForm: React.FC = () => {
       })
         .then(response => {
           setNicknameValue(response.data.data[0].nickname);
+          setIconUrlValue(response.data.data[0].icon_url);
           console.log(response.data.data[0].icon_url);
 
         })
