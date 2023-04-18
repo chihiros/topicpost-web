@@ -16,6 +16,7 @@ export interface ProfileResponse {
 
 interface ProfileMethods {
   get(): Promise<ProfileResponse>;
+  post(body: ProfileRequest): Promise<ProfileResponse>;
 }
 
 export class Profile implements ProfileMethods {
@@ -23,6 +24,12 @@ export class Profile implements ProfileMethods {
 
   async get() {
     const res = await this.topicpost.get<ProfileResponse>("/profile");
+    console.log(res);
+    return res;
+  }
+
+  async post(body: ProfileRequest) {
+    const res = await this.topicpost.post<ProfileResponse>("/profile", body);
     console.log(res);
     return res;
   }
