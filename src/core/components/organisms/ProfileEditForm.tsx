@@ -8,6 +8,7 @@ import { GetSession } from '../../../utils/supabase';
 
 const ProfileEditForm: React.FC = () => {
   const [nicknameValue, setNicknameValue] = useState('');
+  const [iconUrlValue, setIconUrlValue] = useState('');
   // const [image, setImage] = useState<string | null>(null);
   // const [dragOver, setDragOver] = useState(false);
 
@@ -17,6 +18,10 @@ const ProfileEditForm: React.FC = () => {
 
   const handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNicknameValue(event.target.value);
+  };
+
+  const handleIconUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIconUrlValue(event.target.value);
   };
 
   // const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
