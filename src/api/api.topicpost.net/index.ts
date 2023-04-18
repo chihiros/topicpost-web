@@ -52,7 +52,7 @@ export class TopicPostAPI {
     return res;
   }
 
-  async put<T>(endpoint: string, body: any): Promise<T> {
+  async put<T>(endpoint: string, body: any): Promise<{ data: T, status: number }> {
     const session = await GetSession();
     const url = `${this.baseUrl}${endpoint}`;
     const response = await fetch(url, {
