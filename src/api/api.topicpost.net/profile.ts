@@ -25,7 +25,7 @@ interface ProfileMethods {
   get: () => Promise<{ data: ProfileResponse; status: number }>;
   post: (body: ProfileRequest) => Promise<{ data: ProfileResponse; status: number}>;
   put: (body: ProfileRequest) => Promise<{ data: ProfileResponse; status: number}>;
-  delete(): Promise<ProfileResponse>;
+  delete: () => Promise<{ data: ProfileResponse; status: number}>;
 }
 
 export class Profile implements ProfileMethods {
