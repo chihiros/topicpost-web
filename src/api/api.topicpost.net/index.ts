@@ -7,13 +7,16 @@ export class TopicPostAPI {
     this.baseUrl = process.env.TOPICPOST_API_URL;
   }
 
-export class TopicPostAPI extends Component<Props, State>{
-  constructor(props: Props) {
-    super(props);
+  public get(uri: string) {
+    const url = `${this.host}${uri}`;
 
-    this.state = {
-      // 環境変数からurlを取得する
-      host: process.env.TOPICPOST_API_URL, // https://api.topicpost.net
-    };
+    GetSession().then((session) => {
+      return fetch(url, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${session?.access_token}`,
+        },
+      });
+    });
   }
 }
