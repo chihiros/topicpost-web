@@ -98,24 +98,31 @@ const ProfileEditForm: React.FC = () => {
     }
 
 
-    const url = 'https://api.topicpost.net/v1/contact';
-    const data = {
-      nickname: nicknameValue,
-      icon_url: iconUrlValue,
-    };
+    GetSession().then(session => {
+      const url = 'https://api.topicpost.net/v1/profile';
+      const token = "Bearer " +session?.access_token
+      const data = {
+        nickname: nicknameValue,
+        icon_url: iconUrlValue,
+      };
 
-    axios.post(url, data)
-      .then(response => {
-        console.log(response.data);
-        toast.success('送信が完了しました');
-
-        // フォームの初期化
-        clearForm();
+      axios.put(url, data, {
+        headers: {
+          'Authorization': token
+        }
       })
-      .catch(error => {
-        console.error(error);
-        toast.error('送信に失敗しました');
-      });
+        .then(response => {
+          console.log(response.data);
+          toast.success('送信が完了しました');
+
+          // フォームの初期化
+          clearForm();
+        })
+        .catch(error => {
+          console.error(error);
+          toast.error('送信に失敗しました');
+        });
+    })
   };
 
   return (
