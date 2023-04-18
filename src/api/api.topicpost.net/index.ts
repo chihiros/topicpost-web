@@ -12,7 +12,7 @@ export class TopicPostAPI extends Component<Props, State>{
 
     this.state = {
       // 環境変数からurlを取得する
-      url: process.env.TOPICPOST_API_URL, // https://api.topicpost.net/
+      url: process.env.TOPICPOST_API_URL, // https://api.topicpost.net
     };
   }
 }
