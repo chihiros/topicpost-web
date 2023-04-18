@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { GetSession } from '../../utils/supabase';
 
 export class TopicPostAPI {
   private baseUrl: string | undefined;
