@@ -5,6 +5,7 @@ import { Text } from '../atoms/Input';
 import { SubmitButton } from '../atoms/Button';
 import Toast from '../../../utils/Toast';
 import { GetSession } from '../../../utils/supabase';
+import { Profile, ProfileResponse } from '../../../api/api.topicpost.net/profile';
 
 const ProfileEditForm: React.FC = () => {
   const [nicknameValue, setNicknameValue] = useState('');
@@ -61,30 +62,18 @@ const ProfileEditForm: React.FC = () => {
   // };
 
   useEffect(() => {
+    const profile = new Profile();
     const toast = new Toast();
-    GetSession().then(session => {
-      console.log("log:", session?.access_token);
-
-      // const url = 'http://localhost:8686/v1/profile'
-      const url = 'https://api.topicpost.net/v1/profile'
-      const token = "Bearer " + session?.access_token
-
-      axios.get(url, {
-        headers: {
-          'Authorization': token
-        }
+    profile.get()
+      .then((response: any) => {
+        console.log(response);
+        setNicknameValue(response.data.nickname);
+        setIconUrlValue(response.data.icon_url);
       })
-        .then(response => {
-          setNicknameValue(response.data.data[0].nickname);
-          setIconUrlValue(response.data.data[0].icon_url);
-          console.log(response.data.data[0].icon_url);
-
-        })
-        .catch(error => {
-          console.error(error);
-          toast.error('エラーが発生しました');
-        });
-    })
+      .catch((error: any) => {
+        console.error(error);
+        toast.error('エラーが発生しました');
+      });
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
