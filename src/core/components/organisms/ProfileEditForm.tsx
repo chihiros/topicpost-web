@@ -136,6 +136,13 @@ const ProfileEditForm: React.FC = () => {
           />
         </div>
 
+        <input
+          type="hidden"
+          name="icon_url"
+          value={iconUrlValue}
+          onChange={handleIconUrlChange}
+        />
+
         {/* <Label htmlFor="profile-icon">アイコン</Label>
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div
