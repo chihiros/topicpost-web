@@ -53,4 +53,18 @@ export class TopicPostAPI {
     const res = await response.json();
     return res as T;
   }
+
+  async delete<T>(endpoint: string): Promise<T> {
+    const session = await GetSession();
+    const url = `${this.baseUrl}${endpoint}`;
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${session?.access_token}`,
+      },
+    });
+
+    const res = await response.json();
+    return res as T;
+  }
 }
