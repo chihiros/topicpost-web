@@ -100,9 +100,8 @@ const ProfileEditForm: React.FC = () => {
 
     const url = 'https://api.topicpost.net/v1/contact';
     const data = {
-      // name: nameValue,
-      // email: emailValue,
-      // content: messageValue,
+      nickname: nicknameValue,
+      icon_url: iconUrlValue,
     };
 
     axios.post(url, data)
