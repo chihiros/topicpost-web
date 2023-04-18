@@ -118,11 +118,11 @@ const ProfileEditForm: React.FC = () => {
       <div className="flex mb-5 text-3xl">プロフィールの編集</div>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <Label htmlFor="name">
+          <Label htmlFor="nickname">
             ニックネーム
           </Label>
           <Text
-            id="name"
+            id="nickname"
             type="text"
             className="bg-gray-50"
             required={true}
