@@ -1,10 +1,11 @@
 import { Component } from 'react';
 
-interface Props {}
+export class TopicPostAPI {
+  private baseurl: string | undefined;
 
-interface State {
-  host: string | undefined;
-}
+  constructor() {
+    this.baseurl = process.env.TOPICPOST_API_URL;
+  }
 
 export class TopicPostAPI extends Component<Props, State>{
   constructor(props: Props) {
