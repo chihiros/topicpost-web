@@ -86,10 +86,9 @@ const ProfileEditForm: React.FC = () => {
       return;
     }
 
-
     GetSession().then(session => {
       const url = 'https://api.topicpost.net/v1/profile';
-      const token = "Bearer " +session?.access_token
+      const token = "Bearer " + session?.access_token
       const data = {
         nickname: nicknameValue,
         icon_url: iconUrlValue,
