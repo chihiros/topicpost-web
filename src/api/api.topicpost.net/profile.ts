@@ -23,7 +23,7 @@ export interface ProfileResponse {
 
 interface ProfileMethods {
   get: () => Promise<{ data: ProfileResponse; status: number }>;
-  post(body: ProfileRequest): Promise<ProfileResponse>;
+  post: (body: ProfileRequest) => Promise<{ data: ProfileResponse; status: number}>;
   put(body: ProfileRequest): Promise<ProfileResponse>;
   delete(): Promise<ProfileResponse>;
 }
