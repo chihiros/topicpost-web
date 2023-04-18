@@ -7,16 +7,20 @@ export class TopicPostAPI {
     this.baseUrl = process.env.TOPICPOST_API_URL;
   }
 
-  public get(uri: string) {
-    const url = `${this.host}${uri}`;
-
+  async get<T>(endpoint: string): Promise<T> {
     GetSession().then((session) => {
-      return fetch(url, {
+      const url = `${this.baseUrl}${endpoint}`;
+      const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${session?.access_token}`,
         },
       });
+
+      console.log(response);
+
+      const res = await response.json();
+      return res as T;
     });
   }
 }
