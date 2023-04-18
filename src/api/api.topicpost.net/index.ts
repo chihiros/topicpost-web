@@ -17,8 +17,6 @@ export class TopicPostAPI {
       },
     });
 
-    console.log(response);
-
     const res = await response.json();
     return res as T;
   }
