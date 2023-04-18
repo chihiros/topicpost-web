@@ -21,7 +21,7 @@ export class TopicPostAPI {
     const data = await response.json();
     const status = response.status;
     const res = {
-      data: data.data[0],
+      data: data.data,
       errors: data.errors,
       status: status
     };
