@@ -8,7 +8,7 @@ export class TopicPostAPI {
     this.baseUrl = 'https://api.topicpost.net/v1';
   }
 
-  async get<T>(endpoint: string): Promise<T> {
+  async get<T>(endpoint: string): Promise<{ data: T, status: number }> {
     const session = await GetSession();
     const url = `${this.baseUrl}${endpoint}`;
     const response = await fetch(url, {
@@ -18,8 +18,15 @@ export class TopicPostAPI {
       },
     });
 
-    const res = await response.json();
-    return res as T;
+    const data = await response.json();
+    const status = response.status;
+    const res = {
+      data: data.data[0],
+      errors: data.errors,
+      status: status
+    };
+
+    return res;
   }
 
   async post<T>(endpoint: string, body: any): Promise<T> {

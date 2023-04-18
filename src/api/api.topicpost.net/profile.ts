@@ -6,16 +6,23 @@ export interface ProfileRequest {
 }
 
 export interface ProfileResponse {
-  id: number;
-  uuid: string;
-  nickname: string;
-  icon_url: string;
-  created_at: string;
-  updated_at: string;
+  data: {
+    id: number;
+    uuid: string;
+    nickname: string;
+    icon_url: string;
+    created_at: string;
+    updated_at: string;
+  },
+  errors: {
+    code: string;
+    message: string;
+  },
+  status: number;
 }
 
 interface ProfileMethods {
-  get(): Promise<ProfileResponse>;
+  get: () => Promise<{ data: ProfileResponse; status: number }>;
   post(body: ProfileRequest): Promise<ProfileResponse>;
   put(body: ProfileRequest): Promise<ProfileResponse>;
   delete(): Promise<ProfileResponse>;
