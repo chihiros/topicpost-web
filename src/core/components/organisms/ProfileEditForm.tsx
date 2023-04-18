@@ -85,11 +85,11 @@ const ProfileEditForm: React.FC = () => {
     event.preventDefault();
     const toast = new Toast();
 
-    // // ニックネームが空かの確認
-    // if (nicknameValue === '') {
-    //   toast.error('ニックネームを入力してください');
-    //   return;
-    // }
+    // ニックネームが空かの確認
+    if (nicknameValue === '') {
+      toast.error('ニックネームを入力してください');
+      return;
+    }
 
 
     const url = 'https://api.topicpost.net/v1/contact';
