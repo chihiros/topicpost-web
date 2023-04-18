@@ -4,7 +4,8 @@ export class TopicPostAPI {
   private baseUrl: string | undefined;
 
   constructor() {
-    this.baseUrl = process.env.TOPICPOST_API_URL;
+    // this.baseUrl = process.env.TOPICPOST_API_URL;
+    this.baseUrl = 'https://api.topicpost.net/v1';
   }
 
   async get<T>(endpoint: string): Promise<T> {
