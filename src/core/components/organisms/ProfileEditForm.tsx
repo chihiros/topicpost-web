@@ -67,8 +67,19 @@ const ProfileEditForm: React.FC = () => {
     profile.get()
       .then((response: any) => {
         console.log(response);
-        setNicknameValue(response.data.nickname);
-        setIconUrlValue(response.data.icon_url);
+        if (response.status !== 200) {
+          console.error(response);
+          toast.error('送信に失敗しました');
+          return;
+        }
+
+        if (response.data.length === 0) {
+          toast.error('プロフィールが存在しません');
+          return;
+        }
+
+        setNicknameValue(response.data[0].nickname);
+        setIconUrlValue(response.data[0].icon_url);
       })
       .catch((error: any) => {
         console.error(error);
