@@ -36,15 +36,12 @@ const SidebarLoggedIn: React.FC = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3 h-24">
-        <img className="w-12 h-12 rounded-full mr-5"
+      <div className="flex flex-col items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3 h-24">
+        <img className="w-12 h-12 rounded-full mb-3"
           src={iconUrl}
           alt=""
         />
-        <div className="flex flex-col font-medium text-left">
-          <div>{nickname}</div>
-          <div className="text-sm text-gray-500">Backend Engineer</div>
-        </div>
+        <div className="flex justify-center text-sm text-gray-500">{nickname}</div>
       </div>
     </div>
   );
