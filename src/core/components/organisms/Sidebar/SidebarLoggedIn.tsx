@@ -22,8 +22,7 @@ const SidebarLoggedIn: React.FC = () => {
           return;
         }
 
-        setNickname(response.data[0].nickname);
-        setIconUrl(response.data[0].icon_url);
+        setProfileData(response.data[0]);
       })
       .catch((error: any) => {
         console.error(error);
