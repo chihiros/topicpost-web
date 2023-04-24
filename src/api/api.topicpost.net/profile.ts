@@ -1,25 +1,20 @@
-import { TopicPostAPI } from ".";
+import { TopicPostAPI, Response } from ".";
 
 export interface ProfileRequest {
   nickname: string; // 必須
   icon_url: string; // 必須
 }
 
-export interface ProfileResponse {
-  data: {
-    id: number;
-    uuid: string;
-    nickname: string;
-    icon_url: string;
-    created_at: string;
-    updated_at: string;
-  }[],
-  errors: {
-    code: string;
-    message: string;
-  },
-  status: number;
-}
+interface ProfileData {
+  id: number;
+  uuid: string;
+  nickname: string;
+  icon_url: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export interface ProfileResponse extends Response<ProfileData> { }
 
 interface ProfileMethods {
   get: () => Promise<{ data: ProfileResponse; status: number }>;

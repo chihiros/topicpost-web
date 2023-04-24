@@ -1,5 +1,16 @@
 import { GetSession } from '../../utils/supabase';
 
+export interface Response<T> {
+  data: {
+    [key: string]: T;
+  }
+  errors: {
+    code: string;
+    message: string;
+  }
+  status: number;
+};
+
 export class TopicPostAPI {
   private baseUrl: string | undefined;
   private url: string;
