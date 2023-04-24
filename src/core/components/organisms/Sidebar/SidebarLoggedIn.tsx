@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Toast from '../../../../utils/Toast';
-import { Profile, ProfileResponse } from '../../../../api/api.topicpost.net/profile';
+import { Profile, ProfileResponse, ProfileData } from '../../../../api/api.topicpost.net/profile';
 
 const SidebarLoggedIn: React.FC = () => {
-  const [profileData, setProfileData] = useState<ProfileResponse | null>(null);
+  const [profileData, setProfileData] = useState<ProfileData | null>(null); //プロフィールデータを状態として保存
 
   useEffect(() => {
     const profile = new Profile();
