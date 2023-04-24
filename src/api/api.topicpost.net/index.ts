@@ -3,7 +3,7 @@ import { GetSession } from '../../utils/supabase';
 export interface Response<T> {
   data: {
     [key: string]: T;
-  }
+  }[]
   errors: {
     code: string;
     message: string;
