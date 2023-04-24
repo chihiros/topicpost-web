@@ -17,10 +17,10 @@ interface ProfileData {
 export interface ProfileResponse extends Response<ProfileData> { }
 
 interface ProfileMethods {
-  get: () => Promise<{ data: ProfileResponse; status: number }>;
-  post: (body: ProfileRequest) => Promise<{ data: ProfileResponse; status: number}>;
-  put: (body: ProfileRequest) => Promise<{ data: ProfileResponse; status: number}>;
-  delete: () => Promise<{ data: ProfileResponse; status: number}>;
+  get: () => Promise<ProfileResponse>;
+  post: (body: ProfileRequest) => Promise<ProfileResponse>;
+  put: (body: ProfileRequest) => Promise<ProfileResponse>;
+  delete: () => Promise<ProfileResponse>;
 }
 
 export class Profile implements ProfileMethods {
