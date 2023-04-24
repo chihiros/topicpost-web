@@ -30,7 +30,7 @@ export class TopicPostAPI {
     return res;
   }
 
-    async post<T>(body: any): Promise<{ data: T, status: number }> {
+  async post<T>(body: any): Promise<{ data: T, status: number }> {
     const session = await GetSession();
     const response = await fetch(this.url, {
       method: 'POST',
