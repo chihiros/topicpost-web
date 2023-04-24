@@ -29,28 +29,28 @@ interface ProfileMethods {
 }
 
 export class Profile implements ProfileMethods {
-  topicpost = new TopicPostAPI();
+  topicpost = new TopicPostAPI("/profile");
 
   async get() {
-    const res = await this.topicpost.get<ProfileResponse>("/profile");
+    const res = await this.topicpost.get<ProfileResponse>();
     // console.log(res);
     return res;
   }
 
   async post(body: ProfileRequest) {
-    const res = await this.topicpost.post<ProfileResponse>("/profile", body);
+    const res = await this.topicpost.post<ProfileResponse>(body);
     // console.log(res);
     return res;
   }
 
   async put(body: ProfileRequest) {
-    const res = await this.topicpost.put<ProfileResponse>("/profile", body);
+    const res = await this.topicpost.put<ProfileResponse>(body);
     // console.log(res);
     return res;
   }
 
   async delete() {
-    const res = await this.topicpost.delete<ProfileResponse>("/profile");
+    const res = await this.topicpost.delete<ProfileResponse>();
     // console.log(res);
     return res;
   }
