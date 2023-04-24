@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Toast from '../../../../utils/Toast';
-import { Profile } from '../../../../api/api.topicpost.net/profile';
-
+import { Profile, ProfileResponse } from '../../../../api/api.topicpost.net/profile';
 
 const SidebarLoggedIn: React.FC = () => {
-  const [nickname, setNickname] = React.useState<string>('');
-  const [iconUrl, setIconUrl] = React.useState<string>('');
+  const [profileData, setProfileData] = useState<ProfileResponse | null>(null);
 
   useEffect(() => {
     const profile = new Profile();
