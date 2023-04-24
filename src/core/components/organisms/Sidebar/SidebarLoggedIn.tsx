@@ -9,7 +9,7 @@ const SidebarLoggedIn: React.FC = () => {
     const profile = new Profile();
     const toast = new Toast();
     profile.get()
-      .then((response: any) => {
+      .then((response: ProfileResponse) => {
         console.log("SidebarLoggedIn:", response);
         if (response.status !== 200) {
           console.error(response);
