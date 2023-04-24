@@ -5,7 +5,7 @@ export interface ProfileRequest {
   icon_url: string; // 必須
 }
 
-interface ProfileData {
+export interface ProfileData {
   id: number;
   uuid: string;
   nickname: string;
