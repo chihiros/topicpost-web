@@ -18,16 +18,7 @@ const SidebarPage: React.FC = () => {
           <span className="text-3xl font-semibold hover:text-gray-400">TopicPost</span>
         </Link>
 
-        {getLoggedIn() && (
-          <>
-            <SidebarLoggedIn />
-          </>
-        )}
-        {!getLoggedIn() && (
-          <>
-            <SidebarLogin />
-          </>
-        )}
+        {getLoggedIn() ? <SidebarLoggedIn /> : <SidebarLogin />}
 
         {sidebar.map((label, index) => (
           <SidebarLabel
