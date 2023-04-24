@@ -13,7 +13,7 @@ export interface ProfileResponse {
     icon_url: string;
     created_at: string;
     updated_at: string;
-  },
+  }[],
   errors: {
     code: string;
     message: string;
