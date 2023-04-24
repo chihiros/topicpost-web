@@ -33,13 +33,18 @@ const SidebarLoggedIn: React.FC = () => {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3 h-24">
-        <img className="w-12 h-12 rounded-full mb-3"
-          src={iconUrl}
-          alt=""
-        />
-        <div className="flex justify-center text-sm text-gray-500">{nickname}</div>
-      </div>
+      {profileData && ( //データがあれば表示する
+        <div className="flex items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3 h-24">
+          <img className="w-12 h-12 rounded-full mr-5"
+            src={profileData.icon_url} //状態からアイコンを表示
+            alt=""
+          />
+          <div className="flex flex-col font-medium text-left">
+            <div>{profileData.nickname}</div> {/* 状態からユーザー名を表示 */}
+            <div className="text-sm text-gray-500">Backend Engineer</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
