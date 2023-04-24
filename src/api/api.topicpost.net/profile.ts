@@ -33,25 +33,21 @@ export class Profile implements ProfileMethods {
 
   async get() {
     const res = await this.topicpost.get<ProfileResponse>();
-    // console.log(res);
     return res;
   }
 
   async post(body: ProfileRequest) {
     const res = await this.topicpost.post<ProfileResponse>(body);
-    // console.log(res);
     return res;
   }
 
   async put(body: ProfileRequest) {
     const res = await this.topicpost.put<ProfileResponse>(body);
-    // console.log(res);
     return res;
   }
 
   async delete() {
     const res = await this.topicpost.delete<ProfileResponse>();
-    // console.log(res);
     return res;
   }
 }
