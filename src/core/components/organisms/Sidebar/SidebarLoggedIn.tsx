@@ -30,7 +30,6 @@ const SidebarLoggedIn: React.FC = () => {
       });
   }, []);
 
-
   return (
     <div>
       {profileData && ( //データがあれば表示する
