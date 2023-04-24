@@ -21,7 +21,7 @@ export class TopicPostAPI {
     this.url = `${this.baseUrl}${uri}`
   }
 
-  async get<T>(): Promise<{ data: T, status: number }> {
+  async get<T>(): Promise<Response<T>> {
     const session = await GetSession();
     const response = await fetch(this.url, {
       method: 'GET',
@@ -31,17 +31,16 @@ export class TopicPostAPI {
     });
 
     const data = await response.json();
-    const status = response.status;
-    const res = {
+    const res: Response<T> = {
       data: data.data,
       errors: data.errors,
-      status: status
+      status: response.status,
     };
 
     return res;
   }
 
-  async post<T>(body: any): Promise<{ data: T, status: number }> {
+  async post<T>(body: any): Promise<Response<T>> {
     const session = await GetSession();
     const response = await fetch(this.url, {
       method: 'POST',
@@ -53,17 +52,16 @@ export class TopicPostAPI {
     });
 
     const data = await response.json();
-    const status = response.status;
-    const res = {
-      data: data.data[0],
+    const res: Response<T> = {
+      data: data.data,
       errors: data.errors,
-      status: status
+      status: response.status,
     };
 
     return res;
   }
 
-  async put<T>(body: any): Promise<{ data: T, status: number }> {
+  async put<T>(body: any): Promise<Response<T>> {
     const session = await GetSession();
     const response = await fetch(this.url, {
       method: 'PUT',
@@ -75,17 +73,16 @@ export class TopicPostAPI {
     });
 
     const data = await response.json();
-    const status = response.status;
-    const res = {
-      data: data.data[0],
+    const res: Response<T> = {
+      data: data.data,
       errors: data.errors,
-      status: status
+      status: response.status,
     };
 
     return res;
   }
 
-  async delete<T>(): Promise<{ data: T, status: number }> {
+  async delete<T>(): Promise<Response<T>> {
     const session = await GetSession();
     const response = await fetch(this.url, {
       method: 'DELETE',
@@ -95,11 +92,10 @@ export class TopicPostAPI {
     });
 
     const data = await response.json();
-    const status = response.status;
-    const res = {
-      data: data.data[0],
+    const res: Response<T> = {
+      data: data.data,
       errors: data.errors,
-      status: status
+      status: response.status,
     };
 
     return res;
