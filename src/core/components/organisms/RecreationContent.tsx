@@ -96,7 +96,7 @@ const RecreationForm: React.FC = () => {
       </div>
 
       <div className='mt-6 mb-2 ml-2 text-2xl flex justify-between'>
-        ジャンル
+        一覧
         <button type='button' className='bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 rounded'>
           レクを投稿する
         </button>
