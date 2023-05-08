@@ -11,6 +11,12 @@ import { useAuthContext } from '../../../context/AuthContext';
 const SidebarPage: React.FC = () => {
   const { setLoggedIn, getLoggedIn } = useAuthContext();
 
+  const handleLogout = () => {
+      supabaseClient.auth.signOut();
+      setLoggedIn(false);
+      sessionStorage.removeItem('last_access_date');
+  };
+
   return (
     <aside id="logo-sidebar" className="fixed top-0 left-0 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 shadow" aria-label="Sidebar">
       <div className="h-full py-4 overflow-y-auto bg-gray-50">
@@ -28,11 +34,14 @@ const SidebarPage: React.FC = () => {
             link={label.link}
           />
         ))}
-        <button onClick={() => {
-          supabaseClient.auth.signOut();
-          setLoggedIn(false);
-          sessionStorage.removeItem('last_access_date');
-        }}>ログアウト</button>
+        <div className="mt-4">
+          <button
+            onClick={handleLogout}
+            className="bg-slate-300 hover:bg-slate-700 text-white text-base font-bold py-2 px-4 rounded"
+          >
+            ログアウト
+          </button>
+        </div>
       </div>
     </aside>
   );
