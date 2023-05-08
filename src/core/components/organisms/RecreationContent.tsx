@@ -110,13 +110,13 @@ const RecreationForm: React.FC = () => {
                 レクの名前
               </th>
               <th scope="col" className="px-6 py-3">
-                Color
+                ジャンル
               </th>
               <th scope="col" className="px-6 py-3">
-                Category
+                投稿者
               </th>
               <th scope="col" className="px-6 py-3">
-                Price
+                投稿日
               </th>
             </tr>
           </thead>
@@ -127,13 +127,13 @@ const RecreationForm: React.FC = () => {
                   {recreation.title}
                 </th>
                 <td className="px-6 py-4">
-                  Silver
+                  アイスブレイク
                 </td>
                 <td className="px-6 py-4">
-                  Laptop
+                  <a href="https://example.com" target='_blank' rel="noreferrer">すずりかわ@熊本</a>
                 </td>
                 <td className="px-6 py-4">
-                  $2999
+                  2020/12/12
                 </td>
               </tr>
             ))}
