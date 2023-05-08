@@ -95,10 +95,13 @@ const RecreationForm: React.FC = () => {
         </div>
       </div>
 
-
-      <div className='mb-2 ml-2'>
+      <div className='mt-6 mb-2 ml-2 text-2xl flex justify-between'>
         ジャンル
+        <button type='button' className='bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 rounded'>
+          レクを投稿する
+        </button>
       </div>
+
       <div className="relative overflow-x-auto rounded-lg">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
