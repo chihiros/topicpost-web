@@ -188,7 +188,7 @@ const RecreationForm: React.FC = () => {
                   Add product
                 </button>
 
-                <div className="flex items-center space-x-3 w-full md:w-auto">
+                <div className="relative inline-block text-left">
                   <button
                     id="actionsDropdownButton"
                     className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
@@ -203,7 +203,7 @@ const RecreationForm: React.FC = () => {
                   <div
                     ref={actionsDropdownRef}
                     id="actionsDropdown"
-                    className={`${isActionsDropdownOpen ? '' : 'hidden'} absolute z-50 w-44 bg-white rounded divide-y divide-gray-100 shadow`}
+                    className={`${isActionsDropdownOpen ? '' : 'hidden'} absolute z-50 w-44 top-full bg-white rounded divide-y divide-gray-100 shadow`}
                   >
                     <ul className="py-1 text-sm text-gray-700" aria-labelledby="actionsDropdownButton">
                       <li>
@@ -214,6 +214,8 @@ const RecreationForm: React.FC = () => {
                       <a href="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Delete all</a>
                     </div>
                   </div>
+                  </div>
+                  <div className="relative inline-block text-left">
                   <button
                     id="filterDropdownButton"
                     className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
@@ -231,7 +233,7 @@ const RecreationForm: React.FC = () => {
                   <div
                     ref={filterDropdownRef}
                     id="filterDropdown"
-                    className={`${isFilterDropdownOpen ? '' : 'hidden'} absolute z-50 w-48 p-3 bg-white rounded-lg shadow`}
+                    className={`${isFilterDropdownOpen ? '' : 'hidden'} absolute z-50 w-48 p-3 top-full bg-white rounded-lg shadow`}
                   >
                     <h6 className="mb-3 text-sm font-medium text-gray-900">Choose brand</h6>
                     <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
@@ -257,7 +259,7 @@ const RecreationForm: React.FC = () => {
                       </li>
                     </ul>
                   </div>
-                </div>
+              </div>
               </div>
             </div>
             <div className="overflow-x-auto">
