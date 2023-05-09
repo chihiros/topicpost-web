@@ -200,7 +200,11 @@ const RecreationForm: React.FC = () => {
                     </svg>
                     Actions
                   </button>
-                  <div ref={actionsDropdownRef} id="actionsDropdown" className={`${isActionsDropdownOpen ? '' : 'hidden'} z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow`}>
+                  <div
+                    ref={actionsDropdownRef}
+                    id="actionsDropdown"
+                    className={`${isActionsDropdownOpen ? '' : 'hidden'} absolute z-50 w-44 bg-white rounded divide-y divide-gray-100 shadow`}
+                  >
                     <ul className="py-1 text-sm text-gray-700" aria-labelledby="actionsDropdownButton">
                       <li>
                         <a href="/" className="block py-2 px-4 hover:bg-gray-100">Mass Edit</a>
@@ -224,7 +228,11 @@ const RecreationForm: React.FC = () => {
                       <path clipRule="evenodd" fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                     </svg>
                   </button>
-                  <div ref={filterDropdownRef} id="filterDropdown" className={`${isFilterDropdownOpen ? '' : 'hidden'} z-10 w-48 p-3 bg-white rounded-lg shadow`}>
+                  <div
+                    ref={filterDropdownRef}
+                    id="filterDropdown"
+                    className={`${isFilterDropdownOpen ? '' : 'hidden'} absolute z-50 w-48 p-3 bg-white rounded-lg shadow`}
+                  >
                     <h6 className="mb-3 text-sm font-medium text-gray-900">Choose brand</h6>
                     <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                       <li className="flex items-center">
