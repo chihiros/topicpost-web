@@ -270,10 +270,6 @@ const RecreationForm: React.FC = () => {
                     <th scope="col" className="px-4 py-3">ジャンル</th>
                     <th scope="col" className="px-4 py-3">投稿者</th>
                     <th scope="col" className="px-4 py-3">投稿日</th>
-                    <th scope="col" className="px-4 py-3">Price</th>
-                    <th scope="col" className="px-4 py-3">
-                      <span className="sr-only">Actions</span>
-                    </th>
                   </tr>
                 </thead>
                 <tbody>
