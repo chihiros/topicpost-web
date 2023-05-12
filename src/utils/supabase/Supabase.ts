@@ -40,3 +40,10 @@ export const SupabaseLogout = async () => {
   // console.log('error', error);
   return error
 }
+
+export const GetSession = async () => {
+  const { data: { session } } = await supabaseClient.auth.getSession();
+  // console.log('session', session);
+
+  return session;
+};

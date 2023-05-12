@@ -3,7 +3,9 @@
     "editor.tabSize": 2,
     "editor.detectIndentation": true,
     "cSpell.ignoreWords": [
+        "TOPICPOST",
         "chihiros",
+        "sess",
         "signup",
         "supabase",
         "tailwindcss",

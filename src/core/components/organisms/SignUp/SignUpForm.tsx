@@ -6,21 +6,15 @@ import Toast from '../../../../utils/Toast';
 import { supabaseClient } from '../../../../utils/supabase';
 
 const ContactForm: React.FC = () => {
-  // const [nicknameValue, setNicknameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [emailConfirm, setEmailConfirm] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
 
   const clearForm = () => {
-    // setNicknameValue('');
     setEmailValue('');
     setEmailConfirm('');
     setPasswordValue('');
   }
-
-  // const handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setNicknameValue(event.target.value);
-  // };
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmailValue(event.target.value);
@@ -37,12 +31,6 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const toast = new Toast();
-
-    // // ニックネームが空かの確認
-    // if (nicknameValue === '') {
-    //   toast.error('ニックネームを入力してください');
-    //   return;
-    // }
 
     // メールアドレスが一致しているかの確認
     if (emailValue !== emailConfirm) {
@@ -86,20 +74,6 @@ const ContactForm: React.FC = () => {
     <div className="p-4 bg-gray-50 rounded-lg">
       <div className="flex mb-5 text-3xl">新規アカウントの登録</div>
       <form onSubmit={handleSubmit}>
-        {/* <div className="mb-4">
-          <Label htmlFor="name">
-            ニックネーム<sup className='text-red-600'>*必須</sup>
-          </Label>
-          <Text
-            id="name"
-            type="text"
-            className="bg-gray-50"
-            required={true}
-            value={nicknameValue}
-            onChange={handleNicknameChange}
-          />
-        </div> */}
-
         <div className="grid grid-cols-12 gap-4 mb-4">
           <div className="col-span-6">
             <Label htmlFor="email">
