@@ -1,5 +1,6 @@
 import TopPage from './apps/components/templates/TopTemplate';
 import RecreationPage from './apps/components/templates/RecreationTemplate';
+import { RecreationRegistPage } from './apps/components/pages/RecreationRegistPage';
 import DiaryPage from './apps/components/templates/DiaryTemplate';
 import ContactPage from './apps/components/templates/ContactTemplate';
 import SignUpPage from './apps/components/templates/SignUpTemplate';
@@ -30,7 +31,7 @@ const routes: RouteType[] = [
     ]
   }, {
     path: "/recreation/register",
-    template: RecreationPage,
+    template: RecreationRegistPage,
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
       { href: '/recreation/register', context: '投稿' },
