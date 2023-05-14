@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { NewCard } from "../atoms/Card";
 import { AiOutlineSearch, AiOutlinePlus } from "react-icons/ai";
 import { BsFilter } from "react-icons/bs";
@@ -73,6 +74,7 @@ const RecreationForm: React.FC = () => {
   // ];
 
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const history = useHistory();
 
   return (
     <>
@@ -199,7 +201,11 @@ const RecreationForm: React.FC = () => {
 
             <div className="w-full sm:w-auto flex flex-col sm:flex-row space-y-2 sm:space-y-0 items-stretch sm:items-center justify-end sm:space-x-3 flex-shrink-0">
               {/* レクを投稿する ボタン */}
-              <button type="button" className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium bg-blue-500 hover:bg-blue-700 text-white focus:outline-none rounded-lg hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200">
+              <button
+                type="button"
+                onClick={() => history.push('/recreation/register')}
+                className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium bg-blue-500 hover:bg-blue-700 text-white focus:outline-none rounded-lg hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+              >
                 <AiOutlinePlus
                   className="w-4 h-4 mr-2"
                 />
