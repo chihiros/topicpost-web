@@ -144,6 +144,57 @@ const RecreationForm: React.FC = () => {
                   </div>
                   <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Search" required />
                 </div>
+
+                {/* Filterボタン */}
+                <div className="relative inline-block text-left">
+                  <button
+                    id="filterDropdownButton"
+                    className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+                    type="button"
+                    onClick={() => setFilterDropdownOpen(!isFilterDropdownOpen)}
+                  >
+                    <BsFilter
+                      className="w-5 h-5 mr-2"
+                    />
+                    Filter
+                    <svg className="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path clipRule="evenodd" fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                    </svg>
+                  </button>
+                  <div
+                    ref={filterDropdownRef}
+                    id="filterDropdown"
+                    className={`${isFilterDropdownOpen ? '' : 'hidden'} absolute z-50 w-48 -right-2 p-3 top-full bg-white rounded-lg shadow`}
+                  >
+                    <h6 className="mb-3 text-sm font-medium text-gray-900">Choose brand</h6>
+                    <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
+                      <li className="flex items-center">
+                        <input id="RecIceBreak" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecIceBreak" className="ml-2 text-sm font-medium text-gray-900">アイスブレイク ()</label>
+                      </li>
+                      <li className="flex items-center">
+                        <input id="RecFinger" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecFinger" className="ml-2 text-sm font-medium text-gray-900">手遊び レク (16)</label>
+                      </li>
+                      <li className="flex items-center">
+                        <input id="RecSmallGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecSmallGroup" className="ml-2 text-sm font-medium text-gray-900">少人数 レク (49)</label>
+                      </li>
+                      <li className="flex items-center">
+                        <input id="RecGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecGroup" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
+                      </li>
+                      <li className="flex items-center">
+                        <input id="RecDan" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecDan" className="ml-2 text-sm font-medium text-gray-900">レクダン (74)</label>
+                      </li>
+                      <li className="flex items-center">
+                        <input id="RecOther" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecOther" className="ml-2 text-sm font-medium text-gray-900">その他のレク (74)</label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </form>
             </div>
 
@@ -156,57 +207,6 @@ const RecreationForm: React.FC = () => {
                 />
                 レクを投稿する
               </button>
-
-              {/* Filterボタン */}
-              <div className="relative inline-block text-left">
-                <button
-                  id="filterDropdownButton"
-                  className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
-                  type="button"
-                  onClick={() => setFilterDropdownOpen(!isFilterDropdownOpen)}
-                >
-                  <BsFilter
-                    className="w-5 h-5 mr-2"
-                  />
-                  Filter
-                  <svg className="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path clipRule="evenodd" fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                  </svg>
-                </button>
-                <div
-                  ref={filterDropdownRef}
-                  id="filterDropdown"
-                  className={`${isFilterDropdownOpen ? '' : 'hidden'} absolute z-50 w-48 -right-2 p-3 top-full bg-white rounded-lg shadow`}
-                >
-                  <h6 className="mb-3 text-sm font-medium text-gray-900">Choose brand</h6>
-                  <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
-                    <li className="flex items-center">
-                      <input id="RecIceBreak" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="RecIceBreak" className="ml-2 text-sm font-medium text-gray-900">アイスブレイク ()</label>
-                    </li>
-                    <li className="flex items-center">
-                      <input id="RecFinger" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="RecFinger" className="ml-2 text-sm font-medium text-gray-900">手遊び レク (16)</label>
-                    </li>
-                    <li className="flex items-center">
-                      <input id="RecSmallGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="RecSmallGroup" className="ml-2 text-sm font-medium text-gray-900">少人数 レク (49)</label>
-                    </li>
-                    <li className="flex items-center">
-                      <input id="RecGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="RecGroup" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
-                    </li>
-                    <li className="flex items-center">
-                      <input id="RecDan" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="RecDan" className="ml-2 text-sm font-medium text-gray-900">レクダン (74)</label>
-                    </li>
-                    <li className="flex items-center">
-                      <input id="RecOther" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="RecOther" className="ml-2 text-sm font-medium text-gray-900">その他のレク (74)</label>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </div>
 
 
