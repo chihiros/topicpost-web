@@ -131,9 +131,9 @@ const RecreationForm: React.FC = () => {
       <div className="max-w">
         <div className="bg-white relative sm:rounded-lg overflow-hidden">
           {/* Table 検索タブ */}
-          <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0 sm:space-x-4 p-4">
             {/* Search Input */}
-            <div className="w-full md:w-1/2">
+            <div className="w-full sm:w-1/2">
               <form className="flex items-center">
                 <label htmlFor="simple-search" className="sr-only">Search</label>
                 <div className="relative w-full">
@@ -148,9 +148,9 @@ const RecreationForm: React.FC = () => {
             </div>
 
 
-            <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+            <div className="w-full sm:w-auto flex flex-col sm:flex-row space-y-2 sm:space-y-0 items-stretch sm:items-center justify-end sm:space-x-3 flex-shrink-0">
               {/* Add productボタン */}
-              <button type="button" className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium bg-blue-500 hover:bg-blue-700 text-white focus:outline-none rounded-lg hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200">
+              <button type="button" className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium bg-blue-500 hover:bg-blue-700 text-white focus:outline-none rounded-lg hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200">
                 <AiOutlinePlus
                   className="w-4 h-4 mr-2"
                 />
@@ -161,7 +161,7 @@ const RecreationForm: React.FC = () => {
               <div className="relative inline-block text-left">
                 <button
                   id="actionsDropdownButton"
-                  className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+                  className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
                   type="button"
                   onClick={() => setActionsDropdownOpen(!isActionsDropdownOpen)}
                 >
@@ -190,7 +190,7 @@ const RecreationForm: React.FC = () => {
               <div className="relative inline-block text-left">
                 <button
                   id="filterDropdownButton"
-                  className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+                  className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
                   type="button"
                   onClick={() => setFilterDropdownOpen(!isFilterDropdownOpen)}
                 >
@@ -264,7 +264,7 @@ const RecreationForm: React.FC = () => {
               </tbody>
             </table>
           </div>
-          <nav className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
+          <nav className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0 p-4" aria-label="Table navigation">
             <span className="text-sm font-normal text-gray-500">
               Showing
               <span className="font-semibold text-gray-900">1-10</span>
