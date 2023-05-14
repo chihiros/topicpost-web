@@ -63,7 +63,6 @@ export const RecreationRegistTemplate: React.FC = () => {
             id="name"
             type="text"
             className="bg-gray-50"
-            placeholder="テスト太郎"
             required={true}
             value={nameValue}
             onChange={handleTextChange}
@@ -77,7 +76,6 @@ export const RecreationRegistTemplate: React.FC = () => {
               id="email"
               type="email"
               className="bg-gray-50"
-              placeholder="contact@example.cpm"
               required={true}
               value={emailValue}
               onChange={handleEmailChange}
@@ -89,7 +87,6 @@ export const RecreationRegistTemplate: React.FC = () => {
               id="email"
               type="email"
               className="bg-gray-50"
-              placeholder="contact@example.cpm"
               required={true}
               value={emailValue}
               onChange={handleEmailChange}
@@ -101,7 +98,6 @@ export const RecreationRegistTemplate: React.FC = () => {
               id="email"
               type="email"
               className="bg-gray-50"
-              placeholder="contact@example.cpm"
               required={true}
               value={emailValue}
               onChange={handleEmailChange}
@@ -127,7 +123,6 @@ export const RecreationRegistTemplate: React.FC = () => {
           <Textarea
             id="message"
             className="bg-gray-50"
-            placeholder="お問い合わせ内容を入力してください。"
             required={true}
             value={messageValue}
             onChange={handleMessageChange}
