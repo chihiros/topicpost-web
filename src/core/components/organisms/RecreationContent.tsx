@@ -248,7 +248,7 @@ const RecreationForm: React.FC = () => {
                   <th scope="col" className="px-4 py-3">レク名</th>
                   <th scope="col" className="px-4 py-3">ジャンル</th>
                   <th scope="col" className="px-4 py-3">投稿者</th>
-                  <th scope="col" className="px-4 py-3">投稿日</th>
+                  <th scope="col" className="px-4 py-3 hidden sm:block">投稿日</th>
                 </tr>
               </thead>
               <tbody>
@@ -257,7 +257,7 @@ const RecreationForm: React.FC = () => {
                     <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">ジョンプラウンのおじさん</th>
                     <td className="px-4 py-3">アイスブレイク</td>
                     <td className="px-4 py-3">すずりかわ@熊本</td>
-                    <td className="px-4 py-3">2023/05/14</td>
+                    <td className="px-4 py-3 hidden sm:block">2023/05/14</td>
                   </tr>
                 ))}
               </tbody>
