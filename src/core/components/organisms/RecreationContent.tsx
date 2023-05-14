@@ -129,7 +129,7 @@ const RecreationForm: React.FC = () => {
       </div>
 
       <div className="max-w">
-        <div className="bg-white relative sm:rounded-lg overflow-hidden">
+        <div className="bg-white relative rounded-lg overflow-hidden">
           {/* Table 検索タブ */}
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0 sm:space-x-4 p-4">
             {/* Search Input */}
