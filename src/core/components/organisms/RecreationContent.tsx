@@ -210,28 +210,28 @@ const RecreationForm: React.FC = () => {
                   <h6 className="mb-3 text-sm font-medium text-gray-900">Choose brand</h6>
                   <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                     <li className="flex items-center">
-                      <input id="apple" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="apple" className="ml-2 text-sm font-medium text-gray-900">アイスブレイク ()</label>
+                      <input id="RecIceBreack" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="RecIceBreack" className="ml-2 text-sm font-medium text-gray-900">アイスブレイク ()</label>
                     </li>
                     <li className="flex items-center">
-                      <input id="fitbit" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="fitbit" className="ml-2 text-sm font-medium text-gray-900">手遊び レク (16)</label>
+                      <input id="RecFinger" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="RecFinger" className="ml-2 text-sm font-medium text-gray-900">手遊び レク (16)</label>
                     </li>
                     <li className="flex items-center">
-                      <input id="razor" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="razor" className="ml-2 text-sm font-medium text-gray-900">少人数 レク (49)</label>
+                      <input id="RecSmallGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="RecSmallGroup" className="ml-2 text-sm font-medium text-gray-900">少人数 レク (49)</label>
                     </li>
                     <li className="flex items-center">
-                      <input id="nikon" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="nikon" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
+                      <input id="RecGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="RecGroup" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
                     </li>
                     <li className="flex items-center">
-                      <input id="benq" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="benq" className="ml-2 text-sm font-medium text-gray-900">レクダン (74)</label>
+                      <input id="RecDan" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="RecDan" className="ml-2 text-sm font-medium text-gray-900">レクダン (74)</label>
                     </li>
                     <li className="flex items-center">
-                      <input id="benq" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                      <label htmlFor="benq" className="ml-2 text-sm font-medium text-gray-900">その他のレク (74)</label>
+                      <input id="RecOther" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="RecOther" className="ml-2 text-sm font-medium text-gray-900">その他のレク (74)</label>
                     </li>
                   </ul>
                 </div>
