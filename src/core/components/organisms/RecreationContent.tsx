@@ -198,7 +198,7 @@ const RecreationForm: React.FC = () => {
 
 
             <div className="w-full sm:w-auto flex flex-col sm:flex-row space-y-2 sm:space-y-0 items-stretch sm:items-center justify-end sm:space-x-3 flex-shrink-0">
-              {/* Add productボタン */}
+              {/* レクを投稿する ボタン */}
               <button type="button" className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium bg-blue-500 hover:bg-blue-700 text-white focus:outline-none rounded-lg hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200">
                 <AiOutlinePlus
                   className="w-4 h-4 mr-2"
