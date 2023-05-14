@@ -73,6 +73,8 @@ const RecreationForm: React.FC = () => {
     }
   ];
 
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
   return (
     <>
       <div className="text-2xl">
@@ -239,12 +241,14 @@ const RecreationForm: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b">
-                    <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">Monitor BenQ EX2710Q</th>
-                    <td className="px-4 py-3">TV/Monitor</td>
-                    <td className="px-4 py-3">BenQ</td>
-                    <td className="px-4 py-3">354</td>
-                  </tr>
+                  {numbers.map((number) => (
+                    <tr className="border-b">
+                      <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">Monitor BenQ EX2710Q</th>
+                      <td className="px-4 py-3">TV/Monitor</td>
+                      <td className="px-4 py-3">BenQ</td>
+                      <td className="px-4 py-3">354</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
