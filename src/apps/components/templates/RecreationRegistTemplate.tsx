@@ -129,7 +129,8 @@ export const RecreationRegistTemplate: React.FC = () => {
             onChange={handleMessageChange}
           />
         </div>
-        <SubmitButton>送信</SubmitButton>
+        <SubmitButton className="mr-2">送信</SubmitButton>
+        <SubmitButton>プレビュー</SubmitButton>
       </form>
     </div>
   );
