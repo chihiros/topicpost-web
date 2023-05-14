@@ -153,11 +153,11 @@ const RecreationForm: React.FC = () => {
 
             <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
               {/* Add productボタン */}
-              <button type="button" className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200">
+              <button type="button" className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium bg-blue-500 hover:bg-blue-700 text-white focus:outline-none rounded-lg hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200">
                 <AiOutlinePlus
                   className="w-4 h-4 mr-2"
                 />
-                Add product
+                レクを投稿する
               </button>
 
               {/* Actionsボタン */}
