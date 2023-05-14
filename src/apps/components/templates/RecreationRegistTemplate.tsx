@@ -72,14 +72,15 @@ export const RecreationRegistTemplate: React.FC = () => {
         <div className="mb-6 grid grid-cols-3 gap-3">
           <div>
             <Label htmlFor="email" required>対象</Label>
-            <Text
+            <Select
               id="email"
-              type="email"
               className="bg-gray-50"
-              required={true}
-              value={emailValue}
-              onChange={handleEmailChange}
-            />
+            >
+              <option value="1">1人</option>
+              <option value="2">2人</option>
+              <option value="3">3人</option>
+              <option value="4">4人</option>
+            </Select>
           </div>
           <div>
             <Label htmlFor="email" required>対象</Label>
