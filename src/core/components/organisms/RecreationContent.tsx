@@ -53,6 +53,7 @@ const RecreationForm: React.FC = () => {
     {
       id: 1,
       title: 'ジョンブランのおじさん',
+      genre: 'アイスブレイク',
       content: 'ジョンブランのおじさんの内容',
       image: 'https://picsum.photos/200/300',
       url: 'https://www.google.com/',
@@ -60,6 +61,7 @@ const RecreationForm: React.FC = () => {
     {
       id: 2,
       title: 'ジョンブランのおじさん',
+      genre: 'アイスブレイク',
       content: 'ジョンブランのおじさんの内容',
       image: 'https://picsum.photos/200/300',
       url: 'https://www.google.com/',
@@ -67,6 +69,7 @@ const RecreationForm: React.FC = () => {
     {
       id: 3,
       title: 'ジョンブランのおじさん',
+      genre: 'アイスブレイク',
       content: 'ジョンブランのおじさんの内容',
       image: 'https://picsum.photos/200/300',
       url: 'https://www.google.com/',
@@ -128,107 +131,116 @@ const RecreationForm: React.FC = () => {
         </button>
       </div>
 
-        <div className="max-w">
-          <div className="bg-white relative sm:rounded-lg overflow-hidden">
-            <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-              <div className="w-full md:w-1/2">
-                <form className="flex items-center">
-                  <label htmlFor="simple-search" className="sr-only">Search</label>
-                  <div className="relative w-full">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <AiOutlineSearch
-                        className="w-5 h-5 text-gray-500"
-                      />
-                    </div>
-                    <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Search" required />
-                  </div>
-                </form>
-              </div>
-              <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                <button type="button" className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200">
-                  <AiOutlinePlus
-                    className="w-4 h-4 mr-2"
-                  />
-                  Add product
-                </button>
-
-                <div className="relative inline-block text-left">
-                  <button
-                    id="actionsDropdownButton"
-                    className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
-                    type="button"
-                    onClick={() => setActionsDropdownOpen(!isActionsDropdownOpen)}
-                  >
-                    <svg className="-ml-1 mr-1.5 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <path clipRule="evenodd" fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                    </svg>
-                    Actions
-                  </button>
-                  <div
-                    ref={actionsDropdownRef}
-                    id="actionsDropdown"
-                    className={`${isActionsDropdownOpen ? '' : 'hidden'} absolute z-50 w-44 top-full bg-white rounded divide-y divide-gray-100 shadow`}
-                  >
-                    <ul className="py-1 text-sm text-gray-700" aria-labelledby="actionsDropdownButton">
-                      <li>
-                        <a href="/" className="block py-2 px-4 hover:bg-gray-100">Mass Edit</a>
-                      </li>
-                    </ul>
-                    <div className="py-1">
-                      <a href="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Delete all</a>
-                    </div>
-                  </div>
-                </div>
-                <div className="relative inline-block text-left">
-                  <button
-                    id="filterDropdownButton"
-                    className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
-                    type="button"
-                    onClick={() => setFilterDropdownOpen(!isFilterDropdownOpen)}
-                  >
-                    <BsFilter
-                      className="w-5 h-5 mr-2"
+      <div className="max-w">
+        <div className="bg-white relative sm:rounded-lg overflow-hidden">
+          {/* Table 検索タブ */}
+          <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+            {/* Search Input */}
+            <div className="w-full md:w-1/2">
+              <form className="flex items-center">
+                <label htmlFor="simple-search" className="sr-only">Search</label>
+                <div className="relative w-full">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <AiOutlineSearch
+                      className="w-5 h-5 text-gray-500"
                     />
-                    Filter
-                    <svg className="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <path clipRule="evenodd" fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                    </svg>
-                  </button>
-                  <div
-                    ref={filterDropdownRef}
-                    id="filterDropdown"
-                    className={`${isFilterDropdownOpen ? '' : 'hidden'} absolute z-50 w-48 -right-2 p-3 top-full bg-white rounded-lg shadow`}
-                  >
-                    <h6 className="mb-3 text-sm font-medium text-gray-900">Choose brand</h6>
-                    <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
-                      <li className="flex items-center">
-                        <input id="apple" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="apple" className="ml-2 text-sm font-medium text-gray-900">アイスブレイク ()</label>
-                      </li>
-                      <li className="flex items-center">
-                        <input id="fitbit" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="fitbit" className="ml-2 text-sm font-medium text-gray-900">手遊び レク (16)</label>
-                      </li>
-                      <li className="flex items-center">
-                        <input id="razor" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="razor" className="ml-2 text-sm font-medium text-gray-900">少人数 レク (49)</label>
-                      </li>
-                      <li className="flex items-center">
-                        <input id="nikon" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="nikon" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
-                      </li>
-                      <li className="flex items-center">
-                        <input id="benq" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="benq" className="ml-2 text-sm font-medium text-gray-900">レクダン (74)</label>
-                      </li>
-                      <li className="flex items-center">
-                        <input id="benq" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="benq" className="ml-2 text-sm font-medium text-gray-900">その他のレク (74)</label>
-                      </li>
-                    </ul>
+                  </div>
+                  <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Search" required />
+                </div>
+              </form>
+            </div>
+
+
+            <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+              {/* Add productボタン */}
+              <button type="button" className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200">
+                <AiOutlinePlus
+                  className="w-4 h-4 mr-2"
+                />
+                Add product
+              </button>
+
+              {/* Actionsボタン */}
+              <div className="relative inline-block text-left">
+                <button
+                  id="actionsDropdownButton"
+                  className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+                  type="button"
+                  onClick={() => setActionsDropdownOpen(!isActionsDropdownOpen)}
+                >
+                  <svg className="-ml-1 mr-1.5 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path clipRule="evenodd" fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                  </svg>
+                  Actions
+                </button>
+                <div
+                  ref={actionsDropdownRef}
+                  id="actionsDropdown"
+                  className={`${isActionsDropdownOpen ? '' : 'hidden'} absolute z-50 w-44 top-full bg-white rounded divide-y divide-gray-100 shadow`}
+                >
+                  <ul className="py-1 text-sm text-gray-700" aria-labelledby="actionsDropdownButton">
+                    <li>
+                      <a href="/" className="block py-2 px-4 hover:bg-gray-100">Mass Edit</a>
+                    </li>
+                  </ul>
+                  <div className="py-1">
+                    <a href="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Delete all</a>
                   </div>
                 </div>
               </div>
+
+              {/* Filterボタン */}
+              <div className="relative inline-block text-left">
+                <button
+                  id="filterDropdownButton"
+                  className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+                  type="button"
+                  onClick={() => setFilterDropdownOpen(!isFilterDropdownOpen)}
+                >
+                  <BsFilter
+                    className="w-5 h-5 mr-2"
+                  />
+                  Filter
+                  <svg className="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path clipRule="evenodd" fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                  </svg>
+                </button>
+                <div
+                  ref={filterDropdownRef}
+                  id="filterDropdown"
+                  // className={`${isFilterDropdownOpen ? '' : 'hidden'} absolute z-50 w-48 -right-2 p-3 top-full bg-white rounded-lg shadow`}
+                  className={`absolute z-50 w-48 -right-2 p-3 top-full bg-white rounded-lg shadow`}
+                >
+                  <h6 className="mb-3 text-sm font-medium text-gray-900">Choose brand</h6>
+                  <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
+                    <li className="flex items-center">
+                      <input id="apple" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="apple" className="ml-2 text-sm font-medium text-gray-900">アイスブレイク ()</label>
+                    </li>
+                    <li className="flex items-center">
+                      <input id="fitbit" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="fitbit" className="ml-2 text-sm font-medium text-gray-900">手遊び レク (16)</label>
+                    </li>
+                    <li className="flex items-center">
+                      <input id="razor" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="razor" className="ml-2 text-sm font-medium text-gray-900">少人数 レク (49)</label>
+                    </li>
+                    <li className="flex items-center">
+                      <input id="nikon" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="nikon" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
+                    </li>
+                    <li className="flex items-center">
+                      <input id="benq" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="benq" className="ml-2 text-sm font-medium text-gray-900">レクダン (74)</label>
+                    </li>
+                    <li className="flex items-center">
+                      <input id="benq" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                      <label htmlFor="benq" className="ml-2 text-sm font-medium text-gray-900">その他のレク (74)</label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
 
 
