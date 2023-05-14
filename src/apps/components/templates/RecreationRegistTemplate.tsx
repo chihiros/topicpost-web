@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import Toast from "../../../utils/Toast";
 import Label from "../../../core/components/atoms/Label";
+import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
 import { SubmitButton } from "../../../core/components/atoms/Button";
 
