@@ -11,6 +11,7 @@ import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcru
 
 type RouteType = {
   path: string;
+  exact?: boolean;
   template: React.FC<PagesProps>;
   breadcrumb?: BreadcrumbProps[];
 };
@@ -18,9 +19,11 @@ type RouteType = {
 const routes: RouteType[] = [
   {
     path: "/",
+    exact: true,
     template: TopPage
   }, {
     path: "/recreation",
+    exact: true,
     template: RecreationPage,
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
@@ -66,7 +69,7 @@ const Routes: React.FC = () => {
           return (
             <Route
               key={index}
-              exact={index === 0}
+              exact={item.exact}
               path={item.path}
               render={() => <Pages
                 breadcrumb={item.breadcrumb}
