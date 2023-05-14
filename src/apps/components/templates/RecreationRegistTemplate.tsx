@@ -58,7 +58,7 @@ export const RecreationRegistTemplate: React.FC = () => {
       <div className="flex mb-5 text-3xl">レクリエーションの投稿</div>
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
-          <Label htmlFor="name">お名前</Label>
+          <Label htmlFor="name" required>レク名前</Label>
           <Text
             id="name"
             type="text"
@@ -71,7 +71,7 @@ export const RecreationRegistTemplate: React.FC = () => {
 
         <div className="mb-6 grid grid-cols-3 gap-3">
           <div>
-            <Label htmlFor="email">連絡先</Label>
+            <Label htmlFor="email" required>対象</Label>
             <Text
               id="email"
               type="email"
@@ -82,7 +82,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             />
           </div>
           <div>
-            <Label htmlFor="email">連絡先</Label>
+            <Label htmlFor="email" required>対象</Label>
             <Text
               id="email"
               type="email"
@@ -93,7 +93,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             />
           </div>
           <div>
-            <Label htmlFor="email">連絡先</Label>
+            <Label htmlFor="email" required>所要時間</Label>
             <Text
               id="email"
               type="email"
@@ -106,7 +106,7 @@ export const RecreationRegistTemplate: React.FC = () => {
         </div>
 
         <div className="mb-6">
-          <Label htmlFor="name">動画を載せる場合はURLを貼り付けてください（YouTubeのみ対応）</Label>
+          <Label htmlFor="youtubeLink">動画を載せる場合はURLを貼り付けてください（YouTubeのみ対応）</Label>
           <Text
             id="name"
             type="text"
@@ -119,7 +119,7 @@ export const RecreationRegistTemplate: React.FC = () => {
         </div>
 
         <div className="mb-3">
-          <Label htmlFor="message">お問い合わせ内容</Label>
+          <Label htmlFor="message" required>ルール説明</Label>
           <Textarea
             id="message"
             className="bg-gray-50"
