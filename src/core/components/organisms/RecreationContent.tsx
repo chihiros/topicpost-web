@@ -204,23 +204,27 @@ const RecreationForm: React.FC = () => {
                     <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                       <li className="flex items-center">
                         <input id="apple" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="apple" className="ml-2 text-sm font-medium text-gray-900">Apple (56)</label>
+                        <label htmlFor="apple" className="ml-2 text-sm font-medium text-gray-900">アイスブレイク ()</label>
                       </li>
                       <li className="flex items-center">
                         <input id="fitbit" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="fitbit" className="ml-2 text-sm font-medium text-gray-900">Microsoft (16)</label>
+                        <label htmlFor="fitbit" className="ml-2 text-sm font-medium text-gray-900">手遊び レク (16)</label>
                       </li>
                       <li className="flex items-center">
                         <input id="razor" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="razor" className="ml-2 text-sm font-medium text-gray-900">Razor (49)</label>
+                        <label htmlFor="razor" className="ml-2 text-sm font-medium text-gray-900">少人数 レク (49)</label>
                       </li>
                       <li className="flex items-center">
                         <input id="nikon" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="nikon" className="ml-2 text-sm font-medium text-gray-900">Nikon (12)</label>
+                        <label htmlFor="nikon" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
                       </li>
                       <li className="flex items-center">
                         <input id="benq" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="benq" className="ml-2 text-sm font-medium text-gray-900">BenQ (74)</label>
+                        <label htmlFor="benq" className="ml-2 text-sm font-medium text-gray-900">レクダン (74)</label>
+                      </li>
+                      <li className="flex items-center">
+                        <input id="benq" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="benq" className="ml-2 text-sm font-medium text-gray-900">その他のレク (74)</label>
                       </li>
                     </ul>
                   </div>
