@@ -108,6 +108,20 @@ export const RecreationRegistTemplate: React.FC = () => {
             />
           </div>
         </div>
+
+        <div className="mb-6">
+          <Label htmlFor="name">動画を載せる場合はURLを貼り付けてください（YouTubeのみ対応）</Label>
+          <Text
+            id="name"
+            type="text"
+            className="bg-gray-50"
+            placeholder="動画のURLを貼ってください"
+            required={true}
+            value={nameValue}
+            onChange={handleTextChange}
+          />
+        </div>
+
         <div className="mb-3">
           <Label htmlFor="message">お問い合わせ内容</Label>
           <Textarea
