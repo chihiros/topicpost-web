@@ -17,8 +17,8 @@ const SidebarPage: React.FC = () => {
       sessionStorage.removeItem('last_access_date');
   };
 
-
-  const SidebarStyle = "transition-transform -translate-x-full lg:translate-x-0";
+  // これする意味ないかも
+  const SidebarStyle = "transition-transform -translate-x-full md:translate-x-0";
 
   return (
     <aside
