@@ -18,10 +18,10 @@ const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
     <CookiesProvider>
       <AuthContextProvider>
       <LoginModalProvider>
-        <div>
+        <div className="container">
           <ToastContainer />
           <SidebarPage />
-          <div className="container p-4 md:ml-64">
+          <div className="p-4 md:ml-64">
             <Breadcrumb breadcrumb={breadcrumb} />
             {template({ template })}
             <WindowSize />
