@@ -19,15 +19,15 @@ export const WindowSize: React.FC = () => {
   };
 
   const GetResponsiveDesignSize = () => {
-    if (windowWidth < 640) {
+    if (windowWidth <= 640) {
       return 'sm';
-    } else if (windowWidth < 768) {
+    } else if (windowWidth <= 768) {
       return 'md';
-    } else if (windowWidth < 1024) {
+    } else if (windowWidth <= 1024) {
       return 'lg';
-    } else if (windowWidth < 1280) {
+    } else if (windowWidth <= 1280) {
       return 'xl';
-    } else if (windowWidth < 1536) {
+    } else if (windowWidth <= 1536) {
       return '2xl';
     } else {
       return '2xl';
