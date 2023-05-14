@@ -71,7 +71,7 @@ export const RecreationRegistTemplate: React.FC = () => {
 
         <div className="mb-6 grid grid-cols-3 gap-3">
           <div>
-            <Label htmlFor="email" required>対象</Label>
+            <Label htmlFor="email" required>対象人数</Label>
             <Select
               id="email"
               className="bg-gray-50"
@@ -83,7 +83,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             </Select>
           </div>
           <div>
-            <Label htmlFor="email" required>対象</Label>
+            <Label htmlFor="email" required>対象年齢</Label>
             <Text
               id="email"
               type="email"
