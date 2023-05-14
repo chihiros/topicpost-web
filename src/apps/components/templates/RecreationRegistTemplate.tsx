@@ -123,6 +123,7 @@ export const RecreationRegistTemplate: React.FC = () => {
           <Textarea
             id="message"
             className="bg-gray-50"
+            rows={10}
             required={true}
             value={messageValue}
             onChange={handleMessageChange}
