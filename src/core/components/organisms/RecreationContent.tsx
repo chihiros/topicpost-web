@@ -22,7 +22,7 @@ const RecreationForm: React.FC = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [actionsDropdownRef, filterDropdownRef]);
 
   function smoothScroll(element: Element, distance: number, duration: number) {
     const start = element.scrollLeft
@@ -131,13 +131,13 @@ const RecreationForm: React.FC = () => {
               <th scope="col" className="px-6 py-3">
                 レクの名前
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 sm:hidden">
                 ジャンル
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 sm:hidden">
                 投稿者
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 sm:hidden">
                 投稿日
               </th>
             </tr>
@@ -148,13 +148,13 @@ const RecreationForm: React.FC = () => {
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                   {recreation.title}
                 </th>
-                <td className="px-6 py-4">
+                <td className="px-6 py-4 sm:hidden">
                   アイスブレイク
                 </td>
-                <td className="px-6 py-4">
+                <td className="px-6 py-4 sm:hidden">
                   <a href="https://example.com" target='_blank' rel="noreferrer">すずりかわ@熊本</a>
                 </td>
-                <td className="px-6 py-4">
+                <td className="px-6 py-4 sm:hidden">
                   2020/12/12
                 </td>
               </tr>
@@ -162,6 +162,8 @@ const RecreationForm: React.FC = () => {
           </tbody>
         </table>
       </div>
+
+
 
       <section className="mt-8">
         <div className="max-w">
@@ -261,6 +263,9 @@ const RecreationForm: React.FC = () => {
                   </div>
                 </div>
               </div>
+
+
+
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left text-gray-500">
