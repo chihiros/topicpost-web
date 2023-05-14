@@ -43,7 +43,7 @@ export const WindowSize: React.FC = () => {
     <div className="fixed bottom-0 right-0 bg-gray-100 p-2 text-xs text-gray-500">
       <div className="flex items-center justify-center">
         <div className="mr-2">Width: {windowWidth}px</div>
-        <div>Height: {windowHeight}px</div>
+        <div className="mr-2">Height: {windowHeight}px</div>
         <div>Tailwind Responsive Design: {GetResponsiveDesignSize()}</div>
       </div>
     </div>
