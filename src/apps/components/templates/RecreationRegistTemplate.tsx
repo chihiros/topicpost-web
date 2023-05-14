@@ -55,7 +55,7 @@ export const RecreationRegistTemplate: React.FC = () => {
 
   return (
     <div className="p-4 bg-gray-50 rounded-lg">
-      <div className="flex mb-5 text-3xl">お問い合わせ</div>
+      <div className="flex mb-5 text-3xl">レクリエーションの投稿</div>
       <form onSubmit={handleSubmit}>
         <div className="mb-6">
           <Label htmlFor="name">お名前</Label>
