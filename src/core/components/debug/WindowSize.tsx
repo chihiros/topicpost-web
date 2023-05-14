@@ -29,6 +29,8 @@ export const WindowSize: React.FC = () => {
       return 'xl';
     } else if (windowWidth < 1536) {
       return '2xl';
+    } else {
+      return '2xl';
     }
   };
 
