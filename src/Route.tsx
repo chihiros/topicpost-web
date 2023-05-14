@@ -32,7 +32,8 @@ const routes: RouteType[] = [
     path: "/recreation/register",
     template: RecreationPage,
     breadcrumb: [
-      { href: '/recreation/register', context: 'レクリエーション/投稿' },
+      { href: '/recreation', context: 'レクリエーション' },
+      { href: '/recreation/register', context: '投稿' },
     ]
   },{
     path: "/diary",
