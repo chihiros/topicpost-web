@@ -49,32 +49,32 @@ const RecreationForm: React.FC = () => {
     requestAnimationFrame(animate)
   }
 
-  const RecreationList = [
-    {
-      id: 1,
-      title: 'ジョンブランのおじさん',
-      genre: 'アイスブレイク',
-      content: 'ジョンブランのおじさんの内容',
-      image: 'https://picsum.photos/200/300',
-      url: 'https://www.google.com/',
-    },
-    {
-      id: 2,
-      title: 'ジョンブランのおじさん',
-      genre: 'アイスブレイク',
-      content: 'ジョンブランのおじさんの内容',
-      image: 'https://picsum.photos/200/300',
-      url: 'https://www.google.com/',
-    },
-    {
-      id: 3,
-      title: 'ジョンブランのおじさん',
-      genre: 'アイスブレイク',
-      content: 'ジョンブランのおじさんの内容',
-      image: 'https://picsum.photos/200/300',
-      url: 'https://www.google.com/',
-    }
-  ];
+  // const RecreationList = [
+  //   {
+  //     id: 1,
+  //     title: 'ジョンブランのおじさん',
+  //     genre: 'アイスブレイク',
+  //     content: 'ジョンブランのおじさんの内容',
+  //     image: 'https://picsum.photos/200/300',
+  //     url: 'https://www.google.com/',
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'ジョンブランのおじさん',
+  //     genre: 'アイスブレイク',
+  //     content: 'ジョンブランのおじさんの内容',
+  //     image: 'https://picsum.photos/200/300',
+  //     url: 'https://www.google.com/',
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'ジョンブランのおじさん',
+  //     genre: 'アイスブレイク',
+  //     content: 'ジョンブランのおじさんの内容',
+  //     image: 'https://picsum.photos/200/300',
+  //     url: 'https://www.google.com/',
+  //   }
+  // ];
 
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
