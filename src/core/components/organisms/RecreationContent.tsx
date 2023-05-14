@@ -205,8 +205,7 @@ const RecreationForm: React.FC = () => {
                 <div
                   ref={filterDropdownRef}
                   id="filterDropdown"
-                  // className={`${isFilterDropdownOpen ? '' : 'hidden'} absolute z-50 w-48 -right-2 p-3 top-full bg-white rounded-lg shadow`}
-                  className={`absolute z-50 w-48 -right-2 p-3 top-full bg-white rounded-lg shadow`}
+                  className={`${isFilterDropdownOpen ? '' : 'hidden'} absolute z-50 w-48 -right-2 p-3 top-full bg-white rounded-lg shadow`}
                 >
                   <h6 className="mb-3 text-sm font-medium text-gray-900">Choose brand</h6>
                   <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
