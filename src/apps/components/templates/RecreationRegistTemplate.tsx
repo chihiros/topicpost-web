@@ -69,17 +69,44 @@ export const RecreationRegistTemplate: React.FC = () => {
             onChange={handleTextChange}
           />
         </div>
-        <div className="mb-6">
-          <Label htmlFor="email">連絡先</Label>
-          <Text
-            id="email"
-            type="email"
-            className="bg-gray-50"
-            placeholder="contact@example.cpm"
-            required={true}
-            value={emailValue}
-            onChange={handleEmailChange}
-          />
+
+        <div className="mb-6 grid grid-cols-3 gap-3">
+          <div>
+            <Label htmlFor="email">連絡先</Label>
+            <Text
+              id="email"
+              type="email"
+              className="bg-gray-50"
+              placeholder="contact@example.cpm"
+              required={true}
+              value={emailValue}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <div>
+            <Label htmlFor="email">連絡先</Label>
+            <Text
+              id="email"
+              type="email"
+              className="bg-gray-50"
+              placeholder="contact@example.cpm"
+              required={true}
+              value={emailValue}
+              onChange={handleEmailChange}
+            />
+          </div>
+          <div>
+            <Label htmlFor="email">連絡先</Label>
+            <Text
+              id="email"
+              type="email"
+              className="bg-gray-50"
+              placeholder="contact@example.cpm"
+              required={true}
+              value={emailValue}
+              onChange={handleEmailChange}
+            />
+          </div>
         </div>
         <div className="mb-3">
           <Label htmlFor="message">お問い合わせ内容</Label>
