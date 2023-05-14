@@ -4,7 +4,6 @@ import { AiOutlineSearch, AiOutlinePlus } from "react-icons/ai";
 import { BsFilter } from "react-icons/bs";
 
 const RecreationForm: React.FC = () => {
-  const [isActionsDropdownOpen, setActionsDropdownOpen] = useState(false);
   const [isFilterDropdownOpen, setFilterDropdownOpen] = useState(false);
 
   const actionsDropdownRef = useRef<HTMLDivElement>(null);
@@ -12,9 +11,6 @@ const RecreationForm: React.FC = () => {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (actionsDropdownRef.current && !actionsDropdownRef.current.contains(event.target as Node)) {
-        setActionsDropdownOpen(false);
-      }
       if (filterDropdownRef.current && !filterDropdownRef.current.contains(event.target as Node)) {
         setFilterDropdownOpen(false);
       }
