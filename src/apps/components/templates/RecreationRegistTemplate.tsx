@@ -108,7 +108,7 @@ export const RecreationRegistTemplate: React.FC = () => {
         <div className="mb-6">
           <Label htmlFor="youtubeLink">動画を載せる場合はURLを貼り付けてください（YouTubeのみ対応）</Label>
           <Text
-            id="name"
+            id="youtubeLink"
             type="text"
             className="bg-gray-50"
             placeholder="動画のURLを貼ってください"
