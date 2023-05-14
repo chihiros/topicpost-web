@@ -124,48 +124,7 @@ const RecreationForm: React.FC = () => {
         </button>
       </div>
 
-      <div className="relative overflow-x-auto rounded-lg">
-        <table className="w-full text-sm text-left text-gray-500">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
-              <th scope="col" className="px-6 py-3">
-                レクの名前
-              </th>
-              <th scope="col" className="px-6 py-3 sm:hidden">
-                ジャンル
-              </th>
-              <th scope="col" className="px-6 py-3 sm:hidden">
-                投稿者
-              </th>
-              <th scope="col" className="px-6 py-3 sm:hidden">
-                投稿日
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {RecreationList.map((recreation, index) => (
-              <tr key={index} className="bg-white border-b">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                  {recreation.title}
-                </th>
-                <td className="px-6 py-4 sm:hidden">
-                  アイスブレイク
-                </td>
-                <td className="px-6 py-4 sm:hidden">
-                  <a href="https://example.com" target='_blank' rel="noreferrer">すずりかわ@熊本</a>
-                </td>
-                <td className="px-6 py-4 sm:hidden">
-                  2020/12/12
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-
-
-      <section className="mt-8">
+      <section className="">
         <div className="max-w">
           <div className="bg-white relative sm:rounded-lg overflow-hidden">
             <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
