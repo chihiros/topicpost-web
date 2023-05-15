@@ -146,11 +146,22 @@ export const RecreationRegistTemplate: React.FC = () => {
         <div className="flex text-3xl">プレビュー</div>
         <hr className="my-2" />
         <div className="prose">
+          <style>
+            {`
+              .prose :where(code)::before,
+              .prose :where(code)::after {
+                content: "";
+              }
+            `}
+          </style>
+
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
-          >
-            {messageValue}
-          </ReactMarkdown>
+            components={{
+              code: ({ node, ...props }) => (
+                <code className="bg-gray-200 text-blue-600 px-1 rounded" {...props} />
+              )
+            }}
         </div>
       </div>
     </div>
