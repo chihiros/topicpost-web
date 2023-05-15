@@ -5,7 +5,7 @@ import { Text } from '../atoms/Input';
 import { SubmitButton } from '../atoms/Button';
 import Toast from '../../../utils/Toast';
 import { GetSession } from '../../../utils/supabase';
-import { Profile, ProfileResponse } from '../../../api/api.topicpost.net/profile';
+import { Profile } from '../../../api/api.topicpost.net/profile';
 
 const ProfileEditForm: React.FC = () => {
   const [nicknameValue, setNicknameValue] = useState('');
