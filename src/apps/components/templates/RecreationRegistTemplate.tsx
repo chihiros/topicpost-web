@@ -159,8 +159,10 @@ export const RecreationRegistTemplate: React.FC = () => {
             children={messageValue}
             remarkPlugins={[remarkGfm]}
             components={{
-              h1: ({ node, ...props }) => (
-                <h1 className="font-bold mb-2" {...props} />
+              h1: ({ node, children, ...props }) => (
+                <h1 className="font-bold mb-2" {...props}>
+                  {children || ''}
+                </h1>
               ),
               p: ({ node, ...props }) => (
                 <p className="my-3" {...props} />
