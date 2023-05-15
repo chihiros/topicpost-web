@@ -152,6 +152,10 @@ export const RecreationRegistTemplate: React.FC = () => {
               .prose :where(code)::after {
                 content: "";
               }
+              .prose ul {
+                margin-top: 0;
+                margin-bottom: 8px;
+              }
             `}
           </style>
 
