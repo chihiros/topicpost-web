@@ -133,7 +133,7 @@ export const RecreationRegistTemplate: React.FC = () => {
               value={messageValue}
               onChange={handleMessageChange}
             />
-          <div className="text-slate-400 text-right text-sm my-1">自動保存：2023/05/16 0:22.09</div>
+            <div className="text-slate-400 text-right text-sm my-1">自動保存：2023/05/16 0:22.09</div>
           </div>
           <SubmitButton className="mr-2">下書きを保存</SubmitButton>
           <SubmitButton className="mr-2">送信</SubmitButton>
