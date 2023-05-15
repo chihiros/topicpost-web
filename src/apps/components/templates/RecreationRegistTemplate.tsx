@@ -173,6 +173,11 @@ export const RecreationRegistTemplate: React.FC = () => {
               li: ({ node, ...props }) => (
                 <li className="m-0" {...props} />
               ),
+              a: ({ node, children, ...props }) => (
+                <a className="text-blue-600 no-underline" {...props} >
+                  {children || ''}
+                </a>
+              ),
               code: ({ node, ...props }) => (
                 <code className="bg-gray-200 text-blue-600 px-1 rounded" {...props} />
               )
