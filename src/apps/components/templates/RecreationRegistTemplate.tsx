@@ -8,21 +8,15 @@ import { SubmitButton } from "../../../core/components/atoms/Button";
 
 export const RecreationRegistTemplate: React.FC = () => {
   const [nameValue, setTextValue] = useState('');
-  const [emailValue, setEmailValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
 
   const clearForm = () => {
     setTextValue('');
-    setEmailValue('');
     setMessageValue('');
   }
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextValue(e.target.value);
-  };
-
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmailValue(e.target.value);
   };
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -35,7 +29,6 @@ export const RecreationRegistTemplate: React.FC = () => {
     const url = 'https://api.topicpost.net/v1/contact';
     const data = {
       name: nameValue,
-      email: emailValue,
       content: messageValue,
     };
 
