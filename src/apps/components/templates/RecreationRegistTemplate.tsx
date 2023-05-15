@@ -77,33 +77,42 @@ export const RecreationRegistTemplate: React.FC = () => {
               id="email"
               className="bg-gray-50"
             >
-              <option value="1">1人</option>
-              <option value="2">2人</option>
-              <option value="3">3人</option>
-              <option value="4">4人</option>
+              <option value="0">選択してください</option>
+              <option value="1">1〜5人</option>
+              <option value="2">5〜10人</option>
+              <option value="3">10〜20人</option>
+              <option value="4">20〜40人</option>
+              <option value="5">人数に関係なし</option>
             </Select>
           </div>
           <div>
             <Label htmlFor="email" required>対象年齢</Label>
-            <Text
+            <Select
               id="email"
-              type="email"
               className="bg-gray-50"
-              required={true}
-              value={emailValue}
-              onChange={handleEmailChange}
-            />
+            >
+              <option value="0">選択してください</option>
+              <option value="1">幼児（6才以下）</option>
+              <option value="2">児童（7〜12才）</option>
+              <option value="3">低学年（7〜9才）</option>
+              <option value="4">高学年（10〜12才）</option>
+              <option value="5">生徒（13〜18歳）</option>
+              <option value="6">年齢に関係なし</option>
+            </Select>
           </div>
           <div>
             <Label htmlFor="email" required>所要時間</Label>
-            <Text
+            <Select
               id="email"
-              type="email"
               className="bg-gray-50"
-              required={true}
-              value={emailValue}
-              onChange={handleEmailChange}
-            />
+            >
+              <option value="0">選択してください</option>
+              <option value="1">5分未満</option>
+              <option value="2">5〜10分</option>
+              <option value="3">10〜20分</option>
+              <option value="4">20〜40分</option>
+              <option value="5">40分以上</option>
+            </Select>
           </div>
         </div>
 
