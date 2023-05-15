@@ -165,7 +165,7 @@ export const RecreationRegistTemplate: React.FC = () => {
                 </h1>
               ),
               p: ({ node, ...props }) => (
-                <p className="my-3" {...props} />
+                <p className="my-1" {...props} />
               ),
               ul: ({ node, ...props }) => (
                 <ul className="m-0 mb-2" {...props} />
