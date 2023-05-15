@@ -170,6 +170,9 @@ export const RecreationRegistTemplate: React.FC = () => {
               ul: ({ node, ...props }) => (
                 <ul className="m-0 mb-2" {...props} />
               ),
+              li: ({ node, ...props }) => (
+                <li className="m-0" {...props} />
+              ),
               code: ({ node, ...props }) => (
                 <code className="bg-gray-200 text-blue-600 px-1 rounded" {...props} />
               )
