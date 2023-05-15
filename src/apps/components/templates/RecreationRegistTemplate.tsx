@@ -144,7 +144,7 @@ export const RecreationRegistTemplate: React.FC = () => {
 
       <div className="p-4 bg-gray-50 rounded-lg">
         <div className="flex text-3xl">プレビュー</div>
-        <hr className="my-2"/>
+        <hr className="my-2" />
         <div className="prose">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
