@@ -139,7 +139,6 @@ export const RecreationRegistTemplate: React.FC = () => {
           </div>
           <SubmitButton className="mr-2">下書きを保存</SubmitButton>
           <SubmitButton className="mr-2">送信</SubmitButton>
-          <SubmitButton>プレビュー</SubmitButton>
         </form>
       </div>
 
