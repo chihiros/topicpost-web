@@ -6,6 +6,7 @@ import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
 import { SubmitButton } from "../../../core/components/atoms/Button";
 import ReactMarkdown from 'react-markdown';
+import 'tailwindcss/tailwind.css';
 import remarkGfm from 'remark-gfm'
 
 export const RecreationRegistTemplate: React.FC = () => {
@@ -156,12 +157,14 @@ export const RecreationRegistTemplate: React.FC = () => {
           </style>
 
           <ReactMarkdown
+            children={messageValue}
             remarkPlugins={[remarkGfm]}
             components={{
               code: ({ node, ...props }) => (
                 <code className="bg-gray-200 text-blue-600 px-1 rounded" {...props} />
               )
             }}
+          />
         </div>
       </div>
     </div>
