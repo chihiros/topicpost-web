@@ -208,7 +208,10 @@ export const RecreationRegistTemplate: React.FC = () => {
               ),
               code: ({ node, ...props }) => (
                 <code className="bg-gray-200 text-blue-600 px-1 rounded" {...props} />
-              )
+              ),
+              pre: ({ node, ...props }) => (
+                <pre className="bg-gray-800 text-gray-200 px-3 rounded" {...props} />
+              ),
             }}
           />
         </div>
