@@ -162,6 +162,9 @@ export const RecreationRegistTemplate: React.FC = () => {
               h1: ({ node, ...props }) => (
                 <h1 className="font-bold mb-2" {...props} />
               ),
+              p: ({ node, ...props }) => (
+                <p className="my-3" {...props} />
+              ),
               code: ({ node, ...props }) => (
                 <code className="bg-gray-200 text-blue-600 px-1 rounded" {...props} />
               )
