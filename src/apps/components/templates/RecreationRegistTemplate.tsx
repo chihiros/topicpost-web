@@ -6,7 +6,6 @@ import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
 import { SubmitButton } from "../../../core/components/atoms/Button";
 import ReactMarkdown from 'react-markdown';
-import 'tailwindcss/tailwind.css';
 import remarkGfm from 'remark-gfm'
 
 export const RecreationRegistTemplate: React.FC = () => {
