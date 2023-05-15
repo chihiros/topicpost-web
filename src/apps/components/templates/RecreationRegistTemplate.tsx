@@ -140,6 +140,18 @@ export const RecreationRegistTemplate: React.FC = () => {
           <SubmitButton>プレビュー</SubmitButton>
         </form>
       </div>
+
+      <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+        <h1>Markdownプレビュー</h1>
+        <hr className="my-1" />
+        <div className="prose">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+          >
+            {messageValue}
+          </ReactMarkdown>
+        </div>
+      </div>
     </div>
   );
 }
