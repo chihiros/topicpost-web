@@ -206,11 +206,20 @@ export const RecreationRegistTemplate: React.FC = () => {
                   {children || ''}
                 </a>
               ),
-              code: ({ node, ...props }) => (
-                <code className="bg-gray-200 text-blue-600 px-1 rounded" {...props} />
-              ),
+              code: ({ node, inline, className, children, ...props }) => {
+                // const match = /language-(\w+)/.exec(className || '')
+                return inline ? (
+                  <code className="bg-gray-200 text-blue-600 px-1 rounded" {...props}>
+                    {children}
+                  </code>
+                ) : (
+                  <pre className="bg-gray-800 text-gray-200 p-0 m-0 rounded" {...props}>
+                    {children}
+                  </pre>
+                )
+              },
               pre: ({ node, ...props }) => (
-                <pre className="bg-gray-800 text-gray-200 px-3 rounded" {...props} />
+                <pre className="bg-gray-800 text-gray-200 px-3 mt-3 rounded" {...props} />
               ),
             }}
           />
