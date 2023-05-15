@@ -48,6 +48,7 @@ export const RecreationRegistTemplate: React.FC = () => {
   };
 
   return (
+    <>
     <div className="p-4 bg-gray-50 rounded-lg">
       <div className="flex mb-5 text-3xl">レクリエーションの投稿</div>
       <form onSubmit={handleSubmit}>
@@ -137,5 +138,6 @@ export const RecreationRegistTemplate: React.FC = () => {
         <SubmitButton>プレビュー</SubmitButton>
       </form>
     </div>
+    </>
   );
 }
