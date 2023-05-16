@@ -8,6 +8,7 @@ import { SubmitButton } from "../../../core/components/atoms/Button";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
+import { Note } from "../../../core/components/atoms/Markdown";
 
 export const RecreationRegistTemplate: React.FC = () => {
   const [nameValue, setTextValue] = useState('');
@@ -222,6 +223,11 @@ export const RecreationRegistTemplate: React.FC = () => {
               },
               pre: ({ node, ...props }) => (
                 <pre className="bg-gray-800 text-gray-200 px-3 mt-3 rounded" {...props} />
+              ),
+              note: ({ node, type, children }) => (
+                <Note type={type}>
+                  {children}
+                </Note>
               ),
             }}
           />
