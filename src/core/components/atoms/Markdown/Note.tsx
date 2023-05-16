@@ -1,22 +1,27 @@
 import React from 'react';
 
-export const Note: React.FC<{ type: string, children: React.ReactNode }> = ({ type, children }) => {
-  let bgColor;
-  let borderColor;
+type NoteProps = {
+  type: 'info' | 'warn' | 'alert';
+  children: React.ReactNode;
+};
 
-  if (type === 'info') {
-    bgColor = 'bg-blue-100';
-    borderColor = 'border-blue-500';
-  } else if (type === 'warn') {
-    bgColor = 'bg-yellow-100';
-    borderColor = 'border-yellow-500';
-  } else if (type === 'alert') {
-    bgColor = 'bg-red-100';
-    borderColor = 'border-red-500';
+export const Note: React.FC<NoteProps> = ({ type, children }) => {
+  let className;
+
+  switch (type) {
+    case 'info':
+      className = 'bg-blue-100 text-blue-700';
+      break;
+    case 'warn':
+      className = 'bg-yellow-100 text-yellow-700';
+      break;
+    case 'alert':
+      className = 'bg-red-100 text-red-700';
+      break;
   }
 
   return (
-    <div className={`p-4 border-l-4 ${borderColor} ${bgColor}`}>
+    <div className={`p-4 rounded ${className}`}>
       {children}
     </div>
   );
