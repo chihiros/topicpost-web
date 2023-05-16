@@ -239,7 +239,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             <div className="border-b-2">
               {/* [1:"5分未満", 2:"5〜10分", 3:"10〜20分", 4:"20〜40分", 5:"40分以上"]   */}
               {/* <div className="text-sm">所要時間：{requiredTime}</div> */}
-              <div className="text-sm pl-2 pb-2"><RiTimerLine className="inline w-4 h-4" />：{
+              <div className="text-sm pl-2 pb-2"><RiTimerLine className="inline w-5 h-5" />：{
                 requiredTime === "1" ? "5分未満" :
                   requiredTime === "2" ? "5〜10分" :
                     requiredTime === "3" ? "10〜20分" :
