@@ -95,8 +95,10 @@ export const RecreationRegistTemplate: React.FC = () => {
             <div>
               <Label htmlFor="email" required>対象人数</Label>
               <Select
-                id="email"
+                id="targetNumber"
                 className="bg-gray-50"
+                value={targetNumber}
+                onChange={handleTargetNumberChange}
               >
                 <option value="0">選択してください</option>
                 <option value="1">1〜5人</option>
@@ -109,8 +111,10 @@ export const RecreationRegistTemplate: React.FC = () => {
             <div>
               <Label htmlFor="email" required>対象年齢</Label>
               <Select
-                id="email"
+                id="targetAge"
                 className="bg-gray-50"
+                value={targetAge}
+                onChange={handleTargetAgeChange}
               >
                 <option value="0">選択してください</option>
                 <option value="1">幼児（6才以下）</option>
@@ -124,8 +128,10 @@ export const RecreationRegistTemplate: React.FC = () => {
             <div>
               <Label htmlFor="email" required>所要時間</Label>
               <Select
-                id="email"
+                id="requiredTime"
                 className="bg-gray-50"
+                value={requiredTime}
+                onChange={handleRequiredTimeChange}
               >
                 <option value="0">選択してください</option>
                 <option value="1">5分未満</option>
