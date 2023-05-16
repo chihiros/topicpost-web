@@ -152,7 +152,7 @@ export const RecreationRegistTemplate: React.FC = () => {
 
       <div className="p-4 bg-gray-50 rounded-lg">
         {(!recTitleValue && !messageValue) && (
-          <div className="flex mb-5 text-3xl">こちらにはプレビューが表示されます</div>
+          <div className="flex mb-5 text-2xl">こちらにはプレビューが表示されます</div>
         )}
         <div className="prose">
           <style>
