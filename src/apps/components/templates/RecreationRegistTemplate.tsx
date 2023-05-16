@@ -187,7 +187,18 @@ export const RecreationRegistTemplate: React.FC = () => {
               + "---\n"}
           </ReactMarkdown>
 
-          
+          {/* YouTube URL */}
+          {youtubeUrlValue && (
+            <div className="my-4">
+              <div
+                className="youtube-container"
+                dangerouslySetInnerHTML={{
+                  __html: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${youtubeUrlValue.split('v=')[1]}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+                }}
+              />
+            </div>
+          )}
+
           {/* Rule */}
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
