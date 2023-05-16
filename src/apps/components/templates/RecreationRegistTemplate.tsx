@@ -183,8 +183,8 @@ export const RecreationRegistTemplate: React.FC = () => {
               ),
             }}
           >
-            {"# "+recTitleValue+"\n"
-            +"---\n"}
+            {"# " + recTitleValue + "\n"
+              + "---\n"}
           </ReactMarkdown>
 
           
