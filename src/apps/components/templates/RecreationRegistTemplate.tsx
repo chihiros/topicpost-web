@@ -145,8 +145,9 @@ export const RecreationRegistTemplate: React.FC = () => {
       </div>
 
       <div className="p-4 bg-gray-50 rounded-lg">
-        <div className="flex text-3xl">プレビュー</div>
-        <hr className="my-2" />
+        {(!recTitleValue && !messageValue) && (
+          <div className="flex mb-5 text-3xl">こちらにはプレビューが表示されます</div>
+        )}
         <div className="prose">
           <style>
             {`
