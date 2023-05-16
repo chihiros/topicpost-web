@@ -187,6 +187,19 @@ export const RecreationRegistTemplate: React.FC = () => {
               + "---\n"}
           </ReactMarkdown>
 
+          {/* 対象人数・対象年齢・所要時間を表示する */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
+            <div className="border-b-2">
+              <div className="text-sm">対象人数：２０分</div>
+            </div>
+            <div className="border-b-2">
+              <div className="text-sm">対象年齢：２０分</div>
+            </div>
+            <div className="border-b-2">
+              <div className="text-sm">所要時間：２０分</div>
+            </div>
+          </div>
+
           {/* YouTube URL */}
           {youtubeUrlValue && (
             <div className="my-4">
