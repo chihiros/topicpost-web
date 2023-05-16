@@ -162,7 +162,9 @@ export const RecreationRegistTemplate: React.FC = () => {
           </style>
 
           <ReactMarkdown
-            children={messageValue}
+            children={messageValue.replace(/:::note (info|warn|alert)\n([\s\S]*?)\n:::/g, (_, type, content) =>
+              `<div class="note ${type}">${content}</div>`
+            )}
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
             components={{
@@ -224,11 +226,17 @@ export const RecreationRegistTemplate: React.FC = () => {
               pre: ({ node, ...props }) => (
                 <pre className="bg-gray-800 text-gray-200 px-3 mt-3 rounded" {...props} />
               ),
-              note: ({ node, type, children }) => (
-                <Note type={type}>
-                  {children}
-                </Note>
-              ),
+              div: ({ node, children }) => {
+                const className = node.properties?.className;
+                if (Array.isArray(className)) {
+                  const stringClassName = className as string[];
+                  if (stringClassName.includes('note')) {
+                    const type = stringClassName.find((cls: string) => ['info', 'warn', 'alert'].includes(cls));
+                    return <Note type={type as 'info' | 'warn' | 'alert'}>{children}</Note>
+                  }
+                }
+                return <div>{children}</div>;
+              }
             }}
           />
         </div>
