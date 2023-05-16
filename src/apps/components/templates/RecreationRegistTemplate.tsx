@@ -213,13 +213,39 @@ export const RecreationRegistTemplate: React.FC = () => {
           {/* 対象人数・対象年齢・所要時間を表示する */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
             <div className="border-b-2">
-              <div className="text-sm">対象人数：２０分</div>
+              {/* [1:"1〜5人", 2:"5〜10人", 3:"10〜20人", 4:"20〜40人", 5:"人数に関係なし"] */}
+              {/* <div className="text-sm">対象人数：{targetNumber}</div> */}
+              <div className="text-sm pl-2 pb-2"><BsFillPeopleFill className="inline w-5 h-5" />：{
+                targetNumber === "1" ? "1〜5人" :
+                  targetNumber === "2" ? "5〜10人" :
+                    targetNumber === "3" ? "10〜20人" :
+                      targetNumber === "4" ? "20〜40人" :
+                        targetNumber === "5" ? "人数に関係なし" : ""
+              }</div>
             </div>
             <div className="border-b-2">
-              <div className="text-sm">対象年齢：２０分</div>
+              {/* [1:"幼児（6才以下）", 2:"児童（7〜12才）", 3:"低学年（7〜9才）", 4:"高学年（10〜12才）", 5:"生徒（13〜18歳）", 6:"年齢に関係なし"] */}
+              {/* <div className="text-sm">対象年齢：{targetAge}</div> */}
+              <div className="text-sm pl-2 pb-2"><BsFillPeopleFill className="inline w-5 h-5" />：{
+                targetAge === "1" ? "幼児（6才以下）" :
+                  targetAge === "2" ? "児童（7〜12才）" :
+                    targetAge === "3" ? "低学年（7〜9才）" :
+                      targetAge === "4" ? "高学年（10〜12才）" :
+                        targetAge === "5" ? "生徒（13〜18歳）" :
+                          targetAge === "6" ? "年齢に関係なし" : ""
+              }</div>
+
             </div>
             <div className="border-b-2">
-              <div className="text-sm">所要時間：２０分</div>
+              {/* [1:"5分未満", 2:"5〜10分", 3:"10〜20分", 4:"20〜40分", 5:"40分以上"]   */}
+              {/* <div className="text-sm">所要時間：{requiredTime}</div> */}
+              <div className="text-sm pl-2 pb-2"><RiTimerLine className="inline w-4 h-4" />：{
+                requiredTime === "1" ? "5分未満" :
+                  requiredTime === "2" ? "5〜10分" :
+                    requiredTime === "3" ? "10〜20分" :
+                      requiredTime === "4" ? "20〜40分" :
+                        requiredTime === "5" ? "40分以上" : ""
+              }</div>
             </div>
           </div>
 
