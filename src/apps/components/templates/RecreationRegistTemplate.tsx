@@ -11,16 +11,17 @@ import rehypeRaw from 'rehype-raw'
 import { Note } from "../../../core/components/atoms/Markdown";
 
 export const RecreationRegistTemplate: React.FC = () => {
-  const [nameValue, setTextValue] = useState('');
+  const [youtubeUrlValue, setYoutubeUrlValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
 
   const clearForm = () => {
-    setTextValue('');
+    setYoutubeUrlValue('');
     setMessageValue('');
   }
 
-  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTextValue(e.target.value);
+
+  const handleYoutubeUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setYoutubeUrlValue(e.target.value);
   };
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -122,8 +123,8 @@ export const RecreationRegistTemplate: React.FC = () => {
               className="bg-gray-50"
               placeholder="動画のURLを貼ってください"
               required={true}
-              value={nameValue}
-              onChange={handleTextChange}
+              value={youtubeUrlValue}
+              onChange={handleYoutubeUrlChange}
             />
           </div>
 
