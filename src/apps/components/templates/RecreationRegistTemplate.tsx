@@ -169,9 +169,6 @@ export const RecreationRegistTemplate: React.FC = () => {
           </style>
 
           <ReactMarkdown
-            children={messageValue.replace(/:::note (info|warn|alert)\n([\s\S]*?)\n:::/g, (_, type, content) =>
-              `<div class="note ${type}">${content}</div>`
-            )}
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
             components={{
@@ -248,7 +245,11 @@ export const RecreationRegistTemplate: React.FC = () => {
                 <hr className="my-2" {...props} />
               ),
             }}
-          />
+          >
+            {"# "+recTitleValue+"\n"+messageValue.replace(/:::note (info|warn|alert)\n([\s\S]*?)\n:::/g, (_, type, content) =>
+              `<div class="note ${type}">${content}</div>`
+            )}
+          </ReactMarkdown>
         </div>
       </div>
     </div>
