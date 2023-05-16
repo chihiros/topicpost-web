@@ -7,6 +7,7 @@ import { Text, Textarea } from "../../../core/components/atoms/Input";
 import { SubmitButton } from "../../../core/components/atoms/Button";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 
 export const RecreationRegistTemplate: React.FC = () => {
   const [nameValue, setTextValue] = useState('');
@@ -162,6 +163,7 @@ export const RecreationRegistTemplate: React.FC = () => {
           <ReactMarkdown
             children={messageValue}
             remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
             components={{
               h1: ({ node, children, ...props }) => (
                 <h1 className="font-bold mb-2" {...props}>
