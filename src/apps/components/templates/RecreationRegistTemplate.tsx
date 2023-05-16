@@ -9,11 +9,16 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import { Note } from "../../../core/components/atoms/Markdown";
+import { RiTimerLine } from "react-icons/ri";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 export const RecreationRegistTemplate: React.FC = () => {
   const [recTitleValue, setRecTitleValue] = useState('');
   const [youtubeUrlValue, setYoutubeUrlValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
+  const [targetNumber, setTargetNumber] = useState('');
+  const [targetAge, setTargetAge] = useState('');
+  const [requiredTime, setRequiredTime] = useState('');
 
   const clearForm = () => {
     setRecTitleValue('');
@@ -31,6 +36,18 @@ export const RecreationRegistTemplate: React.FC = () => {
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessageValue(e.target.value);
+  };
+
+  const handleTargetNumberChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTargetNumber(e.target.value);
+  };
+
+  const handleTargetAgeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setTargetAge(e.target.value);
+  };
+
+  const handleRequiredTimeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setRequiredTime(e.target.value);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
