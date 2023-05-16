@@ -9,13 +9,13 @@ type NoteProps = {
 export const Note: React.FC<NoteProps> = ({ type, children, className }) => {
   switch (type) {
     case 'info':
-      className += ' bg-blue-100 text-blue-700';
+      className += ' bg-[#e3f7df] text-green-700';
       break;
     case 'warn':
-      className += ' bg-yellow-100 text-yellow-700';
+      className += ' bg-[#fdf9e2] text-yellow-700';
       break;
     case 'alert':
-      className += ' bg-red-100 text-red-700';
+      className += ' bg-[#feebee] text-red-700';
       break;
   }
 
