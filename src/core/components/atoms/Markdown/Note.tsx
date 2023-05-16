@@ -1,4 +1,5 @@
 import React from 'react';
+// import { AiFillWarning } from 'react-icons/ai';
 
 type NoteProps = {
   type: 'info' | 'warn' | 'alert';
@@ -13,6 +14,7 @@ export const Note: React.FC<NoteProps> = ({ type, children, className }) => {
       break;
     case 'warn':
       className += ' bg-[#fdf9e2] text-yellow-700';
+      // children = <><AiFillWarning/>{children}</>;
       break;
     case 'alert':
       className += ' bg-[#feebee] text-red-700';
