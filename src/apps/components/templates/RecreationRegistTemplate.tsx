@@ -11,14 +11,19 @@ import rehypeRaw from 'rehype-raw'
 import { Note } from "../../../core/components/atoms/Markdown";
 
 export const RecreationRegistTemplate: React.FC = () => {
+  const [recTitleValue, setRecTitleValue] = useState('');
   const [youtubeUrlValue, setYoutubeUrlValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
 
   const clearForm = () => {
+    setRecTitleValue('');
     setYoutubeUrlValue('');
     setMessageValue('');
   }
 
+  const handleRecTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRecTitleValue(e.target.value);
+  };
 
   const handleYoutubeUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setYoutubeUrlValue(e.target.value);
@@ -33,7 +38,7 @@ export const RecreationRegistTemplate: React.FC = () => {
 
     const url = 'https://api.topicpost.net/v1/contact';
     const data = {
-      name: nameValue,
+      name: recTitleValue,
       content: messageValue,
     };
 
@@ -64,8 +69,8 @@ export const RecreationRegistTemplate: React.FC = () => {
               type="text"
               className="bg-gray-50"
               required={true}
-              value={nameValue}
-              onChange={handleTextChange}
+              value={recTitleValue}
+              onChange={handleRecTitleChange}
             />
           </div>
 
