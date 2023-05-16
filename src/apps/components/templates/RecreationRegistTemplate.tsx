@@ -236,7 +236,10 @@ export const RecreationRegistTemplate: React.FC = () => {
                   }
                 }
                 return <div>{children}</div>;
-              }
+              },
+              hr: ({ node, ...props }) => (
+                <hr className="my-2" {...props} />
+              ),
             }}
           />
         </div>
