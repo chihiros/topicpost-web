@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { NewCard } from "../atoms/Card";
+import { AiOutlineSearch, AiOutlinePlus } from "react-icons/ai";
+import { BsFilter } from "react-icons/bs";
 
 const RecreationForm: React.FC = () => {
-  const [isActionsDropdownOpen, setActionsDropdownOpen] = useState(false);
   const [isFilterDropdownOpen, setFilterDropdownOpen] = useState(false);
 
   const actionsDropdownRef = useRef<HTMLDivElement>(null);
@@ -10,9 +12,6 @@ const RecreationForm: React.FC = () => {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (actionsDropdownRef.current && !actionsDropdownRef.current.contains(event.target as Node)) {
-        setActionsDropdownOpen(false);
-      }
       if (filterDropdownRef.current && !filterDropdownRef.current.contains(event.target as Node)) {
         setFilterDropdownOpen(false);
       }
@@ -22,7 +21,7 @@ const RecreationForm: React.FC = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [actionsDropdownRef, filterDropdownRef]);
 
   function smoothScroll(element: Element, distance: number, duration: number) {
     const start = element.scrollLeft
@@ -47,29 +46,35 @@ const RecreationForm: React.FC = () => {
     requestAnimationFrame(animate)
   }
 
-  const RecreationList = [
-    {
-      id: 1,
-      title: 'ジョンブランのおじさん',
-      content: 'ジョンブランのおじさんの内容',
-      image: 'https://picsum.photos/200/300',
-      url: 'https://www.google.com/',
-    },
-    {
-      id: 2,
-      title: 'ジョンブランのおじさん',
-      content: 'ジョンブランのおじさんの内容',
-      image: 'https://picsum.photos/200/300',
-      url: 'https://www.google.com/',
-    },
-    {
-      id: 3,
-      title: 'ジョンブランのおじさん',
-      content: 'ジョンブランのおじさんの内容',
-      image: 'https://picsum.photos/200/300',
-      url: 'https://www.google.com/',
-    }
-  ];
+  // const RecreationList = [
+  //   {
+  //     id: 1,
+  //     title: 'ジョンブランのおじさん',
+  //     genre: 'アイスブレイク',
+  //     content: 'ジョンブランのおじさんの内容',
+  //     image: 'https://picsum.photos/200/300',
+  //     url: 'https://www.google.com/',
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'ジョンブランのおじさん',
+  //     genre: 'アイスブレイク',
+  //     content: 'ジョンブランのおじさんの内容',
+  //     image: 'https://picsum.photos/200/300',
+  //     url: 'https://www.google.com/',
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'ジョンブランのおじさん',
+  //     genre: 'アイスブレイク',
+  //     content: 'ジョンブランのおじさんの内容',
+  //     image: 'https://picsum.photos/200/300',
+  //     url: 'https://www.google.com/',
+  //   }
+  // ];
+
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const history = useHistory();
 
   return (
     <>
@@ -119,112 +124,36 @@ const RecreationForm: React.FC = () => {
 
       <div className='mt-6 mb-2 ml-2 text-2xl flex justify-between'>
         一覧
-        <button type='button' className='bg-blue-500 hover:bg-blue-700 text-white text-base font-bold py-2 px-4 rounded'>
-          レクを投稿する
-        </button>
       </div>
 
-      <div className="relative overflow-x-auto rounded-lg">
-        <table className="w-full text-sm text-left text-gray-500">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
-              <th scope="col" className="px-6 py-3">
-                レクの名前
-              </th>
-              <th scope="col" className="px-6 py-3">
-                ジャンル
-              </th>
-              <th scope="col" className="px-6 py-3">
-                投稿者
-              </th>
-              <th scope="col" className="px-6 py-3">
-                投稿日
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {RecreationList.map((recreation, index) => (
-              <tr key={index} className="bg-white border-b">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                  {recreation.title}
-                </th>
-                <td className="px-6 py-4">
-                  アイスブレイク
-                </td>
-                <td className="px-6 py-4">
-                  <a href="https://example.com" target='_blank' rel="noreferrer">すずりかわ@熊本</a>
-                </td>
-                <td className="px-6 py-4">
-                  2020/12/12
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <section className="mt-8">
-        <div className="max-w">
-          <div className="bg-white relative sm:rounded-lg overflow-hidden">
-            <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-              <div className="w-full md:w-1/2">
-                <form className="flex items-center">
-                  <label htmlFor="simple-search" className="sr-only">Search</label>
-                  <div className="relative w-full">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg aria-hidden="true" className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Search" required />
+      <div className="max-w">
+        <div className="bg-white relative rounded-lg overflow-hidden">
+          {/* Table 検索タブ */}
+          <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0 sm:space-x-4 p-4">
+            {/* Search Input */}
+            <div className="w-full sm:w-1/2">
+              <form className="flex items-center">
+                <label htmlFor="simple-search" className="sr-only">Search</label>
+                <div className="relative w-full mr-2">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <AiOutlineSearch
+                      className="w-5 h-5 text-gray-500"
+                    />
                   </div>
-                </form>
-              </div>
-              <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                <button type="button" className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200">
-                  <svg className="h-3.5 w-3.5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path clipRule="evenodd" fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
-                  </svg>
-                  Add product
-                </button>
-
-                <div className="relative inline-block text-left">
-                  <button
-                    id="actionsDropdownButton"
-                    className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
-                    type="button"
-                    onClick={() => setActionsDropdownOpen(!isActionsDropdownOpen)}
-                  >
-                    <svg className="-ml-1 mr-1.5 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <path clipRule="evenodd" fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                    </svg>
-                    Actions
-                  </button>
-                  <div
-                    ref={actionsDropdownRef}
-                    id="actionsDropdown"
-                    className={`${isActionsDropdownOpen ? '' : 'hidden'} absolute z-50 w-44 top-full bg-white rounded divide-y divide-gray-100 shadow`}
-                  >
-                    <ul className="py-1 text-sm text-gray-700" aria-labelledby="actionsDropdownButton">
-                      <li>
-                        <a href="/" className="block py-2 px-4 hover:bg-gray-100">Mass Edit</a>
-                      </li>
-                    </ul>
-                    <div className="py-1">
-                      <a href="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Delete all</a>
-                    </div>
-                  </div>
+                  <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Search" required />
                 </div>
+
+                {/* Filterボタン */}
                 <div className="relative inline-block text-left">
                   <button
                     id="filterDropdownButton"
-                    className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+                    className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
                     type="button"
                     onClick={() => setFilterDropdownOpen(!isFilterDropdownOpen)}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="h-4 w-4 mr-2 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" />
-                    </svg>
+                    <BsFilter
+                      className="w-5 h-5 mr-2"
+                    />
                     Filter
                     <svg className="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                       <path clipRule="evenodd" fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
@@ -235,97 +164,123 @@ const RecreationForm: React.FC = () => {
                     id="filterDropdown"
                     className={`${isFilterDropdownOpen ? '' : 'hidden'} absolute z-50 w-48 -right-2 p-3 top-full bg-white rounded-lg shadow`}
                   >
-                    <h6 className="mb-3 text-sm font-medium text-gray-900">Choose brand</h6>
                     <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                       <li className="flex items-center">
-                        <input id="apple" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="apple" className="ml-2 text-sm font-medium text-gray-900">Apple (56)</label>
+                        <label className="text-sm font-medium text-gray-900">選択をすべて外す</label>
                       </li>
                       <li className="flex items-center">
-                        <input id="fitbit" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="fitbit" className="ml-2 text-sm font-medium text-gray-900">Microsoft (16)</label>
+                        <input id="RecIceBreak" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecIceBreak" className="ml-2 text-sm font-medium text-gray-900">アイスブレイク (0)</label>
                       </li>
                       <li className="flex items-center">
-                        <input id="razor" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="razor" className="ml-2 text-sm font-medium text-gray-900">Razor (49)</label>
+                        <input id="RecFinger" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecFinger" className="ml-2 text-sm font-medium text-gray-900">手遊び レク (16)</label>
                       </li>
                       <li className="flex items-center">
-                        <input id="nikon" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="nikon" className="ml-2 text-sm font-medium text-gray-900">Nikon (12)</label>
+                        <input id="RecSmallGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecSmallGroup" className="ml-2 text-sm font-medium text-gray-900">少人数 レク (49)</label>
                       </li>
                       <li className="flex items-center">
-                        <input id="benq" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                        <label htmlFor="benq" className="ml-2 text-sm font-medium text-gray-900">BenQ (74)</label>
+                        <input id="RecGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecGroup" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
+                      </li>
+                      <li className="flex items-center">
+                        <input id="RecDan" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecDan" className="ml-2 text-sm font-medium text-gray-900">レクダン (74)</label>
+                      </li>
+                      <li className="flex items-center">
+                        <input id="RecOther" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                        <label htmlFor="RecOther" className="ml-2 text-sm font-medium text-gray-900">その他のレク (74)</label>
                       </li>
                     </ul>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left text-gray-500">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-                  <tr>
-                    <th scope="col" className="px-4 py-3">レク名</th>
-                    <th scope="col" className="px-4 py-3">ジャンル</th>
-                    <th scope="col" className="px-4 py-3">投稿者</th>
-                    <th scope="col" className="px-4 py-3">投稿日</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b">
-                    <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">Monitor BenQ EX2710Q</th>
-                    <td className="px-4 py-3">TV/Monitor</td>
-                    <td className="px-4 py-3">BenQ</td>
-                    <td className="px-4 py-3">354</td>
-                  </tr>
-                </tbody>
-              </table>
+
+
+            <div className="w-full sm:w-auto flex flex-col sm:flex-row space-y-2 sm:space-y-0 items-stretch sm:items-center justify-end sm:space-x-3 flex-shrink-0">
+              {/* レクを投稿する ボタン */}
+              <button
+                type="button"
+                onClick={() => history.push('/recreation/register')}
+                className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium bg-blue-500 hover:bg-blue-700 text-white focus:outline-none rounded-lg hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
+              >
+                <AiOutlinePlus
+                  className="w-4 h-4 mr-2"
+                />
+                レクを投稿する
+              </button>
             </div>
-            <nav className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
-              <span className="text-sm font-normal text-gray-500">
-                Showing
-                <span className="font-semibold text-gray-900">1-10</span>
-                of
-                <span className="font-semibold text-gray-900">1000</span>
-              </span>
-              <ul className="inline-flex items-stretch -space-x-px">
-                <li>
-                  <a href="/" className="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
-                    <span className="sr-only">Previous</span>
-                    <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a href="/" className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
-                </li>
-                <li>
-                  <a href="/" className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-                </li>
-                <li>
-                  <a href="/" aria-current="page" className="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700">3</a>
-                </li>
-                <li>
-                  <a href="/" className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">...</a>
-                </li>
-                <li>
-                  <a href="/" className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">100</a>
-                </li>
-                <li>
-                  <a href="/" className="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
-                    <span className="sr-only">Next</span>
-                    <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+
+
+
           </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm text-left text-gray-500">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                  <th scope="col" className="px-4 py-3">レク名</th>
+                  <th scope="col" className="px-4 py-3">ジャンル</th>
+                  <th scope="col" className="px-4 py-3">投稿者</th>
+                  <th scope="col" className="px-4 py-3 hidden sm:block">投稿日</th>
+                </tr>
+              </thead>
+              <tbody>
+                {numbers.map((number) => (
+                  <tr className="border-b">
+                    <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">ジョンプラウンのおじさん</th>
+                    <td className="px-4 py-3">アイスブレイク</td>
+                    <td className="px-4 py-3">すずりかわ@熊本</td>
+                    <td className="px-4 py-3 hidden sm:block">2023/05/14</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <nav className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0 p-4" aria-label="Table navigation">
+            <span className="text-sm font-normal text-gray-500">
+              Showing
+              <span className="font-semibold text-gray-900">1-10</span>
+              of
+              <span className="font-semibold text-gray-900">1000</span>
+            </span>
+            <ul className="inline-flex items-stretch -space-x-px">
+              <li>
+                <a href="/" className="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                  <span className="sr-only">Previous</span>
+                  <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="/" className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
+              </li>
+              <li>
+                <a href="/" className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
+              </li>
+              <li>
+                <a href="/" aria-current="page" className="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700">3</a>
+              </li>
+              <li>
+                <a href="/" className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">...</a>
+              </li>
+              <li>
+                <a href="/" className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">100</a>
+              </li>
+              <li>
+                <a href="/" className="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                  <span className="sr-only">Next</span>
+                  <svg className="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-      </section>
+      </div>
     </>
   );
 }

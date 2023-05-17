@@ -1,5 +1,6 @@
 import TopPage from './apps/components/templates/TopTemplate';
 import RecreationPage from './apps/components/templates/RecreationTemplate';
+import { RecreationRegistPage } from './apps/components/pages/RecreationRegistPage';
 import DiaryPage from './apps/components/templates/DiaryTemplate';
 import ContactPage from './apps/components/templates/ContactTemplate';
 import SignUpPage from './apps/components/templates/SignUpTemplate';
@@ -11,6 +12,7 @@ import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcru
 
 type RouteType = {
   path: string;
+  exact?: boolean;
   template: React.FC<PagesProps>;
   breadcrumb?: BreadcrumbProps[];
 };
@@ -18,14 +20,23 @@ type RouteType = {
 const routes: RouteType[] = [
   {
     path: "/",
+    exact: true,
     template: TopPage
   }, {
     path: "/recreation",
+    exact: true,
     template: RecreationPage,
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
     ]
   }, {
+    path: "/recreation/register",
+    template: RecreationRegistPage,
+    breadcrumb: [
+      { href: '/recreation', context: 'レクリエーション' },
+      { href: '/recreation/register', context: '投稿' },
+    ]
+  },{
     path: "/diary",
     template: DiaryPage,
     breadcrumb: [
@@ -66,7 +77,7 @@ const Routes: React.FC = () => {
           return (
             <Route
               key={index}
-              exact={index === 0}
+              exact={item.exact}
               path={item.path}
               render={() => <Pages
                 breadcrumb={item.breadcrumb}

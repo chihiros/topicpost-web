@@ -3,8 +3,12 @@
     "editor.tabSize": 2,
     "editor.detectIndentation": true,
     "cSpell.ignoreWords": [
+        "Regist",
         "TOPICPOST",
+        "benq",
         "chihiros",
+        "fitbit",
+        "rehype",
         "sess",
         "signup",
         "supabase",
