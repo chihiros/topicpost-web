@@ -19,6 +19,7 @@ export const RecreationRegistTemplate: React.FC = () => {
   const [messageValue, setMessageValue] = useState('');
   const [targetNumber, setTargetNumber] = useState('');
   const [requiredTime, setRequiredTime] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
 
   const clearForm = () => {
     setRecTitleValue('');
@@ -74,6 +75,33 @@ export const RecreationRegistTemplate: React.FC = () => {
     <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
       <div className="p-4 bg-gray-50 rounded-lg">
         <div className="flex mb-5 text-3xl">レクリエーションの投稿</div>
+
+        <div className="mb-6">
+          <style>
+            {`
+              #button {
+                  user-select: none;
+              }
+            `}
+          </style>
+
+          <input
+            type="checkbox"
+            id="check1"
+            hidden
+            onChange={() => setIsChecked(!isChecked)} />
+          <label
+            htmlFor="check1"
+            id="button"
+            className={
+              `p-1 rounded-lg text-xs border border-gray-500
+              ${isChecked ?
+                'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
+              }`}
+          >
+            アイスブレイク</label>
+        </div>
+
         <form onSubmit={handleSubmit}>
           <div className="mb-6">
             <Label htmlFor="name" required>レク名前</Label>
