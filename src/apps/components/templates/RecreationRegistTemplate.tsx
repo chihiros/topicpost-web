@@ -92,6 +92,7 @@ export const RecreationRegistTemplate: React.FC = () => {
           </style>
 
           {/* `アイスブレイク` `手遊び レク` `少人数 レク` `グループ レク` `静かにする レク` `レクダン` `その他のレク`  */}
+          <Label required>どんな場面で使えるレクですか？（複数選択可）</Label>
           <div className="mr-1 mb-1 inline-block">
             <input
               type="checkbox"
