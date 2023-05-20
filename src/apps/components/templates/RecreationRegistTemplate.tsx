@@ -211,7 +211,7 @@ export const RecreationRegistTemplate: React.FC = () => {
           </ReactMarkdown>
 
           {/* 対象人数・対象年齢・所要時間を表示する */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 mb-4">
             <div className="border-b-2">
               {/* [1:"1〜5人", 2:"5〜10人", 3:"10〜20人", 4:"20〜40人", 5:"人数に関係なし"] */}
               {/* <div className="text-sm">対象人数：{targetNumber}</div> */}
@@ -251,7 +251,7 @@ export const RecreationRegistTemplate: React.FC = () => {
 
           {/* YouTube URL */}
           {youtubeUrlValue && (
-            <div className="my-4">
+            <div className="mb-4">
               <div
                 className="youtube-container"
                 dangerouslySetInnerHTML={{
