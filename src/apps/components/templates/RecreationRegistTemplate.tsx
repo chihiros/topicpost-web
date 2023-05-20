@@ -85,7 +85,58 @@ export const RecreationRegistTemplate: React.FC = () => {
             `}
           </style>
 
-          <div>
+          <div className="mr-1 inline">
+            <input
+              type="checkbox"
+              id="check1"
+              hidden
+              onChange={() => setIsChecked(!isChecked)} />
+            <label
+              htmlFor="check1"
+              id="button"
+              className={
+                `p-1 rounded-lg text-xs border border-gray-500
+              ${isChecked ?
+                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
+                }`}
+            >
+              アイスブレイク</label>
+          </div>
+          <div className="mr-1 inline">
+            <input
+              type="checkbox"
+              id="check1"
+              hidden
+              onChange={() => setIsChecked(!isChecked)} />
+            <label
+              htmlFor="check1"
+              id="button"
+              className={
+                `p-1 rounded-lg text-xs border border-gray-500
+              ${isChecked ?
+                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
+                }`}
+            >
+              アイスブレイク</label>
+          </div>
+          <div className="mr-1 inline">
+            <input
+              type="checkbox"
+              id="check1"
+              hidden
+              onChange={() => setIsChecked(!isChecked)} />
+            <label
+              htmlFor="check1"
+              id="button"
+              className={
+                `p-1 rounded-lg text-xs border border-gray-500
+              ${isChecked ?
+                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
+                }`}
+            >
+              アイスブレイク</label>
+          </div>
+          <div className="mr-1 inline">
             <input
               type="checkbox"
               id="check1"
