@@ -76,7 +76,7 @@ export const RecreationRegistTemplate: React.FC = () => {
       <div className="p-4 bg-gray-50 rounded-lg">
         <div className="flex mb-5 text-3xl">レクリエーションの投稿</div>
 
-        <div className="mb-6">
+        <div className="mb-4">
           <style>
             {`
               #button {
