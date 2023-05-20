@@ -86,7 +86,7 @@ export const RecreationRegistTemplate: React.FC = () => {
           </style>
 
           {/* `アイスブレイク` `手遊び レク` `少人数 レク` `グループ レク` `静かにする レク` `レクダン` `その他のレク`  */}
-          <div className="mr-1 inline">
+          <div className="mr-1 inline-block">
             <input
               type="checkbox"
               id="check1"
@@ -103,7 +103,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             >
               アイスブレイク</label>
           </div>
-          <div className="mr-1 inline">
+          <div className="mr-1 inline-block">
             <input
               type="checkbox"
               id="check1"
@@ -120,7 +120,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             >
               手遊びレク</label>
           </div>
-          <div className="mr-1 inline">
+          <div className="mr-1 inline-block">
             <input
               type="checkbox"
               id="check1"
@@ -137,7 +137,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             >
               少人数レク</label>
           </div>
-          <div className="mr-1 inline">
+          <div className="mr-1 inline-block">
             <input
               type="checkbox"
               id="check1"
@@ -154,7 +154,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             >
               グループレク</label>
           </div>
-          <div className="mr-1 inline">
+          <div className="mr-1 inline-block">
             <input
               type="checkbox"
               id="check1"
@@ -171,7 +171,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             >
               静かにするレク</label>
           </div>
-          <div className="mr-1 inline">
+          <div className="mr-1 inline-block">
             <input
               type="checkbox"
               id="check1"
@@ -188,7 +188,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             >
               レクダン</label>
           </div>
-          <div className="mr-1 inline">
+          <div className="mr-1 inline-block">
             <input
               type="checkbox"
               id="check1"
