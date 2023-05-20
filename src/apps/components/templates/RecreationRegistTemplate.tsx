@@ -4,7 +4,7 @@ import Toast from "../../../utils/Toast";
 import Label from "../../../core/components/atoms/Label";
 import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
-import { SubmitButton } from "../../../core/components/atoms/Button";
+import { SuccessButton, SubmitButton } from "../../../core/components/atoms/Button";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
@@ -147,7 +147,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             />
             <div className="text-slate-400 text-right text-sm my-1">自動保存：2023/05/16 0:22.09</div>
           </div>
-          <SubmitButton className="mr-2">下書きを保存</SubmitButton>
+          <SuccessButton className="mr-2">下書きを保存</SuccessButton>
           <SubmitButton className="mr-2">投稿</SubmitButton>
         </form>
       </div>
