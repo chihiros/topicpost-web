@@ -18,7 +18,6 @@ export const RecreationRegistTemplate: React.FC = () => {
   const [youtubeUrlValue, setYoutubeUrlValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
   const [targetNumber, setTargetNumber] = useState('');
-  const [targetAge, setTargetAge] = useState('');
   const [requiredTime, setRequiredTime] = useState('');
 
   const clearForm = () => {
@@ -41,10 +40,6 @@ export const RecreationRegistTemplate: React.FC = () => {
 
   const handleTargetNumberChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTargetNumber(e.target.value);
-  };
-
-  const handleTargetAgeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTargetAge(e.target.value);
   };
 
   const handleRequiredTimeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -92,7 +87,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             />
           </div>
 
-          <div className="mb-6 grid grid-cols-3 gap-3">
+          <div className="mb-6 grid grid-cols-2 gap-3">
             <div>
               <Label htmlFor="email" required>対象人数</Label>
               <Select
@@ -107,23 +102,6 @@ export const RecreationRegistTemplate: React.FC = () => {
                 <option value="3">10〜20人</option>
                 <option value="4">20〜40人</option>
                 <option value="5">人数に関係なし</option>
-              </Select>
-            </div>
-            <div>
-              <Label htmlFor="email" required>対象年齢</Label>
-              <Select
-                id="targetAge"
-                className="bg-gray-50"
-                value={targetAge}
-                onChange={handleTargetAgeChange}
-              >
-                <option value="0">選択してください</option>
-                <option value="1">幼児（6才以下）</option>
-                <option value="2">児童（7〜12才）</option>
-                <option value="3">低学年（7〜9才）</option>
-                <option value="4">高学年（10〜12才）</option>
-                <option value="5">生徒（13〜18歳）</option>
-                <option value="6">年齢に関係なし</option>
               </Select>
             </div>
             <div>
@@ -212,7 +190,7 @@ export const RecreationRegistTemplate: React.FC = () => {
           </ReactMarkdown>
 
           {/* 対象人数・対象年齢・所要時間を表示する */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-4">
             <div className="border-b-2">
               {/* [1:"1〜5人", 2:"5〜10人", 3:"10〜20人", 4:"20〜40人", 5:"人数に関係なし"] */}
               {/* <div className="text-sm">対象人数：{targetNumber}</div> */}
@@ -223,19 +201,6 @@ export const RecreationRegistTemplate: React.FC = () => {
                       targetNumber === "4" ? "20〜40人" :
                         targetNumber === "5" ? "人数に関係なし" : ""
               }</div>
-            </div>
-            <div className="border-b-2">
-              {/* [1:"幼児（6才以下）", 2:"児童（7〜12才）", 3:"低学年（7〜9才）", 4:"高学年（10〜12才）", 5:"生徒（13〜18歳）", 6:"年齢に関係なし"] */}
-              {/* <div className="text-sm">対象年齢：{targetAge}</div> */}
-              <div className="text-sm pl-2 pb-2"><BsFillPeopleFill className="inline w-5 h-5" />：{
-                targetAge === "1" ? "幼児（6才以下）" :
-                  targetAge === "2" ? "児童（7〜12才）" :
-                    targetAge === "3" ? "低学年（7〜9才）" :
-                      targetAge === "4" ? "高学年（10〜12才）" :
-                        targetAge === "5" ? "生徒（13〜18歳）" :
-                          targetAge === "6" ? "年齢に関係なし" : ""
-              }</div>
-
             </div>
             <div className="border-b-2">
               {/* [1:"5分未満", 2:"5〜10分", 3:"10〜20分", 4:"20〜40分", 5:"40分以上"]   */}
