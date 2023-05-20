@@ -11,6 +11,7 @@ import rehypeRaw from 'rehype-raw'
 import { Note } from "../../../core/components/atoms/Markdown";
 import { RiTimerLine } from "react-icons/ri";
 import { BsFillPeopleFill } from "react-icons/bs";
+import getYouTubeID from "get-youtube-id";
 
 export const RecreationRegistTemplate: React.FC = () => {
   const [recTitleValue, setRecTitleValue] = useState('');
@@ -255,7 +256,7 @@ export const RecreationRegistTemplate: React.FC = () => {
               <div
                 className="youtube-container"
                 dangerouslySetInnerHTML={{
-                  __html: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${youtubeUrlValue.split('v=')[1]}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+                  __html: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${getYouTubeID(youtubeUrlValue)}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
                 }}
               />
             </div>
