@@ -19,7 +19,13 @@ export const RecreationRegistTemplate: React.FC = () => {
   const [messageValue, setMessageValue] = useState('');
   const [targetNumber, setTargetNumber] = useState('');
   const [requiredTime, setRequiredTime] = useState('');
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+  const [isChecked4, setIsChecked4] = useState(false);
+  const [isChecked5, setIsChecked5] = useState(false);
+  const [isChecked6, setIsChecked6] = useState(false);
+  const [isChecked7, setIsChecked7] = useState(false);
 
   const clearForm = () => {
     setRecTitleValue('');
@@ -91,13 +97,13 @@ export const RecreationRegistTemplate: React.FC = () => {
               type="checkbox"
               id="check1"
               hidden
-              onChange={() => setIsChecked(!isChecked)} />
+              onChange={() => setIsChecked1(!isChecked1)} />
             <label
               htmlFor="check1"
               id="button"
               className={
                 `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked ?
+              ${isChecked1 ?
                   'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
                 }`}
             >
@@ -106,15 +112,15 @@ export const RecreationRegistTemplate: React.FC = () => {
           <div className="mr-1 mb-1 inline-block">
             <input
               type="checkbox"
-              id="check1"
+              id="check2"
               hidden
-              onChange={() => setIsChecked(!isChecked)} />
+              onChange={() => setIsChecked2(!isChecked2)} />
             <label
-              htmlFor="check1"
+              htmlFor="check2"
               id="button"
               className={
                 `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked ?
+              ${isChecked2 ?
                   'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
                 }`}
             >
@@ -123,15 +129,15 @@ export const RecreationRegistTemplate: React.FC = () => {
           <div className="mr-1 mb-1 inline-block">
             <input
               type="checkbox"
-              id="check1"
+              id="check3"
               hidden
-              onChange={() => setIsChecked(!isChecked)} />
+              onChange={() => setIsChecked3(!isChecked3)} />
             <label
-              htmlFor="check1"
+              htmlFor="check3"
               id="button"
               className={
                 `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked ?
+              ${isChecked3 ?
                   'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
                 }`}
             >
@@ -140,15 +146,15 @@ export const RecreationRegistTemplate: React.FC = () => {
           <div className="mr-1 mb-1 inline-block">
             <input
               type="checkbox"
-              id="check1"
+              id="check4"
               hidden
-              onChange={() => setIsChecked(!isChecked)} />
+              onChange={() => setIsChecked4(!isChecked4)} />
             <label
-              htmlFor="check1"
+              htmlFor="check4"
               id="button"
               className={
                 `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked ?
+              ${isChecked4 ?
                   'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
                 }`}
             >
@@ -157,15 +163,15 @@ export const RecreationRegistTemplate: React.FC = () => {
           <div className="mr-1 mb-1 inline-block">
             <input
               type="checkbox"
-              id="check1"
+              id="check5"
               hidden
-              onChange={() => setIsChecked(!isChecked)} />
+              onChange={() => setIsChecked5(!isChecked5)} />
             <label
-              htmlFor="check1"
+              htmlFor="check5"
               id="button"
               className={
                 `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked ?
+              ${isChecked5 ?
                   'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
                 }`}
             >
@@ -174,15 +180,15 @@ export const RecreationRegistTemplate: React.FC = () => {
           <div className="mr-1 mb-1 inline-block">
             <input
               type="checkbox"
-              id="check1"
+              id="check6"
               hidden
-              onChange={() => setIsChecked(!isChecked)} />
+              onChange={() => setIsChecked6(!isChecked6)} />
             <label
-              htmlFor="check1"
+              htmlFor="check6"
               id="button"
               className={
                 `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked ?
+              ${isChecked6 ?
                   'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
                 }`}
             >
@@ -191,15 +197,15 @@ export const RecreationRegistTemplate: React.FC = () => {
           <div className="mr-1 mb-1 inline-block">
             <input
               type="checkbox"
-              id="check1"
+              id="check7"
               hidden
-              onChange={() => setIsChecked(!isChecked)} />
+              onChange={() => setIsChecked7(!isChecked7)} />
             <label
-              htmlFor="check1"
+              htmlFor="check7"
               id="button"
               className={
                 `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked ?
+              ${isChecked7 ?
                   'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
                 }`}
             >
