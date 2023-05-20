@@ -85,6 +85,7 @@ export const RecreationRegistTemplate: React.FC = () => {
             `}
           </style>
 
+          {/* `アイスブレイク` `手遊び レク` `少人数 レク` `グループ レク` `静かにする レク` `レクダン` `その他のレク`  */}
           <div className="mr-1 inline">
             <input
               type="checkbox"
@@ -117,7 +118,7 @@ export const RecreationRegistTemplate: React.FC = () => {
                   'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
                 }`}
             >
-              アイスブレイク</label>
+              手遊びレク</label>
           </div>
           <div className="mr-1 inline">
             <input
@@ -134,7 +135,7 @@ export const RecreationRegistTemplate: React.FC = () => {
                   'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
                 }`}
             >
-              アイスブレイク</label>
+              少人数レク</label>
           </div>
           <div className="mr-1 inline">
             <input
@@ -151,7 +152,58 @@ export const RecreationRegistTemplate: React.FC = () => {
                   'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
                 }`}
             >
-              アイスブレイク</label>
+              グループレク</label>
+          </div>
+          <div className="mr-1 inline">
+            <input
+              type="checkbox"
+              id="check1"
+              hidden
+              onChange={() => setIsChecked(!isChecked)} />
+            <label
+              htmlFor="check1"
+              id="button"
+              className={
+                `p-1 rounded-lg text-xs border border-gray-500
+              ${isChecked ?
+                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
+                }`}
+            >
+              静かにするレク</label>
+          </div>
+          <div className="mr-1 inline">
+            <input
+              type="checkbox"
+              id="check1"
+              hidden
+              onChange={() => setIsChecked(!isChecked)} />
+            <label
+              htmlFor="check1"
+              id="button"
+              className={
+                `p-1 rounded-lg text-xs border border-gray-500
+              ${isChecked ?
+                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
+                }`}
+            >
+              レクダン</label>
+          </div>
+          <div className="mr-1 inline">
+            <input
+              type="checkbox"
+              id="check1"
+              hidden
+              onChange={() => setIsChecked(!isChecked)} />
+            <label
+              htmlFor="check1"
+              id="button"
+              className={
+                `p-1 rounded-lg text-xs border border-gray-500
+              ${isChecked ?
+                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
+                }`}
+            >
+              その他のレク</label>
           </div>
         </div>
 
