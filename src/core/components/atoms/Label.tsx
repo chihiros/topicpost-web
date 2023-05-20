@@ -1,7 +1,7 @@
 import React from 'react';
 
 type LabelProps = {
-  htmlFor: string;
+  htmlFor?: string;
   children: React.ReactNode;
   required?: boolean;
 };
