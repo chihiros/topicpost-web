@@ -1,5 +1,5 @@
 import React from "react-router-dom";
-import ProfileEditForm from "../../../core/components/organisms/ProfileEditForm";
+import ProfileEditForm from "../organisms/ProfileEditForm";
 
 const ProfileEdit = () => {
   return (
