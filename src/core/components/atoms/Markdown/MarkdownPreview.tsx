@@ -11,18 +11,17 @@ type Props = {
 export const MarkdownPreview: React.FC<Props> = ({ children }) => {
   return (
     <>
-      <style>
-        {`
-              .prose :where(code)::before,
-              .prose :where(code)::after {
-                content: "";
-              }
-              .prose ul {
-                margin-top: 0;
-                margin-bottom: 8px;
-              }
-            `}
-      </style>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        :where(code)::before,
+        :where(code)::after {
+          content: "";
+        }
+        ul {
+          margin-top: 0;
+          margin-bottom: 8px;
+        }
+      ` }} />
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
