@@ -289,7 +289,7 @@ export const RecreationRegistTemplate: React.FC = () => {
         </form>
       </div>
 
-      <div className="p-4 bg-gray-50 rounded-lg">
+      <div className="p-4 bg-gray-50 rounded-lg overflow-auto break-words">
         {(!recTitleValue && !messageValue) && (
           <div className="flex mb-5 text-2xl">こちらにはプレビューが表示されます</div>
         )}
