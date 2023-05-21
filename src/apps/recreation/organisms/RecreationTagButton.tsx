@@ -1,23 +1,23 @@
 import React from 'react';
 
 type Props = {
+  id: string;
   children?: React.ReactNode;
   isChecked: boolean;
   setIsChecked: (value: boolean) => void;
 };
 
-export const TagButton: React.FC<Props> = ({ children, isChecked, setIsChecked }) => {
+export const TagButton: React.FC<Props> = ({ id, children, isChecked, setIsChecked }) => {
   return (
     <div className="mr-1 mb-1 inline-block">
       <input
         type="checkbox"
-        id="check1"
+        id={id}
         hidden
         checked={isChecked}
         onChange={() => setIsChecked(!isChecked)} />
       <label
-        htmlFor="check1"
-        id="button"
+        htmlFor={id}
         className={
           `p-1 rounded-lg text-xs border border-gray-500
               ${isChecked ?
