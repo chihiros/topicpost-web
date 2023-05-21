@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 type Props = {
   children?: React.ReactNode;
+  isChecked: boolean;
+  setIsChecked: (value: boolean) => void;
 };
 
-export const TagButton: React.FC<Props> = ({ children }) => {
-  const [isChecked, setIsChecked] = useState(false);
-
+export const TagButton: React.FC<Props> = ({ children, isChecked, setIsChecked }) => {
   return (
     <div className="mr-1 mb-1 inline-block">
       <input
