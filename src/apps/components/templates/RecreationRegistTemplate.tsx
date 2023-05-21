@@ -4,7 +4,7 @@ import Toast from "../../../utils/Toast";
 import Label from "../../../core/components/atoms/Label";
 import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
-import { SuccessButton, SubmitButton } from "../../../core/components/atoms/Button";
+import { SubmitButton } from "../../../core/components/atoms/Button";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
