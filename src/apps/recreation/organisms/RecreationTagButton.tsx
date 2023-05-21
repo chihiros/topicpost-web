@@ -29,7 +29,7 @@ export const TagButton: React.FC<Props> = ({ id, children, isChecked, setIsCheck
           className={
             `p-1 rounded-lg text-xs border border-gray-500 user-select-none
           ${isChecked ?
-              'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
+              'bg-slate-50 text-slate-700' : 'bg-slate-300 text-slate-500'
             }`}
         >
           {children || ''}</label>
