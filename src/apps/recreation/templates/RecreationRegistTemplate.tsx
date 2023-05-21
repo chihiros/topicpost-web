@@ -107,10 +107,6 @@ export const RecreationRegistTemplate: React.FC = () => {
           <TagButton id="check6" isChecked={isChecked6} setIsChecked={setIsChecked6}>
             レクダン
           </TagButton>
-
-          <TagButton id="check7" isChecked={isChecked7} setIsChecked={setIsChecked7}>
-            その他のレク
-          </TagButton>
         </div>
 
         <form onSubmit={handleSubmit}>
