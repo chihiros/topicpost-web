@@ -192,19 +192,6 @@ export const RecreationRegistTemplate: React.FC = () => {
           <div className="flex mb-5 text-2xl">こちらにはプレビューが表示されます</div>
         )}
         <div className="prose mx-auto">
-          <style>
-            {`
-              .prose :where(code)::before,
-              .prose :where(code)::after {
-                content: "";
-              }
-              .prose ul {
-                margin-top: 0;
-                margin-bottom: 8px;
-              }
-            `}
-          </style>
-
           {/* Title */}
           <MarkdownPreview>
             {"# " + recTitleValue + "\n"
