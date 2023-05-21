@@ -6,7 +6,7 @@ import ContactPage from './apps/contact/templates/ContactTemplate';
 import SignUpPage from './apps/signup/templates/SignUpTemplate';
 import ProfileEditPage from './apps/profile/templates/ProfileEditTemplate';
 import NotFoundPage from './apps/common/pages/NotFoundPage';
-import Pages, { PagesProps } from './Pages';
+import Pages, { PagesProps } from './apps/common/pages/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcrumb';
 
