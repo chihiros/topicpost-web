@@ -1,7 +1,7 @@
 import TopPage from './apps/common/templates/TopTemplate';
 import RecreationPage from './apps/recreation/templates/RecreationTemplate';
 import { RecreationRegistPage } from './apps/recreation/pages/RecreationRegistPage';
-import DiaryPage from './apps/components/templates/DiaryTemplate';
+import DiaryPage from './apps/diary/templates/DiaryTemplate';
 import ContactPage from './apps/contact/templates/ContactTemplate';
 import SignUpPage from './apps/components/templates/SignUpTemplate';
 import ProfileEditPage from './apps/profile/templates/ProfileEditTemplate';
