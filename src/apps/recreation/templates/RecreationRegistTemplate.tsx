@@ -24,7 +24,6 @@ export const RecreationRegistTemplate: React.FC = () => {
   const [isChecked4, setIsChecked4] = useState(false);
   const [isChecked5, setIsChecked5] = useState(false);
   const [isChecked6, setIsChecked6] = useState(false);
-  const [isChecked7, setIsChecked7] = useState(false);
 
   const clearForm = () => {
     setRecTitleValue('');
@@ -207,7 +206,6 @@ export const RecreationRegistTemplate: React.FC = () => {
               isChecked4 ? "`グループレク`" : ``,
               isChecked5 ? "`静かにするレク`" : ``,
               isChecked6 ? "`レクダン`" : ``,
-              isChecked7 ? "`その他のレク`" : ``
             ].filter(i => i !== '').join(' ')}
           </MarkdownPreview>
 
