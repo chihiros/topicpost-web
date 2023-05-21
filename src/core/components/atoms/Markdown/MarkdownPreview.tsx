@@ -5,11 +5,10 @@ import rehypeRaw from 'rehype-raw'
 import { Note } from './Note';
 
 type Props = {
-  markdownText?: string;
   children?: React.ReactNode;
 };
 
-export const MarkdownPreview: React.FC<Props> = ({ markdownText }) => {
+export const MarkdownPreview: React.FC<Props> = ({ children }) => {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
@@ -89,10 +88,11 @@ export const MarkdownPreview: React.FC<Props> = ({ markdownText }) => {
         ),
       }}
     >
-      {markdownText ?
-        markdownText.replace(/:::note (info|warn|alert)\n([\s\S]*?)\n:::/g, (_, type, content) =>
-          `<div class="note ${type}">${content}</div>`
-        ) : ''
+      {children && typeof children === "string"
+        ? children.replace(/:::note (info|warn|alert)\n([\s\S]*?)\n:::/g, (_, type, content) =>
+            `<div class="note ${type}">${content}</div>`
+          )
+        : ''
       }
     </ReactMarkdown>
   );
