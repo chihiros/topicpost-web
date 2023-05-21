@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Label from '../../atoms/Label';
-import { Text, Annotation } from '../../atoms/Input';
-import { SubmitButton } from '../../atoms/Button';
-import Toast from '../../../../utils/Toast';
-import { supabaseClient } from '../../../../utils/supabase';
+import Label from '../../../core/components/atoms/Label';
+import { Text, Annotation } from '../../../core/components/atoms/Input';
+import { SubmitButton } from '../../../core/components/atoms/Button';
+import Toast from '../../../utils/Toast';
+import { supabaseClient } from '../../../utils/supabase';
 
 const ContactForm: React.FC = () => {
   const [emailValue, setEmailValue] = useState('');

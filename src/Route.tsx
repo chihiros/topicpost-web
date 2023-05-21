@@ -3,7 +3,7 @@ import RecreationPage from './apps/recreation/templates/RecreationTemplate';
 import { RecreationRegistPage } from './apps/recreation/pages/RecreationRegistPage';
 import DiaryPage from './apps/diary/templates/DiaryTemplate';
 import ContactPage from './apps/contact/templates/ContactTemplate';
-import SignUpPage from './apps/components/templates/SignUpTemplate';
+import SignUpPage from './apps/signup/templates/SignUpTemplate';
 import ProfileEditPage from './apps/profile/templates/ProfileEditTemplate';
 import NotFoundPage from './apps/common/pages/NotFoundPage';
 import Pages, { PagesProps } from './Pages';

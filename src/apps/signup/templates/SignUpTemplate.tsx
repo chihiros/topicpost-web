@@ -1,4 +1,4 @@
-import SignUpForm from '../../../core/components/organisms/SignUp/SignUpForm';
+import SignUpForm from '../organisms/SignUpForm';
 
 const SignUp: React.FC = () => {
   return (
