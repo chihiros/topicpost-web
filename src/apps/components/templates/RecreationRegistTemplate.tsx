@@ -329,6 +329,39 @@ export const RecreationRegistTemplate: React.FC = () => {
               + "---\n"}
           </ReactMarkdown>
 
+          <div className="text-sm">こんな場面で使えるレクです</div>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
+            components={{
+              code: ({ node, inline, className, children, ...props }) => {
+                // const match = /language-(\w+)/.exec(className || '')
+                return inline ? (
+                  <code className="bg-gray-200 text-blue-600 px-1 rounded text-sm inline-block" {...props}>
+                    {children}
+                  </code>
+                ) : (
+                  <pre className="bg-gray-800 text-gray-200 p-0 m-0 rounded" {...props}>
+                    {children}
+                  </pre>
+                )
+              },
+              p: ({ node, ...props }) => (
+                <p className="m-0 mb-1" {...props} />
+              ),
+            }}
+          >
+            {[
+              isChecked1 ? "`アイスブレイク`" : ``,
+              isChecked2 ? "`手遊びレク`" : ``,
+              isChecked3 ? "`少人数レク`" : ``,
+              isChecked4 ? "`グループレク`" : ``,
+              isChecked5 ? "`静かにするレク`" : ``,
+              isChecked6 ? "`レクダン`" : ``,
+              isChecked7 ? "`その他のレク`" : ``
+            ].filter(i => i !== '').join(' ')}
+          </ReactMarkdown>
+
           {/* 対象人数・対象年齢・所要時間を表示する */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-4">
             <div className="border-b-2">
