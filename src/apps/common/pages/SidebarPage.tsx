@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SidebarLoggedIn from '../../../core/components/organisms/Sidebar/SidebarLoggedIn';
+import SidebarLoggedIn from '../../sidebar/organisms/SidebarLoggedIn';
 // import { SidebarQuestion } from '../../../core/components/organisms/Sidebar/SidebarQuestion';
-import SidebarLogin from '../../../core/components/organisms/Sidebar/SidebarLogin';
-import SidebarLabel from '../../../core/components/organisms/Sidebar/SidebarLabel';
+import SidebarLogin from '../../sidebar/organisms/SidebarLogin';
+import SidebarLabel from '../../sidebar/organisms/SidebarLabel';
 import { sidebar } from '../../../constants/sidebar';
 import { supabaseClient } from '../../../utils/supabase';
 import { useAuthContext } from '../../../context/AuthContext';
