@@ -1,6 +1,6 @@
 import TopPage from './apps/components/templates/TopTemplate';
-import RecreationPage from './apps/components/templates/RecreationTemplate';
-import { RecreationRegistPage } from './apps/components/pages/RecreationRegistPage';
+import RecreationPage from './apps/recreation/templates/RecreationTemplate';
+import { RecreationRegistPage } from './apps/recreation/pages/RecreationRegistPage';
 import DiaryPage from './apps/components/templates/DiaryTemplate';
 import ContactPage from './apps/components/templates/ContactTemplate';
 import SignUpPage from './apps/components/templates/SignUpTemplate';
