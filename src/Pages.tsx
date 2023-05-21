@@ -1,5 +1,5 @@
 import React from "react";
-import SidebarPage from "./apps/components/pages/SidebarPage";
+import SidebarPage from "./apps/common/pages/SidebarPage";
 import Breadcrumb, { BreadcrumbProps } from "./core/components/molecules/Breadcrumb/Breadcrumb";
 import { LoginModalProvider } from "./context/LoginModalContext";
 import LoginModal from "./core/components/molecules/Modal/LoginModal";
