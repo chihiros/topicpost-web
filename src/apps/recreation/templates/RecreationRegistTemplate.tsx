@@ -10,6 +10,8 @@ import { RiTimerLine } from "react-icons/ri";
 import { BsFillPeopleFill } from "react-icons/bs";
 import getYouTubeID from "get-youtube-id";
 
+import { TagButton } from "../organisms/RecreationTagButton";
+
 export const RecreationRegistTemplate: React.FC = () => {
   const [recTitleValue, setRecTitleValue] = useState('');
   const [youtubeUrlValue, setYoutubeUrlValue] = useState('');
@@ -80,135 +82,35 @@ export const RecreationRegistTemplate: React.FC = () => {
         <div className="flex mb-5 text-3xl">レクリエーションの投稿</div>
 
         <div className="mb-4">
-          <style>
-            {`
-              #button {
-                  user-select: none;
-              }
-            `}
-          </style>
-
           {/* `アイスブレイク` `手遊び レク` `少人数 レク` `グループ レク` `静かにする レク` `レクダン` `その他のレク`  */}
           <Label required>どんな場面で使えるレクですか？（複数選択可）</Label>
-          <div className="mr-1 mb-1 inline-block">
-            <input
-              type="checkbox"
-              id="check1"
-              hidden
-              onChange={() => setIsChecked1(!isChecked1)} />
-            <label
-              htmlFor="check1"
-              id="button"
-              className={
-                `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked1 ?
-                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
-                }`}
-            >
-              アイスブレイク</label>
-          </div>
-          <div className="mr-1 mb-1 inline-block">
-            <input
-              type="checkbox"
-              id="check2"
-              hidden
-              onChange={() => setIsChecked2(!isChecked2)} />
-            <label
-              htmlFor="check2"
-              id="button"
-              className={
-                `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked2 ?
-                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
-                }`}
-            >
-              手遊びレク</label>
-          </div>
-          <div className="mr-1 mb-1 inline-block">
-            <input
-              type="checkbox"
-              id="check3"
-              hidden
-              onChange={() => setIsChecked3(!isChecked3)} />
-            <label
-              htmlFor="check3"
-              id="button"
-              className={
-                `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked3 ?
-                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
-                }`}
-            >
-              少人数レク</label>
-          </div>
-          <div className="mr-1 mb-1 inline-block">
-            <input
-              type="checkbox"
-              id="check4"
-              hidden
-              onChange={() => setIsChecked4(!isChecked4)} />
-            <label
-              htmlFor="check4"
-              id="button"
-              className={
-                `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked4 ?
-                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
-                }`}
-            >
-              グループレク</label>
-          </div>
-          <div className="mr-1 mb-1 inline-block">
-            <input
-              type="checkbox"
-              id="check5"
-              hidden
-              onChange={() => setIsChecked5(!isChecked5)} />
-            <label
-              htmlFor="check5"
-              id="button"
-              className={
-                `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked5 ?
-                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
-                }`}
-            >
-              静かにするレク</label>
-          </div>
-          <div className="mr-1 mb-1 inline-block">
-            <input
-              type="checkbox"
-              id="check6"
-              hidden
-              onChange={() => setIsChecked6(!isChecked6)} />
-            <label
-              htmlFor="check6"
-              id="button"
-              className={
-                `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked6 ?
-                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
-                }`}
-            >
-              レクダン</label>
-          </div>
-          <div className="mr-1 mb-1 inline-block">
-            <input
-              type="checkbox"
-              id="check7"
-              hidden
-              onChange={() => setIsChecked7(!isChecked7)} />
-            <label
-              htmlFor="check7"
-              id="button"
-              className={
-                `p-1 rounded-lg text-xs border border-gray-500
-              ${isChecked7 ?
-                  'bg-cyan-400 text-slate-700' : 'bg-slate-200 text-slate-400'
-                }`}
-            >
-              その他のレク</label>
-          </div>
+          <TagButton id="check1" isChecked={isChecked1} setIsChecked={setIsChecked1}>
+            アイスブレイク
+          </TagButton>
+
+          <TagButton id="check2" isChecked={isChecked2} setIsChecked={setIsChecked2}>
+            手遊びレク
+          </TagButton>
+
+          <TagButton id="check3" isChecked={isChecked3} setIsChecked={setIsChecked3}>
+            少人数レク
+          </TagButton>
+
+          <TagButton id="check4" isChecked={isChecked4} setIsChecked={setIsChecked4}>
+            グループレク
+          </TagButton>
+
+          <TagButton id="check5" isChecked={isChecked5} setIsChecked={setIsChecked5}>
+            静かにするレク
+          </TagButton>
+
+          <TagButton id="check6" isChecked={isChecked6} setIsChecked={setIsChecked6}>
+            レクダン
+          </TagButton>
+
+          <TagButton id="check7" isChecked={isChecked7} setIsChecked={setIsChecked7}>
+            その他のレク
+          </TagButton>
         </div>
 
         <form onSubmit={handleSubmit}>
