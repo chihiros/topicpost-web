@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Twemoji  from 'react-twemoji';
 
 const Card: React.FC = () => {
   // 絵文字をランダムで生成する関数
@@ -34,11 +35,15 @@ const Card: React.FC = () => {
 
   return (
     <div className="flex-shrink-0 w-64 bg-white rounded-lg">
-        <Link to="/recreation">
+      <Link to="/recreation">
         {/* <img className="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" /> */}
         <div className='bg-gray-100 rounded-t-lg h-32 flex justify-center items-center'>
           {/* ランダムでTwemojiを表示したい */}
-          <span className='text-6xl'>{randomEmoji()}</span>
+          <span className='text-6xl'>
+            <Twemoji options={{ className: 'twemoji' }}>
+              {randomEmoji()}
+            </Twemoji>
+          </span>
         </div>
       </Link>
       <div className="p-5">
