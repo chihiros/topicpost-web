@@ -1,3 +1,7 @@
 import { Note } from './Note';
+import { MarkdownPreview } from './MarkdownPreview';
 
-export { Note };
+export {
+  Note,
+  MarkdownPreview,
+};

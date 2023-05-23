@@ -1,12 +1,12 @@
 import React from "react";
-import SidebarPage from "./apps/components/pages/SidebarPage";
-import Breadcrumb, { BreadcrumbProps } from "./core/components/molecules/Breadcrumb/Breadcrumb";
-import { LoginModalProvider } from "./context/LoginModalContext";
-import LoginModal from "./core/components/molecules/Modal/LoginModal";
+import SidebarPage from "./SidebarPage";
+import Breadcrumb, { BreadcrumbProps } from "../../../core/components/molecules/Breadcrumb/Breadcrumb";
+import { LoginModalProvider } from "../../../context/LoginModalContext";
+import LoginModal from "../../../core/components/molecules/Modal/LoginModal";
 import { ToastContainer } from "react-toastify";
 import { CookiesProvider } from "react-cookie";
-import { AuthContextProvider } from "./context/AuthContext";
-import { WindowSize } from './core/components/debug/WindowSize';
+import { AuthContextProvider } from "../../../context/AuthContext";
+import { WindowSize } from '../../../core/components/debug/WindowSize';
 
 export type PagesProps = {
   breadcrumb?: BreadcrumbProps[];

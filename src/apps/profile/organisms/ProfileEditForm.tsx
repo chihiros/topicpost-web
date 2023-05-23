@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Label from '../atoms/Label';
-import { Text } from '../atoms/Input';
-import { SubmitButton } from '../atoms/Button';
+import Label from '../../../core/components/atoms/Label';
+import { Text } from '../../../core/components/atoms/Input';
+import { SubmitButton } from '../../../core/components/atoms/Button';
 import Toast from '../../../utils/Toast';
 import { GetSession } from '../../../utils/supabase';
 import { Profile } from '../../../api/api.topicpost.net/profile';

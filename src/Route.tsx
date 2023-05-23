@@ -1,12 +1,12 @@
-import TopPage from './apps/components/templates/TopTemplate';
-import RecreationPage from './apps/components/templates/RecreationTemplate';
-import { RecreationRegistPage } from './apps/components/pages/RecreationRegistPage';
-import DiaryPage from './apps/components/templates/DiaryTemplate';
-import ContactPage from './apps/components/templates/ContactTemplate';
-import SignUpPage from './apps/components/templates/SignUpTemplate';
-import ProfileEditPage from './apps/components/templates/ProfileEditTemplate';
-import NotFoundPage from './apps/components/pages/NotFoundPage';
-import Pages, { PagesProps } from './Pages';
+import TopPage from './apps/common/templates/TopTemplate';
+import RecreationPage from './apps/recreation/templates/RecreationTemplate';
+import { RecreationRegistPage } from './apps/recreation/pages/RecreationRegistPage';
+import DiaryPage from './apps/diary/templates/DiaryTemplate';
+import ContactPage from './apps/contact/templates/ContactTemplate';
+import SignUpPage from './apps/signup/templates/SignUpTemplate';
+import ProfileEditPage from './apps/profile/templates/ProfileEditTemplate';
+import NotFoundPage from './apps/common/pages/NotFoundPage';
+import Pages, { PagesProps } from './apps/common/pages/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcrumb';
 

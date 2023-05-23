@@ -1,4 +1,4 @@
-import ContactForm from "../../../core/components/organisms/ContactForm";
+import ContactForm from "../organisms/ContactForm";
 
 const Contact: React.FC = () => {
   return <ContactForm />;

@@ -1,5 +1,5 @@
 import React from "react";
-import DiaryContent from "../../../core/components/organisms/DiaryContent";
+import DiaryContent from "../organisms/DiaryContent";
 
 const Diary: React.FC = () => {
   return <DiaryContent />;

@@ -1,5 +1,5 @@
 import React from "react";
-import MainContent from "../../../core/components/organisms/MainContent";
+import MainContent from "../organisms/MainContent";
 
 const Top: React.FC = () => {
   return <MainContent />;

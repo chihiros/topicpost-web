@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import { NewCard } from "../atoms/Card";
+import { NewCard } from "../../../core/components/atoms/Card";
 import { AiOutlineSearch, AiOutlinePlus } from "react-icons/ai";
 import { BsFilter } from "react-icons/bs";
 

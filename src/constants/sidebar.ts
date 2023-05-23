@@ -1,4 +1,4 @@
-import { SidebarProps } from "../core/components/organisms/Sidebar/SidebarLabel";
+import { SidebarProps } from "../apps/sidebar/organisms/SidebarLabel";
 
 export const sidebar: SidebarProps[] = [
   {
