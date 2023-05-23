@@ -5,5 +5,8 @@ module.exports = {
     // colors: {},
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-inner-border"),
+    require('@tailwindcss/typography'),
+  ]
 }

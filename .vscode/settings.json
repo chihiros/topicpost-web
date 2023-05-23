@@ -1,3 +1,18 @@
 {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": true,
+    "cSpell.ignoreWords": [
+        "Regist",
+        "TOPICPOST",
+        "benq",
+        "chihiros",
+        "fitbit",
+        "rehype",
+        "sess",
+        "signup",
+        "supabase",
+        "tailwindcss",
+        "toastify"
+    ]
 }
