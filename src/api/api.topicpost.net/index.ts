@@ -19,13 +19,21 @@ export class TopicPostAPI {
     this.url = `${this.baseUrl}${uri}`
   }
 
-  async get<T>(): Promise<Response<T>> {
+  private async request<T>(method: 'GET' | 'POST' | 'PUT' | 'DELETE', body?: any): Promise<Response<T>> {
     const session = await GetSession();
+    const headers: HeadersInit = {
+      'Authorization': `Bearer ${session?.access_token}`,
+    };
+
+    if (body) {
+      headers['Content-Type'] = 'application/json';
+      body = JSON.stringify(body);
+    }
+
     const response = await fetch(this.url, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${session?.access_token}`,
-      },
+      method,
+      headers,
+      body,
     });
 
     const data = await response.json();
@@ -36,66 +44,21 @@ export class TopicPostAPI {
     };
 
     return res;
+  }
+
+  async get<T>(): Promise<Response<T>> {
+    return this.request<T>('GET');
   }
 
   async post<T>(body: any): Promise<Response<T>> {
-    const session = await GetSession();
-    const response = await fetch(this.url, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${session?.access_token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    const data = await response.json();
-    const res: Response<T> = {
-      data: data.data,
-      errors: data.errors,
-      status: response.status,
-    };
-
-    return res;
+    return this.request<T>('POST', body);
   }
 
   async put<T>(body: any): Promise<Response<T>> {
-    const session = await GetSession();
-    const response = await fetch(this.url, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${session?.access_token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    const data = await response.json();
-    const res: Response<T> = {
-      data: data.data,
-      errors: data.errors,
-      status: response.status,
-    };
-
-    return res;
+    return this.request<T>('PUT', body);
   }
 
   async delete<T>(): Promise<Response<T>> {
-    const session = await GetSession();
-    const response = await fetch(this.url, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${session?.access_token}`,
-      },
-    });
-
-    const data = await response.json();
-    const res: Response<T> = {
-      data: data.data,
-      errors: data.errors,
-      status: response.status,
-    };
-
-    return res;
+    return this.request<T>('DELETE');
   }
 }
