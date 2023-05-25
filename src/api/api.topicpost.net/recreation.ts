@@ -24,15 +24,15 @@ export interface RecreationData {
 
 export interface RecreationResponse extends Response<RecreationData> { }
 
-interface ProfileMethods {
+interface RecreationMethods {
   get: () => Promise<RecreationResponse>;
   post: (body: RecreationRequest) => Promise<RecreationResponse>;
   put: (body: RecreationRequest) => Promise<RecreationResponse>;
   // delete: () => Promise<RecreationResponse>;
 }
 
-export class Profile implements ProfileMethods {
-  topicpost = new TopicPostAPI("/profile");
+export class Recreation implements RecreationMethods {
+  topicpost = new TopicPostAPI("/recreation");
 
   async get(): Promise<RecreationResponse> {
     const res = await this.topicpost.get<RecreationData>();
