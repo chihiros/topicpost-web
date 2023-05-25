@@ -19,11 +19,13 @@ export class TopicPostAPI {
     this.url = `${this.baseUrl}${uri}`
   }
 
-  private async request<T>(method: 'GET' | 'POST' | 'PUT' | 'DELETE', body?: any): Promise<Response<T>> {
-    const session = await GetSession();
-    const headers: HeadersInit = {
-      'Authorization': `Bearer ${session?.access_token}`,
-    };
+  private async request<T>(method: 'GET' | 'POST' | 'PUT' | 'DELETE', body?: any, authRequired: boolean = false): Promise<Response<T>> {
+    const headers: HeadersInit = {};
+
+    if (authRequired) {
+      const session = await GetSession();
+      headers['Authorization'] = `Bearer ${session?.access_token}`;
+    }
 
     if (body) {
       headers['Content-Type'] = 'application/json';
@@ -46,19 +48,19 @@ export class TopicPostAPI {
     return res;
   }
 
-  async get<T>(): Promise<Response<T>> {
-    return this.request<T>('GET');
+  async get<T>(authRequired: boolean = false): Promise<Response<T>> {
+    return this.request<T>('GET', undefined, authRequired);
   }
 
-  async post<T>(body: any): Promise<Response<T>> {
-    return this.request<T>('POST', body);
+  async post<T>(body: any, authRequired: boolean = false): Promise<Response<T>> {
+    return this.request<T>('POST', body, authRequired);
   }
 
-  async put<T>(body: any): Promise<Response<T>> {
-    return this.request<T>('PUT', body);
+  async put<T>(body: any, authRequired: boolean = false): Promise<Response<T>> {
+    return this.request<T>('PUT', body, authRequired);
   }
 
-  async delete<T>(): Promise<Response<T>> {
-    return this.request<T>('DELETE');
+  async delete<T>(authRequired: boolean = false): Promise<Response<T>> {
+    return this.request<T>('DELETE', undefined, authRequired);
   }
 }
