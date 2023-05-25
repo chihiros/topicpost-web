@@ -9,29 +9,32 @@ export interface RecreationRequest {
   target_number: number;
   required_time: number;
 }
-
-export interface ProfileData {
+export interface RecreationData {
   id: number;
-  uuid: string;
-  nickname: string;
-  icon_url: string;
+  user_id: string;
+  recreation_id: string;
+  genre: number[];
+  title: string;
+  content: string;
+  target_number: number;
+  required_time: number;
   created_at: string;
   updated_at: string;
 };
 
-export interface ProfileResponse extends Response<RecreationData> { }
+export interface RecreationResponse extends Response<RecreationData> { }
 
 interface ProfileMethods {
-  get: () => Promise<ProfileResponse>;
-  post: (body: RecreationRequest) => Promise<ProfileResponse>;
-  put: (body: RecreationRequest) => Promise<ProfileResponse>;
-  delete: () => Promise<ProfileResponse>;
+  get: () => Promise<RecreationResponse>;
+  post: (body: RecreationRequest) => Promise<RecreationResponse>;
+  put: (body: RecreationRequest) => Promise<RecreationResponse>;
+  delete: () => Promise<RecreationResponse>;
 }
 
 export class Profile implements ProfileMethods {
   topicpost = new TopicPostAPI("/profile");
 
-  async get(): Promise<ProfileResponse> {
+  async get(): Promise<RecreationResponse> {
     const res = await this.topicpost.get<RecreationData>();
     return {
       data: res.data,
@@ -40,8 +43,8 @@ export class Profile implements ProfileMethods {
     };
   }
 
-  async post(body: RecreationRequest): Promise<ProfileResponse> {
-    const res = await this.topicpost.post<ProfileData>(body);
+  async post(body: RecreationRequest): Promise<RecreationResponse> {
+    const res = await this.topicpost.post<RecreationData>(body);
     return {
       data: res.data,
       errors: res.errors,
@@ -49,8 +52,8 @@ export class Profile implements ProfileMethods {
     };
   }
 
-  async put(body: RecreationRequest): Promise<ProfileResponse> {
-    const res = await this.topicpost.put<ProfileData>(body);
+  async put(body: RecreationRequest): Promise<RecreationResponse> {
+    const res = await this.topicpost.put<RecreationData>(body);
     return {
       data: res.data,
       errors: res.errors,
@@ -58,8 +61,8 @@ export class Profile implements ProfileMethods {
     };
   }
 
-  async delete(): Promise<ProfileResponse> {
-    const res = await this.topicpost.delete<ProfileData>();
+  async delete(): Promise<RecreationResponse> {
+    const res = await this.topicpost.delete<RecreationData>();
     return {
       data: res.data,
       errors: res.errors,
