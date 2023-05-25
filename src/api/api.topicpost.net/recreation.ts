@@ -28,7 +28,7 @@ interface ProfileMethods {
   get: () => Promise<RecreationResponse>;
   post: (body: RecreationRequest) => Promise<RecreationResponse>;
   put: (body: RecreationRequest) => Promise<RecreationResponse>;
-  delete: () => Promise<RecreationResponse>;
+  // delete: () => Promise<RecreationResponse>;
 }
 
 export class Profile implements ProfileMethods {
@@ -61,12 +61,12 @@ export class Profile implements ProfileMethods {
     };
   }
 
-  async delete(): Promise<RecreationResponse> {
-    const res = await this.topicpost.delete<RecreationData>();
-    return {
-      data: res.data,
-      errors: res.errors,
-      status: res.status,
-    };
-  }
+  // async delete(): Promise<RecreationResponse> {
+  //   const res = await this.topicpost.delete<RecreationData>();
+  //   return {
+  //     data: res.data,
+  //     errors: res.errors,
+  //     status: res.status,
+  //   };
+  // }
 }
