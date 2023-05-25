@@ -31,7 +31,7 @@ interface RecreationMethods {
   // delete: () => Promise<RecreationResponse>;
 }
 
-export class Recreation implements RecreationMethods {
+export default class Recreation implements RecreationMethods {
   topicpost_recreation = new TopicPostAPI("/recreation");
   authRequired = true;
 
