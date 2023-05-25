@@ -9,6 +9,7 @@ export interface RecreationRequest {
   target_number: number;
   required_time: number;
 }
+
 export interface RecreationData {
   id: number;
   user_id: string;
