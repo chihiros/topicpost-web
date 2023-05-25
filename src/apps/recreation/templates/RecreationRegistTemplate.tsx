@@ -54,7 +54,7 @@ export const RecreationRegistTemplate: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const url = 'https://api.topicpost.net/v1/contact';
+    const url = 'https://api.topicpost.net/v1/recreation';
     const data = {
       name: recTitleValue,
       content: messageValue,
