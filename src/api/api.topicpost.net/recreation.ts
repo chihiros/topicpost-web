@@ -32,10 +32,11 @@ interface RecreationMethods {
 }
 
 export class Recreation implements RecreationMethods {
-  topicpost = new TopicPostAPI("/recreation");
+  topicpost_recreation = new TopicPostAPI("/recreation");
+  authRequired = true;
 
   async get(): Promise<RecreationResponse> {
-    const res = await this.topicpost.get<RecreationData>();
+    const res = await this.topicpost_recreation.get<RecreationData>();
     return {
       data: res.data,
       errors: res.errors,
@@ -44,7 +45,7 @@ export class Recreation implements RecreationMethods {
   }
 
   async post(body: RecreationRequest): Promise<RecreationResponse> {
-    const res = await this.topicpost.post<RecreationData>(body);
+    const res = await this.topicpost_recreation.post<RecreationData>(body, this.authRequired);
     return {
       data: res.data,
       errors: res.errors,
@@ -53,7 +54,7 @@ export class Recreation implements RecreationMethods {
   }
 
   async put(body: RecreationRequest): Promise<RecreationResponse> {
-    const res = await this.topicpost.put<RecreationData>(body);
+    const res = await this.topicpost_recreation.put<RecreationData>(body, this.authRequired);
     return {
       data: res.data,
       errors: res.errors,
