@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from 'axios';
-import Toast from "../../../utils/Toast";
+// import axios from 'axios';
+// import Toast from "../../../utils/Toast";
 import Label from "../../../core/components/atoms/Label";
 import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
@@ -9,8 +9,10 @@ import { MarkdownPreview } from "../../../core/components/atoms/Markdown";
 import { RiTimerLine } from "react-icons/ri";
 import { BsFillPeopleFill } from "react-icons/bs";
 import getYouTubeID from "get-youtube-id";
+import RecreationAPI, { RecreationRequest } from "../../../api/api.topicpost.net/recreation";
 
 import { TagButton } from "../organisms/RecreationTagButton";
+// import { GetSession } from "../../../utils/supabase";
 
 export const RecreationRegistTemplate: React.FC = () => {
   const [recTitleValue, setRecTitleValue] = useState('');
@@ -25,11 +27,11 @@ export const RecreationRegistTemplate: React.FC = () => {
   const [isChecked5, setIsChecked5] = useState(false);
   const [isChecked6, setIsChecked6] = useState(false);
 
-  const clearForm = () => {
-    setRecTitleValue('');
-    setYoutubeUrlValue('');
-    setMessageValue('');
-  }
+  // const clearForm = () => {
+  //   setRecTitleValue('');
+  //   setYoutubeUrlValue('');
+  //   setMessageValue('');
+  // }
 
   const handleRecTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRecTitleValue(e.target.value);
@@ -54,25 +56,35 @@ export const RecreationRegistTemplate: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const url = 'https://api.topicpost.net/v1/recreation';
-    const data = {
-      name: recTitleValue,
+    const api = new RecreationAPI();
+
+    // const session = await GetSession();
+    const request: RecreationRequest = {
+      user_id: "00000000-0000-0000-0000-000000000000",
+      recreation_id: "123456780-1234-1234-1234-123456789012",
+      genre: [1, 2, 3],
+      title: recTitleValue,
       content: messageValue,
-    };
+      target_number: Number(targetNumber),
+      required_time: Number(requiredTime),
+    }
 
-    const toast = new Toast();
-    axios.post(url, data)
-      .then(response => {
-        console.log(response.data);
-        toast.success('送信が完了しました');
+    // const toast = new Toast();
+    // axios.post(url, data)
+    //   .then(response => {
+    //     console.log(response.data);
+    //     toast.success('送信が完了しました');
 
-        // フォームの初期化
-        clearForm();
-      })
-      .catch(error => {
-        console.error(error);
-        toast.error('送信に失敗しました');
-      });
+    //     // フォームの初期化
+    //     clearForm();
+    //   })
+    //   .catch(error => {
+    //     console.error(error);
+    //     toast.error('送信に失敗しました');
+    //   });
+
+    const res = api.post(request);
+    console.log("res:", res);
   };
 
   return (
