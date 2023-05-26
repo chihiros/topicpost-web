@@ -53,6 +53,14 @@ export const RecreationRegistTemplate: React.FC = () => {
     setRequiredTime(e.target.value);
   };
 
+  const genUUID = () => {
+    return "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+      const r = (Math.random() * 16) | 0;
+      const v = c === "x" ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -60,8 +68,8 @@ export const RecreationRegistTemplate: React.FC = () => {
 
     // const session = await GetSession();
     const request: RecreationRequest = {
-      user_id: "00000000-0000-0000-0000-000000000000",
-      recreation_id: "123456780-1234-1234-1234-123456789012",
+      user_id: genUUID(),
+      recreation_id: genUUID(),
       genre: [1, 2, 3],
       title: recTitleValue,
       content: messageValue,
