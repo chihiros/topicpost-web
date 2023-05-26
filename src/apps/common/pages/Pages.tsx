@@ -21,7 +21,7 @@ const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
         <div className="">
           <ToastContainer />
           <SidebarPage />
-          <div className="p-4 md:ml-64">
+          <div className="p-4 lg:ml-64">
             <Breadcrumb breadcrumb={breadcrumb} />
             {template({ template })}
             <WindowSize />

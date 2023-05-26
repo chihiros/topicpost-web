@@ -18,7 +18,7 @@ const SidebarPage: React.FC = () => {
   };
 
   // これする意味ないかも
-  const SidebarStyle = "transition-transform -translate-x-full md:translate-x-0";
+  const SidebarStyle = "transition-transform -translate-x-full lg:translate-x-0";
 
   return (
     <aside
