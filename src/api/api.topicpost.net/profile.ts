@@ -23,7 +23,7 @@ interface ProfileMethods {
   delete: () => Promise<ProfileResponse>;
 }
 
-export class Profile implements ProfileMethods {
+export default class Profile implements ProfileMethods {
   topicpost = new TopicPostAPI("/profile");
   authRequired = true;
 
