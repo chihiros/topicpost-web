@@ -14,18 +14,28 @@ export class TopicPostAPI {
   private url: string;
 
   constructor(uri: string) {
-    // this.baseUrl = process.env.TOPICPOST_API_URL;
-    this.baseUrl = 'https://api.topicpost.net/v1';
+    this.baseUrl = process.env.REACT_APP_TOPICPOST_API_HOST + '/v1';
+    // this.baseUrl = 'https://api.topicpost.net/v1';
     this.url = `${this.baseUrl}${uri}`
   }
 
-  async get<T>(): Promise<Response<T>> {
-    const session = await GetSession();
+  private async request<T>(method: 'GET' | 'POST' | 'PUT' | 'DELETE', body?: any, authRequired: boolean = false): Promise<Response<T>> {
+    const headers: HeadersInit = {};
+
+    if (authRequired) {
+      const session = await GetSession();
+      headers['Authorization'] = `Bearer ${session?.access_token}`;
+    }
+
+    if (body) {
+      headers['Content-Type'] = 'application/json';
+      body = JSON.stringify(body);
+    }
+
     const response = await fetch(this.url, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${session?.access_token}`,
-      },
+      method,
+      headers,
+      body,
     });
 
     const data = await response.json();
@@ -38,64 +48,19 @@ export class TopicPostAPI {
     return res;
   }
 
-  async post<T>(body: any): Promise<Response<T>> {
-    const session = await GetSession();
-    const response = await fetch(this.url, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${session?.access_token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    const data = await response.json();
-    const res: Response<T> = {
-      data: data.data,
-      errors: data.errors,
-      status: response.status,
-    };
-
-    return res;
+  async get<T>(authRequired: boolean = false): Promise<Response<T>> {
+    return this.request<T>('GET', undefined, authRequired);
   }
 
-  async put<T>(body: any): Promise<Response<T>> {
-    const session = await GetSession();
-    const response = await fetch(this.url, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Bearer ${session?.access_token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    const data = await response.json();
-    const res: Response<T> = {
-      data: data.data,
-      errors: data.errors,
-      status: response.status,
-    };
-
-    return res;
+  async post<T>(body: any, authRequired: boolean = false): Promise<Response<T>> {
+    return this.request<T>('POST', body, authRequired);
   }
 
-  async delete<T>(): Promise<Response<T>> {
-    const session = await GetSession();
-    const response = await fetch(this.url, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${session?.access_token}`,
-      },
-    });
+  async put<T>(body: any, authRequired: boolean = false): Promise<Response<T>> {
+    return this.request<T>('PUT', body, authRequired);
+  }
 
-    const data = await response.json();
-    const res: Response<T> = {
-      data: data.data,
-      errors: data.errors,
-      status: response.status,
-    };
-
-    return res;
+  async delete<T>(authRequired: boolean = false): Promise<Response<T>> {
+    return this.request<T>('DELETE', undefined, authRequired);
   }
 }

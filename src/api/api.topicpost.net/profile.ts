@@ -23,8 +23,9 @@ interface ProfileMethods {
   delete: () => Promise<ProfileResponse>;
 }
 
-export class Profile implements ProfileMethods {
+export default class Profile implements ProfileMethods {
   topicpost = new TopicPostAPI("/profile");
+  authRequired = true;
 
   async get(): Promise<ProfileResponse> {
     const res = await this.topicpost.get<ProfileData>();
@@ -36,7 +37,7 @@ export class Profile implements ProfileMethods {
   }
 
   async post(body: ProfileRequest): Promise<ProfileResponse> {
-    const res = await this.topicpost.post<ProfileData>(body);
+    const res = await this.topicpost.post<ProfileData>(body, this.authRequired);
     return {
       data: res.data,
       errors: res.errors,
@@ -45,7 +46,7 @@ export class Profile implements ProfileMethods {
   }
 
   async put(body: ProfileRequest): Promise<ProfileResponse> {
-    const res = await this.topicpost.put<ProfileData>(body);
+    const res = await this.topicpost.put<ProfileData>(body, this.authRequired);
     return {
       data: res.data,
       errors: res.errors,
@@ -54,7 +55,7 @@ export class Profile implements ProfileMethods {
   }
 
   async delete(): Promise<ProfileResponse> {
-    const res = await this.topicpost.delete<ProfileData>();
+    const res = await this.topicpost.delete<ProfileData>(this.authRequired);
     return {
       data: res.data,
       errors: res.errors,
