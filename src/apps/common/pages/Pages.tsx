@@ -14,6 +14,8 @@ export type PagesProps = {
 }
 
 const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
+  const runEnv = process.env.REACT_APP_ENV;
+
   return (
     <CookiesProvider>
       <AuthContextProvider>
@@ -24,7 +26,7 @@ const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
           <div className="p-4 lg:ml-64">
             <Breadcrumb breadcrumb={breadcrumb} />
             {template({ template })}
-            <WindowSize />
+            {runEnv !== "production"  && <WindowSize />}
             <LoginModal />
           </div>
         </div>
