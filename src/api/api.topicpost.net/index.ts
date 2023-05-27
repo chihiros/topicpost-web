@@ -66,6 +66,7 @@ export class TopicPostAPI {
     return this.request<T>({
       query: params,
       method: 'GET',
+      authRequired,
     });
   }
 
