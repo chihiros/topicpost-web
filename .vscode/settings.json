@@ -8,11 +8,15 @@
         "benq",
         "chihiros",
         "fitbit",
+        "katex",
+        "mdast",
+        "reduxjs",
         "rehype",
         "sess",
         "signup",
         "supabase",
         "tailwindcss",
-        "toastify"
+        "toastify",
+        "unist"
     ]
 }
