@@ -9,6 +9,13 @@ export interface Response<T> {
   status: number;
 };
 
+interface RequestOptions<T> {
+  query?: Record<string, any>;
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  body?: T;
+  authRequired?: boolean;
+}
+
 export class TopicPostAPI {
   private baseUrl: string | undefined;
   private url: string;
@@ -19,21 +26,28 @@ export class TopicPostAPI {
     this.url = `${this.baseUrl}${uri}`
   }
 
-  private async request<T>(method: 'GET' | 'POST' | 'PUT' | 'DELETE', body?: any, authRequired: boolean = false): Promise<Response<T>> {
+  private async request<T>(options: RequestOptions<T>): Promise<Response<T>> {
     const headers: HeadersInit = {};
 
-    if (authRequired) {
+    if (options.authRequired) {
       const session = await GetSession();
       headers['Authorization'] = `Bearer ${session?.access_token}`;
     }
 
-    if (body) {
+    // Queryパラメータがある場合はURLに追加する
+    if (options.query) {
+      const queryParameters = new URLSearchParams(options.query as any).toString();
+      this.url = `${this.url}?${queryParameters}`;
+    }
+
+    let body = options.body ? JSON.stringify(options.body) : undefined;
+    if (options.body) {
       headers['Content-Type'] = 'application/json';
-      body = JSON.stringify(body);
+      body = JSON.stringify(options.body);
     }
 
     const response = await fetch(this.url, {
-      method,
+      method: options.method,
       headers,
       body,
     });
@@ -48,19 +62,33 @@ export class TopicPostAPI {
     return res;
   }
 
-  async get<T>(authRequired: boolean = false): Promise<Response<T>> {
-    return this.request<T>('GET', undefined, authRequired);
+  async get<T>(params?: Record<string, any>, authRequired: boolean = false): Promise<Response<T>> {
+    return this.request<T>({
+      query: params,
+      method: 'GET',
+    });
   }
 
   async post<T>(body: any, authRequired: boolean = false): Promise<Response<T>> {
-    return this.request<T>('POST', body, authRequired);
+    return this.request<T>({
+      method: 'POST',
+      body,
+      authRequired,
+    });
   }
 
   async put<T>(body: any, authRequired: boolean = false): Promise<Response<T>> {
-    return this.request<T>('PUT', body, authRequired);
+    return this.request<T>({
+      method: 'PUT',
+      body,
+      authRequired,
+    });
   }
 
   async delete<T>(authRequired: boolean = false): Promise<Response<T>> {
-    return this.request<T>('DELETE', undefined, authRequired);
+    return this.request<T>({
+      method: 'DELETE',
+      authRequired,
+    });
   }
 }
