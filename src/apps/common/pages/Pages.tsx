@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import { CookiesProvider } from "react-cookie";
 import { AuthContextProvider } from "../../../context/AuthContext";
 import { WindowSize } from '../../../core/components/debug/WindowSize';
+import { Analytics } from '@vercel/analytics/react';
 
 export type PagesProps = {
   breadcrumb?: BreadcrumbProps[];
@@ -17,6 +18,7 @@ const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
   const runEnv = process.env.REACT_APP_ENV;
 
   return (
+    <>
     <CookiesProvider>
       <AuthContextProvider>
         <LoginModalProvider>
@@ -33,6 +35,8 @@ const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
         </LoginModalProvider>
       </AuthContextProvider>
     </CookiesProvider>
+    <Analytics />
+    </>
   );
 };
 
