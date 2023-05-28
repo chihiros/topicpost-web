@@ -19,7 +19,7 @@ export const CompactMenu = () => {
     supabaseClient.auth.signOut();
     setLoggedIn(false);
     sessionStorage.removeItem('last_access_date');
-};
+  };
 
   return (
     <div className="transition-transform lg:-translate-x-full translate-x-0 lg:hidden">
@@ -66,16 +66,16 @@ export const CompactMenu = () => {
                 </li>
               ))}
             </ul>
-          <div className="mt-4">
-          <button
-            onChange={handleLogout}
-            className="bg-slate-300 hover:bg-slate-700 text-white text-base font-bold py-2 px-4 rounded"
-          >
-            ログアウト
-          </button>
-        </div>
-          <div className="flex items-center md:order-3">
-        {getLoggedIn() ? "ログインしています" : "ログインしていません"}
+            <div className="mt-4">
+              <button
+                onChange={handleLogout}
+                className="bg-slate-300 hover:bg-slate-700 text-white text-base font-bold py-2 px-4 rounded"
+              >
+                ログアウト
+              </button>
+            </div>
+            <div className="flex items-center md:order-3">
+              {getLoggedIn() ? "ログインしています" : "ログインしていません"}
             </div>
           </div>
         </div>
