@@ -1,8 +1,8 @@
 import React from "react";
 
 export const CompactMenu = () => {
-  return <div className="transition-transform lg:-translate-x-full translate-x-0 lg:hidden">
-    <nav className="bg-white border-gray-200">
+  return (<div className="transition-transform lg:-translate-x-full translate-x-0 lg:hidden">
+    <nav className="bg-gray-50 border-gray-200">
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
         <a href="https://flowbite.com" className="flex items-center">
           <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
@@ -105,6 +105,6 @@ export const CompactMenu = () => {
         </div>
       </div>
     </nav>
-
   </div>
+  )
 }
