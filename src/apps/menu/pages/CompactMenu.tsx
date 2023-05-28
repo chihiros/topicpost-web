@@ -74,6 +74,9 @@ export const CompactMenu = () => {
             ログアウト
           </button>
         </div>
+          <div className="flex items-center md:order-3">
+        {getLoggedIn() ? "ログインしています" : "ログインしていません"}
+            </div>
           </div>
         </div>
       </nav>
