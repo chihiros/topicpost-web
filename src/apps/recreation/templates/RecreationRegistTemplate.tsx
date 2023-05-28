@@ -27,12 +27,6 @@ export const RecreationRegistTemplate: React.FC = () => {
   const [isChecked5, setIsChecked5] = useState(false);
   const [isChecked6, setIsChecked6] = useState(false);
 
-  // const clearForm = () => {
-  //   setRecTitleValue('');
-  //   setYoutubeUrlValue('');
-  //   setMessageValue('');
-  // }
-
   const handleRecTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRecTitleValue(e.target.value);
   };
