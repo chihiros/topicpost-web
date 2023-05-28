@@ -10,6 +10,7 @@ import { RiTimerLine } from "react-icons/ri";
 import { BsFillPeopleFill } from "react-icons/bs";
 import getYouTubeID from "get-youtube-id";
 import RecreationAPI, { RecreationRequest } from "../../../api/api.topicpost.net/recreation";
+import { v4 as uuidv4 } from "uuid";
 
 import { TagButton } from "../organisms/RecreationTagButton";
 // import { GetSession } from "../../../utils/supabase";
@@ -47,15 +48,6 @@ export const RecreationRegistTemplate: React.FC = () => {
     setRequiredTime(e.target.value);
   };
 
-  const genUUID = () => {
-    return "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
-      const r = (Math.random() * 16) | 0;
-      const v = c === "x" ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
-  };
-
-  // isChecked1~6の
   const getIsCheckedList = () => {
     const isCheckedList = [];
     if (isChecked1) {
@@ -86,8 +78,8 @@ export const RecreationRegistTemplate: React.FC = () => {
 
     // const session = await GetSession();
     const request: RecreationRequest = {
-      user_id: genUUID(),
-      recreation_id: genUUID(),
+      user_id: uuidv4(),
+      recreation_id: uuidv4(),
       genre: getIsCheckedList(),
       title: recTitleValue,
       content: messageValue,
