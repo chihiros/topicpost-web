@@ -3,14 +3,23 @@ import { FiMenu } from "react-icons/fi";
 import { useLoginModal } from "../../../context/LoginModalContext";
 import { sidebar } from "../../../constants/sidebar";
 import Twemoji from "react-twemoji";
+import { supabaseClient } from '../../../utils/supabase';
+import { useAuthContext } from '../../../context/AuthContext';
 
 export const CompactMenu = () => {
   const { toggle } = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
+  const { setLoggedIn, getLoggedIn } = useAuthContext();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleLogout = () => {
+    supabaseClient.auth.signOut();
+    setLoggedIn(false);
+    sessionStorage.removeItem('last_access_date');
+};
 
   return (
     <div className="transition-transform lg:-translate-x-full translate-x-0 lg:hidden">
@@ -57,6 +66,14 @@ export const CompactMenu = () => {
                 </li>
               ))}
             </ul>
+          <div className="mt-4">
+          <button
+            onChange={handleLogout}
+            className="bg-slate-300 hover:bg-slate-700 text-white text-base font-bold py-2 px-4 rounded"
+          >
+            ログアウト
+          </button>
+        </div>
           </div>
         </div>
       </nav>
