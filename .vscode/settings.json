@@ -17,6 +17,7 @@
         "supabase",
         "tailwindcss",
         "toastify",
-        "unist"
+        "unist",
+        "uuidv"
     ]
 }
