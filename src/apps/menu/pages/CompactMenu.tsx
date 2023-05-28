@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { useLoginModal } from "../../../context/LoginModalContext";
+import { sidebar } from "../../../constants/sidebar";
+import Twemoji from "react-twemoji";
 
 export const CompactMenu = () => {
   const { toggle } = useLoginModal();
@@ -38,14 +40,22 @@ export const CompactMenu = () => {
           </div>
           <div id="mega-menu" className={`items-center justify-between ${isOpen ? '' : 'hidden'} w-full md:flex md:w-auto md:order-1`}>
             <ul className="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
-              <li>
-                <a
-                  href="/"
-                  className="block py-2 pl-3 pr-4 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0"
-                >
-                  Team
-                </a>
-              </li>
+              {sidebar.map((item, index) => (
+                <li key={index} className="border-b border-gray-100 md:border-0">
+                  <a href={item.link} className="flex items-center space-x-2">
+                    <Twemoji
+                      options={{
+                        className: "w-5 h-5",
+                      }}
+                    >{item.icon}</Twemoji>
+                    <span
+                      className="py-2 pl-2 text-gray-900 hover:bg-gray-50 font-medium md:hover:bg-transparent md:hover:text-blue-600 md:p-0"
+                    >
+                      {item.label}
+                    </span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
