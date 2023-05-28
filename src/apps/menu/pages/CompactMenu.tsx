@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useLoginModal } from "../../../context/LoginModalContext";
 
 export const CompactMenu = () => {
+  const { toggle } = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -15,7 +17,12 @@ export const CompactMenu = () => {
           <span className="text-2xl font-semibold hover:text-gray-400">TopicPost</span>
         </a>
         <div className="flex items-center md:order-2">
-          <a href="/" className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 focus:outline-none">Login</a>
+          <button
+            className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 focus:outline-none"
+            onClick={toggle}
+          >
+            Login
+          </button>
           <a href="/" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 focus:outline-none">Sign up</a>
           <button
             data-collapse-toggle="mega-menu"
