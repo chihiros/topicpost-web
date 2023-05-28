@@ -11,9 +11,8 @@ export const CompactMenu = () => {
     <div className="transition-transform lg:-translate-x-full translate-x-0 lg:hidden">
     <nav className="bg-gray-50 border-gray-200 rounded-b-3xl">
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
-        <a href="https://flowbite.com" className="flex items-center">
-          <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap">Flowbite</span>
+        <a className="" href="/">
+          <span className="text-2xl font-semibold hover:text-gray-400">TopicPost</span>
         </a>
         <div className="flex items-center md:order-2">
           <a href="/" className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 focus:outline-none">Login</a>
