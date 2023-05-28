@@ -12,7 +12,7 @@ export const SocialLoginButton: React.FC<SocialLoginProps> = ({ icon, children, 
                        hover:border-blue-400 active:bg-blue-100">
       <div className="relative items-center space-x-4 justify-start grid grid-cols-12">
         <span className="tile col-start-1 col-end-4 ml-auto">{icon}</span>
-        <span className="tile col-start-4 col-end-12 block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base">{children}</span>
+        <span className="tile col-start-4 col-end-12 block w-max font-semibold tracking-wide text-gray-700 text-base transition duration-300 group-hover:text-blue-600">{children}</span>
       </div>
     </button>
   );
