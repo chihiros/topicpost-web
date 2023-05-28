@@ -201,7 +201,7 @@ export const RecreationRegistTemplate: React.FC = () => {
       </div>
 
       <div className="p-4 bg-gray-50 rounded-lg overflow-auto break-words">
-        {(!recTitleValue && !messageValue) && (
+        {(!recTitleValue) && (
           <div className="flex mb-5 text-2xl">こちらにはプレビューが表示されます</div>
         )}
         <div className="mx-auto">
@@ -265,6 +265,9 @@ export const RecreationRegistTemplate: React.FC = () => {
           <MarkdownPreview>
             {messageValue}
           </MarkdownPreview>
+          {!messageValue && (
+            <div className="flex mb-5 text-xl">こちらにはプレビューが表示されます</div>
+          )}
         </div>
       </div>
     </div>
