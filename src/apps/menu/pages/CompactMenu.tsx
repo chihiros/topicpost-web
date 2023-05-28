@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FiMenu } from "react-icons/fi";
 import { useLoginModal } from "../../../context/LoginModalContext";
 
 export const CompactMenu = () => {
@@ -32,7 +33,7 @@ export const CompactMenu = () => {
             onClick={toggleDropdown}
           >
             <span className="sr-only">Open main menu</span>
-            <svg aria-hidden="true" className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
+            <FiMenu size={24} />
           </button>
         </div>
         <div id="mega-menu" className={`items-center justify-between ${isOpen ? '' : 'hidden'} w-full md:flex md:w-auto md:order-1`}>
