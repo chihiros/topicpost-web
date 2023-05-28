@@ -55,6 +55,30 @@ export const RecreationRegistTemplate: React.FC = () => {
     });
   };
 
+  // isChecked1~6の
+  const getIsCheckedList = () => {
+    const isCheckedList = [];
+    if (isChecked1) {
+      isCheckedList.push(1);
+    }
+    if (isChecked2) {
+      isCheckedList.push(2);
+    }
+    if (isChecked3) {
+      isCheckedList.push(3);
+    }
+    if (isChecked4) {
+      isCheckedList.push(4);
+    }
+    if (isChecked5) {
+      isCheckedList.push(5);
+    }
+    if (isChecked6) {
+      isCheckedList.push(6);
+    }
+    return isCheckedList;
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -64,7 +88,7 @@ export const RecreationRegistTemplate: React.FC = () => {
     const request: RecreationRequest = {
       user_id: genUUID(),
       recreation_id: genUUID(),
-      genre: [1, 2, 3],
+      genre: getIsCheckedList(),
       title: recTitleValue,
       content: messageValue,
       target_number: Number(targetNumber),
