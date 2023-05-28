@@ -66,15 +66,16 @@ const LoginModal: React.FC = () => {
                 </button>
                 <div className="px-6 py-6">
                   <h3 className="mb-4 text-xl font-medium text-gray-900">TopicPost にログインする</h3>
-                  <div className="grid grid-cols-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2">
                     {/* 左側にはSSOログインを設定する */}
-                    <div className="flex flex-col justify-center space-y-4 pr-6">
+                    <div className="flex flex-col justify-center space-y-2 sm:space-y-4 sm:pr-6">
                       {SocialLogins.map((social, index) => (
                         <SocialLoginButton key={index} {...social} />
                       ))}
                     </div>
                     {/* 右側にはEmail/Passwordのログインを設定する */}
-                    <div className="h-auto max-w-full border-l-2 pl-6">
+                    <hr className="h-px my-4 bg-gray-200 border-0 sm:hidden" />
+                    <div className="h-auto max-w-full sm:border-l-2 sm:pl-6">
                       <EmailPassword toggle={toggle} />
                     </div>
                   </div>
