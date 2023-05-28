@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Toast from '../../../utils/Toast';
-import { Profile, ProfileResponse, ProfileData } from '../../../api/api.topicpost.net/profile';
+import ProfileAPI, { ProfileResponse, ProfileData } from '../../../api/api.topicpost.net/profile';
 
 const SidebarLoggedIn: React.FC = () => {
   const [profileData, setProfileData] = useState<ProfileData | null>(null); //プロフィールデータを状態として保存
 
   useEffect(() => {
-    const profile = new Profile();
+    const profile = new ProfileAPI();
     const toast = new Toast();
     profile.get()
       .then((response: ProfileResponse) => {

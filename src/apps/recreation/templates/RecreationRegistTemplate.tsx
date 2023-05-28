@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from 'axios';
-import Toast from "../../../utils/Toast";
+// import axios from 'axios';
+// import Toast from "../../../utils/Toast";
 import Label from "../../../core/components/atoms/Label";
 import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
@@ -9,8 +9,11 @@ import { MarkdownPreview } from "../../../core/components/atoms/Markdown";
 import { RiTimerLine } from "react-icons/ri";
 import { BsFillPeopleFill } from "react-icons/bs";
 import getYouTubeID from "get-youtube-id";
+import RecreationAPI, { RecreationRequest } from "../../../api/api.topicpost.net/recreation";
+import { v4 as uuidv4 } from "uuid";
 
 import { TagButton } from "../organisms/RecreationTagButton";
+// import { GetSession } from "../../../utils/supabase";
 
 export const RecreationRegistTemplate: React.FC = () => {
   const [recTitleValue, setRecTitleValue] = useState('');
@@ -24,12 +27,6 @@ export const RecreationRegistTemplate: React.FC = () => {
   const [isChecked4, setIsChecked4] = useState(false);
   const [isChecked5, setIsChecked5] = useState(false);
   const [isChecked6, setIsChecked6] = useState(false);
-
-  const clearForm = () => {
-    setRecTitleValue('');
-    setYoutubeUrlValue('');
-    setMessageValue('');
-  }
 
   const handleRecTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRecTitleValue(e.target.value);
@@ -51,28 +48,61 @@ export const RecreationRegistTemplate: React.FC = () => {
     setRequiredTime(e.target.value);
   };
 
+  const getIsCheckedList = () => {
+    const isCheckedList = [];
+    if (isChecked1) {
+      isCheckedList.push(1);
+    }
+    if (isChecked2) {
+      isCheckedList.push(2);
+    }
+    if (isChecked3) {
+      isCheckedList.push(3);
+    }
+    if (isChecked4) {
+      isCheckedList.push(4);
+    }
+    if (isChecked5) {
+      isCheckedList.push(5);
+    }
+    if (isChecked6) {
+      isCheckedList.push(6);
+    }
+    return isCheckedList;
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const url = 'https://api.topicpost.net/v1/contact';
-    const data = {
-      name: recTitleValue,
+    const api = new RecreationAPI();
+
+    // const session = await GetSession();
+    const request: RecreationRequest = {
+      user_id: uuidv4(),
+      recreation_id: uuidv4(),
+      genre: getIsCheckedList(),
+      title: recTitleValue,
       content: messageValue,
-    };
+      target_number: Number(targetNumber),
+      required_time: Number(requiredTime),
+    }
 
-    const toast = new Toast();
-    axios.post(url, data)
-      .then(response => {
-        console.log(response.data);
-        toast.success('送信が完了しました');
+    // const toast = new Toast();
+    // axios.post(url, data)
+    //   .then(response => {
+    //     console.log(response.data);
+    //     toast.success('送信が完了しました');
 
-        // フォームの初期化
-        clearForm();
-      })
-      .catch(error => {
-        console.error(error);
-        toast.error('送信に失敗しました');
-      });
+    //     // フォームの初期化
+    //     clearForm();
+    //   })
+    //   .catch(error => {
+    //     console.error(error);
+    //     toast.error('送信に失敗しました');
+    //   });
+
+    const res = api.post(request);
+    console.log("res:", res);
   };
 
   return (
@@ -187,7 +217,7 @@ export const RecreationRegistTemplate: React.FC = () => {
       </div>
 
       <div className="p-4 bg-gray-50 rounded-lg overflow-auto break-words">
-        {(!recTitleValue && !messageValue) && (
+        {(!recTitleValue) && (
           <div className="flex mb-5 text-2xl">こちらにはプレビューが表示されます</div>
         )}
         <div className="mx-auto">
@@ -251,6 +281,9 @@ export const RecreationRegistTemplate: React.FC = () => {
           <MarkdownPreview>
             {messageValue}
           </MarkdownPreview>
+          {!messageValue && (
+            <div className="flex mb-5 text-xl">こちらにはプレビューが表示されます</div>
+          )}
         </div>
       </div>
     </div>

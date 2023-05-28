@@ -5,7 +5,7 @@ import { Text } from '../../../core/components/atoms/Input';
 import { SubmitButton } from '../../../core/components/atoms/Button';
 import Toast from '../../../utils/Toast';
 import { GetSession } from '../../../utils/supabase';
-import { Profile } from '../../../api/api.topicpost.net/profile';
+import ProfileAPI from '../../../api/api.topicpost.net/profile';
 
 const ProfileEditForm: React.FC = () => {
   const [nicknameValue, setNicknameValue] = useState('');
@@ -62,7 +62,7 @@ const ProfileEditForm: React.FC = () => {
   // };
 
   useEffect(() => {
-    const profile = new Profile();
+    const profile = new ProfileAPI();
     const toast = new Toast();
     profile.get()
       .then((response: any) => {
