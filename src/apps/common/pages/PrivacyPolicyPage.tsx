@@ -40,7 +40,7 @@ export const PrivacyPolicy: React.FC = () => {
         </div>
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-2">子供のプライバシー</h2>
+          <h2 className="text-xl font-bold mb-2">子どものプライバシー</h2>
           <p>サービスの対象年齢は13歳以上です。18歳未満のユーザーは親の同意が必要となります。親の同意がない場合、当該ユーザーの情報は削除します。</p>
         </div>
 
