@@ -28,7 +28,7 @@ export default class Profile implements ProfileMethods {
   authRequired = true;
 
   async get(): Promise<ProfileResponse> {
-    const res = await this.topicpost.get<ProfileData>();
+    const res = await this.topicpost.get<ProfileData>({}, this.authRequired);
     return {
       data: res.data,
       errors: res.errors,
