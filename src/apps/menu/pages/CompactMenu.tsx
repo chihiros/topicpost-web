@@ -28,9 +28,9 @@ export const CompactMenu = () => {
           <a className="" href="/">
             <span className="text-2xl font-semibold hover:text-gray-400">TopicPost</span>
           </a>
-          <div className="flex items-center md:order-2">
+          <div className="flex items-center">
             <button
-              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 mr-1 md:mr-2 focus:outline-none"
+              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
               onClick={toggle}
             >
               Login
@@ -38,7 +38,7 @@ export const CompactMenu = () => {
             <button
               data-collapse-toggle="mega-menu"
               type="button"
-              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+              className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
               aria-controls="mega-menu"
               aria-expanded="false"
               onClick={toggleDropdown}
@@ -47,10 +47,15 @@ export const CompactMenu = () => {
               <FiMenu size={24} />
             </button>
           </div>
-          <div id="mega-menu" className={`items-center justify-between ${isOpen ? '' : 'hidden'} w-full md:flex md:w-auto md:order-1`}>
-            <ul className="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
+          <div
+            id="mega-menu"
+            className={`overflow-hidden transition-all
+              ${isOpen ? "max-h-screen" : "max-h-0"}
+              items-center justify-between w-full`}
+          >
+            <ul className="flex flex-col mt-4 font-medium">
               {sidebar.map((item, index) => (
-                <li key={index} className="border-b border-gray-100 md:border-0">
+                <li key={index} className="">
                   <a href={item.link} className="flex items-center space-x-2">
                     <Twemoji
                       options={{
@@ -58,7 +63,7 @@ export const CompactMenu = () => {
                       }}
                     >{item.icon}</Twemoji>
                     <span
-                      className="py-2 pl-2 text-gray-900 hover:bg-gray-50 font-medium md:hover:bg-transparent md:hover:text-blue-600 md:p-0"
+                      className="py-2 pl-2 text-gray-900 hover:bg-gray-50 font-medium"
                     >
                       {item.label}
                     </span>
@@ -74,7 +79,7 @@ export const CompactMenu = () => {
                 ログアウト
               </button>
             </div>
-            <div className="flex items-center md:order-3">
+            <div className="flex items-center">
               {getLoggedIn() ? "ログインしています" : "ログインしていません"}
             </div>
           </div>

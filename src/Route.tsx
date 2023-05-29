@@ -9,6 +9,7 @@ import NotFoundPage from './apps/common/pages/NotFoundPage';
 import Pages, { PagesProps } from './apps/common/pages/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcrumb';
+import { PrivacyPolicy } from './apps/common/pages/PrivacyPolicyPage';
 
 type RouteType = {
   path: string;
@@ -65,6 +66,12 @@ const routes: RouteType[] = [
     template: ProfileEditPage,
     breadcrumb: [
       { href: '/profile/edit', context: 'プロフィール編集' },
+    ]
+  }, {
+    path: "/privacypolicy",
+    template: PrivacyPolicy,
+    breadcrumb: [
+      { href: '/privacypolicy', context: 'プライバシーポリシー' },
     ]
   }
 ];
