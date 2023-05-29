@@ -55,7 +55,7 @@ export const CompactMenu = () => {
           >
             <ul className="flex flex-col mt-4 font-medium">
               {sidebar.map((item, index) => (
-                <li key={index} className="border-b border-gray-100">
+                <li key={index} className="">
                   <a href={item.link} className="flex items-center space-x-2">
                     <Twemoji
                       options={{
