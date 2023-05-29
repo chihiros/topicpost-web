@@ -5,6 +5,7 @@ import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 import { EmailPassword } from "./EmailPassword";
+import { SupabaseSignInWithProvider } from "../../../../utils/supabase/Supabase";
 
 const LoginModal: React.FC = () => {
   const { isOpen, toggle } = useLoginModal();
@@ -21,28 +22,36 @@ const LoginModal: React.FC = () => {
         size={24}
       />,
       children: "Googleでログイン",
-      link: "/auth/google",
+      onClick: () => {
+        SupabaseSignInWithProvider("google");
+      }
     }, {
       icon: <BsGithub
         size={20}
         color="#333"
       />,
       children: "GitHubでログイン",
-      link: "/auth/github",
+      onClick: () => {
+        SupabaseSignInWithProvider("github");
+      }
     }, {
       icon: <BsTwitter
         size={20}
         color="#1DA1F2"
       />,
       children: "Twitterでログイン",
-      link: "/auth/twitter",
+      onClick: () => {
+        SupabaseSignInWithProvider("twitter");
+      }
     }, {
       icon: <BsFacebook
         size={20}
         color="#4267B2"
       />,
       children: "Facebookでログイン",
-      link: "/auth/facebook",
+      onClick: () => {
+        SupabaseSignInWithProvider("facebook");
+      }
     }
   ];
 
