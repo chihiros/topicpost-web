@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, Provider } from '@supabase/supabase-js'
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
 if (!supabaseUrl) {
@@ -17,6 +17,17 @@ export const SupabaseLoginWithPassword = async (email: string, password: string)
     email,
     password,
   })
+
+  return { data, error }
+}
+
+export const SupabaseSignInWithProvider = async (p: string) => {
+  const { data, error } = await supabaseClient.auth.signInWithOAuth({
+    provider: p as Provider,
+  })
+
+  console.log("data:", data);
+  console.log("error:", error);
 
   return { data, error }
 }
