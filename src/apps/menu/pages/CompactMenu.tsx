@@ -47,7 +47,12 @@ export const CompactMenu = () => {
               <FiMenu size={24} />
             </button>
           </div>
-          <div id="mega-menu" className={`items-center justify-between ${isOpen ? '' : 'hidden'} w-full md:flex md:w-auto md:order-1`}>
+          <div
+            id="mega-menu"
+            className={`overflow-hidden transition-all
+              ${isOpen ? "max-h-screen" : "max-h-0"}
+              items-center justify-between w-full md:flex md:w-auto md:order-1`}
+          >
             <ul className="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
               {sidebar.map((item, index) => (
                 <li key={index} className="border-b border-gray-100 md:border-0">
