@@ -23,16 +23,14 @@ const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
       <CookiesProvider>
         <AuthContextProvider>
           <LoginModalProvider>
-            <div className="">
-              <ToastContainer />
-              <SidebarMenu />
-              <CompactMenu />
-              <div className="p-4 lg:ml-64">
-                <Breadcrumb breadcrumb={breadcrumb} />
-                {template({ template })}
-                {runEnv !== "production" && <WindowSize />}
-                <LoginModal />
-              </div>
+            <ToastContainer />
+            <SidebarMenu />
+            <CompactMenu />
+            <div className="p-4 lg:ml-64">
+              <Breadcrumb breadcrumb={breadcrumb} />
+              {template({ template })}
+              {runEnv !== "production" && <WindowSize />}
+              <LoginModal />
             </div>
           </LoginModalProvider>
         </AuthContextProvider>
