@@ -75,7 +75,7 @@ const ContactForm: React.FC = () => {
       <div className="flex mb-5 text-3xl">新規アカウントの登録</div>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-12 gap-4 mb-4">
-          <div className="col-span-6">
+          <div className="col-span-12 sm:col-span-6">
             <Label htmlFor="email">
               メールアドレス<sup className='text-red-600'>*必須</sup>
             </Label>
@@ -88,7 +88,7 @@ const ContactForm: React.FC = () => {
               onChange={handleEmailChange}
             />
           </div>
-          <div className="col-span-6">
+          <div className="col-span-12 sm:col-span-6">
             <Label htmlFor="emailConfirm">
               メールアドレス(確認用)<sup className='text-red-600'>*必須</sup>
             </Label>
