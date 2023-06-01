@@ -155,6 +155,45 @@ export const RecreationRegistTemplate: React.FC = () => {
     setFileUrl(uploadFilePath);
   };
 
+  const onPaste = async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    const items = e.clipboardData.items;
+    let uploadFilePath: string[] = [];
+
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf("image") === -1) continue;
+
+      const file = items[i].getAsFile();
+      if (!file) return;
+
+      setUploading(true);
+      setMessageValue(prevMessage => prevMessage + '\n![Uploading](...)');
+
+      GetUserID().then(async (userID) => {
+        if (userID) {
+          const filePath = `${userID}/${uuidv4()}`;
+          const { data, error } = await supabaseClient.storage
+            .from('recreation')
+            .upload(filePath, file);
+
+          if (error) {
+            console.error('Error uploading file: ', error);
+          } else {
+            uploadFilePath.push(filePath);
+            const { data: { publicUrl } } = await supabaseClient.storage
+              .from('recreation')
+              .getPublicUrl(filePath);
+            setMessageValue(prevMessage => prevMessage.replace(
+              '![Uploading](...)',
+              `![image](${publicUrl})`
+            ));
+          }
+          setUploading(false);
+        }
+      });
+    }
+    setFileUrl(uploadFilePath);
+  }
+
   useEffect(() => {
   }, [fileUrl]);
 
@@ -263,6 +302,7 @@ export const RecreationRegistTemplate: React.FC = () => {
               onChange={handleMessageChange}
               onDragOver={onDragEnter}
               onDrop={onDrop}
+              onPaste={onPaste}
             />
             {/* <div className="text-slate-400 text-right text-sm my-1">自動保存：2023/05/16 0:22.09</div> */}
           </div>

@@ -10,9 +10,10 @@ type TextareaProps = {
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onDragOver?: (e: React.DragEvent<HTMLTextAreaElement>) => void;
   onDrop?: (e: React.DragEvent<HTMLTextAreaElement>) => void;
+  onPaste?: (e: React.ClipboardEvent<HTMLTextAreaElement>) => void;
 };
 
-const Textarea: React.FC<TextareaProps> = ({ id, rows, className, placeholder, required, value, onChange, onDragOver, onDrop }) => {
+const Textarea: React.FC<TextareaProps> = ({ id, rows, className, placeholder, required, value, onChange, onDragOver, onDrop, onPaste }) => {
   const [isFocused, setIsFocused] = React.useState(false);
 
   const handleFocus = () => {
@@ -38,6 +39,7 @@ const Textarea: React.FC<TextareaProps> = ({ id, rows, className, placeholder, r
       onBlur={handleBlur}
       onDragOver={onDragOver}
       onDrop={onDrop}
+      onPaste={onPaste}
     ></textarea>
   );
 }
