@@ -130,7 +130,7 @@ export const RecreationRegistTemplate: React.FC = () => {
           GetUserID().then(async (userID) => {
             if (userID) {
               const filePath = `${userID}/${uuidv4()}`;
-              const { data, error } = await supabaseClient.storage
+              const { error } = await supabaseClient.storage
                 .from('recreation')
                 .upload(filePath, file);
 
@@ -171,7 +171,7 @@ export const RecreationRegistTemplate: React.FC = () => {
       GetUserID().then(async (userID) => {
         if (userID) {
           const filePath = `${userID}/${uuidv4()}`;
-          const { data, error } = await supabaseClient.storage
+          const { error } = await supabaseClient.storage
             .from('recreation')
             .upload(filePath, file);
 
