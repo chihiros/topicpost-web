@@ -123,6 +123,7 @@ export const RecreationRegistTemplate: React.FC = () => {
       setUploading(true);
 
       for (var i = 0; i < e.dataTransfer.items.length; i++) {
+        setMessageValue(prevMessage => prevMessage + '\n![Uploading](...)');
         if (e.dataTransfer.items[i].kind === 'file') {
           const file = e.dataTransfer.items[i].getAsFile();
           if (!file) return;
@@ -138,6 +139,10 @@ export const RecreationRegistTemplate: React.FC = () => {
                 console.error('Error uploading file: ', error);
               } else {
                 uploadFilePath.push(filePath);
+                setMessageValue(prevMessage => prevMessage.replace(
+                  '![Uploading](...)',
+                  `![image](https://example.com/path/to/${filePath})`
+                ));
               }
               setUploading(false);
             }
