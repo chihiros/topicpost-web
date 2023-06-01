@@ -10,7 +10,7 @@ import Pages, { PagesProps } from './apps/common/pages/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcrumb';
 import { PrivacyPolicy } from './apps/common/pages/PrivacyPolicyPage';
-import SidebarMenu from './apps/common/pages/SidebarPage';
+import SidebarMenu from './apps/sidebar/organisms/SidebarPage';
 import { LoginModalProvider } from './context/LoginModalContext';
 import { ToastContainer } from "react-toastify";
 import { CookiesProvider } from "react-cookie";
