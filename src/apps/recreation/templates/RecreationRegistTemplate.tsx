@@ -156,7 +156,6 @@ export const RecreationRegistTemplate: React.FC = () => {
 
   const onPaste = async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
     const items = e.clipboardData.items;
-
     for (let i = 0; i < items.length; i++) {
       if (items[i].type.indexOf("image") === -1) continue;
       const file = items[i].getAsFile();
