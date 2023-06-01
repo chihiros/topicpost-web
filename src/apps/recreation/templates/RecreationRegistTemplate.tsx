@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import axios from 'axios';
 // import Toast from "../../../utils/Toast";
 import Label from "../../../core/components/atoms/Label";
@@ -108,7 +108,7 @@ export const RecreationRegistTemplate: React.FC = () => {
 
   // Set up local state for the dropped file
   const [uploading, setUploading] = useState(false);
-  const [fileUrl, setFileUrl] = useState<string | null>(null);
+  const [fileUrl, setFileUrl] = useState<string[] | null>(null);
 
   const onDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
     // Prevent default behavior (Prevent file from being opened)
@@ -118,6 +118,7 @@ export const RecreationRegistTemplate: React.FC = () => {
   const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
 
+    let uploadFilePath:string[] = [];
     if (e.dataTransfer.items) {
       setUploading(true);
 
@@ -128,15 +129,15 @@ export const RecreationRegistTemplate: React.FC = () => {
           GetUserID().then(async (userID) => {
             if (userID) {
               const filePath = `${userID}/${uuidv4()}`;
-
               const { data, error } = await supabaseClient.storage
                 .from('recreation')
                 .upload(filePath, file);
+              // console.log("data:", data);
 
               if (error) {
                 console.error('Error uploading file: ', error);
               } else {
-                setFileUrl(filePath);
+                uploadFilePath.push(filePath);
               }
               setUploading(false);
             }
@@ -144,8 +145,11 @@ export const RecreationRegistTemplate: React.FC = () => {
         }
       }
     }
+    setFileUrl(uploadFilePath);
   };
 
+  useEffect(() => {
+  }, [fileUrl]);
 
   return (
     <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
