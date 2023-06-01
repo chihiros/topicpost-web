@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 import { supabaseClient } from "../../../utils/supabase";
 
 import { TagButton } from "../organisms/RecreationTagButton";
-// import { GetSession } from "../../../utils/supabase";
+import { GetUserID } from "../../../utils/supabase";
 
 export const RecreationRegistTemplate: React.FC = () => {
   const [recTitleValue, setRecTitleValue] = useState('');
@@ -128,25 +128,26 @@ export const RecreationRegistTemplate: React.FC = () => {
           const file = e.dataTransfer.items[i].getAsFile();
           if (!file) return;
           // const filePath = `${file.name}`;
-          const filePath = `${uuidv4()}`;
-          console.log("filePath", filePath);
+          // console.log("GetUserID", GetUserID());
+          GetUserID().then(async (userID) => {
+            if (userID) {
+              console.log("userID", userID);
+              const filePath = `${userID}/${uuidv4()}`;
 
+              // Upload file to Supabase Storage
+              const { data, error } = await supabaseClient.storage
+                .from('recreation')
+                .upload(filePath, file);
+              console.log("data:", data);
 
-          console.log("file", file);
-
-
-          // Upload file to Supabase Storage
-          const { data, error } = await supabaseClient.storage
-            .from('recreation')
-            .upload(filePath, file);
-          console.log("data:", data);
-
-          if (error) {
-            console.error('Error uploading file: ', error);
-          } else {
-            setFileUrl(filePath);
-          }
-          setUploading(false);
+              if (error) {
+                console.error('Error uploading file: ', error);
+              } else {
+                setFileUrl(filePath);
+              }
+              setUploading(false);
+            }
+          });
         }
       }
     }
