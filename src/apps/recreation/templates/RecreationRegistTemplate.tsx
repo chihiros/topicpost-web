@@ -118,7 +118,7 @@ export const RecreationRegistTemplate: React.FC = () => {
   const onDrop = async (e: React.DragEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
 
-    let uploadFilePath:string[] = [];
+    let uploadFilePath: string[] = [];
     if (e.dataTransfer.items) {
       setUploading(true);
 
@@ -133,15 +133,17 @@ export const RecreationRegistTemplate: React.FC = () => {
               const { data, error } = await supabaseClient.storage
                 .from('recreation')
                 .upload(filePath, file);
-              // console.log("data:", data);
 
               if (error) {
                 console.error('Error uploading file: ', error);
               } else {
                 uploadFilePath.push(filePath);
+                const { data: { publicUrl } } = await supabaseClient.storage
+                  .from('recreation')
+                  .getPublicUrl(filePath);
                 setMessageValue(prevMessage => prevMessage.replace(
                   '![Uploading](...)',
-                  `![image](https://example.com/path/to/${filePath})`
+                  `![image](${publicUrl})`
                 ));
               }
               setUploading(false);
