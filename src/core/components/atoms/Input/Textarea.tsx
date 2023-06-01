@@ -8,9 +8,11 @@ type TextareaProps = {
   required?: boolean;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onDragOver?: (e: React.DragEvent<HTMLTextAreaElement>) => void;
+  onDrop?: (e: React.DragEvent<HTMLTextAreaElement>) => void;
 };
 
-const Textarea: React.FC<TextareaProps> = ({ id, rows, className, placeholder, required, value, onChange }) => {
+const Textarea: React.FC<TextareaProps> = ({ id, rows, className, placeholder, required, value, onChange, onDragOver, onDrop }) => {
   const [isFocused, setIsFocused] = React.useState(false);
 
   const handleFocus = () => {
@@ -34,6 +36,8 @@ const Textarea: React.FC<TextareaProps> = ({ id, rows, className, placeholder, r
       {...(onChange ? { onChange } : {})}
       onFocus={handleFocus}
       onBlur={handleBlur}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
     ></textarea>
   );
 }

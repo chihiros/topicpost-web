@@ -110,12 +110,12 @@ export const RecreationRegistTemplate: React.FC = () => {
   const [uploading, setUploading] = useState(false);
   const [fileUrl, setFileUrl] = useState<string[] | null>(null);
 
-  const onDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+  const onDragEnter = (e: React.DragEvent<HTMLTextAreaElement>) => {
     // Prevent default behavior (Prevent file from being opened)
     e.preventDefault();
   };
 
-  const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
+  const onDrop = async (e: React.DragEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
 
     let uploadFilePath:string[] = [];
@@ -254,6 +254,8 @@ export const RecreationRegistTemplate: React.FC = () => {
               required={true}
               value={messageValue}
               onChange={handleMessageChange}
+              onDragOver={onDragEnter}
+              onDrop={onDrop}
             />
             {/* <div className="text-slate-400 text-right text-sm my-1">自動保存：2023/05/16 0:22.09</div> */}
           </div>
@@ -261,12 +263,12 @@ export const RecreationRegistTemplate: React.FC = () => {
           <SubmitButton className="mr-2">投稿</SubmitButton>
         </form>
 
-        <div className="mb-2 mt-4 text-xl">画像をアップロード</div>
+        {/* <div className="mb-2 mt-4 text-xl">画像をアップロード</div>
         <div className="h-60 bg-slate-400 rounded-lg"
           onDragOver={onDragEnter}
           onDrop={onDrop}
         >
-        </div>
+        </div> */}
       </div>
 
       <div className="p-4 bg-gray-50 rounded-lg overflow-auto break-words">
