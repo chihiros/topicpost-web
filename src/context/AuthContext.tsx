@@ -30,6 +30,14 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
       setLoggedIn(session !== null);
     };
     checkSession();
+
+    supabaseClient.auth.onAuthStateChange((event) => {
+      if (event === 'SIGNED_IN' || event === 'USER_UPDATED') {
+        setLoggedIn(true);
+      } else if (event === 'SIGNED_OUT') {
+        setLoggedIn(false);
+      }
+    });
   }, []);
 
   const getLoggedIn = () => {
