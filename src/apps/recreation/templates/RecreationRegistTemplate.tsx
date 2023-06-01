@@ -195,7 +195,7 @@ export const RecreationRegistTemplate: React.FC = () => {
   }
 
   useEffect(() => {
-    console.log("fileUrl:", fileUrl);
+    // console.log("fileUrl:", fileUrl);
   }, [fileUrl]);
 
   return (
