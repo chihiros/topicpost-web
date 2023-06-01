@@ -3,7 +3,8 @@ import {
   SupabaseSignUp,
   SupabaseLoginWithPassword,
   SupabaseLogout,
-  GetSession
+  GetSession,
+  GetUserID
 } from './Supabase'
 
 export {
@@ -11,5 +12,6 @@ export {
   SupabaseSignUp,
   SupabaseLoginWithPassword,
   SupabaseLogout,
-  GetSession
+  GetSession,
+  GetUserID
 }
