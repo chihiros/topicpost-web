@@ -11,6 +11,7 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import getYouTubeID from "get-youtube-id";
 import RecreationAPI, { RecreationRequest } from "../../../api/api.topicpost.net/recreation";
 import { v4 as uuidv4 } from "uuid";
+import { supabaseClient } from "../../../utils/supabase";
 
 import { TagButton } from "../organisms/RecreationTagButton";
 // import { GetSession } from "../../../utils/supabase";
@@ -104,6 +105,53 @@ export const RecreationRegistTemplate: React.FC = () => {
     const res = api.post(request);
     console.log("res:", res);
   };
+
+  // Set up local state for the dropped file
+  const [uploading, setUploading] = useState(false);
+  const [fileUrl, setFileUrl] = useState<string | null>(null);
+
+  const onDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    // Prevent default behavior (Prevent file from being opened)
+    e.preventDefault();
+  };
+
+  const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+
+    if (e.dataTransfer.items) {
+      setUploading(true);
+
+      // Use DataTransferItemList interface to access the file(s)
+      for (var i = 0; i < e.dataTransfer.items.length; i++) {
+        // If dropped items aren't files, reject them
+        if (e.dataTransfer.items[i].kind === 'file') {
+          const file = e.dataTransfer.items[i].getAsFile();
+          if (!file) return;
+          // const filePath = `${file.name}`;
+          const filePath = `${uuidv4()}`;
+          console.log("filePath", filePath);
+
+
+          console.log("file", file);
+
+
+          // Upload file to Supabase Storage
+          const { data, error } = await supabaseClient.storage
+            .from('recreation')
+            .upload(filePath, file);
+          console.log("data:", data);
+
+          if (error) {
+            console.error('Error uploading file: ', error);
+          } else {
+            setFileUrl(filePath);
+          }
+          setUploading(false);
+        }
+      }
+    }
+  };
+
 
   return (
     <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
@@ -214,6 +262,13 @@ export const RecreationRegistTemplate: React.FC = () => {
           {/* <SuccessButton className="mr-2">下書きを保存</SuccessButton> */}
           <SubmitButton className="mr-2">投稿</SubmitButton>
         </form>
+
+        <div className="mb-2 mt-4 text-xl">画像をアップロード</div>
+        <div className="h-60 bg-slate-400 rounded-lg"
+          onDragOver={onDragEnter}
+          onDrop={onDrop}
+        >
+        </div>
       </div>
 
       <div className="p-4 bg-gray-50 rounded-lg overflow-auto break-words">
