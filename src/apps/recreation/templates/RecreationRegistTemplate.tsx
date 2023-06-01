@@ -115,54 +115,83 @@ export const RecreationRegistTemplate: React.FC = () => {
     e.preventDefault();
   };
 
-  const uploadImage = async (file: File) => {
-    setUploading(true);
-    setMessageValue(prevMessage => prevMessage + '\n![Uploading](...)');
-    const userID = await GetUserID();
-    if (userID) {
-      const filePath = `${userID}/${uuidv4()}`;
-      const { data, error } = await supabaseClient.storage
-        .from('recreation')
-        .upload(filePath, file);
-
-      if (error) {
-        console.error('Error uploading file: ', error);
-      } else {
-        const { data: { publicUrl } } = await supabaseClient.storage
-          .from('recreation')
-          .getPublicUrl(filePath);
-        setMessageValue(prevMessage => prevMessage.replace(
-          '![Uploading](...)',
-          `![image](${publicUrl})`
-        ));
-      }
-    }
-    setUploading(false);
-  }
-
   const onDrop = async (e: React.DragEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
+
+    let uploadFilePath: string[] = [];
     if (e.dataTransfer.items) {
+      setUploading(true);
+
       for (var i = 0; i < e.dataTransfer.items.length; i++) {
+        setMessageValue(prevMessage => prevMessage + '\n![Uploading](...)');
         if (e.dataTransfer.items[i].kind === 'file') {
           const file = e.dataTransfer.items[i].getAsFile();
-          if (file) {
-            await uploadImage(file);
-          }
+          if (!file) return;
+          GetUserID().then(async (userID) => {
+            if (userID) {
+              const filePath = `${userID}/${uuidv4()}`;
+              const { data, error } = await supabaseClient.storage
+                .from('recreation')
+                .upload(filePath, file);
+
+              if (error) {
+                console.error('Error uploading file: ', error);
+              } else {
+                uploadFilePath.push(filePath);
+                const { data: { publicUrl } } = await supabaseClient.storage
+                  .from('recreation')
+                  .getPublicUrl(filePath);
+                setMessageValue(prevMessage => prevMessage.replace(
+                  '![Uploading](...)',
+                  `![image](${publicUrl})`
+                ));
+              }
+              setUploading(false);
+            }
+          });
         }
       }
     }
+    setFileUrl(uploadFilePath);
   };
 
   const onPaste = async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
     const items = e.clipboardData.items;
+    let uploadFilePath: string[] = [];
+
     for (let i = 0; i < items.length; i++) {
       if (items[i].type.indexOf("image") === -1) continue;
+
       const file = items[i].getAsFile();
-      if (file) {
-        await uploadImage(file);
-      }
+      if (!file) return;
+
+      setUploading(true);
+      setMessageValue(prevMessage => prevMessage + '\n![Uploading](...)');
+
+      GetUserID().then(async (userID) => {
+        if (userID) {
+          const filePath = `${userID}/${uuidv4()}`;
+          const { data, error } = await supabaseClient.storage
+            .from('recreation')
+            .upload(filePath, file);
+
+          if (error) {
+            console.error('Error uploading file: ', error);
+          } else {
+            uploadFilePath.push(filePath);
+            const { data: { publicUrl } } = await supabaseClient.storage
+              .from('recreation')
+              .getPublicUrl(filePath);
+            setMessageValue(prevMessage => prevMessage.replace(
+              '![Uploading](...)',
+              `![image](${publicUrl})`
+            ));
+          }
+          setUploading(false);
+        }
+      });
     }
+    setFileUrl(uploadFilePath);
   }
 
   useEffect(() => {
