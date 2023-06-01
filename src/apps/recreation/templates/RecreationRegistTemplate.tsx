@@ -121,24 +121,17 @@ export const RecreationRegistTemplate: React.FC = () => {
     if (e.dataTransfer.items) {
       setUploading(true);
 
-      // Use DataTransferItemList interface to access the file(s)
       for (var i = 0; i < e.dataTransfer.items.length; i++) {
-        // If dropped items aren't files, reject them
         if (e.dataTransfer.items[i].kind === 'file') {
           const file = e.dataTransfer.items[i].getAsFile();
           if (!file) return;
-          // const filePath = `${file.name}`;
-          // console.log("GetUserID", GetUserID());
           GetUserID().then(async (userID) => {
             if (userID) {
-              console.log("userID", userID);
               const filePath = `${userID}/${uuidv4()}`;
 
-              // Upload file to Supabase Storage
               const { data, error } = await supabaseClient.storage
                 .from('recreation')
                 .upload(filePath, file);
-              console.log("data:", data);
 
               if (error) {
                 console.error('Error uploading file: ', error);
