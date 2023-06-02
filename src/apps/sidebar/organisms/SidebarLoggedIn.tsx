@@ -10,15 +10,15 @@ const SidebarLoggedIn: React.FC = () => {
     const toast = new Toast();
     profile.get()
       .then((response: ProfileResponse) => {
-        console.log("SidebarLoggedIn:", response);
+        // console.log("SidebarLoggedIn:", response);
         if (response.status !== 200) {
           console.error(response);
-          toast.error('送信に失敗しました');
+          // toast.error('送信に失敗しました');
           return;
         }
 
         if (response.data.length === 0) {
-          toast.error('プロフィールが存在しません');
+          // toast.error('プロフィールが存在しません');
           return;
         }
 
