@@ -26,7 +26,7 @@ const ProfileEditForm: React.FC = () => {
   const toast = new Toast();
   useEffect(() => {
     profile.get()
-      .then((response: any) => {
+      .then((response: ProfileResponse) => {
         console.log(response);
         if (response.status !== 200) {
           console.error(response);
