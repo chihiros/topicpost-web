@@ -103,7 +103,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
           }}
         >
           {children && typeof children === "string"
-            ? children.replace(/:::note (info|warn|alert)\n([\s\S]*?)\n:::/g, (_, type, content) =>
+            ? children.replace(/:::note\s*(info|warn|alert)?\n([\s\S]*?)\n:::/g, (_, type = "info", content) =>
               `<div class="note ${type}">${content}</div>`
             )
             : ''
