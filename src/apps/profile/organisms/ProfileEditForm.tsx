@@ -22,9 +22,9 @@ const ProfileEditForm: React.FC = () => {
     setIconUrlValue(event.target.value);
   };
 
-  const profile = new ProfileAPI();
-  const toast = new Toast();
   useEffect(() => {
+    const profile = new ProfileAPI();
+    const toast = new Toast();
     profile.get()
       .then((response: ProfileResponse) => {
         console.log(response);
@@ -49,6 +49,7 @@ const ProfileEditForm: React.FC = () => {
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const profile = new ProfileAPI();
     event.preventDefault();
     const toast = new Toast();
 
