@@ -4,11 +4,15 @@ import { Text, Annotation } from '../../../core/components/atoms/Input';
 import { SubmitButton } from '../../../core/components/atoms/Button';
 import Toast from '../../../utils/Toast';
 import { supabaseClient } from '../../../utils/supabase';
+import { useHistory } from 'react-router-dom';
+import { useLoginModal } from '../../../context/LoginModalContext';
 
 const ContactForm: React.FC = () => {
   const [emailValue, setEmailValue] = useState('');
   const [emailConfirm, setEmailConfirm] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+  const history = useHistory();
+  const { toggle } = useLoginModal();
 
   const clearForm = () => {
     setEmailValue('');
@@ -62,12 +66,12 @@ const ContactForm: React.FC = () => {
       return;
     }
 
-    // console.log(data);
+    console.log(data);
     // console.log(data?.user);
     // console.log(data?.user?.id);
-
+    history.push("/");
+    toggle();
     toast.success("アカウントの登録が完了しました")
-    clearForm();
   };
 
   return (
