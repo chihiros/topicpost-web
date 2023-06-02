@@ -14,12 +14,6 @@ const ContactForm: React.FC = () => {
   const history = useHistory();
   const { toggle } = useLoginModal();
 
-  const clearForm = () => {
-    setEmailValue('');
-    setEmailConfirm('');
-    setPasswordValue('');
-  }
-
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmailValue(event.target.value);
   };
