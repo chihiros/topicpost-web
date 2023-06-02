@@ -37,7 +37,9 @@ export class TopicPostAPI {
     // Queryパラメータがある場合はURLに追加する
     if (options.query) {
       const queryParameters = new URLSearchParams(options.query as any).toString();
-      this.url = `${this.url}?${queryParameters}`;
+      if (queryParameters) {
+        this.url = `${this.url}?${queryParameters}`;
+      }
     }
 
     let body = options.body ? JSON.stringify(options.body) : undefined;
