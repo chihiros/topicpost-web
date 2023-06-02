@@ -2,10 +2,15 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
+import rehypeSanitize from 'rehype-sanitize';
 import { Note } from './Note';
 
 type Props = {
   children?: React.ReactNode;
+};
+
+const sanitizeSchema = {
+  tagNames: ['img'],
 };
 
 export const MarkdownPreview: React.FC<Props> = ({ children }) => {
@@ -26,7 +31,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
       <div className='prose'>
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeRaw]}
+          rehypePlugins={[rehypeRaw, [rehypeSanitize, sanitizeSchema]]}
           components={{
             h1: ({ node, children, ...props }) => (
               <h1 className="font-bold mb-2" {...props}>
