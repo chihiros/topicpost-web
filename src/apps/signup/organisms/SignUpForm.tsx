@@ -76,8 +76,8 @@ const ContactForm: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-12 gap-4 mb-4">
           <div className="col-span-12 sm:col-span-6">
-            <Label htmlFor="email">
-              メールアドレス<sup className='text-red-600'>*必須</sup>
+            <Label htmlFor="email" required>
+              メールアドレス
             </Label>
             <Text
               id="email"
@@ -89,8 +89,8 @@ const ContactForm: React.FC = () => {
             />
           </div>
           <div className="col-span-12 sm:col-span-6">
-            <Label htmlFor="emailConfirm">
-              メールアドレス(確認用)<sup className='text-red-600'>*必須</sup>
+            <Label htmlFor="emailConfirm" required>
+              メールアドレス(確認用)
             </Label>
             <Text
               id="emailConfirm"
@@ -103,8 +103,8 @@ const ContactForm: React.FC = () => {
           </div>
         </div>
         <div className="mb-4">
-          <Label htmlFor="password">
-            パスワード<sup className='text-red-600'>*必須</sup>
+          <Label htmlFor="password" required>
+            パスワード
           </Label>
           <Text
             id="password"
