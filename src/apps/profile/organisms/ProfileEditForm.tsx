@@ -5,7 +5,7 @@ import { Text } from '../../../core/components/atoms/Input';
 import { SubmitButton } from '../../../core/components/atoms/Button';
 import Toast from '../../../utils/Toast';
 import { GetSession } from '../../../utils/supabase';
-import ProfileAPI from '../../../api/api.topicpost.net/profile';
+import ProfileAPI, { ProfileRequest, ProfileResponse } from '../../../api/api.topicpost.net/profile';
 
 const ProfileEditForm: React.FC = () => {
   const [nicknameValue, setNicknameValue] = useState('');
@@ -23,9 +23,9 @@ const ProfileEditForm: React.FC = () => {
     setIconUrlValue(event.target.value);
   };
 
+  const profile = new ProfileAPI();
+  const toast = new Toast();
   useEffect(() => {
-    const profile = new ProfileAPI();
-    const toast = new Toast();
     profile.get()
       .then((response: any) => {
         console.log(response);
@@ -60,29 +60,21 @@ const ProfileEditForm: React.FC = () => {
     }
 
     GetSession().then(session => {
-      const url = 'https://api.topicpost.net/v1/profile';
-      const token = "Bearer " + session?.access_token
-      const data = {
+      const req: ProfileRequest = {
         nickname: nicknameValue,
         icon_url: iconUrlValue,
-      };
+      }
 
-      axios.put(url, data, {
-        headers: {
-          'Authorization': token
-        }
+      profile.put(req).then((response: ProfileResponse) => {
+        console.log(response.data);
+        toast.success('送信が完了しました');
+
+        // フォームの初期化
+        clearForm();
+      }).catch((error: any) => {
+        console.error(error);
+        toast.error('送信に失敗しました');
       })
-        .then(response => {
-          console.log(response.data);
-          toast.success('送信が完了しました');
-
-          // フォームの初期化
-          clearForm();
-        })
-        .catch(error => {
-          console.error(error);
-          toast.error('送信に失敗しました');
-        });
     })
   };
 
