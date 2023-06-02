@@ -9,6 +9,7 @@ const ContactForm: React.FC = () => {
   const [emailValue, setEmailValue] = useState('');
   const [emailConfirm, setEmailConfirm] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+  const [nicknameValue, setNicknameValue] = useState('');
 
   const clearForm = () => {
     setEmailValue('');
@@ -26,6 +27,10 @@ const ContactForm: React.FC = () => {
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordValue(event.target.value);
+  };
+
+  const handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNicknameValue(event.target.value);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -75,6 +80,19 @@ const ContactForm: React.FC = () => {
       <div className="flex mb-5 text-3xl">新規アカウントの登録</div>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-12 gap-4 mb-4">
+        <div className="col-span-12">
+            <Label htmlFor="nickname" required>
+              ニックネーム
+            </Label>
+            <Text
+              id="nickname"
+              type="email"
+              className="bg-gray-50"
+              required={true}
+              value={nicknameValue}
+              onChange={handleNicknameChange}
+            />
+          </div>
           <div className="col-span-12 sm:col-span-6">
             <Label htmlFor="email" required>
               メールアドレス
