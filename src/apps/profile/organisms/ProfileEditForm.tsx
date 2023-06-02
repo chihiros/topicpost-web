@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Label from '../../../core/components/atoms/Label';
 import { Text } from '../../../core/components/atoms/Input';
 import { SubmitButton } from '../../../core/components/atoms/Button';
