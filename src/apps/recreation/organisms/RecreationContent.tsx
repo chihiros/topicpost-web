@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { NewCard } from "../../../core/components/atoms/Card";
 import { AiOutlineSearch, AiOutlinePlus } from "react-icons/ai";
 import { BsFilter } from "react-icons/bs";
-import Recreation, { RecreationRequest, RecreationResponse, RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
+import Recreation, { RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
 
 const RecreationForm: React.FC = () => {
   const [isFilterDropdownOpen, setFilterDropdownOpen] = useState(false);

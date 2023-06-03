@@ -9,7 +9,6 @@ import Toast from "../../../../utils/Toast";
 import { getErrorMessage } from "../../../../utils/ErrorMessage";
 import { supabaseClient } from "../../../../utils/supabase";
 import { useHistory } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 import { useAuthContext } from '../../../../context/AuthContext';
 import ProfileAPI, { ProfileResponse } from '../../../../api/api.topicpost.net/profile';
 
@@ -20,7 +19,6 @@ type EmailPasswordProps = {
 export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   const [modalEmail, setModalEmail] = useState<string>(''); // value属性を型付きのstringで初期化する
   const [modalPassword, setModalPassword] = useState<string>(''); // value属性を型付きのstringで初期化する
-  const [, setCookie] = useCookies();
   const { setLoggedIn } = useAuthContext();
 
   const toast = new Toast();
