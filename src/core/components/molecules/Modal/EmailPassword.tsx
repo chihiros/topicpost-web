@@ -56,15 +56,16 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
       .then((response: ProfileResponse) => {
         console.log("response", response);
         toast.success('ログインに成功しました');
-
         setLoggedIn(true);
 
-        if (response.data.length) {
+        if (response.data) {
           // 登録済みのProfileがある場合
           history.push("/");
-        } else {
+        } else if (response.status === 404) {
           // Profileが登録されていない場合
           history.push(`/profile/edit`);
+        } else {
+          toast.error('エラーが発生しました');
         }
       })
       .catch((error: any) => {
