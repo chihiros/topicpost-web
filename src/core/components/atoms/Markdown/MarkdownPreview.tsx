@@ -9,9 +9,9 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const sanitizeSchema = {
-  tagNames: ['img'],
-};
+// const sanitizeSchema = {
+//   tagNames: ['img'],
+// };
 
 export const MarkdownPreview: React.FC<Props> = ({ children }) => {
   return (
@@ -31,7 +31,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
       <div className='prose'>
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeRaw, [rehypeSanitize, sanitizeSchema]]}
+          rehypePlugins={[rehypeRaw, [rehypeSanitize]]}
           components={{
             h1: ({ node, children, ...props }) => (
               <h1 className="font-bold mb-2" {...props}>
