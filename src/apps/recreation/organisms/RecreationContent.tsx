@@ -229,7 +229,7 @@ const RecreationForm: React.FC = () => {
               Showing
               <span className="font-semibold text-gray-900">1-10</span>
               of
-              <span className="font-semibold text-gray-900">1000</span>
+              <span className="font-semibold text-gray-900">{recreation_records}</span>
             </span>
             <ul className="inline-flex items-stretch -space-x-px">
               <li>
