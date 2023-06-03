@@ -12,17 +12,14 @@ const SidebarLoggedIn: React.FC = () => {
       .then((response: ProfileResponse) => {
         // console.log("SidebarLoggedIn:", response);
         if (response.status !== 200) {
-          console.error(response);
-          // toast.error('送信に失敗しました');
+          if (response.status === 404) {
+            return;
+          }
+
+          toast.error('送信に失敗しました');
           return;
         }
-
-        if (response.data.length === 0) {
-          // toast.error('プロフィールが存在しません');
-          return;
-        }
-
-        setProfileData(response.data[0]);
+        setProfileData(response.data);
       })
       .catch((error: any) => {
         console.error(error);
