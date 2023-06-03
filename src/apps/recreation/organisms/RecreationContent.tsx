@@ -212,9 +212,6 @@ const RecreationForm: React.FC = () => {
                 レクを投稿する
               </button>
             </div>
-
-
-
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left text-gray-500">
