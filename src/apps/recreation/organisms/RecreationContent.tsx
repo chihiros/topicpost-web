@@ -224,8 +224,11 @@ const RecreationForm: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {numbers.map((number) => (
-                  <tr className="border-b">
+                {numbers.map((key) => (
+                  <tr
+                    key={key}
+                    className="border-b"
+                  >
                     <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">ジョンプラウンのおじさん</th>
                     <td className="px-4 py-3">アイスブレイク</td>
                     <td className="px-4 py-3">すずりかわ@熊本</td>
