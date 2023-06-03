@@ -62,6 +62,24 @@ const RecreationForm: React.FC = () => {
     requestAnimationFrame(animate)
   }
 
+  const GetRecreationGenre = (id: number): string => {
+    switch (id) {
+      case 1:
+        return "アイスブレイク"
+      case 2:
+        return "手遊びレク"
+      case 3:
+        return "少人数レク"
+      case 4:
+        return "グループレク"
+      case 5:
+        return "静かにするレク"
+      case 6:
+        return "レクダン"
+    }
+    return ""
+  }
+
   return (
     <>
       <div className="text-2xl">
@@ -215,10 +233,16 @@ const RecreationForm: React.FC = () => {
                     key={key}
                     className="border-b"
                   >
-                    <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">ジョンプラウンのおじさん</th>
-                    <td className="px-4 py-3">アイスブレイク</td>
+                    <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{Recreation.title}</th>
+                    <td className="px-4 py-3">
+                      {Recreation.genre.map((genre, key) => (
+                        <pre key={key} className={`bg-gray-200 text-blue-600 text-xs text-center px-1 ${key === Recreation.genre.length - 1 ? 'mb-0' : 'mb-1'} rounded`}>
+                          {GetRecreationGenre(genre)}
+                        </pre>
+                      ))}
+                    </td>
                     <td className="px-4 py-3">すずりかわ@熊本</td>
-                    <td className="px-4 py-3 hidden sm:block">2023/05/14</td>
+                    <td className="px-4 py-3 hidden sm:block">{Recreation.created_at}</td>
                   </tr>
                 ))}
               </tbody>
