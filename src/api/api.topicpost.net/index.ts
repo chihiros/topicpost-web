@@ -1,7 +1,7 @@
 import { GetSession } from '../../utils/supabase';
 
 export interface Response<T> {
-  data: T[];
+  data: T;
   errors: {
     code: string;
     message: string;
