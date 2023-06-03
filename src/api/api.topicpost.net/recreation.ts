@@ -33,6 +33,7 @@ export interface RecreationsResponse extends Response<RecreationsData> { }
 
 interface RecreationMethods {
   get: () => Promise<RecreationsResponse>;
+  getByRecreationID: () => Promise<RecreationResponse>;
   post: (body: RecreationRequest) => Promise<RecreationResponse>;
   put: (body: RecreationRequest) => Promise<RecreationResponse>;
   delete: () => Promise<RecreationResponse>;
@@ -51,6 +52,7 @@ export default class Recreation implements RecreationMethods {
     };
   }
 
+  async getByRecreationID(): Promise<RecreationResponse> {
     const res = await this.topicpost_recreation.get<RecreationData>();
     return {
       data: res.data,
