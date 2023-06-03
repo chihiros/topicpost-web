@@ -29,13 +29,13 @@ const ProfileEditForm: React.FC = () => {
       .then((response: ProfileResponse) => {
         console.log(response);
         if (response.status !== 200) {
+          if (response.status === 404) {
+            toast.warn('プロフィールの登録をしてください');
+            return;
+          }
+
           console.error(response);
           toast.error('送信に失敗しました');
-          return;
-        }
-
-        if (response.data.length === 0) {
-          toast.error('プロフィールが存在しません');
           return;
         }
 
