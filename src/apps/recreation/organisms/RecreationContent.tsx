@@ -11,6 +11,8 @@ const RecreationForm: React.FC = () => {
   const actionsDropdownRef = useRef<HTMLDivElement>(null);
   const filterDropdownRef = useRef<HTMLDivElement>(null);
 
+  const history = useHistory();
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (filterDropdownRef.current && !filterDropdownRef.current.contains(event.target as Node)) {
@@ -24,10 +26,14 @@ const RecreationForm: React.FC = () => {
     };
   }, [actionsDropdownRef, filterDropdownRef]);
 
+  const [recreations, setRecreations] = useState<RecreationsResponse>();
+  const [recreation_records, setRecreationRecords] = useState(0);
   useEffect(() => {
     const recreation = new Recreation();
     recreation.get().then((response: RecreationsResponse) => {
       console.log(response);
+      setRecreations(response);
+      setRecreationRecords(response.data.total_records);
     }).catch((error) => {
       console.log(error);
     });
@@ -55,35 +61,6 @@ const RecreationForm: React.FC = () => {
 
     requestAnimationFrame(animate)
   }
-
-  // const RecreationList = [
-  //   {
-  //     id: 1,
-  //     title: 'ジョンブランのおじさん',
-  //     genre: 'アイスブレイク',
-  //     content: 'ジョンブランのおじさんの内容',
-  //     image: 'https://picsum.photos/200/300',
-  //     url: 'https://www.google.com/',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'ジョンブランのおじさん',
-  //     genre: 'アイスブレイク',
-  //     content: 'ジョンブランのおじさんの内容',
-  //     image: 'https://picsum.photos/200/300',
-  //     url: 'https://www.google.com/',
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'ジョンブランのおじさん',
-  //     genre: 'アイスブレイク',
-  //     content: 'ジョンブランのおじさんの内容',
-  //     image: 'https://picsum.photos/200/300',
-  //     url: 'https://www.google.com/',
-  //   }
-  // ];
-
-  const history = useHistory();
 
   return (
     <>
@@ -233,7 +210,7 @@ const RecreationForm: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {numbers.map((key) => (
+                {recreations?.data.recreations.map((Recreation, key) => (
                   <tr
                     key={key}
                     className="border-b"
