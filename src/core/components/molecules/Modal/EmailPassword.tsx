@@ -57,9 +57,6 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
         console.log("response", response);
         toast.success('ログインに成功しました');
 
-        setCookie("access_token", data.session?.access_token);
-        setCookie("refresh_token", data.session?.refresh_token);
-        sessionStorage.setItem("last_access_date", new Date().toISOString());
         setLoggedIn(true);
 
         if (response.data.length) {
