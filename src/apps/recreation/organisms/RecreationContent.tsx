@@ -223,8 +223,8 @@ const RecreationForm: React.FC = () => {
                 <tr>
                   <th scope="col" className="px-4 py-3">レク名</th>
                   <th scope="col" className="px-4 py-3">ジャンル</th>
-                  <th scope="col" className="px-4 py-3">投稿者</th>
-                  <th scope="col" className="px-4 py-3 hidden sm:block">投稿日</th>
+                  <th scope="col" className="px-4 py-3 hidden sm:table-cell">投稿者</th>
+                  <th scope="col" className="px-4 py-3 hidden md:table-cell">投稿日</th>
                 </tr>
               </thead>
               <tbody>
@@ -241,8 +241,8 @@ const RecreationForm: React.FC = () => {
                         </pre>
                       ))}
                     </td>
-                    <td className="px-4 py-3">すずりかわ@熊本</td>
-                    <td className="px-4 py-3 hidden sm:block">{Recreation.created_at}</td>
+                    <td className="px-4 py-3 hidden sm:table-cell">すずりかわ@熊本</td>
+                    <td className="px-4 py-3 hidden md:table-cell">{Recreation.created_at}</td>
                   </tr>
                 ))}
               </tbody>
