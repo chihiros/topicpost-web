@@ -1,7 +1,7 @@
 import { GetSession } from '../../utils/supabase';
 
 export interface Response<T> {
-  data: T[];
+  data: T;
   errors: {
     code: string;
     message: string;
@@ -22,7 +22,6 @@ export class TopicPostAPI {
 
   constructor(uri: string) {
     this.baseUrl = process.env.REACT_APP_TOPICPOST_API_HOST + '/v1';
-    // this.baseUrl = 'https://api.topicpost.net/v1';
     this.url = `${this.baseUrl}${uri}`
   }
 
@@ -31,13 +30,17 @@ export class TopicPostAPI {
 
     if (options.authRequired) {
       const session = await GetSession();
+      console.log("session", session);
+
       headers['Authorization'] = `Bearer ${session?.access_token}`;
     }
 
     // Queryパラメータがある場合はURLに追加する
     if (options.query) {
       const queryParameters = new URLSearchParams(options.query as any).toString();
-      this.url = `${this.url}?${queryParameters}`;
+      if (queryParameters) {
+        this.url = `${this.url}?${queryParameters}`;
+      }
     }
 
     let body = options.body ? JSON.stringify(options.body) : undefined;

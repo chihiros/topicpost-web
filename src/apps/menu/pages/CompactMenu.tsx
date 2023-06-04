@@ -59,11 +59,11 @@ export const CompactMenu = () => {
                   <a href={item.link} className="flex items-center space-x-2">
                     <Twemoji
                       options={{
-                        className: "w-5 h-5",
+                        className: "w-6 h-6",
                       }}
                     >{item.icon}</Twemoji>
                     <span
-                      className="py-2 pl-2 text-gray-900 hover:bg-gray-50 font-medium"
+                      className="py-2 pl-2 text-gray-700 hover:bg-gray-50 font-medium text-xl"
                     >
                       {item.label}
                     </span>

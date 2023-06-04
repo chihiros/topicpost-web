@@ -6,6 +6,10 @@ class Toast {
     toast.success(message);
   }
 
+  public warn(message: string) {
+    toast.warn(message);
+  }
+
   public error(message: string) {
     toast.error(message);
   }

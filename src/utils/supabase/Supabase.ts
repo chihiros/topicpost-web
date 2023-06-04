@@ -52,3 +52,14 @@ export const GetSession = async () => {
 
   return session;
 };
+
+// GetUserIDはstring | undefinedを返す
+export const GetUserID = async () => {
+  const session = await GetSession();
+
+  if (session) {
+    return session.user.id;
+  }
+
+  return undefined;
+}
