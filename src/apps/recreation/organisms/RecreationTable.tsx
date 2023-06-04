@@ -185,11 +185,13 @@ export const RecreationTable: React.FC = () => {
                   </Link>
                 </th>
                 <td className="px-4 py-3">
-                  {Recreation.genre.map((genre, key) => (
-                    <Link to={`/recreation/${Recreation.recreation_id}`} key={key} className={`whitespace-nowrap h-full w-full bg-gray-200 text-blue-600 text-xs text-center px-1 inline ${key === Recreation.genre.length - 1 ? '' : 'mb-1 mr-1'} rounded`}>
-                      {GetRecreationGenre(genre)}
-                    </Link>
-                  ))}
+                  <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full">
+                    {Recreation.genre.map((genre, key) => (
+                      <span key={key} className={`bg-gray-200 text-blue-600 text-xs text-center px-1 inline ${key === Recreation.genre.length - 1 ? '' : 'mb-1 mr-1'} rounded`}>
+                        {GetRecreationGenre(genre)}
+                      </span>
+                    ))}
+                  </Link>
                 </td>
                 <td className="px-4 py-3 hidden sm:table-cell">
                   <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full whitespace-nowrap">
