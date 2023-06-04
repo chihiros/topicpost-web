@@ -17,6 +17,8 @@ import { CookiesProvider } from "react-cookie";
 import { AuthContextProvider } from "./context/AuthContext";
 // import { Analytics } from '@vercel/analytics/react';
 import { CompactMenu } from "./apps/menu/pages/CompactMenu";
+import { RecreationContentPage } from "./apps/recreation/pages/RecreationContentPage";
+import { RecreationContentTemplate } from './apps/recreation/templates/RecreationContentTemplate';
 
 type RouteType = {
   path: string;
@@ -43,6 +45,13 @@ const routes: RouteType[] = [
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
       { href: '/recreation/register', context: '投稿' },
+    ]
+  }, {
+    path: "/recreation/:id",
+    template: RecreationContentTemplate,
+    breadcrumb: [
+      { href: '/recreation', context: 'レクリエーション' },
+      { href: '/recreation/:id', context: 'aaaa' },
     ]
   }, {
     path: "/diary",
