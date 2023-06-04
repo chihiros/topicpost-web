@@ -179,7 +179,7 @@ export const RecreationTable: React.FC = () => {
             {recreations?.data.recreations.map((Recreation, key) => (
               <tr
                 key={key}
-                className="border-b"
+                className="border-b hover:bg-gray-100"
               >
                 <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{Recreation.title}</th>
                 <td className="px-4 py-3">
