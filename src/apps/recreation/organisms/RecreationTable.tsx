@@ -156,7 +156,8 @@ export const RecreationTable: React.FC = () => {
             className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium bg-blue-500 hover:bg-blue-700 text-white focus:outline-none rounded-lg hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
           >
             <AiOutlinePlus
-              className="w-4 h-4 mr-2"
+              className="mr-2"
+              size={16}
             />
             レクを投稿する
           </button>
