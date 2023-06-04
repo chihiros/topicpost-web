@@ -89,7 +89,7 @@ export const RecreationContentTemplate: React.FC = () => {
               <div
                 className="youtube-container"
                 dangerouslySetInnerHTML={{
-                  __html: `<iframe width="100%" height="480" src="https://www.youtube.com/embed/${recreationResponse.data.youtube_id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+                  __html: `<iframe width="100%" height="240" src="https://www.youtube.com/embed/${recreationResponse.data.youtube_id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
                 }}
               />
             </div>
