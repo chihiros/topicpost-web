@@ -47,7 +47,7 @@ export const RecreationCards: React.FC = () => {
           function () {
             const element = document.querySelector('.aaaaaaaaaaa')
             if (element) {
-              smoothScroll(element, -400, 500) // -200px左に移動して0.5秒かけて移動する
+              smoothScroll(element, -400, 500) // -400px左に移動して0.5秒かけて移動する
             }
           }
         }>
@@ -57,7 +57,7 @@ export const RecreationCards: React.FC = () => {
           function () {
             const element = document.querySelector('.aaaaaaaaaaa')
             if (element) {
-              smoothScroll(element, 400, 500) // +200px左に移動して0.5秒かけて移動する
+              smoothScroll(element, 400, 500) // +400px左に移動して0.5秒かけて移動する
             }
           }
         }>
