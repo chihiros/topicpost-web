@@ -33,7 +33,7 @@ export interface RecreationsResponse extends Response<RecreationsData> { }
 
 interface RecreationMethods {
   get: (page: number) => Promise<RecreationsResponse>;
-  getByRecreationID: () => Promise<RecreationResponse>;
+  getByRecreationID: (id: string) => Promise<RecreationResponse>;
   post: (body: RecreationRequest) => Promise<RecreationResponse>;
   put: (body: RecreationRequest) => Promise<RecreationResponse>;
   delete: () => Promise<RecreationResponse>;
