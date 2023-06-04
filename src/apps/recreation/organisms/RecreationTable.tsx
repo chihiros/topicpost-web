@@ -149,7 +149,7 @@ export const RecreationTable: React.FC = () => {
               <th scope="col" className="px-4 py-3">レク名</th>
               <th scope="col" className="px-4 py-3">ジャンル</th>
               <th scope="col" className="px-4 py-3 hidden sm:table-cell">投稿者</th>
-              <th scope="col" className="px-4 py-3 hidden md:table-cell">投稿日</th>
+              <th scope="col" className="px-4 py-3 hidden xl:table-cell">投稿日</th>
             </tr>
           </thead>
           <tbody>
@@ -167,7 +167,7 @@ export const RecreationTable: React.FC = () => {
                   ))}
                 </td>
                 <td className="px-4 py-3 hidden sm:table-cell">すずりかわ@熊本</td>
-                <td className="px-4 py-3 hidden md:table-cell">{Recreation.created_at}</td>
+                <td className="px-4 py-3 hidden xl:table-cell">{Recreation.created_at}</td>
               </tr>
             ))}
           </tbody>
