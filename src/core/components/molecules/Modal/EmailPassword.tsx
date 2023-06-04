@@ -41,6 +41,8 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
       password: modalPassword
     });
 
+    console.log("data", data);
+
     if (error) {
       toast.error(getErrorMessage(error.message));
       return;

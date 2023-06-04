@@ -31,6 +31,8 @@ export class TopicPostAPI {
 
     if (options.authRequired) {
       const session = await GetSession();
+      console.log("session", session);
+
       headers['Authorization'] = `Bearer ${session?.access_token}`;
     }
 
