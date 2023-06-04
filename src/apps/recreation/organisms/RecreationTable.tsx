@@ -177,20 +177,30 @@ export const RecreationTable: React.FC = () => {
           </thead>
           <tbody>
             {recreations?.data.recreations.map((Recreation, key) => (
-              <Link to={`/recreation/${Recreation.recreation_id}`} key={key}>
-                <tr className="border-b hover:bg-gray-100">
-                  <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{Recreation.title}</th>
-                  <td className="px-4 py-3">
-                    {Recreation.genre.map((genre, key) => (
-                      <pre key={key} className={`bg-gray-200 text-blue-600 text-xs text-center px-1 inline ${key === Recreation.genre.length - 1 ? '' : 'mb-1 mr-1'} rounded`}>
-                        {GetRecreationGenre(genre)}
-                      </pre>
-                    ))}
-                  </td>
-                  <td className="px-4 py-3 hidden sm:table-cell">すずりかわ@熊本</td>
-                  <td className="px-4 py-3 hidden xl:table-cell">{Recreation.created_at}</td>
-                </tr>
-              </Link>
+              <tr key={key} className="border-b hover:bg-gray-100">
+                <th scope="row" className="px-4 py-3">
+                  <Link to={`/recreation/${Recreation.recreation_id}`} className="font-medium text-gray-900 whitespace-nowrap">
+                    {Recreation.title}
+                  </Link>
+                </th>
+                <td className="px-4 py-3">
+                  {Recreation.genre.map((genre, key) => (
+                    <Link to={`/recreation/${Recreation.recreation_id}`} key={key} className={`bg-gray-200 text-blue-600 text-xs text-center px-1 inline ${key === Recreation.genre.length - 1 ? '' : 'mb-1 mr-1'} rounded`}>
+                      {GetRecreationGenre(genre)}
+                    </Link>
+                  ))}
+                </td>
+                <td className="px-4 py-3 hidden sm:table-cell">
+                  <Link to={`/recreation/${Recreation.recreation_id}`}>
+                    すずりかわ@熊本
+                  </Link>
+                </td>
+                <td className="px-4 py-3 hidden xl:table-cell">
+                  <Link to={`/recreation/${Recreation.recreation_id}`}>
+                    {Recreation.created_at}
+                  </Link>
+                </td>
+              </tr>
             ))}
           </tbody>
         </table>
