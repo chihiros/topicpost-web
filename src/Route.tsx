@@ -15,7 +15,7 @@ import { LoginModalProvider } from './context/LoginModalContext';
 import { ToastContainer } from "react-toastify";
 import { CookiesProvider } from "react-cookie";
 import { AuthContextProvider } from "./context/AuthContext";
-import { Analytics } from '@vercel/analytics/react';
+// import { Analytics } from '@vercel/analytics/react';
 import { CompactMenu } from "./apps/menu/pages/CompactMenu";
 
 type RouteType = {
@@ -111,7 +111,7 @@ const Routes: React.FC = () => {
                 template={NotFoundPage}
               />} />
             </Switch>
-            <Analytics />
+            {/* <Analytics /> */}
           </LoginModalProvider>
         </AuthContextProvider>
       </CookiesProvider>
