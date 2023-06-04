@@ -184,7 +184,7 @@ export const RecreationTable: React.FC = () => {
                 <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{Recreation.title}</th>
                 <td className="px-4 py-3">
                   {Recreation.genre.map((genre, key) => (
-                    <pre key={key} className={`bg-gray-200 text-blue-600 text-xs text-center px-1 ${key === Recreation.genre.length - 1 ? 'mb-0' : 'mb-1'} rounded`}>
+                    <pre key={key} className={`bg-gray-200 text-blue-600 text-xs text-center px-1 inline ${key === Recreation.genre.length - 1 ? '' : 'mb-1 mr-1'} rounded`}>
                       {GetRecreationGenre(genre)}
                     </pre>
                   ))}
