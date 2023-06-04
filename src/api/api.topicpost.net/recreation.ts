@@ -6,6 +6,7 @@ export interface RecreationRequest {
   genre: number[];
   title: string;
   content: string;
+  youtube_id: string;
   target_number: number;
   required_time: number;
 }
@@ -17,6 +18,7 @@ export interface RecreationData {
   genre: number[];
   title: string;
   content: string;
+  youtube_id: string;
   target_number: number;
   required_time: number;
   created_at: string;
