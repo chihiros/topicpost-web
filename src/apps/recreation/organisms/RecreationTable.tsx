@@ -71,6 +71,10 @@ export const RecreationTable: React.FC = () => {
     return ""
   }
 
+  const recordsPerPage = 10;
+  const totalNumberOfPages = Math.ceil(recreation_records / recordsPerPage);
+  const pageNumbers = Array.from({ length: totalNumberOfPages }, (_, i) => i + 1);
+
   return (
     <div className="bg-white relative rounded-lg overflow-hidden">
       {/* Table 検索タブ */}
@@ -207,18 +211,17 @@ export const RecreationTable: React.FC = () => {
               </svg>
             </a>
           </li>
-          <li>
-            <a href="/" onClick={handlePageClick(1)} className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
-          </li>
-          <li>
-            <a href="/" onClick={handlePageClick(2)} className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-          </li>
-          <li>
-            <a href="/"　onClick={handlePageClick(3)} className="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700">3</a>
-          </li>
-          <li>
-            <a href="/" className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">100</a>
-          </li>
+          {pageNumbers.map(number => (
+            <li key={number}>
+              <a
+                href="/"
+                onClick={handlePageClick(number)}
+                className={`flex items-center justify-center text-sm py-2 px-3 leading-tight ${currentPage === number ? 'text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700' : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'}`}
+              >
+                {number}
+              </a>
+            </li>
+          ))}
           <li>
             <a
               href="/"
