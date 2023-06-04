@@ -76,7 +76,6 @@ export const RecreationRegistTemplate: React.FC = () => {
     event.preventDefault();
 
     const api = new RecreationAPI();
-    // const session = await GetSession();
     const request: RecreationRequest = {
       user_id: uuidv4(),
       recreation_id: uuidv4(),
