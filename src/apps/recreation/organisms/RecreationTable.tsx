@@ -36,6 +36,7 @@ export const RecreationTable: React.FC = () => {
   }
 
   const handlePageCalc = (n: number) => (e: React.MouseEvent) => {
+    e.preventDefault();
     if (currentPage + n < 1) {
       return;
     }
