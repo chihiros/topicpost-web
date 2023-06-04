@@ -198,10 +198,7 @@ export const RecreationTable: React.FC = () => {
       </div>
       <nav className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0 p-4" aria-label="Table navigation">
         <span className="text-sm font-normal text-gray-500">
-          Showing
-          <span className="font-semibold text-gray-900">{(currentPage - 1) * recordsPerPage + 1}-{currentPage * recordsPerPage}</span>
-          of
-          <span className="font-semibold text-gray-900">{recreation_records}</span>
+          Total Records {recreation_records}件
         </span>
         <ul className="inline-flex items-stretch -space-x-px">
           <li>
