@@ -3,10 +3,6 @@ import { RecreationCards } from '../organisms/RecreationCards';
 import { RecreationTable } from '../organisms/RecreationTable';
 
 const RecreationForm: React.FC = () => {
-
-
-
-
   return (
     <>
       <div className='mb-2 ml-2 text-2xl'>
