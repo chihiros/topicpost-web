@@ -18,7 +18,7 @@ export interface RecreationData {
   genre: number[];
   title: string;
   content: string;
-  youtube_id: string;
+  youtube_id: string | null;
   target_number: number;
   required_time: number;
   created_at: string;
