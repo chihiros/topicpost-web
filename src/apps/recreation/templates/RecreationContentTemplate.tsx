@@ -52,18 +52,9 @@ export const RecreationContentTemplate: React.FC = () => {
 
           <div className="text-sm">こんな場面で使えるレクです</div>
           <MarkdownPreview>
-            {/* {[
-              isChecked1 ? "`アイスブレイク`" : ``,
-              isChecked2 ? "`手遊びレク`" : ``,
-              isChecked3 ? "`少人数レク`" : ``,
-              isChecked4 ? "`グループレク`" : ``,
-              isChecked5 ? "`静かにするレク`" : ``,
-              isChecked6 ? "`レクダン`" : ``,
-            ].filter(i => i !== '').join(' ')} */}
-
-            {recreationResponse?.data.genre.map((genre, key) => {
-              return "`" + GetRecreationGenre(genre) + "` "
-            })}
+            {recreationResponse?.data.genre.map((genre): string => {
+              return `\`${GetRecreationGenre(genre)}\``;
+            }).join('\n')}
           </MarkdownPreview>
 
           {/* 対象人数・対象年齢・所要時間を表示する */}
