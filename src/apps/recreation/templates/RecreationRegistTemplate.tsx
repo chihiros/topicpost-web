@@ -76,7 +76,6 @@ export const RecreationRegistTemplate: React.FC = () => {
     event.preventDefault();
 
     const api = new RecreationAPI();
-
     // const session = await GetSession();
     const request: RecreationRequest = {
       user_id: uuidv4(),
@@ -84,6 +83,7 @@ export const RecreationRegistTemplate: React.FC = () => {
       genre: getIsCheckedList(),
       title: recTitleValue,
       content: messageValue,
+      youtube_id: getYouTubeID(youtubeUrlValue),
       target_number: Number(targetNumber),
       required_time: Number(requiredTime),
     }
