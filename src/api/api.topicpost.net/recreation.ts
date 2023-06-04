@@ -58,8 +58,8 @@ export default class Recreation implements RecreationMethods {
     };
   }
 
-  async getByRecreationID(): Promise<RecreationResponse> {
-    const res = await this.topicpost_recreation.get<RecreationData>();
+  async getByRecreationID(id: string): Promise<RecreationResponse> {
+    const res = await this.topicpost_recreation.get<RecreationData>({ id: id });
     return {
       data: res.data,
       errors: res.errors,
