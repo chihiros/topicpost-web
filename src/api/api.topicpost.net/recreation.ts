@@ -44,9 +44,10 @@ export default class Recreation implements RecreationMethods {
   authRequired = true;
 
   async get(page: number): Promise<RecreationsResponse> {
+    const limit = 10;
     const param: Record<string, any> = {
-      limit: 10,
-      offset: 10 * (page - 1),
+      limit: limit,
+      offset: limit * (page - 1),
     };
 
     const res = await this.topicpost_recreation.get<RecreationsData>(param);
