@@ -32,7 +32,7 @@ export interface RecreationResponse extends Response<RecreationData> { }
 export interface RecreationsResponse extends Response<RecreationsData> { }
 
 interface RecreationMethods {
-  get: () => Promise<RecreationsResponse>;
+  get: (page: number) => Promise<RecreationsResponse>;
   getByRecreationID: () => Promise<RecreationResponse>;
   post: (body: RecreationRequest) => Promise<RecreationResponse>;
   put: (body: RecreationRequest) => Promise<RecreationResponse>;
@@ -43,8 +43,13 @@ export default class Recreation implements RecreationMethods {
   topicpost_recreation = new TopicPostAPI("/recreation");
   authRequired = true;
 
-  async get(): Promise<RecreationsResponse> {
-    const res = await this.topicpost_recreation.get<RecreationsData>();
+  async get(page: number): Promise<RecreationsResponse> {
+    const param: Record<string, any> = {
+      limit: 10,
+      offset: 10 * (page - 1),
+    };
+
+    const res = await this.topicpost_recreation.get<RecreationsData>(param);
     return {
       data: res.data,
       errors: res.errors,

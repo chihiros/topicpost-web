@@ -27,16 +27,18 @@ export const RecreationTable: React.FC = () => {
 
   const [recreations, setRecreations] = useState<RecreationsResponse>();
   const [recreation_records, setRecreationRecords] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
     const recreation = new Recreation();
-    recreation.get().then((response: RecreationsResponse) => {
+    recreation.get(currentPage).then((response: RecreationsResponse) => {
       console.log(response);
       setRecreations(response);
       setRecreationRecords(response.data.total_records);
     }).catch((error) => {
       console.log(error);
     });
-  }, [])
+  }, [currentPage])
 
   const GetRecreationGenre = (id: number): string => {
     switch (id) {
