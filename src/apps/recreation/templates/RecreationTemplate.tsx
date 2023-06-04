@@ -1,5 +1,5 @@
 import React from "react";
-import RecreationForm from "../organisms/RecreationTopPage";
+import RecreationForm from "../pages/RecreationTopPage";
 
 const Recreation: React.FC = () => {
   return <RecreationForm />;
