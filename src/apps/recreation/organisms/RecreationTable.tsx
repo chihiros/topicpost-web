@@ -4,6 +4,7 @@ import { BsFilter } from "react-icons/bs";
 import { useHistory } from 'react-router-dom';
 import Recreation, { RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export const RecreationTable: React.FC = () => {
   const [isFilterDropdownOpen, setFilterDropdownOpen] = useState(false);
@@ -179,24 +180,24 @@ export const RecreationTable: React.FC = () => {
             {recreations?.data.recreations.map((Recreation, key) => (
               <tr key={key} className="border-b hover:bg-gray-100">
                 <th scope="row" className="px-4 py-3">
-                  <Link to={`/recreation/${Recreation.recreation_id}`} className="font-medium text-gray-900 whitespace-nowrap">
+                  <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full font-medium text-gray-900 whitespace-nowrap">
                     {Recreation.title}
                   </Link>
                 </th>
                 <td className="px-4 py-3">
                   {Recreation.genre.map((genre, key) => (
-                    <Link to={`/recreation/${Recreation.recreation_id}`} key={key} className={`bg-gray-200 text-blue-600 text-xs text-center px-1 inline ${key === Recreation.genre.length - 1 ? '' : 'mb-1 mr-1'} rounded`}>
+                    <Link to={`/recreation/${Recreation.recreation_id}`} key={key} className={`whitespace-nowrap h-full w-full bg-gray-200 text-blue-600 text-xs text-center px-1 inline ${key === Recreation.genre.length - 1 ? '' : 'mb-1 mr-1'} rounded`}>
                       {GetRecreationGenre(genre)}
                     </Link>
                   ))}
                 </td>
                 <td className="px-4 py-3 hidden sm:table-cell">
-                  <Link to={`/recreation/${Recreation.recreation_id}`}>
+                  <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full whitespace-nowrap">
                     すずりかわ@熊本
                   </Link>
                 </td>
                 <td className="px-4 py-3 hidden xl:table-cell">
-                  <Link to={`/recreation/${Recreation.recreation_id}`}>
+                  <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full  whitespace-nowrap">
                     {Recreation.created_at}
                   </Link>
                 </td>
