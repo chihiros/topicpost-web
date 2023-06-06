@@ -1,6 +1,6 @@
 import TopPage from './apps/common/TopTemplate';
 // import TopPage from './apps/common';
-import { RecreationTopTemplate, RecreationRegistTemplate, RecreationContentTemplate } from './apps/recreation/templates';
+import { RecreationTop, RecreationRegist, RecreationContent } from './apps/recreation/screens';
 import DiaryPage from './apps/diary/templates/DiaryTemplate';
 import ContactPage from './apps/contact/templates/ContactTemplate';
 import SignUpPage from './apps/signup/templates/SignUpTemplate';
@@ -33,20 +33,20 @@ const routes: RouteType[] = [
   }, {
     path: "/recreation",
     exact: true,
-    template: RecreationTopTemplate,
+    template: RecreationTop,
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
     ]
   }, {
     path: "/recreation/register",
-    template: RecreationRegistTemplate,
+    template: RecreationRegist,
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
       { href: '/recreation/register', context: '投稿' },
     ]
   }, {
     path: "/recreation/:id",
-    template: RecreationContentTemplate,
+    template: RecreationContent,
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
       { href: '/recreation/:id', context: 'aaaa' },

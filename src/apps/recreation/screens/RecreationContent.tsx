@@ -5,7 +5,7 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import { RiTimerLine } from "react-icons/ri";
 import { useParams } from "react-router-dom";
 
-export const RecreationContentTemplate: React.FC = () => {
+export const RecreationContent: React.FC = () => {
   const prams = useParams<{ id: string }>();
   const id = prams.id;
 

@@ -4,7 +4,7 @@ import { RecreationTable, RecreationTableProps } from '../organisms/RecreationTa
 import { useParams } from 'react-router-dom';
 import RecreationAPI, { RecreationResponse } from '../../../api/api.topicpost.net/recreation';
 
-export const RecreationTopTemplate: React.FC = () => {
+export const RecreationTop: React.FC = () => {
   return (
     <>
       <div className='mb-2 ml-2 text-2xl'>

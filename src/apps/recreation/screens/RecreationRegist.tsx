@@ -16,7 +16,7 @@ import { supabaseClient } from "../../../utils/supabase";
 import { TagButton } from "../organisms/RecreationTagButton";
 import { GetUserID } from "../../../utils/supabase";
 
-export const RecreationRegistTemplate: React.FC = () => {
+export const RecreationRegist: React.FC = () => {
   const [recTitleValue, setRecTitleValue] = useState('');
   const [youtubeUrlValue, setYoutubeUrlValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
