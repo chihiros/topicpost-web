@@ -50,7 +50,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
     return ""
   }
 
-  const recordsPerPage = 10;
+  const recordsPerPage = 10; // この書き方ダサい
   const totalNumberOfPages = Math.ceil(records! / recordsPerPage);
   const pageNumbers = Array.from({ length: totalNumberOfPages }, (_, i) => i + 1);
 
