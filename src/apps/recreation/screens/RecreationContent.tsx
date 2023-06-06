@@ -19,7 +19,7 @@ export const RecreationContent: React.FC = () => {
       console.error(error);
     });
     console.log("useEffect", id);
-  }, []);
+  }, [id]);
 
   const GetRecreationGenre = (id: number): string => {
     switch (id) {
