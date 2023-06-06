@@ -1,10 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { RecreationCards } from '../organisms/RecreationCards';
-import { RecreationTable, RecreationTableProps } from '../organisms/RecreationTable';
+import { RecreationTable } from '../organisms/RecreationTable';
 import { useParams } from 'react-router-dom';
-import RecreationAPI, { RecreationResponse } from '../../../api/api.topicpost.net/recreation';
+import RecreationAPI, { RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
+import { useHistory } from 'react-router-dom';
 
 export const RecreationTop: React.FC = () => {
+  const [recreations, setRecreations] = useState<RecreationsResponse>();
+  const [recreation_records, setRecreationRecords] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const recreation = new RecreationAPI();
+    recreation.get(currentPage).then((response: RecreationsResponse) => {
+      console.log(response);
+      setRecreations(response);
+      setRecreationRecords(response.data.total_records);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }, [currentPage])
+
+
   return (
     <>
       <div className='mb-2 ml-2 text-2xl'>
@@ -15,7 +32,11 @@ export const RecreationTop: React.FC = () => {
       <div className='mt-6 mb-2 ml-2 text-2xl flex justify-between'>
         一覧
       </div>
-      <RecreationTable />
+      <RecreationTable
+        data={recreations}
+        records={recreation_records}
+        currentPage={currentPage}
+      />
     </>
   );
 }

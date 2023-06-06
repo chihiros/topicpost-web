@@ -2,15 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineSearch, AiOutlinePlus } from "react-icons/ai";
 import { BsFilter } from "react-icons/bs";
 import { useHistory } from 'react-router-dom';
-import Recreation, { RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
+import { RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-export interface RecreationTableProps {
-  res?: RecreationsResponse;
+interface RecreationTableProps {
+  data?: RecreationsResponse;
+  records?: number;
+  currentPage?: number;
 }
 
-export const RecreationTable: React.FC<RecreationTableProps> = ({ res }) => {
+export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records, currentPage }) => {
   const [isFilterDropdownOpen, setFilterDropdownOpen] = useState(false);
 
   const actionsDropdownRef = useRef<HTMLDivElement>(null);
@@ -31,36 +33,6 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ res }) => {
     };
   }, [actionsDropdownRef, filterDropdownRef]);
 
-  const [recreations, setRecreations] = useState<RecreationsResponse>();
-  const [recreation_records, setRecreationRecords] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handlePageClick = (pageNumber: number) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    setCurrentPage(pageNumber);
-  }
-
-  const handlePageCalc = (n: number) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    const totalPages = Math.ceil(recreation_records / recordsPerPage);
-    if (currentPage + n < 1 || currentPage + n > totalPages) {
-      return;
-    }
-
-    setCurrentPage(currentPage + n);
-  }
-
-  useEffect(() => {
-    const recreation = new Recreation();
-    recreation.get(currentPage).then((response: RecreationsResponse) => {
-      console.log(response);
-      setRecreations(response);
-      setRecreationRecords(response.data.total_records);
-    }).catch((error) => {
-      console.log(error);
-    });
-  }, [currentPage])
-
   const GetRecreationGenre = (id: number): string => {
     switch (id) {
       case 1:
@@ -80,7 +52,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ res }) => {
   }
 
   const recordsPerPage = 10;
-  const totalNumberOfPages = Math.ceil(recreation_records / recordsPerPage);
+  const totalNumberOfPages = Math.ceil(records! / recordsPerPage);
   const pageNumbers = Array.from({ length: totalNumberOfPages }, (_, i) => i + 1);
 
   return (
@@ -181,7 +153,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ res }) => {
             </tr>
           </thead>
           <tbody>
-            {recreations?.data.recreations.map((Recreation, key) => (
+            {data?.data.recreations.map((Recreation, key) => (
               <tr key={key} className="border-b hover:bg-gray-100">
                 <th scope="row" className="px-4 py-3">
                   <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full font-medium text-gray-900 whitespace-nowrap">
@@ -214,13 +186,13 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ res }) => {
       </div>
       <nav className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0 p-4" aria-label="Table navigation">
         <span className="text-sm font-normal text-gray-500">
-          Total Records {recreation_records}件
+          Total Records {records}件
         </span>
         <ul className="inline-flex items-stretch -space-x-px">
           <li>
             <a
               href="/"
-              onClick={handlePageCalc(-1)}
+              // onClick={handlePageCalc(-1)}
               className="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
               <IoIosArrowBack size={16} />
             </a>
@@ -229,7 +201,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ res }) => {
             <li key={number}>
               <a
                 href="/"
-                onClick={handlePageClick(number)}
+                // onClick={handlePageClick(number)}
                 className={`flex items-center justify-center text-sm py-2 px-3 leading-tight ${currentPage === number ? 'text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700' : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'}`}
               >
                 {number}
@@ -239,7 +211,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ res }) => {
           <li>
             <a
               href="/"
-              onClick={handlePageCalc(1)}
+              // onClick={handlePageCalc(1)}
               className="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
               <IoIosArrowForward size={16} />
             </a>
