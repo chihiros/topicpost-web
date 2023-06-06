@@ -19,7 +19,6 @@ export const RecreationTop: React.FC = () => {
     });
   }, [currentPage])
 
-
   return (
     <>
       <div className='mb-2 ml-2 text-2xl'>
