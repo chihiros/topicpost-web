@@ -14,10 +14,8 @@ interface RecreationTableProps {
 
 export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records, currentPage }) => {
   const [isFilterDropdownOpen, setFilterDropdownOpen] = useState(false);
-
   const actionsDropdownRef = useRef<HTMLDivElement>(null);
   const filterDropdownRef = useRef<HTMLDivElement>(null);
-
   const history = useHistory();
 
   useEffect(() => {
@@ -26,8 +24,8 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
         setFilterDropdownOpen(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
