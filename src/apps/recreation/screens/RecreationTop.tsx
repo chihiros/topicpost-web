@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RecreationCards } from '../organisms/RecreationCards';
 import { RecreationTable } from '../organisms/RecreationTable';
 import RecreationAPI, { RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
