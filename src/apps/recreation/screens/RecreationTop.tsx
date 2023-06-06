@@ -33,6 +33,7 @@ export const RecreationTop: React.FC = () => {
         data={recreations}
         records={recreation_records}
         currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
     </>
   );

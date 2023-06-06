@@ -9,10 +9,11 @@ import { Link } from "react-router-dom";
 interface RecreationTableProps {
   data?: RecreationsResponse;
   records?: number;
-  currentPage?: number;
+  currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records, currentPage }) => {
+export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records, currentPage, setCurrentPage }) => {
   const [isFilterDropdownOpen, setFilterDropdownOpen] = useState(false);
   const actionsDropdownRef = useRef<HTMLDivElement>(null);
   const filterDropdownRef = useRef<HTMLDivElement>(null);
@@ -52,6 +53,20 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
   const recordsPerPage = 10;
   const totalNumberOfPages = Math.ceil(records! / recordsPerPage);
   const pageNumbers = Array.from({ length: totalNumberOfPages }, (_, i) => i + 1);
+
+  const handlePageClick = (pageNumber: number) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    setCurrentPage(pageNumber);
+  }
+
+  const handlePageCalc = (n: number) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const totalPages = Math.ceil(records! / recordsPerPage);
+    if (currentPage + n < 1 || currentPage + n > totalPages) {
+      return;
+    }
+    setCurrentPage(currentPage + n);
+  }
 
   return (
     <div className="bg-white relative rounded-lg overflow-hidden">
@@ -190,7 +205,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
           <li>
             <a
               href="/"
-              // onClick={handlePageCalc(-1)}
+              onClick={handlePageCalc(-1)}
               className="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
               <IoIosArrowBack size={16} />
             </a>
@@ -199,7 +214,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
             <li key={number}>
               <a
                 href="/"
-                // onClick={handlePageClick(number)}
+                onClick={handlePageClick(number)}
                 className={`flex items-center justify-center text-sm py-2 px-3 leading-tight ${currentPage === number ? 'text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700' : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'}`}
               >
                 {number}
@@ -209,7 +224,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
           <li>
             <a
               href="/"
-              // onClick={handlePageCalc(1)}
+              onClick={handlePageCalc(1)}
               className="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
               <IoIosArrowForward size={16} />
             </a>
