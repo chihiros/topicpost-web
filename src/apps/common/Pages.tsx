@@ -1,7 +1,7 @@
 import React from "react";
-import Breadcrumb, { BreadcrumbProps } from "../../../core/components/molecules/Breadcrumb/Breadcrumb";
-import LoginModal from "../../../core/components/molecules/Modal/LoginModal";
-import { WindowSize } from '../../../core/components/debug/WindowSize';
+import Breadcrumb, { BreadcrumbProps } from "../../core/components/molecules/Breadcrumb/Breadcrumb";
+import LoginModal from "../../core/components/molecules/Modal/LoginModal";
+import { WindowSize } from '../../core/components/debug/WindowSize';
 
 export type PagesProps = {
   breadcrumb?: BreadcrumbProps[];
