@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { RecreationCards } from '../organisms/RecreationCards';
 import { RecreationTable } from '../organisms/RecreationTable';
-import { useParams } from 'react-router-dom';
 import RecreationAPI, { RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
-import { useHistory } from 'react-router-dom';
 
 export const RecreationTop: React.FC = () => {
   const [recreations, setRecreations] = useState<RecreationsResponse>();
