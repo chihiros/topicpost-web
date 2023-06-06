@@ -1,6 +1,5 @@
 import TopPage from './apps/common/templates/TopTemplate';
-import { RecreationTopTemplate } from './apps/recreation/templates/RecreationTopTemplate';
-import { RecreationRegistTemplate } from './apps/recreation/templates/RecreationRegistTemplate';
+import { RecreationTopTemplate, RecreationRegistTemplate, RecreationContentTemplate } from './apps/recreation/templates';
 import DiaryPage from './apps/diary/templates/DiaryTemplate';
 import ContactPage from './apps/contact/templates/ContactTemplate';
 import SignUpPage from './apps/signup/templates/SignUpTemplate';
@@ -17,7 +16,6 @@ import { CookiesProvider } from "react-cookie";
 import { AuthContextProvider } from "./context/AuthContext";
 // import { Analytics } from '@vercel/analytics/react';
 import { CompactMenu } from "./apps/menu/pages/CompactMenu";
-import { RecreationContentTemplate } from './apps/recreation/templates/RecreationContentTemplate';
 
 type RouteType = {
   path: string;
