@@ -6,7 +6,11 @@ import Recreation, { RecreationsResponse } from '../../../api/api.topicpost.net/
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-export const RecreationTable: React.FC = () => {
+export interface RecreationTableProps {
+  res?: RecreationsResponse;
+}
+
+export const RecreationTable: React.FC<RecreationTableProps> = ({ res }) => {
   const [isFilterDropdownOpen, setFilterDropdownOpen] = useState(false);
 
   const actionsDropdownRef = useRef<HTMLDivElement>(null);
