@@ -2,16 +2,21 @@ import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineSearch, AiOutlinePlus } from "react-icons/ai";
 import { BsFilter } from "react-icons/bs";
 import { useHistory } from 'react-router-dom';
-import Recreation, { RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
+import { RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-export const RecreationTable: React.FC = () => {
-  const [isFilterDropdownOpen, setFilterDropdownOpen] = useState(false);
+interface RecreationTableProps {
+  data?: RecreationsResponse;
+  records?: number;
+  currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+}
 
+export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records, currentPage, setCurrentPage }) => {
+  const [isFilterDropdownOpen, setFilterDropdownOpen] = useState(false);
   const actionsDropdownRef = useRef<HTMLDivElement>(null);
   const filterDropdownRef = useRef<HTMLDivElement>(null);
-
   const history = useHistory();
 
   useEffect(() => {
@@ -20,42 +25,12 @@ export const RecreationTable: React.FC = () => {
         setFilterDropdownOpen(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [actionsDropdownRef, filterDropdownRef]);
-
-  const [recreations, setRecreations] = useState<RecreationsResponse>();
-  const [recreation_records, setRecreationRecords] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handlePageClick = (pageNumber: number) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    setCurrentPage(pageNumber);
-  }
-
-  const handlePageCalc = (n: number) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    const totalPages = Math.ceil(recreation_records / recordsPerPage);
-    if (currentPage + n < 1 || currentPage + n > totalPages) {
-      return;
-    }
-
-    setCurrentPage(currentPage + n);
-  }
-
-  useEffect(() => {
-    const recreation = new Recreation();
-    recreation.get(currentPage).then((response: RecreationsResponse) => {
-      console.log(response);
-      setRecreations(response);
-      setRecreationRecords(response.data.total_records);
-    }).catch((error) => {
-      console.log(error);
-    });
-  }, [currentPage])
 
   const GetRecreationGenre = (id: number): string => {
     switch (id) {
@@ -75,9 +50,23 @@ export const RecreationTable: React.FC = () => {
     return ""
   }
 
-  const recordsPerPage = 10;
-  const totalNumberOfPages = Math.ceil(recreation_records / recordsPerPage);
+  const recordsPerPage = 10; // この書き方ダサい
+  const totalNumberOfPages = Math.ceil(records! / recordsPerPage);
   const pageNumbers = Array.from({ length: totalNumberOfPages }, (_, i) => i + 1);
+
+  const handlePageClick = (pageNumber: number) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    setCurrentPage(pageNumber);
+  }
+
+  const handlePageCalc = (n: number) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const totalPages = Math.ceil(records! / recordsPerPage);
+    if (currentPage + n < 1 || currentPage + n > totalPages) {
+      return;
+    }
+    setCurrentPage(currentPage + n);
+  }
 
   return (
     <div className="bg-white relative rounded-lg overflow-hidden">
@@ -177,7 +166,7 @@ export const RecreationTable: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {recreations?.data.recreations.map((Recreation, key) => (
+            {data?.data.recreations.map((Recreation, key) => (
               <tr key={key} className="border-b hover:bg-gray-100">
                 <th scope="row" className="px-4 py-3">
                   <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full font-medium text-gray-900 whitespace-nowrap">
@@ -210,7 +199,7 @@ export const RecreationTable: React.FC = () => {
       </div>
       <nav className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-3 sm:space-y-0 p-4" aria-label="Table navigation">
         <span className="text-sm font-normal text-gray-500">
-          Total Records {recreation_records}件
+          Total Records {records}件
         </span>
         <ul className="inline-flex items-stretch -space-x-px">
           <li>
