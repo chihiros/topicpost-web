@@ -4,13 +4,11 @@ import { supabaseClient } from '../utils/supabase';
 interface AuthContextType {
   isLoggedIn: boolean;
   setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
-  getLoggedIn: () => boolean;
 }
 
 export const AuthContext = createContext<AuthContextType>({
   isLoggedIn: false,
   setLoggedIn: () => { },
-  getLoggedIn: () => false,
 });
 
 export const useAuthContext = () => {
@@ -40,12 +38,8 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
     });
   }, []);
 
-  const getLoggedIn = () => {
-    return isLoggedIn;
-  };
-
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, getLoggedIn }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );
