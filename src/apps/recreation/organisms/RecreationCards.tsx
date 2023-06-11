@@ -42,6 +42,7 @@ export const RecreationCards: React.FC<RecreationCardProps> = ({ data }) => {
               title={recreation.title}
               date={recreation.created_at}
               content={recreation.content}
+              recreationId={recreation.recreation_id}
               // description={recreation.description}
               // image={recreation.image}
               // link={`/recreation/${recreation.id}`}
