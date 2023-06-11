@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Twemoji  from 'react-twemoji';
+import Twemoji from 'react-twemoji';
 
 type CardProps = {
   title: string;
