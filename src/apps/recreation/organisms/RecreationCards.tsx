@@ -1,7 +1,12 @@
 import React from "react";
 import { Card } from "../../../core/components/atoms/Card";
+import { RecreationsResponse } from "../../../api/api.topicpost.net/recreation";
 
-export const RecreationCards: React.FC = () => {
+interface RecreationCardProps {
+  data?: RecreationsResponse;
+}
+
+export const RecreationCards: React.FC<RecreationCardProps> = ({ data }) => {
   function smoothScroll(element: Element, distance: number, duration: number) {
     const start = element.scrollLeft
     const startTime = performance.now()
