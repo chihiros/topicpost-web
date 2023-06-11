@@ -5,6 +5,7 @@ import RecreationAPI, { RecreationsResponse } from '../../../api/api.topicpost.n
 
 export const RecreationTop: React.FC = () => {
   const [recreations, setRecreations] = useState<RecreationsResponse>();
+  const [recreationsCard, setRecreationsCard] = useState<RecreationsResponse>();
   const [recreation_records, setRecreationRecords] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -20,14 +21,23 @@ export const RecreationTop: React.FC = () => {
     }).catch((error) => {
       console.log(error);
     });
-  }, [currentPage])
+
+    recreation.get(10, 0).then((response: RecreationsResponse) => {
+      console.log(response);
+      setRecreationsCard(response);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }, [])
 
   return (
     <>
       <div className='mb-2 ml-2 text-2xl'>
         新着情報
       </div>
-      <RecreationCards />
+      <RecreationCards
+        data={recreationsCard}
+      />
 
       <div className='mt-6 mb-2 ml-2 text-2xl flex justify-between'>
         一覧
