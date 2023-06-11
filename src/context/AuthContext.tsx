@@ -54,12 +54,12 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
         setProfileData(undefined);
       }
     });
-    if (isLoggedIn) { // ログインしていない場合
-      if (isProfileDataUndefined) { // プロフォールが取得されていない場合
+    if (!isLoggedIn) { // ログインしていて、プロフォールが取得されていない場合
+      if (isProfileDataUndefined) {
         getProfileData();
       }
     }
-  }, [isLoggedIn, profileData, isProfileDataUndefined]);
+  }, []);
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, setLoggedInTrue, setLoggedInFalse }}>
