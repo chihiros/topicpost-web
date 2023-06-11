@@ -32,6 +32,22 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
     };
   }, [actionsDropdownRef, filterDropdownRef]);
 
+  useEffect(() => {
+    function handleKeyPress(event: KeyboardEvent) {
+      if (event.key === "n" || event.key === "N") {
+        handlePageCalc(1)(event as any);
+      } else if (event.key === "p" || event.key === "P") {
+        handlePageCalc(-1)(event as any);
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [currentPage, records]);
+
   const GetRecreationGenre = (id: number): string => {
     switch (id) {
       case 1:
