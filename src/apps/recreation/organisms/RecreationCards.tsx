@@ -36,6 +36,7 @@ export const RecreationCards: React.FC = () => {
               key={recreation.id}
               title={recreation.title}
               date={recreation.created_at}
+              content={recreation.content}
               // description={recreation.description}
               // image={recreation.image}
               // link={`/recreation/${recreation.id}`}

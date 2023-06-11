@@ -5,6 +5,7 @@ import Twemoji from 'react-twemoji';
 type CardProps = {
   title: string;
   date: string;
+  content: string;
   // onClick?: () => void;
   // className?: string;
   // children: ReactNode;
@@ -48,6 +49,11 @@ const Card: React.FC<CardProps> = ({ title, date }) => {
     return `${year}/${month}/${day}`;
   };
 
+  const previewContent = (content: string) => {
+    const preview = content.slice(0, 100);
+    return preview;
+  };
+
   return (
     <div className="flex-shrink-0 w-64 bg-white rounded-lg">
       <Link to="/recreation">
@@ -63,10 +69,14 @@ const Card: React.FC<CardProps> = ({ title, date }) => {
       </Link>
       <div className="p-5">
         <Link to="/recreation">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Noteworthy</h5>
+          {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Noteworthy</h5> */}
+          <div className="mb-2 text-base font-bold tracking-tight text-gray-900">{title}</div>
         </Link>
         <p className="text-gray-700 text-left text-sm mb-1">{formatDate(date)}</p>
-        <p className="text-base text-gray-700">Here are the biggest enterprise technology acquisitions of 2021.</p>
+        {/* <p className="text-base text-gray-700">Here are the biggest enterprise technology acquisitions of 2021.</p> */}
+        <p className="text-base text-gray-700">
+          {previewContent(content)}
+        </p>
       </div>
     </div>
   );
