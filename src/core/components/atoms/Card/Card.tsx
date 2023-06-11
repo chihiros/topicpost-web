@@ -59,24 +59,17 @@ const Card: React.FC<CardProps> = ({ title, date, content }) => {
 
   return (
     <div className="flex-shrink-0 w-64 bg-white rounded-lg">
-      <Link to="/recreation">
-        {/* <img className="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" /> */}
-        <div className='bg-gray-100 rounded-t-lg h-32 flex justify-center items-center'>
-          {/* ランダムでTwemojiを表示したい */}
-          <span className='text-6xl'>
-            <Twemoji options={{ className: 'twemoji' }}>
-              {randomEmoji()}
-            </Twemoji>
-          </span>
-        </div>
-      </Link>
+      <div className='bg-gray-100 rounded-t-lg h-32 flex justify-center items-center'>
+        {/* ランダムでTwemojiを表示したい */}
+        <span className='text-6xl'>
+          <Twemoji options={{ className: 'twemoji' }}>
+            {randomEmoji()}
+          </Twemoji>
+        </span>
+      </div>
       <div className="p-5">
-        <Link to="/recreation">
-          {/* <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">Noteworthy</h5> */}
-          <div className="mb-2 text-base font-bold tracking-tight text-gray-900">{title}</div>
-        </Link>
+        <div className="mb-2 text-base font-bold tracking-tight text-gray-900">{title}</div>
         <p className="text-gray-700 text-left text-sm mb-1">{formatDate(date)}</p>
-        {/* <p className="text-base text-gray-700">Here are the biggest enterprise technology acquisitions of 2021.</p> */}
         <p className="text-base text-gray-700">
           {previewContent(content)}
         </p>
