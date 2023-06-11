@@ -15,6 +15,7 @@ import { LoginModalProvider } from './context/LoginModalContext';
 import { ToastContainer } from "react-toastify";
 import { CookiesProvider } from "react-cookie";
 import { AuthContextProvider } from "./context/AuthContext";
+import { ProfileDataContextProvider } from './context/ProfileDataContext';
 // import { Analytics } from '@vercel/analytics/react';
 import { CompactMenu } from "./apps/menu/pages/CompactMenu";
 
@@ -94,6 +95,7 @@ const Routes: React.FC = () => {
   return (
     <BrowserRouter>
       <CookiesProvider>
+        <ProfileDataContextProvider>
         <AuthContextProvider>
           <LoginModalProvider>
             <ToastContainer />
@@ -121,6 +123,7 @@ const Routes: React.FC = () => {
             {/* <Analytics /> */}
           </LoginModalProvider>
         </AuthContextProvider>
+        </ProfileDataContextProvider>
       </CookiesProvider>
     </BrowserRouter>
   );
