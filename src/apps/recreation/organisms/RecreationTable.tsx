@@ -175,7 +175,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
                 </th>
                 <td className="px-4 py-3">
                   <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full">
-                    {Recreation.genre.map((genre, key) => (
+                    {Recreation.genre && Recreation.genre.map((genre, key) => (
                       <span key={key} className={`bg-gray-200 text-blue-600 text-xs text-center px-1 inline ${key === Recreation.genre.length - 1 ? '' : 'mb-1 mr-1'} rounded`}>
                         {GetRecreationGenre(genre)}
                       </span>
