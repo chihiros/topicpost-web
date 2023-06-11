@@ -53,9 +53,7 @@ const Card: React.FC<CardProps> = ({ title, date, content, recreationId }) => {
 
   const previewContent = (content: string) => {
     const preview = content.slice(0, 40);
-    return (
-      <MarkdownPreview>{preview}</MarkdownPreview>
-    );
+    return (preview + '...');
   };
 
   return (
@@ -72,9 +70,9 @@ const Card: React.FC<CardProps> = ({ title, date, content, recreationId }) => {
         <div className="p-5">
           <div className="mb-2 text-base font-bold tracking-tight text-gray-900">{title}</div>
           <p className="text-gray-700 text-left text-sm mb-1">{formatDate(date)}</p>
-          <p className="text-base text-gray-700">
+          {/* <MarkdownPreview> */}
             {previewContent(content)}
-          </p>
+          {/* </MarkdownPreview> */}
         </div>
       </Link>
     </div>
