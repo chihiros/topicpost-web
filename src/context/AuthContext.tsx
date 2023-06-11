@@ -54,8 +54,8 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
         setProfileData(undefined);
       }
     });
-    if (isProfileDataUndefined) { // プロフォールが取得されていない場合
-      if (!isLoggedIn) { // ログインしていない場合
+    if (isLoggedIn) { // ログインしていない場合
+      if (isProfileDataUndefined) { // プロフォールが取得されていない場合
         getProfileData();
       }
     }
