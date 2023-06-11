@@ -9,11 +9,11 @@ import { supabaseClient } from '../../../utils/supabase';
 import { useAuthContext } from '../../../context/AuthContext';
 
 const SidebarPage: React.FC = () => {
-  const { setLoggedIn, getLoggedIn } = useAuthContext();
+  const { isLoggedIn, setLoggedInFalse } = useAuthContext();
 
   const handleLogout = () => {
       supabaseClient.auth.signOut();
-      setLoggedIn(false);
+      setLoggedInFalse();
       sessionStorage.removeItem('last_access_date');
   };
 
@@ -31,7 +31,7 @@ const SidebarPage: React.FC = () => {
           <span className="text-3xl font-semibold hover:text-gray-400">TopicPost</span>
         </Link>
 
-        {getLoggedIn() ? <SidebarLoggedIn /> : <SidebarLogin />}
+        {isLoggedIn ? <SidebarLoggedIn /> : <SidebarLogin />}
 
         {sidebar.map((label, index) => (
           <SidebarLabel
