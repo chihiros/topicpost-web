@@ -5,7 +5,7 @@ import { WindowSize } from '../../core/components/debug/WindowSize';
 
 export type PagesProps = {
   breadcrumb?: BreadcrumbProps[];
-  template: React.FC<PagesProps>;
+  template: React.ReactNode;
 }
 
 const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
@@ -14,7 +14,7 @@ const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
   return (
     <div className="p-4 lg:ml-64">
       <Breadcrumb breadcrumb={breadcrumb} />
-      {template({ template })}
+      {template}
       {runEnv !== "production" && <WindowSize />}
       <LoginModal />
     </div>

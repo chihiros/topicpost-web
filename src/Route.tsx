@@ -6,7 +6,7 @@ import ContactPage from './apps/contact/templates/ContactTemplate';
 import SignUpPage from './apps/signup/templates/SignUpTemplate';
 import ProfileEditPage from './apps/profile/templates/ProfileEditTemplate';
 import NotFoundPage from './apps/common/NotFound';
-import Pages, { PagesProps } from './apps/common/Pages';
+import Pages from './apps/common/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcrumb';
 import { PrivacyPolicy } from './apps/common/PrivacyPolicyPage';
@@ -22,7 +22,7 @@ import { CompactMenu } from "./apps/menu/pages/CompactMenu";
 type RouteType = {
   path: string;
   exact?: boolean;
-  template: React.FC<PagesProps>;
+  template: React.FC;
   breadcrumb?: BreadcrumbProps[];
 };
 
@@ -110,14 +110,14 @@ const Routes: React.FC = () => {
                       path={item.path}
                       render={() => <Pages
                         breadcrumb={item.breadcrumb}
-                        template={item.template}
+                        template={<item.template />}
                       />}
                     />
                   );
                 })}
                 <Route render={() => <Pages
                   breadcrumb={[{ href: '', context: '404 Not Found' }]}
-                  template={NotFoundPage}
+                  template={<NotFoundPage />}
                 />} />
               </Switch>
               {/* <Analytics /> */}
