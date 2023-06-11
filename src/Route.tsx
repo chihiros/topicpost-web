@@ -96,33 +96,33 @@ const Routes: React.FC = () => {
     <BrowserRouter>
       <CookiesProvider>
         <ProfileDataContextProvider>
-        <AuthContextProvider>
-          <LoginModalProvider>
-            <ToastContainer />
-            <SidebarMenu />
-            <CompactMenu />
-            <Switch>
-              {routes.map((item, index) => {
-                return (
-                  <Route
-                    key={index}
-                    exact={item.exact}
-                    path={item.path}
-                    render={() => <Pages
-                      breadcrumb={item.breadcrumb}
-                      template={item.template}
-                    />}
-                  />
-                );
-              })}
-              <Route render={() => <Pages
-                breadcrumb={[{ href: '', context: '404 Not Found' }]}
-                template={NotFoundPage}
-              />} />
-            </Switch>
-            {/* <Analytics /> */}
-          </LoginModalProvider>
-        </AuthContextProvider>
+          <AuthContextProvider>
+            <LoginModalProvider>
+              <ToastContainer />
+              <SidebarMenu />
+              <CompactMenu />
+              <Switch>
+                {routes.map((item, index) => {
+                  return (
+                    <Route
+                      key={index}
+                      exact={item.exact}
+                      path={item.path}
+                      render={() => <Pages
+                        breadcrumb={item.breadcrumb}
+                        template={item.template}
+                      />}
+                    />
+                  );
+                })}
+                <Route render={() => <Pages
+                  breadcrumb={[{ href: '', context: '404 Not Found' }]}
+                  template={NotFoundPage}
+                />} />
+              </Switch>
+              {/* <Analytics /> */}
+            </LoginModalProvider>
+          </AuthContextProvider>
         </ProfileDataContextProvider>
       </CookiesProvider>
     </BrowserRouter>
