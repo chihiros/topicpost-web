@@ -40,7 +40,6 @@ export const RecreationCards: React.FC = () => {
         <NewCard />
         <NewCard />
         <NewCard />
-        <NewCard />
       </div>
       <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between">
         <button className="bg-gray-200 hover:bg-gray-300 rounded-full w-12 h-12 opacity-60" onClick={
