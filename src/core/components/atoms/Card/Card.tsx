@@ -12,7 +12,7 @@ type CardProps = {
   // children: ReactNode;
 };
 
-const Card: React.FC<CardProps> = ({ title, date }) => {
+const Card: React.FC<CardProps> = ({ title, date, content }) => {
   // 絵文字をランダムで生成する関数
   const randomEmoji = () => {
     const emojiList = [
