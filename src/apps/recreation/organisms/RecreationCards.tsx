@@ -1,5 +1,5 @@
 import React from "react";
-import { NewCard } from "../../../core/components/atoms/Card";
+import { Card } from "../../../core/components/atoms/Card";
 
 export const RecreationCards: React.FC = () => {
   function smoothScroll(element: Element, distance: number, duration: number) {

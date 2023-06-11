@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Twemoji  from 'react-twemoji';
 
+type CardProps = {
+  title: string;
+  // onClick?: () => void;
+  // className?: string;
+  // children: ReactNode;
+};
+
 const Card: React.FC = () => {
   // 絵文字をランダムで生成する関数
   const randomEmoji = () => {
