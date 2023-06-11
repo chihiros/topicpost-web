@@ -285,7 +285,6 @@ export const RecreationRegist: React.FC = () => {
               type="text"
               className="bg-gray-50"
               placeholder="動画のURLを貼ってください"
-              required={true}
               value={youtubeUrlValue}
               onChange={handleYoutubeUrlChange}
             />
