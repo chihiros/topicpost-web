@@ -50,7 +50,7 @@ const routes: RouteType[] = [
     template: RecreationContent,
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
-      { href: '/recreation/:id', context: 'aaaa' },
+      { href: '/recreation/:id', context: '現在地' },
     ]
   }, {
     path: "/diary",
