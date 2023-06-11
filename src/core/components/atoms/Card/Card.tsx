@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Twemoji from 'react-twemoji';
+import { MarkdownPreview } from '../Markdown';
 
 type CardProps = {
   title: string;
@@ -50,8 +51,10 @@ const Card: React.FC<CardProps> = ({ title, date }) => {
   };
 
   const previewContent = (content: string) => {
-    const preview = content.slice(0, 100);
-    return preview;
+    const preview = content.slice(0, 40);
+    return (
+      <MarkdownPreview>{preview}</MarkdownPreview>
+    );
   };
 
   return (
