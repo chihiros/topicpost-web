@@ -56,10 +56,13 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
     supabaseClient.auth.onAuthStateChange((event) => {
       if (event === 'SIGNED_IN' || event === 'USER_UPDATED') {
         setLoggedInTrue();
+        return;
       } else if (event === 'SIGNED_OUT') {
         setLoggedInFalse();
+        return;
       }
     });
+
     if (!isLoggedIn) { // ログインしていて、プロフォールが取得されていない場合
       if (isProfileDataUndefined) {
         getProfileData();
