@@ -20,14 +20,6 @@ export const RecreationTop: React.FC = () => {
     }).catch((error) => {
       console.log(error);
     });
-
-    const recreation2 = new RecreationAPI();
-    recreation2.get(10, 0).then((response: RecreationsResponse) => {
-      console.log(response);
-      setRecreationsCard(response);
-    }).catch((error) => {
-      console.log(error);
-    });
   }, [currentPage])
 
   useEffect(() => {
