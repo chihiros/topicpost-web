@@ -26,9 +26,6 @@ export const SupabaseSignInWithProvider = async (p: string) => {
     provider: p as Provider,
   })
 
-  console.log("data:", data);
-  console.log("error:", error);
-
   return { data, error }
 }
 
