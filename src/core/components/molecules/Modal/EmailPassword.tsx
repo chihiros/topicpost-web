@@ -19,7 +19,7 @@ type EmailPasswordProps = {
 export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   const [modalEmail, setModalEmail] = useState<string>(''); // value属性を型付きのstringで初期化する
   const [modalPassword, setModalPassword] = useState<string>(''); // value属性を型付きのstringで初期化する
-  const { setLoggedIn } = useAuthContext();
+  const { setLoggedInTrue } = useAuthContext();
 
   const toast = new Toast();
 
@@ -56,7 +56,7 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
       .then((response: ProfileResponse) => {
         console.log("response", response);
         toast.success('ログインに成功しました');
-        setLoggedIn(true);
+        setLoggedInTrue();
 
         if (response.data) {
           // 登録済みのProfileがある場合

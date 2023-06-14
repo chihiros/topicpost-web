@@ -1,38 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import Toast from '../../../utils/Toast';
-import ProfileAPI, { ProfileResponse, ProfileData } from '../../../api/api.topicpost.net/profile';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useProfileDataContext } from '../../../context/ProfileDataContext';
 
 const SidebarLoggedIn: React.FC = () => {
-  const [profileData, setProfileData] = useState<ProfileData | null>(null); //プロフィールデータを状態として保存
   const history = useHistory();
-
-  useEffect(() => {
-    const profile = new ProfileAPI();
-    const toast = new Toast();
-    profile.get()
-      .then((response: ProfileResponse) => {
-        // console.log("SidebarLoggedIn:", response);
-        if (response.status !== 200) {
-          if (response.status === 404) {
-            return;
-          }
-
-          toast.error('送信に失敗しました');
-          return;
-        }
-        setProfileData(response.data);
-      })
-      .catch((error: any) => {
-        console.error(error);
-        toast.error('エラーが発生しました');
-      });
-  }, []);
+  const { profileData } = useProfileDataContext();
 
   return (
     <div>
+      <style>
+        {`
+      .user-select-none {
+        user-select: none;
+      }
+    `}
+      </style>
       {profileData && ( //データがあれば表示する
-        <div className="flex flex-col items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3 h-24">
+        <div className="flex flex-col items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3 h-24 user-select-none">
           <img className="w-12 h-12 mb-3 rounded-full"
             src={profileData.icon_url} //状態からアイコンを表示
             alt=""
@@ -44,7 +28,7 @@ const SidebarLoggedIn: React.FC = () => {
       )}
 
       {!profileData && ( //データがなければ表示する
-        <div className="flex flex-col items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3 h-24">
+        <div className="flex flex-col items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3 h-24 user-select-none">
           <span onClick={
             () => {
               history.push("/profile/edit");

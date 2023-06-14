@@ -49,6 +49,10 @@ export class TopicPostAPI {
       body = JSON.stringify(options.body);
     }
 
+    // console.log("url", this.url);
+    console.log("headers", headers);
+    // console.log("body", body);
+
     const response = await fetch(this.url, {
       method: options.method,
       headers,

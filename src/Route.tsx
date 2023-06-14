@@ -6,7 +6,7 @@ import ContactPage from './apps/contact/templates/ContactTemplate';
 import SignUpPage from './apps/signup/templates/SignUpTemplate';
 import ProfileEditPage from './apps/profile/templates/ProfileEditTemplate';
 import NotFoundPage from './apps/common/NotFound';
-import Pages, { PagesProps } from './apps/common/Pages';
+import Pages from './apps/common/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BreadcrumbProps } from './core/components/molecules/Breadcrumb/Breadcrumb';
 import { PrivacyPolicy } from './apps/common/PrivacyPolicyPage';
@@ -15,13 +15,14 @@ import { LoginModalProvider } from './context/LoginModalContext';
 import { ToastContainer } from "react-toastify";
 import { CookiesProvider } from "react-cookie";
 import { AuthContextProvider } from "./context/AuthContext";
+import { ProfileDataContextProvider } from './context/ProfileDataContext';
 // import { Analytics } from '@vercel/analytics/react';
 import { CompactMenu } from "./apps/menu/pages/CompactMenu";
 
 type RouteType = {
   path: string;
   exact?: boolean;
-  template: React.FC<PagesProps>;
+  template: React.FC;
   breadcrumb?: BreadcrumbProps[];
 };
 
@@ -49,7 +50,7 @@ const routes: RouteType[] = [
     template: RecreationContent,
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
-      { href: '/recreation/:id', context: 'aaaa' },
+      { href: '/recreation/:id', context: '現在地' },
     ]
   }, {
     path: "/diary",
@@ -94,33 +95,35 @@ const Routes: React.FC = () => {
   return (
     <BrowserRouter>
       <CookiesProvider>
-        <AuthContextProvider>
-          <LoginModalProvider>
-            <ToastContainer />
-            <SidebarMenu />
-            <CompactMenu />
-            <Switch>
-              {routes.map((item, index) => {
-                return (
-                  <Route
-                    key={index}
-                    exact={item.exact}
-                    path={item.path}
-                    render={() => <Pages
-                      breadcrumb={item.breadcrumb}
-                      template={item.template}
-                    />}
-                  />
-                );
-              })}
-              <Route render={() => <Pages
-                breadcrumb={[{ href: '', context: '404 Not Found' }]}
-                template={NotFoundPage}
-              />} />
-            </Switch>
-            {/* <Analytics /> */}
-          </LoginModalProvider>
-        </AuthContextProvider>
+        <ProfileDataContextProvider>
+          <AuthContextProvider>
+            <LoginModalProvider>
+              <ToastContainer />
+              <SidebarMenu />
+              <CompactMenu />
+              <Switch>
+                {routes.map((item, index) => {
+                  return (
+                    <Route
+                      key={index}
+                      exact={item.exact}
+                      path={item.path}
+                      render={() => <Pages
+                        breadcrumb={item.breadcrumb}
+                        template={<item.template />}
+                      />}
+                    />
+                  );
+                })}
+                <Route render={() => <Pages
+                  breadcrumb={[{ href: '', context: '404 Not Found' }]}
+                  template={<NotFoundPage />}
+                />} />
+              </Switch>
+              {/* <Analytics /> */}
+            </LoginModalProvider>
+          </AuthContextProvider>
+        </ProfileDataContextProvider>
       </CookiesProvider>
     </BrowserRouter>
   );

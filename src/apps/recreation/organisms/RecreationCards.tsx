@@ -1,7 +1,12 @@
 import React from "react";
-import { NewCard } from "../../../core/components/atoms/Card";
+import { Card } from "../../../core/components/atoms/Card";
+import { RecreationsResponse } from "../../../api/api.topicpost.net/recreation";
 
-export const RecreationCards: React.FC = () => {
+interface RecreationCardProps {
+  data?: RecreationsResponse;
+}
+
+export const RecreationCards: React.FC<RecreationCardProps> = ({ data }) => {
   function smoothScroll(element: Element, distance: number, duration: number) {
     const start = element.scrollLeft
     const startTime = performance.now()
@@ -30,17 +35,20 @@ export const RecreationCards: React.FC = () => {
     <div className="relative">
       <div className="flex overflow-x-auto gap-4 mb-4 aaaaaaaaaaa">
         {/* ここはAPIの通信で10個ほどの値を取得する */}
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
-        <NewCard />
+        {data?.data.recreations.map((recreation) => {
+          return (
+            <Card
+              key={recreation.id}
+              title={recreation.title}
+              date={recreation.created_at}
+              content={recreation.content}
+              recreationId={recreation.recreation_id}
+              // description={recreation.description}
+              // image={recreation.image}
+              // link={`/recreation/${recreation.id}`}
+            />
+          );
+        })}
       </div>
       <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between">
         <button className="bg-gray-200 hover:bg-gray-300 rounded-full w-12 h-12 opacity-60" onClick={

@@ -75,7 +75,7 @@ const ContactForm: React.FC = () => {
             id="email"
             type="email"
             className="bg-gray-50"
-            placeholder="contact@example.cpm"
+            placeholder="contact@example.com"
             required={true}
             value={emailValue}
             onChange={handleEmailChange}

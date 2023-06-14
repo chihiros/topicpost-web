@@ -21,13 +21,17 @@ export const SupabaseLoginWithPassword = async (email: string, password: string)
   return { data, error }
 }
 
+export const SupabaseEnableProviders = [
+  'facebook',
+  'github',
+  'google',
+  'twitter',
+]
+
 export const SupabaseSignInWithProvider = async (p: string) => {
   const { data, error } = await supabaseClient.auth.signInWithOAuth({
     provider: p as Provider,
   })
-
-  console.log("data:", data);
-  console.log("error:", error);
 
   return { data, error }
 }

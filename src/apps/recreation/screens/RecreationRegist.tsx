@@ -28,6 +28,7 @@ export const RecreationRegist: React.FC = () => {
   const [isChecked4, setIsChecked4] = useState(false);
   const [isChecked5, setIsChecked5] = useState(false);
   const [isChecked6, setIsChecked6] = useState(false);
+  const [tagError, setTagError] = useState('');
 
   const handleRecTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRecTitleValue(e.target.value);
@@ -75,11 +76,19 @@ export const RecreationRegist: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const isCheckedList = getIsCheckedList();
+    console.log(isCheckedList.length);
+    if (isCheckedList.length === 0) {
+      setTagError('↑ 少なくとも1つは選択してください');
+      return;
+    }
+    setTagError('');
+
     const api = new RecreationAPI();
     const request: RecreationRequest = {
       user_id: uuidv4(),
       recreation_id: uuidv4(),
-      genre: getIsCheckedList(),
+      genre: isCheckedList,
       title: recTitleValue,
       content: messageValue,
       youtube_id: getYouTubeID(youtubeUrlValue),
@@ -228,6 +237,7 @@ export const RecreationRegist: React.FC = () => {
           <TagButton id="check6" isChecked={isChecked6} setIsChecked={setIsChecked6}>
             レクダン
           </TagButton>
+          {tagError && <p className="text-orange-600">{tagError}</p>}
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -285,7 +295,6 @@ export const RecreationRegist: React.FC = () => {
               type="text"
               className="bg-gray-50"
               placeholder="動画のURLを貼ってください"
-              required={true}
               value={youtubeUrlValue}
               onChange={handleYoutubeUrlChange}
             />

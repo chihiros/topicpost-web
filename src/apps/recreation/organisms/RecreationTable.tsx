@@ -32,6 +32,22 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
     };
   }, [actionsDropdownRef, filterDropdownRef]);
 
+  useEffect(() => {
+    function handleKeyPress(event: KeyboardEvent) {
+      if (event.key === "n" || event.key === "N") {
+        handlePageCalc(1)(event as any);
+      } else if (event.key === "p" || event.key === "P") {
+        handlePageCalc(-1)(event as any);
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [currentPage, records]);
+
   const GetRecreationGenre = (id: number): string => {
     switch (id) {
       case 1:
@@ -175,7 +191,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
                 </th>
                 <td className="px-4 py-3">
                   <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full">
-                    {Recreation.genre.map((genre, key) => (
+                    {Recreation.genre && Recreation.genre.map((genre, key) => (
                       <span key={key} className={`bg-gray-200 text-blue-600 text-xs text-center px-1 inline ${key === Recreation.genre.length - 1 ? '' : 'mb-1 mr-1'} rounded`}>
                         {GetRecreationGenre(genre)}
                       </span>

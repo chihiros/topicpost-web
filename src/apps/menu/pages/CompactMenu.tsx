@@ -9,7 +9,7 @@ import { useAuthContext } from '../../../context/AuthContext';
 export const CompactMenu = () => {
   const { toggle } = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
-  const { setLoggedIn, getLoggedIn } = useAuthContext();
+  const { isLoggedIn, setLoggedInFalse } = useAuthContext();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -17,7 +17,7 @@ export const CompactMenu = () => {
 
   const handleLogout = () => {
     supabaseClient.auth.signOut();
-    setLoggedIn(false);
+    setLoggedInFalse();
     sessionStorage.removeItem('last_access_date');
   };
 
@@ -80,7 +80,7 @@ export const CompactMenu = () => {
               </button>
             </div>
             <div className="flex items-center">
-              {getLoggedIn() ? "ログインしています" : "ログインしていません"}
+              {isLoggedIn ? "ログインしています" : "ログインしていません"}
             </div>
           </div>
         </div>

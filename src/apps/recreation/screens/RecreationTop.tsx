@@ -5,12 +5,15 @@ import RecreationAPI, { RecreationsResponse } from '../../../api/api.topicpost.n
 
 export const RecreationTop: React.FC = () => {
   const [recreations, setRecreations] = useState<RecreationsResponse>();
+  const [recreationsCard, setRecreationsCard] = useState<RecreationsResponse>();
   const [recreation_records, setRecreationRecords] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const recreation = new RecreationAPI();
-    recreation.get(currentPage).then((response: RecreationsResponse) => {
+    const limit = 10;
+    const offset = limit * (currentPage - 1);
+    recreation.get(limit, offset).then((response: RecreationsResponse) => {
       console.log(response);
       setRecreations(response);
       setRecreationRecords(response.data.total_records);
@@ -19,12 +22,24 @@ export const RecreationTop: React.FC = () => {
     });
   }, [currentPage])
 
+  useEffect(() => {
+    const recreation = new RecreationAPI();
+    recreation.get(10, 0).then((response: RecreationsResponse) => {
+      console.log(response);
+      setRecreationsCard(response);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }, [])
+
   return (
     <>
       <div className='mb-2 ml-2 text-2xl'>
         新着情報
       </div>
-      <RecreationCards />
+      <RecreationCards
+        data={recreationsCard}
+      />
 
       <div className='mt-6 mb-2 ml-2 text-2xl flex justify-between'>
         一覧
