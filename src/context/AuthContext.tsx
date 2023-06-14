@@ -51,7 +51,6 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
         setLoggedInTrue();
       } else if (event === 'SIGNED_OUT') {
         setLoggedInFalse();
-        setProfileData(undefined);
       }
     });
     if (!isLoggedIn) { // ログインしていて、プロフォールが取得されていない場合
