@@ -54,12 +54,16 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
 
               // profileが存在しない場合は登録する
               if (isProfileDataUndefined) {
+                console.log("isProfileDataUndefined");
+
                 const profile = new ProfileAPI();
                 profile.post().then((response: ProfileResponse) => {
                   console.log(response);
                 }).catch((error) => {
                   console.log("ProfileData.error", error);
                 });
+
+                setLoggedInTrue();
                 return;
               }
               continue;
