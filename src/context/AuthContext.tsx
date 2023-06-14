@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { supabaseClient } from '../utils/supabase';
+import { supabaseClient, SupabaseEnableProviders } from '../utils/supabase';
 import ProfileAPI, { ProfileData, ProfileResponse } from '../api/api.topicpost.net/profile';
 import { useProfileDataContext } from './ProfileDataContext';
 
@@ -44,6 +44,29 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
       const { data: { session } } = await supabaseClient.auth.getSession();
       // setLoggedIn(session !== null);
       if (session !== null) {
+        console.log("session !== null");
+
+        if (session?.user?.identities && session.user.identities.length > 0) {
+          for (const identity of session.user.identities) {
+            console.log("identity.provider:", identity.provider);
+            if (SupabaseEnableProviders.includes(identity.provider)) {
+              setLoggedInTrue();
+
+              // profileが存在しない場合は登録する
+              if (isProfileDataUndefined) {
+                const profile = new ProfileAPI();
+                profile.post().then((response: ProfileResponse) => {
+                  console.log(response);
+                }).catch((error) => {
+                  console.log("ProfileData.error", error);
+                });
+                return;
+              }
+              continue;
+            }
+          }
+        }
+
         setLoggedInTrue();
         return;
       } else {
