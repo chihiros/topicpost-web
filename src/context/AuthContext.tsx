@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { supabaseClient, SupabaseEnableProviders } from '../utils/supabase';
-import ProfileAPI, { ProfileData, ProfileResponse } from '../api/api.topicpost.net/profile';
+import ProfileAPI, { ProfileResponse } from '../api/api.topicpost.net/profile';
 import { useProfileDataContext } from './ProfileDataContext';
 
 interface AuthContextType {
@@ -27,7 +27,7 @@ interface Props {
 
 export const AuthContextProvider: React.FC<Props> = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const { profileData, setProfileData, getProfileData, isProfileDataUndefined } = useProfileDataContext();
+  const { setProfileData, getProfileData, isProfileDataUndefined } = useProfileDataContext();
 
   const setLoggedInTrue = () => {
     setLoggedIn(true);
@@ -47,27 +47,28 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
         console.log("session !== null");
 
         if (session?.user?.identities && session.user.identities.length > 0) {
+          let createProfileFlg = false;
           for (const identity of session.user.identities) {
-            console.log("identity.provider:", identity.provider);
             if (SupabaseEnableProviders.includes(identity.provider)) {
-              setLoggedInTrue();
-
-              // profileが存在しない場合は登録する
-              if (isProfileDataUndefined) {
-                console.log("isProfileDataUndefined");
-
-                const profile = new ProfileAPI();
-                profile.post().then((response: ProfileResponse) => {
-                  console.log(response);
-                }).catch((error) => {
-                  console.log("ProfileData.error", error);
-                });
-
-                setLoggedInTrue();
-                return;
-              }
-              continue;
+              createProfileFlg = true;
             }
+          }
+
+          if (createProfileFlg) {
+            console.log("createProfileFlg", createProfileFlg);
+            if (isProfileDataUndefined) {
+              console.log("isProfileDataUndefined", isProfileDataUndefined);
+              const profile = new ProfileAPI();
+              profile.post().then((response: ProfileResponse) => {
+                console.log(response);
+              }).catch((error) => {
+                console.log("ProfileData.error", error);
+              });
+
+              setLoggedInTrue();
+              return;
+            }
+
           }
         }
 
