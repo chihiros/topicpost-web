@@ -18,7 +18,7 @@ export interface ProfileResponse extends Response<ProfileData> { }
 
 interface ProfileMethods {
   get: () => Promise<ProfileResponse>;
-  post: (body: ProfileRequest) => Promise<ProfileResponse>;
+  post: (body?: ProfileRequest) => Promise<ProfileResponse>;
   put: (body: ProfileRequest) => Promise<ProfileResponse>;
   delete: () => Promise<ProfileResponse>;
 }
@@ -36,7 +36,7 @@ export default class Profile implements ProfileMethods {
     };
   }
 
-  async post(body: ProfileRequest): Promise<ProfileResponse> {
+  async post(body?: ProfileRequest): Promise<ProfileResponse> {
     const res = await this.topicpost.post<ProfileData>(body, this.authRequired);
     return {
       data: res.data,
