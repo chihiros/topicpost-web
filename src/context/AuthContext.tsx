@@ -42,7 +42,14 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     const checkSession = async () => {
       const { data: { session } } = await supabaseClient.auth.getSession();
-      setLoggedIn(session !== null);
+      // setLoggedIn(session !== null);
+      if (session !== null) {
+        setLoggedInTrue();
+        return;
+      } else {
+        setLoggedInFalse();
+        return;
+      }
     };
     checkSession();
 
