@@ -10,11 +10,11 @@ export const RecreationTop: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const recreation = new RecreationAPI();
+    const recreation1 = new RecreationAPI();
     // recreation.get(currentPage).then((response: RecreationsResponse) => {
     const limit = 10;
     const offset = limit * (currentPage - 1);
-    recreation.get(limit, offset).then((response: RecreationsResponse) => {
+    recreation1.get(limit, offset).then((response: RecreationsResponse) => {
       console.log(response);
       setRecreations(response);
       setRecreationRecords(response.data.total_records);
@@ -22,7 +22,8 @@ export const RecreationTop: React.FC = () => {
       console.log(error);
     });
 
-    recreation.get(10, 0).then((response: RecreationsResponse) => {
+    const recreation2 = new RecreationAPI();
+    recreation2.get(10, 0).then((response: RecreationsResponse) => {
       console.log(response);
       setRecreationsCard(response);
     }).catch((error) => {
