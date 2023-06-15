@@ -85,7 +85,7 @@ export const RecreationContent: React.FC = () => {
 
           {/* YouTube URL */}
           {recreationContent?.data.youtube_id && (
-            <div className="mb-4">
+            <div className="mb-4 flex justify-center">
               <iframe
                 className="screen"
                 src={`https://www.youtube.com/embed/${recreationContent.data.youtube_id}`}
