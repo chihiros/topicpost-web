@@ -4,7 +4,7 @@ import { RecreationTop, RecreationRegist, RecreationContent } from './apps/recre
 import DiaryPage from './apps/diary/templates/DiaryTemplate';
 import ContactPage from './apps/contact/screens/ContactScreen';
 import SignUpPage from './apps/signup/screens/SignUpScreen';
-import ProfileEditPage from './apps/profile/templates/ProfileEditTemplate';
+import ProfileEditPage from './apps/profile/screens/ProfileEditScreen';
 import NotFoundPage from './apps/common/NotFound';
 import Pages from './apps/common/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
