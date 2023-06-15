@@ -84,6 +84,24 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
     setCurrentPage(currentPage + n);
   }
 
+  const formatDate = (date: string) => {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = d.getMonth() + 1;
+    const day = d.getDate();
+    return `${year}/${month}/${day}`;
+  }
+
+  const formatDatetime = (date: string) => {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = d.getMonth() + 1;
+    const day = d.getDate();
+    const hour = ("0" + d.getHours()).slice(-2);
+    const minute = ("0" + d.getMinutes()).slice(-2);
+    return `${year}/${month}/${day} ${hour}:${minute}`;
+  }
+
   return (
     <div className="bg-white relative rounded-lg overflow-hidden">
       {/* Table 検索タブ */}
@@ -205,7 +223,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
                 </td>
                 <td className="px-4 py-3 hidden xl:table-cell">
                   <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full  whitespace-nowrap">
-                    {Recreation.created_at}
+                    {formatDatetime(Recreation.created_at)}
                   </Link>
                 </td>
               </tr>
