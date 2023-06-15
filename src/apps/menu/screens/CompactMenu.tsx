@@ -5,11 +5,13 @@ import { sidebar } from "../../../constants/sidebar";
 import Twemoji from "react-twemoji";
 import { supabaseClient } from '../../../utils/supabase';
 import { useAuthContext } from '../../../context/AuthContext';
+import { useProfileDataContext } from "../../../context/ProfileDataContext";
 
 export const CompactMenu = () => {
   const { toggle } = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn, setLoggedInFalse } = useAuthContext();
+  const { getProfileNickName, getProfileIconUrl } = useProfileDataContext();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -29,12 +31,14 @@ export const CompactMenu = () => {
             <span className="text-2xl font-semibold hover:text-gray-400">TopicPost</span>
           </a>
           <div className="flex items-center">
-            <button
-              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
-              onClick={toggle}
-            >
-              Login
-            </button>
+            {!isLoggedIn && (
+              <button
+                className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
+                onClick={toggle}
+              >
+                Login
+              </button>
+            )}
             <button
               data-collapse-toggle="mega-menu"
               type="button"
