@@ -23,6 +23,7 @@ export interface RecreationData {
   required_time: number;
   created_at: string;
   updated_at: string;
+  edges: any;
 };
 
 export interface RecreationsData {
