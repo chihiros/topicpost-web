@@ -4,6 +4,7 @@ import { MarkdownPreview } from "../../../core/components/atoms/Markdown"
 import { BsFillPeopleFill } from "react-icons/bs";
 import { RiTimerLine } from "react-icons/ri";
 import { useParams } from "react-router-dom";
+import './youtube_frame.css'
 
 export const RecreationContent: React.FC = () => {
   const prams = useParams<{ id: string }>();
@@ -84,13 +85,14 @@ export const RecreationContent: React.FC = () => {
 
           {/* YouTube URL */}
           {recreationContent?.data.youtube_id && (
-            <div className="mb-4">
-              <div
-                className="youtube-container"
-                dangerouslySetInnerHTML={{
-                  __html: `<iframe width="100%" height="240" src="https://www.youtube.com/embed/${recreationContent.data.youtube_id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
-                }}
-              />
+            <div className="mb-4 flex justify-center">
+              <iframe
+                className="screen"
+                src={`https://www.youtube.com/embed/${recreationContent.data.youtube_id}`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
           )}
 

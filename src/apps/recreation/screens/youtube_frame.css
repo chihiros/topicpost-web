@@ -1,0 +1,29 @@
+/* YouTube用のコード */
+@media screen and (max-width: 576px) {
+  iframe{
+    width:  304px !important;
+    height: 171px !important;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  iframe{
+    width:  448px !important;
+    height: 243px !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  iframe{
+    width:  576px !important;
+    height: 324px !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  iframe{
+    width:  720px !important;
+    height: 405px !important;
+  }
+}
+/* ./YouTube用のコード */
