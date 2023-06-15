@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import axios from 'axios';
-import Toast from "../../../utils/Toast";
+import React, { useState, useEffect } from "react";
+// import axios from 'axios';
+// import Toast from "../../../utils/Toast";
 import Label from "../../../core/components/atoms/Label";
 import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
@@ -9,10 +9,14 @@ import { MarkdownPreview } from "../../../core/components/atoms/Markdown";
 import { RiTimerLine } from "react-icons/ri";
 import { BsFillPeopleFill } from "react-icons/bs";
 import getYouTubeID from "get-youtube-id";
+import RecreationAPI, { RecreationRequest } from "../../../api/api.topicpost.net/recreation";
+import { v4 as uuidv4 } from "uuid";
+import { supabaseClient } from "../../../utils/supabase";
 
 import { TagButton } from "../organisms/RecreationTagButton";
+import { GetUserID } from "../../../utils/supabase";
 
-export const RecreationRegistTemplate: React.FC = () => {
+export const RecreationRegist: React.FC = () => {
   const [recTitleValue, setRecTitleValue] = useState('');
   const [youtubeUrlValue, setYoutubeUrlValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
@@ -24,12 +28,7 @@ export const RecreationRegistTemplate: React.FC = () => {
   const [isChecked4, setIsChecked4] = useState(false);
   const [isChecked5, setIsChecked5] = useState(false);
   const [isChecked6, setIsChecked6] = useState(false);
-
-  const clearForm = () => {
-    setRecTitleValue('');
-    setYoutubeUrlValue('');
-    setMessageValue('');
-  }
+  const [tagError, setTagError] = useState('');
 
   const handleRecTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRecTitleValue(e.target.value);
@@ -51,29 +50,161 @@ export const RecreationRegistTemplate: React.FC = () => {
     setRequiredTime(e.target.value);
   };
 
+  const getIsCheckedList = () => {
+    const isCheckedList = [];
+    if (isChecked1) {
+      isCheckedList.push(1);
+    }
+    if (isChecked2) {
+      isCheckedList.push(2);
+    }
+    if (isChecked3) {
+      isCheckedList.push(3);
+    }
+    if (isChecked4) {
+      isCheckedList.push(4);
+    }
+    if (isChecked5) {
+      isCheckedList.push(5);
+    }
+    if (isChecked6) {
+      isCheckedList.push(6);
+    }
+    return isCheckedList;
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const url = 'https://api.topicpost.net/v1/contact';
-    const data = {
-      name: recTitleValue,
+    const isCheckedList = getIsCheckedList();
+    console.log(isCheckedList.length);
+    if (isCheckedList.length === 0) {
+      setTagError('↑ 少なくとも1つは選択してください');
+      return;
+    }
+    setTagError('');
+
+    const api = new RecreationAPI();
+    const request: RecreationRequest = {
+      user_id: uuidv4(),
+      recreation_id: uuidv4(),
+      genre: isCheckedList,
+      title: recTitleValue,
       content: messageValue,
-    };
+      youtube_id: getYouTubeID(youtubeUrlValue),
+      target_number: Number(targetNumber),
+      required_time: Number(requiredTime),
+    }
 
-    const toast = new Toast();
-    axios.post(url, data)
-      .then(response => {
-        console.log(response.data);
-        toast.success('送信が完了しました');
+    // const toast = new Toast();
+    // axios.post(url, data)
+    //   .then(response => {
+    //     console.log(response.data);
+    //     toast.success('送信が完了しました');
 
-        // フォームの初期化
-        clearForm();
-      })
-      .catch(error => {
-        console.error(error);
-        toast.error('送信に失敗しました');
-      });
+    //     // フォームの初期化
+    //     clearForm();
+    //   })
+    //   .catch(error => {
+    //     console.error(error);
+    //     toast.error('送信に失敗しました');
+    //   });
+
+    const res = api.post(request);
+    console.log("res:", res);
   };
+
+  // Set up local state for the dropped file
+  const [uploading, setUploading] = useState(false);
+  const [fileUrl, setFileUrl] = useState<string[] | null>(null);
+
+  const onDragEnter = (e: React.DragEvent<HTMLTextAreaElement>) => {
+    // Prevent default behavior (Prevent file from being opened)
+    e.preventDefault();
+  };
+
+  const onDrop = async (e: React.DragEvent<HTMLTextAreaElement>) => {
+    e.preventDefault();
+
+    let uploadFilePath: string[] = [];
+    if (e.dataTransfer.items) {
+      setUploading(true);
+
+      for (var i = 0; i < e.dataTransfer.items.length; i++) {
+        setMessageValue(prevMessage => prevMessage + '\n![Uploading](...)');
+        if (e.dataTransfer.items[i].kind === 'file') {
+          const file = e.dataTransfer.items[i].getAsFile();
+          if (!file) return;
+          GetUserID().then(async (userID) => {
+            if (userID) {
+              const filePath = `${userID}/${uuidv4()}`;
+              const { error } = await supabaseClient.storage
+                .from('recreation')
+                .upload(filePath, file);
+
+              if (error) {
+                console.error('Error uploading file: ', error);
+              } else {
+                uploadFilePath.push(filePath);
+                const { data: { publicUrl } } = await supabaseClient.storage
+                  .from('recreation')
+                  .getPublicUrl(filePath);
+                setMessageValue(prevMessage => prevMessage.replace(
+                  '![Uploading](...)',
+                  `![image](${publicUrl})`
+                ));
+              }
+              setUploading(false);
+            }
+          });
+        }
+      }
+    }
+    setFileUrl(uploadFilePath);
+  };
+
+  const onPaste = async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    const items = e.clipboardData.items;
+    let uploadFilePath: string[] = [];
+
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf("image") === -1) continue;
+
+      const file = items[i].getAsFile();
+      if (!file) return;
+
+      setUploading(true);
+      setMessageValue(prevMessage => prevMessage + '\n![Uploading](...)');
+
+      GetUserID().then(async (userID) => {
+        if (userID) {
+          const filePath = `${userID}/${uuidv4()}`;
+          const { error } = await supabaseClient.storage
+            .from('recreation')
+            .upload(filePath, file);
+
+          if (error) {
+            console.error('Error uploading file: ', error);
+          } else {
+            uploadFilePath.push(filePath);
+            const { data: { publicUrl } } = await supabaseClient.storage
+              .from('recreation')
+              .getPublicUrl(filePath);
+            setMessageValue(prevMessage => prevMessage.replace(
+              '![Uploading](...)',
+              `![image](${publicUrl})`
+            ));
+          }
+          setUploading(false);
+        }
+      });
+    }
+    setFileUrl(uploadFilePath);
+  }
+
+  useEffect(() => {
+    // console.log("fileUrl:", fileUrl);
+  }, [fileUrl]);
 
   return (
     <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
@@ -106,6 +237,7 @@ export const RecreationRegistTemplate: React.FC = () => {
           <TagButton id="check6" isChecked={isChecked6} setIsChecked={setIsChecked6}>
             レクダン
           </TagButton>
+          {tagError && <p className="text-orange-600">{tagError}</p>}
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -163,7 +295,6 @@ export const RecreationRegistTemplate: React.FC = () => {
               type="text"
               className="bg-gray-50"
               placeholder="動画のURLを貼ってください"
-              required={true}
               value={youtubeUrlValue}
               onChange={handleYoutubeUrlChange}
             />
@@ -173,21 +304,32 @@ export const RecreationRegistTemplate: React.FC = () => {
             <Label htmlFor="message" required>ルール説明</Label>
             <Textarea
               id="message"
-              className="bg-gray-50"
+              className={uploading ? "bg-gray-300" : "bg-gray-50"}
               rows={10}
               required={true}
               value={messageValue}
               onChange={handleMessageChange}
+              onDragOver={onDragEnter}
+              onDrop={onDrop}
+              onPaste={onPaste}
+              disabled={uploading}
             />
             {/* <div className="text-slate-400 text-right text-sm my-1">自動保存：2023/05/16 0:22.09</div> */}
           </div>
           {/* <SuccessButton className="mr-2">下書きを保存</SuccessButton> */}
           <SubmitButton className="mr-2">投稿</SubmitButton>
         </form>
+
+        {/* <div className="mb-2 mt-4 text-xl">画像をアップロード</div>
+        <div className="h-60 bg-slate-400 rounded-lg"
+          onDragOver={onDragEnter}
+          onDrop={onDrop}
+        >
+        </div> */}
       </div>
 
       <div className="p-4 bg-gray-50 rounded-lg overflow-auto break-words">
-        {(!recTitleValue && !messageValue) && (
+        {(!recTitleValue) && (
           <div className="flex mb-5 text-2xl">こちらにはプレビューが表示されます</div>
         )}
         <div className="mx-auto">
@@ -251,6 +393,9 @@ export const RecreationRegistTemplate: React.FC = () => {
           <MarkdownPreview>
             {messageValue}
           </MarkdownPreview>
+          {!messageValue && (
+            <div className="flex mb-5 text-xl">こちらにはプレビューが表示されます</div>
+          )}
         </div>
       </div>
     </div>

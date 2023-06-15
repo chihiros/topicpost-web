@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { Text } from "../../atoms/Input";
 import Label from '../../atoms/Label';
-import axios from 'axios';
 
 import { SubmitButton } from "../../atoms/Button";
 
@@ -10,8 +9,8 @@ import Toast from "../../../../utils/Toast";
 import { getErrorMessage } from "../../../../utils/ErrorMessage";
 import { supabaseClient } from "../../../../utils/supabase";
 import { useHistory } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 import { useAuthContext } from '../../../../context/AuthContext';
+import ProfileAPI, { ProfileResponse } from '../../../../api/api.topicpost.net/profile';
 
 type EmailPasswordProps = {
   toggle: () => void;
@@ -20,8 +19,7 @@ type EmailPasswordProps = {
 export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
   const [modalEmail, setModalEmail] = useState<string>(''); // value属性を型付きのstringで初期化する
   const [modalPassword, setModalPassword] = useState<string>(''); // value属性を型付きのstringで初期化する
-  const [, setCookie] = useCookies();
-  const { setLoggedIn } = useAuthContext();
+  const { setLoggedInTrue } = useAuthContext();
 
   const toast = new Toast();
 
@@ -43,45 +41,37 @@ export const EmailPassword: React.FC<EmailPasswordProps> = ({ toggle }) => {
       password: modalPassword
     });
 
+    console.log("data", data);
+
     if (error) {
       toast.error(getErrorMessage(error.message));
       return;
     }
 
-    console.log(data);
     // ログインに成功したらモーダルを閉じる
     toggle();
 
-    // const url = 'http://localhost:8686/v1/profile'
-    const url = 'https://api.topicpost.net/v1/profile'
-    const token = "Bearer " + data?.session?.access_token;
+    const profile = new ProfileAPI();
+    profile.get()
+      .then((response: ProfileResponse) => {
+        console.log("response", response);
+        toast.success('ログインに成功しました');
+        setLoggedInTrue();
 
-    axios.get(url, {
-      headers: {
-        'Authorization': token
-      }
-    })
-    .then(response => {
-      console.log(response.data);
-      toast.success('ログインに成功しました');
-
-      setCookie("access_token", data.session?.access_token);
-      setCookie("refresh_token", data.session?.refresh_token);
-      sessionStorage.setItem("last_access_date", new Date().toISOString());
-      setLoggedIn(true);
-
-      if (response.data.data.length) {
-        // 登録済みのProfileがある場合
-        history.push("/");
-      } else {
-        // Profileが登録されていない場合
-        history.push(`/profile/edit`);
-      }
-    })
-    .catch(error => {
-      console.error(error);
-      toast.error('ログインに失敗しました');
-    });
+        if (response.data) {
+          // 登録済みのProfileがある場合
+          history.push("/");
+        } else if (response.status === 404) {
+          // Profileが登録されていない場合
+          history.push(`/profile/edit`);
+        } else {
+          toast.error('エラーが発生しました');
+        }
+      })
+      .catch((error: any) => {
+        console.error(error);
+        toast.error('ログインに失敗しました');
+      });
   };
 
   return (

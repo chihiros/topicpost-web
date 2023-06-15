@@ -2,11 +2,16 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
+// import rehypeSanitize from 'rehype-sanitize';
 import { Note } from './Note';
 
 type Props = {
   children?: React.ReactNode;
 };
+
+// const sanitizeSchema = {
+//   tagNames: ['img'],
+// };
 
 export const MarkdownPreview: React.FC<Props> = ({ children }) => {
   return (
@@ -23,10 +28,11 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
               }
             `}
       </style>
-      <div className='prose'>
       <ReactMarkdown
+        className='prose-md'
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
+        // rehypePlugins={[rehypeRaw, [rehypeSanitize]]}
         components={{
           h1: ({ node, children, ...props }) => (
             <h1 className="font-bold mb-2" {...props}>
@@ -103,13 +109,12 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
         }}
       >
         {children && typeof children === "string"
-          ? children.replace(/:::note (info|warn|alert)\n([\s\S]*?)\n:::/g, (_, type, content) =>
+          ? children.replace(/:::note\s*(info|warn|alert)?\n([\s\S]*?)\n:::/g, (_, type = "info", content) =>
             `<div class="note ${type}">${content}</div>`
           )
           : ''
         }
       </ReactMarkdown>
-      </div>
     </>
   );
 };

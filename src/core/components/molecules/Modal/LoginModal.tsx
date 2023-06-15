@@ -5,6 +5,7 @@ import { BsGithub, BsTwitter, BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { RxCross2 } from "react-icons/rx";
 import { EmailPassword } from "./EmailPassword";
+import { SupabaseSignInWithProvider } from "../../../../utils/supabase/Supabase";
 
 const LoginModal: React.FC = () => {
   const { isOpen, toggle } = useLoginModal();
@@ -21,28 +22,36 @@ const LoginModal: React.FC = () => {
         size={24}
       />,
       children: "Googleでログイン",
-      link: "/auth/google",
+      onClick: () => {
+        SupabaseSignInWithProvider("google");
+      }
     }, {
       icon: <BsGithub
         size={20}
         color="#333"
       />,
       children: "GitHubでログイン",
-      link: "/auth/github",
+      onClick: () => {
+        SupabaseSignInWithProvider("github");
+      }
     }, {
       icon: <BsTwitter
         size={20}
         color="#1DA1F2"
       />,
       children: "Twitterでログイン",
-      link: "/auth/twitter",
+      onClick: () => {
+        SupabaseSignInWithProvider("twitter");
+      }
     }, {
       icon: <BsFacebook
         size={20}
         color="#4267B2"
       />,
       children: "Facebookでログイン",
-      link: "/auth/facebook",
+      onClick: () => {
+        SupabaseSignInWithProvider("facebook");
+      }
     }
   ];
 
@@ -54,7 +63,7 @@ const LoginModal: React.FC = () => {
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
             onClick={handleOverlayClick}
           >
-            <div className="relative w-full h-full max-w-2xl md:h-auto">
+            <div className="relative w-full max-w-2xl mx-3">
               {/* <!-- Modal content --> */}
               <div className="relative bg-white rounded-lg shadow">
                 <button
@@ -66,15 +75,16 @@ const LoginModal: React.FC = () => {
                 </button>
                 <div className="px-6 py-6">
                   <h3 className="mb-4 text-xl font-medium text-gray-900">TopicPost にログインする</h3>
-                  <div className="grid grid-cols-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2">
                     {/* 左側にはSSOログインを設定する */}
-                    <div className="flex flex-col justify-center space-y-4 pr-6">
+                    <div className="flex flex-col justify-center space-y-2 sm:space-y-4 sm:pr-6">
                       {SocialLogins.map((social, index) => (
                         <SocialLoginButton key={index} {...social} />
                       ))}
                     </div>
                     {/* 右側にはEmail/Passwordのログインを設定する */}
-                    <div className="h-auto max-w-full border-l-2 pl-6">
+                    <hr className="h-px my-4 bg-gray-200 border-0 sm:hidden" />
+                    <div className="h-auto max-w-full sm:border-l-2 sm:pl-6">
                       <EmailPassword toggle={toggle} />
                     </div>
                   </div>

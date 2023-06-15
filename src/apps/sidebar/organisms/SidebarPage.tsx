@@ -1,24 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SidebarLoggedIn from '../../sidebar/organisms/SidebarLoggedIn';
+import SidebarLoggedIn from './SidebarLoggedIn';
 // import { SidebarQuestion } from '../../../core/components/organisms/Sidebar/SidebarQuestion';
-import SidebarLogin from '../../sidebar/organisms/SidebarLogin';
-import SidebarLabel from '../../sidebar/organisms/SidebarLabel';
+import SidebarLogin from './SidebarLogin';
+import SidebarLabel from './SidebarLabel';
 import { sidebar } from '../../../constants/sidebar';
 import { supabaseClient } from '../../../utils/supabase';
 import { useAuthContext } from '../../../context/AuthContext';
 
 const SidebarPage: React.FC = () => {
-  const { setLoggedIn, getLoggedIn } = useAuthContext();
+  const { isLoggedIn, setLoggedInFalse } = useAuthContext();
 
   const handleLogout = () => {
-      supabaseClient.auth.signOut();
-      setLoggedIn(false);
-      sessionStorage.removeItem('last_access_date');
+    supabaseClient.auth.signOut();
+    setLoggedInFalse();
+    sessionStorage.removeItem('last_access_date');
   };
 
   // これする意味ないかも
-  const SidebarStyle = "transition-transform -translate-x-full md:translate-x-0";
+  const SidebarStyle = "transition-transform -translate-x-full lg:translate-x-0";
 
   return (
     <aside
@@ -31,7 +31,7 @@ const SidebarPage: React.FC = () => {
           <span className="text-3xl font-semibold hover:text-gray-400">TopicPost</span>
         </Link>
 
-        {getLoggedIn() ? <SidebarLoggedIn /> : <SidebarLogin />}
+        {isLoggedIn ? <SidebarLoggedIn /> : <SidebarLogin />}
 
         {sidebar.map((label, index) => (
           <SidebarLabel

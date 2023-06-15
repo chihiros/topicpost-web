@@ -12,22 +12,24 @@ export interface ProfileData {
   icon_url: string;
   created_at: string;
   updated_at: string;
+  edges: any;
 };
 
 export interface ProfileResponse extends Response<ProfileData> { }
 
 interface ProfileMethods {
   get: () => Promise<ProfileResponse>;
-  post: (body: ProfileRequest) => Promise<ProfileResponse>;
+  post: (body?: ProfileRequest) => Promise<ProfileResponse>;
   put: (body: ProfileRequest) => Promise<ProfileResponse>;
   delete: () => Promise<ProfileResponse>;
 }
 
-export class Profile implements ProfileMethods {
+export default class Profile implements ProfileMethods {
   topicpost = new TopicPostAPI("/profile");
+  authRequired = true;
 
   async get(): Promise<ProfileResponse> {
-    const res = await this.topicpost.get<ProfileData>();
+    const res = await this.topicpost.get<ProfileData>({}, this.authRequired);
     return {
       data: res.data,
       errors: res.errors,
@@ -35,8 +37,8 @@ export class Profile implements ProfileMethods {
     };
   }
 
-  async post(body: ProfileRequest): Promise<ProfileResponse> {
-    const res = await this.topicpost.post<ProfileData>(body);
+  async post(body?: ProfileRequest): Promise<ProfileResponse> {
+    const res = await this.topicpost.post<ProfileData>(body, this.authRequired);
     return {
       data: res.data,
       errors: res.errors,
@@ -45,7 +47,7 @@ export class Profile implements ProfileMethods {
   }
 
   async put(body: ProfileRequest): Promise<ProfileResponse> {
-    const res = await this.topicpost.put<ProfileData>(body);
+    const res = await this.topicpost.put<ProfileData>(body, this.authRequired);
     return {
       data: res.data,
       errors: res.errors,
@@ -54,7 +56,7 @@ export class Profile implements ProfileMethods {
   }
 
   async delete(): Promise<ProfileResponse> {
-    const res = await this.topicpost.delete<ProfileData>();
+    const res = await this.topicpost.delete<ProfileData>(this.authRequired);
     return {
       data: res.data,
       errors: res.errors,

@@ -37,7 +37,7 @@ export const WindowSize: React.FC = () => {
   React.useEffect(() => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  });
+  }, []);
 
   return (
     <div className="fixed bottom-0 right-0 bg-gray-100 p-2 text-xs text-gray-500">
