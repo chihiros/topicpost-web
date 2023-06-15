@@ -2,7 +2,7 @@ import TopPage from './apps/common/TopTemplate';
 // import TopPage from './apps/common';
 import { RecreationTop, RecreationRegist, RecreationContent } from './apps/recreation/screens';
 import DiaryPage from './apps/diary/templates/DiaryTemplate';
-import ContactPage from './apps/contact/templates/ContactTemplate';
+import ContactPage from './apps/contact/screens/ContactScreen';
 import SignUpPage from './apps/signup/templates/SignUpTemplate';
 import ProfileEditPage from './apps/profile/templates/ProfileEditTemplate';
 import NotFoundPage from './apps/common/NotFound';
