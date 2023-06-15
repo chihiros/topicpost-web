@@ -12,7 +12,7 @@ const Pages: React.FC<PagesProps> = ({ breadcrumb, template }) => {
   const runEnv = process.env.REACT_APP_ENV;
 
   return (
-    <div className="p-4 lg:ml-64">
+    <div className="p-3 lg:ml-64">
       <Breadcrumb breadcrumb={breadcrumb} />
       {template}
       {runEnv !== "production" && <WindowSize />}
