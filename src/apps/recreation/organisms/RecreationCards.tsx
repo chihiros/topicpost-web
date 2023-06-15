@@ -44,9 +44,6 @@ export const RecreationCards: React.FC<RecreationCardProps> = ({ data }) => {
               content={recreation.content}
               recreationId={recreation.recreation_id}
               data={recreation}
-              // description={recreation.description}
-              // image={recreation.image}
-              // link={`/recreation/${recreation.id}`}
             />
           );
         })}
