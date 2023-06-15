@@ -30,6 +30,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
       </style>
       <div className='prose'>
         <ReactMarkdown
+          className='prose-md'
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
           // rehypePlugins={[rehypeRaw, [rehypeSanitize]]}
