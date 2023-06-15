@@ -39,7 +39,7 @@ const Top: React.FC = () => {
       </div>
 
       <div className='mb-2 ml-2 text-2xl'>
-        レクリエーション
+        新着 レクリエーション
       </div>
       <RecreationCards
         data={recreationsCard}
@@ -47,7 +47,7 @@ const Top: React.FC = () => {
       />
 
       <div className='mb-2 ml-2 text-2xl'>
-        活動日記
+        新着 活動日記
       </div>
       {/* ↓ このコンポートは今後変える */}
       <RecreationCards
