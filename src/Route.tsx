@@ -1,5 +1,4 @@
 import TopPage from './apps/common/TopScreen';
-// import TopPage from './apps/common';
 import { RecreationTop, RecreationRegist, RecreationContent } from './apps/recreation/screens';
 import DiaryPage from './apps/diary/screens/DiaryScreen';
 import ContactPage from './apps/contact/screens/ContactScreen';
