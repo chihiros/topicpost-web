@@ -12,9 +12,9 @@ const SidebarPage: React.FC = () => {
   const { isLoggedIn, setLoggedInFalse } = useAuthContext();
 
   const handleLogout = () => {
-      supabaseClient.auth.signOut();
-      setLoggedInFalse();
-      sessionStorage.removeItem('last_access_date');
+    supabaseClient.auth.signOut();
+    setLoggedInFalse();
+    sessionStorage.removeItem('last_access_date');
   };
 
   // これする意味ないかも
