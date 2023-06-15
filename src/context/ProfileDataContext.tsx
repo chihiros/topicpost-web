@@ -6,6 +6,8 @@ interface ProfileDataContextType {
   setProfileData: React.Dispatch<React.SetStateAction<ProfileData | undefined>>;
   getProfileData: () => void;
   isProfileDataUndefined: boolean;
+  getProfileNickName: () => string;
+  getProfileIconUrl: () => string;
 }
 
 export const ProfileDataContext = createContext<ProfileDataContextType>({
@@ -13,6 +15,8 @@ export const ProfileDataContext = createContext<ProfileDataContextType>({
   setProfileData: () => { },
   getProfileData: () => { },
   isProfileDataUndefined: true,
+  getProfileNickName: () => { return ""; },
+  getProfileIconUrl: () => { return ""; },
 });
 
 export const useProfileDataContext = () => {
@@ -39,8 +43,24 @@ export const ProfileDataContextProvider: React.FC<Props> = ({ children }) => {
       });
   };
 
+  const getProfileNickName = () => {
+    if (profileData === undefined) {
+      return "";
+    } else {
+      return profileData.nickname;
+    }
+  };
+
+  const getProfileIconUrl = () => {
+    if (profileData === undefined) {
+      return "";
+    } else {
+      return profileData.icon_url;
+    }
+  };
+
   return (
-    <ProfileDataContext.Provider value={{ profileData, setProfileData, getProfileData, isProfileDataUndefined }}>
+    <ProfileDataContext.Provider value={{ profileData, setProfileData, getProfileData, isProfileDataUndefined, getProfileNickName, getProfileIconUrl }}>
       {children}
     </ProfileDataContext.Provider>
   );

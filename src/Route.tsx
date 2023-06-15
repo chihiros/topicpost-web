@@ -1,10 +1,9 @@
-import TopPage from './apps/common/TopTemplate';
-// import TopPage from './apps/common';
+import TopPage from './apps/common/TopScreen';
 import { RecreationTop, RecreationRegist, RecreationContent } from './apps/recreation/screens';
-import DiaryPage from './apps/diary/templates/DiaryTemplate';
-import ContactPage from './apps/contact/templates/ContactTemplate';
-import SignUpPage from './apps/signup/templates/SignUpTemplate';
-import ProfileEditPage from './apps/profile/templates/ProfileEditTemplate';
+import DiaryPage from './apps/diary/screens/DiaryScreen';
+import ContactPage from './apps/contact/screens/ContactScreen';
+import SignUpPage from './apps/signup/screens/SignUpScreen';
+import ProfileEditPage from './apps/profile/screens/ProfileEditScreen';
 import NotFoundPage from './apps/common/NotFound';
 import Pages from './apps/common/Pages';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -17,7 +16,7 @@ import { CookiesProvider } from "react-cookie";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ProfileDataContextProvider } from './context/ProfileDataContext';
 // import { Analytics } from '@vercel/analytics/react';
-import { CompactMenu } from "./apps/menu/pages/CompactMenu";
+import { CompactMenu } from "./apps/menu/screens/CompactMenu";
 
 type RouteType = {
   path: string;

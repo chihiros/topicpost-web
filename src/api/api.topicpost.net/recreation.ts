@@ -1,4 +1,5 @@
 import { TopicPostAPI, Response } from ".";
+import { ProfileData } from "./profile";
 
 export interface RecreationRequest {
   user_id: string;
@@ -23,6 +24,9 @@ export interface RecreationData {
   required_time: number;
   created_at: string;
   updated_at: string;
+  edges: {
+    profile: ProfileData;
+  };
 };
 
 export interface RecreationsData {
