@@ -29,10 +29,10 @@ const Top: React.FC = () => {
           </div>
           <div className="ml-3">
             <p className="text-base font-medium text-gray-900">
-              お知らせのタイトル
+              TopicPost v1をリリースしました
             </p>
             <p className="mt-1 text-sm text-gray-500">
-              お知らせの内容
+              2023/07/15
             </p>
           </div>
         </div>
