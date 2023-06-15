@@ -73,7 +73,6 @@ const Card: React.FC<CardProps> = ({ title, date, content, recreationId, data })
           <div className="mb-2 text-base font-bold tracking-tight text-gray-900">{data.title}</div>
           <p className="text-gray-700 text-left text-sm mb-1">{formatDate(data.created_at)}</p>
           {/* <MarkdownPreview> */}
-            {/* {previewContent(content)} */}
             {previewContent(data.content)}
           {/* </MarkdownPreview> */}
         </div>
