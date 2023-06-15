@@ -4,9 +4,10 @@ import { RecreationsResponse } from "../../../api/api.topicpost.net/recreation";
 
 interface RecreationCardProps {
   data?: RecreationsResponse;
+  className?: string;
 }
 
-export const RecreationCards: React.FC<RecreationCardProps> = ({ data }) => {
+export const RecreationCards: React.FC<RecreationCardProps> = ({ data, className }) => {
   function smoothScroll(element: Element, distance: number, duration: number) {
     const start = element.scrollLeft
     const startTime = performance.now()
@@ -32,7 +33,8 @@ export const RecreationCards: React.FC<RecreationCardProps> = ({ data }) => {
 
 
   return (
-    <div className="relative">
+    // <div className="relative">
+    <div className={`relative ` + className}>
       <div className="flex overflow-x-auto gap-4 mb-4 aaaaaaaaaaa">
         {/* ここはAPIの通信で10個ほどの値を取得する */}
         {data?.data.recreations.map((recreation) => {
