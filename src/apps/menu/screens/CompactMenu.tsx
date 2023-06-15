@@ -85,7 +85,7 @@ export const CompactMenu = () => {
             </div>
             <div className="mt-4">
               <button
-                onChange={handleLogout}
+                onClick={handleLogout}
                 className="bg-slate-300 hover:bg-slate-700 text-white text-base font-bold py-2 px-4 rounded"
               >
                 ログアウト
