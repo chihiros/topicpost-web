@@ -43,6 +43,7 @@ const Top: React.FC = () => {
       </div>
       <RecreationCards
         data={recreationsCard}
+        className="mb-6"
       />
 
       <div className='mb-2 ml-2 text-2xl'>
@@ -51,6 +52,7 @@ const Top: React.FC = () => {
       {/* ↓ このコンポートは今後変える */}
       <RecreationCards
         data={recreationsCard}
+        className="mb-6"
       />
     </>
   );
