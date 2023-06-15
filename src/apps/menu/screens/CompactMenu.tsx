@@ -75,17 +75,19 @@ export const CompactMenu = () => {
                 </li>
               ))}
             </ul>
-            <div className="mt-3 flex items-end">
-              <img
-                src={getProfileIconUrl()}
-                alt="profile icon"
-                className="w-10 h-10 rounded-full"
-              />
-              <span className="ml-2 text-base text-gray-600">{getProfileNickName()}</span>
-            </div>
+            {isLoggedIn && ( /* プロフィール情報 */
+              <div className="mt-3 flex items-end">
+                <img
+                  src={getProfileIconUrl()}
+                  alt="profile icon"
+                  className="w-10 h-10 rounded-full"
+                />
+                <span className="ml-2 text-base text-gray-600">{getProfileNickName()}</span>
+              </div>
+            )}
             <div className="mt-4">
               <button
-                onChange={handleLogout}
+                onClick={handleLogout}
                 className="bg-slate-300 hover:bg-slate-700 text-white text-base font-bold py-2 px-4 rounded"
               >
                 ログアウト

@@ -84,14 +84,6 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
     setCurrentPage(currentPage + n);
   }
 
-  const formatDate = (date: string) => {
-    const d = new Date(date);
-    const year = d.getFullYear();
-    const month = d.getMonth() + 1;
-    const day = d.getDate();
-    return `${year}/${month}/${day}`;
-  }
-
   const formatDatetime = (date: string) => {
     const d = new Date(date);
     const year = d.getFullYear();
@@ -161,12 +153,12 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
                     <label htmlFor="RecGroup" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
                   </li>
                   <li className="flex items-center">
-                    <input id="RecDan" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                    <label htmlFor="RecDan" className="ml-2 text-sm font-medium text-gray-900">レクダン (74)</label>
+                    <input id="RecGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                    <label htmlFor="RecGroup" className="ml-2 text-sm font-medium text-gray-900">静かにする レク (8)</label>
                   </li>
                   <li className="flex items-center">
-                    <input id="RecOther" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                    <label htmlFor="RecOther" className="ml-2 text-sm font-medium text-gray-900">その他のレク (74)</label>
+                    <input id="RecDan" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                    <label htmlFor="RecDan" className="ml-2 text-sm font-medium text-gray-900">レクダン (74)</label>
                   </li>
                 </ul>
               </div>
