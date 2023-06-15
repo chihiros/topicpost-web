@@ -200,7 +200,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
                 </td>
                 <td className="px-4 py-3 hidden sm:table-cell">
                   <Link to={`/recreation/${Recreation.recreation_id}`} className="block h-full w-full whitespace-nowrap">
-                    すずりかわ@熊本
+                    {Recreation.edges.profile.nickname}
                   </Link>
                 </td>
                 <td className="px-4 py-3 hidden xl:table-cell">
