@@ -84,14 +84,6 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
     setCurrentPage(currentPage + n);
   }
 
-  const formatDate = (date: string) => {
-    const d = new Date(date);
-    const year = d.getFullYear();
-    const month = d.getMonth() + 1;
-    const day = d.getDate();
-    return `${year}/${month}/${day}`;
-  }
-
   const formatDatetime = (date: string) => {
     const d = new Date(date);
     const year = d.getFullYear();
