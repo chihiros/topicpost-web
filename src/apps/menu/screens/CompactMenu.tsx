@@ -23,7 +23,7 @@ export const CompactMenu = () => {
 
   return (
     <div className="transition-transform lg:-translate-x-full translate-x-0 lg:hidden">
-      <nav className="bg-gray-50 border-gray-200 rounded-b-3xl">
+      <nav className="bg-gray-50 border-gray-200 rounded-b-2xl">
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto p-4">
           <a className="" href="/">
             <span className="text-2xl font-semibold hover:text-gray-400">TopicPost</span>
