@@ -32,7 +32,6 @@ export const RecreationCards: React.FC<RecreationCardProps> = ({ data, className
   }
 
   return (
-    // <div className="relative">
     <div className={`relative ` + className}>
       <div className="flex overflow-x-auto gap-4 mb-4 aaaaaaaaaaa">
         {/* ここはAPIの通信で10個ほどの値を取得する */}
