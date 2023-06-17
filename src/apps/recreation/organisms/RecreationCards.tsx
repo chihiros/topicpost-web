@@ -31,7 +31,6 @@ export const RecreationCards: React.FC<RecreationCardProps> = ({ data, className
     requestAnimationFrame(animate)
   }
 
-
   return (
     // <div className="relative">
     <div className={`relative ` + className}>
