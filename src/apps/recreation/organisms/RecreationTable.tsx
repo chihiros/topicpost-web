@@ -134,9 +134,6 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
               >
                 <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                   <li className="flex items-center">
-                    <label className="text-sm font-medium text-gray-900">選択をすべて外す</label>
-                  </li>
-                  <li className="flex items-center">
                     <input id="RecIceBreak" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
                     <label htmlFor="RecIceBreak" className="ml-2 text-sm font-medium text-gray-900">アイスブレイク (0)</label>
                   </li>
