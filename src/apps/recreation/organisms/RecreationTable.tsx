@@ -153,8 +153,8 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
                     <label htmlFor="RecGroup" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
                   </li>
                   <li className="flex items-center">
-                    <input id="RecGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                    <label htmlFor="RecGroup" className="ml-2 text-sm font-medium text-gray-900">静かにする レク (8)</label>
+                    <input id="RecSilent" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                    <label htmlFor="RecSilent" className="ml-2 text-sm font-medium text-gray-900">静かにする レク (8)</label>
                   </li>
                   <li className="flex items-center">
                     <input id="RecDan" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
