@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import axios from 'axios';
-// import Toast from "../../../utils/Toast";
 import Label from "../../../core/components/atoms/Label";
 import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
