@@ -32,6 +32,27 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
     };
   }, [actionsDropdownRef, filterDropdownRef]);
 
+  const recordsPerPage = 10; // この書き方ダサい
+  const totalNumberOfPages = Math.ceil(records! / recordsPerPage);
+  const pageNumbers = Array.from({ length: totalNumberOfPages }, (_, i) => i + 1);
+
+  const handlePageClick = (pageNumber: number) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    setCurrentPage(pageNumber);
+  }
+
+  const handlePageCalc = useCallback(
+    (n: number) => (e: React.MouseEvent) => {
+      e.preventDefault();
+      const totalPages = Math.ceil(records! / recordsPerPage);
+      if (currentPage + n < 1 || currentPage + n > totalPages) {
+        return;
+      }
+      setCurrentPage(currentPage + n);
+    },
+    [currentPage, records, recordsPerPage, setCurrentPage]
+  );
+
   useEffect(() => {
     function handleKeyPress(event: KeyboardEvent) {
       if (event.key === "n" || event.key === "N") {
@@ -46,7 +67,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
-  }, [currentPage, records]);
+  }, [handlePageCalc]);
 
   const GetRecreationGenre = (id: number): string => {
     switch (id) {
@@ -64,24 +85,6 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
         return "レクダン"
     }
     return ""
-  }
-
-  const recordsPerPage = 10; // この書き方ダサい
-  const totalNumberOfPages = Math.ceil(records! / recordsPerPage);
-  const pageNumbers = Array.from({ length: totalNumberOfPages }, (_, i) => i + 1);
-
-  const handlePageClick = (pageNumber: number) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    setCurrentPage(pageNumber);
-  }
-
-  const handlePageCalc = (n: number) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    const totalPages = Math.ceil(records! / recordsPerPage);
-    if (currentPage + n < 1 || currentPage + n > totalPages) {
-      return;
-    }
-    setCurrentPage(currentPage + n);
   }
 
   const formatDatetime = (date: string) => {
