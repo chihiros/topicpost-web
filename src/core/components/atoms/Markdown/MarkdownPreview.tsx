@@ -30,9 +30,9 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
         rehypePlugins={[rehypeRaw]}
         components={{
           h1: ({ node, children, ...props }) => (
-            <h1 className="font-bold mb-2" {...props}>
+            <div className="font-bold mb-2 text-4xl" {...props}>
               {children || ''}
-            </h1>
+            </div>
           ),
           h2: ({ node, children, ...props }) => (
             <h2 className="m-0 font-bold mb-2" {...props}>
