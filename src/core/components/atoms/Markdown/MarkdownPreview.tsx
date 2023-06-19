@@ -115,7 +115,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
               const stringClassName = className as string[];
               if (stringClassName.includes('note')) {
                 const type = stringClassName.find((cls: string) => ['info', 'warn', 'alert'].includes(cls));
-                return <Note type={type as 'info' | 'warn' | 'alert'} className="mb-3">{children}</Note>
+                return <Note type={type as 'info' | 'warn' | 'alert'} className="p-4 mb-3">{children}</Note>
               }
             }
             return <div>{children}</div>;
