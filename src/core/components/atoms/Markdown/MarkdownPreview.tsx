@@ -84,9 +84,11 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
             }
 
             return isTweetLink ? (
-              <Tweet
-                id={extractTweetId(href!)}
-              />
+              <div className='flex justify-center'>
+                <Tweet
+                  id={extractTweetId(href!)}
+                />
+              </div>
             ) : (
               <a className="text-blue-600 no-underline" {...props} >
                 {children || ''}
