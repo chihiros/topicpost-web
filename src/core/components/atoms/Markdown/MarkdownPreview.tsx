@@ -18,7 +18,17 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
               .md-style :where(code)::after {
                 content: "";
               }
-              .md-style ul {
+
+              .non-prose-style :where(video):not(:where([class~="not-prose"] *)) {
+                margin-top: 0;
+                margin-bottom: 0;
+              }
+
+              .non-prose-style img {
+                margin: 0;
+              }
+
+              .prose ul {
                 list-style: initial;
                 margin-top: 0;
                 margin-bottom: 8px;
@@ -88,7 +98,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
             }
 
             return isTweetLink ? (
-              <div className='flex justify-center'>
+              <div className='non-prose-style flex justify-center'>
                 <Tweet
                   id={extractTweetId(href!)}
                 />
