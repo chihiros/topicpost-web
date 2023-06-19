@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 // import rehypeSanitize from 'rehype-sanitize';
 import { Note } from './Note';
-import { Tweet } from 'react-twitter-widgets';
+import { Tweet } from 'react-tweet';
 
 type Props = {
   children?: React.ReactNode;
@@ -85,11 +85,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
 
             return isTweetLink ? (
               <Tweet
-                tweetId={extractTweetId(href!)}
-                options={{
-                  height: "400",
-                  align: 'center'
-                }}
+                id={extractTweetId(href!)}
               />
             ) : (
               <a className="text-blue-600 no-underline" {...props} >
