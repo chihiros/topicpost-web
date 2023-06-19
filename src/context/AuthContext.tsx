@@ -44,8 +44,6 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
       const { data: { session } } = await supabaseClient.auth.getSession();
       // setLoggedIn(session !== null);
       if (session !== null) {
-        console.log("session !== null");
-
         if (session?.user?.identities && session.user.identities.length > 0) {
           let createProfileFlg = false;
           for (const identity of session.user.identities) {
