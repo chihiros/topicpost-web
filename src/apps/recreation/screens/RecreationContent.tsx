@@ -42,7 +42,7 @@ export const RecreationContent: React.FC = () => {
 
   return (
     <>
-      <div className="p-4 bg-gray-50 rounded-lg overflow-auto break-words">
+      <div className="p-6 bg-gray-50 rounded-lg overflow-auto break-words">
         <div className="mx-auto max-w-5xl">
           {/* Title */}
           <MarkdownPreview>
