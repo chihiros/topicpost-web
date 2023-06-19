@@ -93,7 +93,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
             }
 
             return isTweetLink ? (
-              <div className='non-prose-style flex justify-center'>
+              <div className='non-prose-style flex justify-center light'>
                 <Tweet
                   id={extractTweetId(href!)}
                 />
