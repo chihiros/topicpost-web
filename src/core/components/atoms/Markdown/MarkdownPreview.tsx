@@ -19,18 +19,18 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
     <>
       <style>
         {`
-              .prose :where(code)::before,
-              .prose :where(code)::after {
+              .md-style :where(code)::before,
+              .md-style :where(code)::after {
                 content: "";
               }
-              .prose ul {
+              .md-style ul {
                 margin-top: 0;
                 margin-bottom: 8px;
               }
             `}
       </style>
       <ReactMarkdown
-        className='prose max-w-5xl'
+        className='max-w-5xl md-style'
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         // rehypePlugins={[rehypeRaw, [rehypeSanitize]]}
