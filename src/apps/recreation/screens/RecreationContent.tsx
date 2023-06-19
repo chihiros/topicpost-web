@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import RecreationAPI, { RecreationResponse } from "../../../api/api.topicpost.net/recreation";
-import { MarkdownPreview } from "../../../core/components/atoms/Markdown"
+import { MarkdownPreview } from "../../../core/components/atoms/Markdown";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { RiTimerLine } from "react-icons/ri";
 import { useParams } from "react-router-dom";
-import './youtube_frame.css'
+import './youtube_frame.css';
 
 export const RecreationContent: React.FC = () => {
   const prams = useParams<{ id: string }>();
