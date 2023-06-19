@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 // import rehypeSanitize from 'rehype-sanitize';
 import { Note } from './Note';
+import { TwitterTweetEmbed } from 'react-twitter-embed';
 
 type Props = {
   children?: React.ReactNode;
@@ -72,11 +73,24 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
               {children || ''}
             </li>
           ),
-          a: ({ node, children, ...props }) => (
-            <a className="text-blue-600 no-underline" {...props} >
-              {children || ''}
-            </a>
-          ),
+          a: ({ node, children, ...props }) => {
+            const href: string | undefined = props.href;
+            const isTweetLink = href!.startsWith('https://twitter.com/') && href!.split('/').length === 6;
+
+            const extractTweetId = (url: string): string => {
+              const regex = /status\/(\d+)/;
+              const match = url.match(regex);
+              return match ? match[1] : "";
+            }
+
+            return isTweetLink ? (
+              <TwitterTweetEmbed tweetId={extractTweetId(href!)} />
+            ) : (
+              <a className="text-blue-600 no-underline" {...props} >
+                {children || ''}
+              </a>
+            );
+          },
           code: ({ node, inline, className, children, ...props }) => {
             // const match = /language-(\w+)/.exec(className || '')
             return inline ? (
