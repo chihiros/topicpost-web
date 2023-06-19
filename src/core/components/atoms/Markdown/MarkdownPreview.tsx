@@ -72,6 +72,11 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
               {children || ''}
             </li>
           ),
+          table: ({ node, children, ...props }) => (
+            <table className="m-0 mb-4 text-base" {...props} >
+              {children || ''}
+            </table>
+          ),
           a: ({ node, children, ...props }) => {
             const href: string | undefined = props.href;
             const isTweetLink = href!.startsWith('https://twitter.com/') && href!.split('/').length === 6;
