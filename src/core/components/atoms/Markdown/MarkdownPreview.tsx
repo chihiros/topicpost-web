@@ -101,7 +101,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
                 {children}
               </code>
             ) : (
-              <pre className="bg-gray-800 text-gray-200 p-0 m-0 rounded" {...props}>
+              <pre className="bg-gray-800 text-gray-200 p-3 text-sm m-0 rounded" {...props}>
                 {children}
               </pre>
             )
