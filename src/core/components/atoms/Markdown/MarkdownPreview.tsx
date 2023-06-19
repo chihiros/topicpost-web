@@ -2,17 +2,12 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
-// import rehypeSanitize from 'rehype-sanitize';
 import { Note } from './Note';
 import { Tweet } from 'react-tweet';
 
 type Props = {
   children?: React.ReactNode;
 };
-
-// const sanitizeSchema = {
-//   tagNames: ['img'],
-// };
 
 export const MarkdownPreview: React.FC<Props> = ({ children }) => {
   return (
@@ -33,7 +28,6 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
         className='max-w-5xl md-style'
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
-        // rehypePlugins={[rehypeRaw, [rehypeSanitize]]}
         components={{
           h1: ({ node, children, ...props }) => (
             <h1 className="font-bold mb-2" {...props}>
