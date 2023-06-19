@@ -42,7 +42,6 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     const checkSession = async () => {
       const { data: { session } } = await supabaseClient.auth.getSession();
-      // setLoggedIn(session !== null);
       if (session !== null) {
         if (session?.user?.identities && session.user.identities.length > 0) {
           let createProfileFlg = false;
