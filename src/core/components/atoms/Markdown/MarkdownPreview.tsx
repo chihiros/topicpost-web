@@ -35,9 +35,9 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
             </div>
           ),
           h2: ({ node, children, ...props }) => (
-            <h2 className="m-0 font-bold mb-2" {...props}>
+            <div className="m-0 font-bold mb-2 text-2xl" {...props}>
               {children || ''}
-            </h2>
+            </div>
           ),
           h3: ({ node, children, ...props }) => (
             <h3 className="m-0 font-bold mb-2" {...props}>
