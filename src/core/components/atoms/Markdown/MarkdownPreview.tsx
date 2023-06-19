@@ -2,6 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
+// import rehypeSanitize from 'rehype-sanitize';
 import { Note } from './Note';
 import { Tweet } from 'react-tweet';
 
@@ -9,13 +10,17 @@ type Props = {
   children?: React.ReactNode;
 };
 
+// const sanitizeSchema = {
+//   tagNames: ['img'],
+// };
+
 export const MarkdownPreview: React.FC<Props> = ({ children }) => {
   return (
     <>
       <style>
         {`
-              .md-style :where(code)::before,
-              .md-style :where(code)::after {
+              .prose :where(code)::before,
+              .prose :where(code)::after {
                 content: "";
               }
 
@@ -29,50 +34,45 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
               }
 
               .prose ul {
-                list-style: initial;
                 margin-top: 0;
                 margin-bottom: 8px;
-                padding-left: 20px;
-              }
-              .md-style li::marker {
-                color: #d1d5db;
               }
             `}
       </style>
       <ReactMarkdown
-        className='max-w-5xl md-style'
+        className='max-w-5xl prose'
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
           h1: ({ node, children, ...props }) => (
-            <div className="font-bold mb-2 text-4xl" {...props}>
+            <h1 className="font-bold mb-2" {...props}>
               {children || ''}
-            </div>
+            </h1>
           ),
           h2: ({ node, children, ...props }) => (
-            <div className="m-0 font-bold mb-2 text-2xl" {...props}>
+            <h2 className="m-0 font-bold mb-2" {...props}>
               {children || ''}
-            </div>
+            </h2>
           ),
           h3: ({ node, children, ...props }) => (
-            <div className="m-0 font-bold mb-2 text-xl" {...props}>
+            <h3 className="m-0 font-bold mb-2" {...props}>
               {children || ''}
-            </div>
+            </h3>
           ),
           h4: ({ node, children, ...props }) => (
-            <div className="m-0 font-bold mb-2 tet-lg" {...props}>
+            <h4 className="m-0 font-bold mb-2" {...props}>
               {children || ''}
-            </div>
+            </h4>
           ),
           h5: ({ node, children, ...props }) => (
-            <div className="m-0 mb-2 text-base" {...props}>
+            <h5 className="m-0 mb-2" {...props}>
               {children || ''}
-            </div>
+            </h5>
           ),
           h6: ({ node, children, ...props }) => (
-            <div className="m-0 mb-2 text-sm" {...props}>
+            <h6 className="m-0 mb-2" {...props}>
               {children || ''}
-            </div>
+            </h6>
           ),
           p: ({ node, ...props }) => (
             <p className="m-0 mb-1" {...props} />
@@ -81,11 +81,6 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
             <li className="m-0 text-base" {...props} >
               {children || ''}
             </li>
-          ),
-          table: ({ node, children, ...props }) => (
-            <table className="m-0 mb-4 text-base" {...props} >
-              {children || ''}
-            </table>
           ),
           a: ({ node, children, ...props }) => {
             const href: string | undefined = props.href;
@@ -112,7 +107,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
           code: ({ node, inline, className, children, ...props }) => {
             // const match = /language-(\w+)/.exec(className || '')
             return inline ? (
-              <code className="bg-gray-200 text-blue-600 px-1 rounded text-sm" {...props}>
+              <code className="bg-gray-200 text-blue-600 px-1 rounded" {...props}>
                 {children}
               </code>
             ) : (
@@ -122,7 +117,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
             )
           },
           pre: ({ node, ...props }) => (
-            <pre className="bg-gray-800 text-gray-200 text-sm p-3 mt-3 mb-6 rounded" {...props} />
+            <pre className="bg-gray-800 text-gray-200 px-3 mt-3 rounded" {...props} />
           ),
           div: ({ node, children }) => {
             const className = node.properties?.className;
@@ -130,7 +125,7 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
               const stringClassName = className as string[];
               if (stringClassName.includes('note')) {
                 const type = stringClassName.find((cls: string) => ['info', 'warn', 'alert'].includes(cls));
-                return <Note type={type as 'info' | 'warn' | 'alert'} className="p-4 mb-3">{children}</Note>
+                return <Note type={type as 'info' | 'warn' | 'alert'} className="mb-3">{children}</Note>
               }
             }
             return <div>{children}</div>;
