@@ -6,6 +6,15 @@ import { RiTimerLine } from "react-icons/ri";
 import { useParams } from "react-router-dom";
 import './youtube_frame.css';
 
+const RECREATION_GENRES: { [key: number]: string } = {
+  1: "アイスブレイク",
+  2: "手遊びレク",
+  3: "少人数レク",
+  4: "グループレク",
+  5: "静かにするレク",
+  6: "レクダン",
+};
+
 export const RecreationContent: React.FC = () => {
   const params = useParams<{ id: string }>();
   const [recreationContent, setRecreationContent] = useState<RecreationResponse>();
@@ -25,23 +34,7 @@ export const RecreationContent: React.FC = () => {
     fetchData();
   }, [params.id]);
 
-  const GetRecreationGenre = (id: number): string => {
-    switch (id) {
-      case 1:
-        return "アイスブレイク"
-      case 2:
-        return "手遊びレク"
-      case 3:
-        return "少人数レク"
-      case 4:
-        return "グループレク"
-      case 5:
-        return "静かにするレク"
-      case 6:
-        return "レクダン"
-    }
-    return ""
-  }
+  const genreList = recreationContent?.data.genre.map((genre) => `\`${RECREATION_GENRES[genre]}\``).join('\n');
 
   return (
     <>
@@ -55,9 +48,7 @@ export const RecreationContent: React.FC = () => {
 
           <div className="text-sm">こんな場面で使えるレクです</div>
           <MarkdownPreview>
-            {recreationContent?.data.genre.map((genre): string => {
-              return `\`${GetRecreationGenre(genre)}\``;
-            }).join('\n')}
+            {genreList}
           </MarkdownPreview>
 
           {/* 対象人数・対象年齢・所要時間を表示する */}
