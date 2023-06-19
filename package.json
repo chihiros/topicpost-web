@@ -37,6 +37,7 @@
     "react-toastify": "^9.1.2",
     "react-transition-group": "^4.4.5",
     "react-twemoji": "^0.5.0",
+    "react-twitter-embed": "^4.0.4",
     "redux": "^4.2.1",
     "rehype-katex": "^6.0.3",
     "rehype-parse": "^8.0.4",
