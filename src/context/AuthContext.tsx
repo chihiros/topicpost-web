@@ -43,24 +43,28 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
     const checkSession = async () => {
       const { data: { session } } = await supabaseClient.auth.getSession();
       if (session !== null) {
-        if (session?.user?.identities && session.user.identities.length > 0) {
-          let createProfileFlg = false;
-          for (const identity of session.user.identities) {
-            if (SupabaseEnableProviders.includes(identity.provider)) {
-              createProfileFlg = true;
+        const profile = new ProfileAPI();
+        try {
+          const response = await profile.get();
+          setProfileData(response.data);
+        } catch (error) {
+          console.log("ProfileData.error", error);
+          if (session?.user?.identities && session.user.identities.length > 0) {
+            let createProfileFlg = false;
+            for (const identity of session.user.identities) {
+              if (SupabaseEnableProviders.includes(identity.provider)) {
+                createProfileFlg = true;
+              }
             }
-          }
 
-          if (createProfileFlg) {
-            console.log("createProfileFlg", createProfileFlg);
-            if (isProfileDataUndefined) {
-              console.log("isProfileDataUndefined", isProfileDataUndefined);
-              const profile = new ProfileAPI();
-              profile.post().then((response: ProfileResponse) => {
-                console.log(response);
-              }).catch((error) => {
+            if (createProfileFlg) {
+              console.log("createProfileFlg", createProfileFlg);
+              try {
+                const postResponse = await profile.post();
+                console.log(postResponse);
+              } catch (error) {
                 console.log("ProfileData.error", error);
-              });
+              }
               setLoggedInTrue();
               return;
             }
