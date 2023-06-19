@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 // import rehypeSanitize from 'rehype-sanitize';
 import { Note } from './Note';
+import { Tweet } from 'react-tweet';
 
 type Props = {
   children?: React.ReactNode;
@@ -22,6 +23,16 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
               .prose :where(code)::after {
                 content: "";
               }
+
+              .non-prose-style :where(video):not(:where([class~="not-prose"] *)) {
+                margin-top: 0;
+                margin-bottom: 0;
+              }
+
+              .non-prose-style img {
+                margin: 0;
+              }
+
               .prose ul {
                 margin-top: 0;
                 margin-bottom: 8px;
@@ -29,10 +40,9 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
             `}
       </style>
       <ReactMarkdown
-        className='prose-md'
+        className='max-w-5xl prose'
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
-        // rehypePlugins={[rehypeRaw, [rehypeSanitize]]}
         components={{
           h1: ({ node, children, ...props }) => (
             <h1 className="font-bold mb-2" {...props}>
@@ -72,11 +82,28 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
               {children || ''}
             </li>
           ),
-          a: ({ node, children, ...props }) => (
-            <a className="text-blue-600 no-underline" {...props} >
-              {children || ''}
-            </a>
-          ),
+          a: ({ node, children, ...props }) => {
+            const href: string | undefined = props.href;
+            const isTweetLink = href!.startsWith('https://twitter.com/') && href!.split('/').length === 6;
+
+            const extractTweetId = (url: string): string => {
+              const regex = /status\/(\d+)/;
+              const match = url.match(regex);
+              return match ? match[1] : "";
+            }
+
+            return isTweetLink ? (
+              <div className='non-prose-style flex justify-center' data-theme="light">
+                <Tweet
+                  id={extractTweetId(href!)}
+                />
+              </div>
+            ) : (
+              <a className="text-blue-600 no-underline" {...props} >
+                {children || ''}
+              </a>
+            );
+          },
           code: ({ node, inline, className, children, ...props }) => {
             // const match = /language-(\w+)/.exec(className || '')
             return inline ? (
