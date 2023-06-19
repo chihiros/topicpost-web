@@ -7,20 +7,23 @@ import { useParams } from "react-router-dom";
 import './youtube_frame.css';
 
 export const RecreationContent: React.FC = () => {
-  const prams = useParams<{ id: string }>();
-  const id = prams.id;
-
+  const params = useParams<{ id: string }>();
   const [recreationContent, setRecreationContent] = useState<RecreationResponse>();
+
   useEffect(() => {
-    const recreation = new RecreationAPI();
-    recreation.getByRecreationID(id).then((recreationContent: RecreationResponse) => {
-      console.log("recreationContent", recreationContent);
-      setRecreationContent(recreationContent);
-    }).catch((error: any) => {
-      console.error(error);
-    });
-    console.log("useEffect", id);
-  }, [id]);
+    const fetchData = async () => {
+      try {
+        const recreation = new RecreationAPI();
+        const fetchedContent = await recreation.getByRecreationID(params.id);
+        console.log("recreationContent", fetchedContent);
+        setRecreationContent(fetchedContent);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [params.id]);
 
   const GetRecreationGenre = (id: number): string => {
     switch (id) {
