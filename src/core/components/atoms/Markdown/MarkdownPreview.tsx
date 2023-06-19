@@ -36,32 +36,32 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
         // rehypePlugins={[rehypeRaw, [rehypeSanitize]]}
         components={{
           h1: ({ node, children, ...props }) => (
-            <h1 className="font-bold mb-2" {...props}>
+            <div className="font-bold mb-2 text-3xl" {...props}>
               {children || ''}
-            </h1>
+            </div>
           ),
           h2: ({ node, children, ...props }) => (
-            <h2 className="m-0 font-bold mb-2" {...props}>
+            <div className="m-0 font-bold mb-2 text-2xl" {...props}>
               {children || ''}
-            </h2>
+            </div>
           ),
           h3: ({ node, children, ...props }) => (
-            <h3 className="m-0 font-bold mb-2" {...props}>
+            <div className="m-0 font-bold mb-2 text-xl" {...props}>
               {children || ''}
-            </h3>
+            </div>
           ),
           h4: ({ node, children, ...props }) => (
-            <h4 className="m-0 font-bold mb-2" {...props}>
+            <h4 className="m-0 font-bold mb-2 text-lg" {...props}>
               {children || ''}
             </h4>
           ),
           h5: ({ node, children, ...props }) => (
-            <h5 className="m-0 mb-2" {...props}>
+            <h5 className="m-0 mb-2 text-base" {...props}>
               {children || ''}
             </h5>
           ),
           h6: ({ node, children, ...props }) => (
-            <h6 className="m-0 mb-2" {...props}>
+            <h6 className="m-0 mb-2 text-sm" {...props}>
               {children || ''}
             </h6>
           ),
