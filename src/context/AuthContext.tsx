@@ -64,11 +64,9 @@ export const AuthContextProvider: React.FC<Props> = ({ children }) => {
               }).catch((error) => {
                 console.log("ProfileData.error", error);
               });
-
               setLoggedInTrue();
               return;
             }
-
           }
         }
 
