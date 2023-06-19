@@ -19,8 +19,13 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
                 content: "";
               }
               .md-style ul {
+                list-style: initial;
                 margin-top: 0;
                 margin-bottom: 8px;
+                padding-left: 20px;
+              }
+              .md-style li::marker {
+                color: #d1d5db;
               }
             `}
       </style>
