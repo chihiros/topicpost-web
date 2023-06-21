@@ -16,6 +16,13 @@ import { GetUserID } from "../../../utils/supabase";
 import './youtube_frame.css';
 
 const recreation_id = uuidv4();
+let user_id = "";
+GetUserID().then((res: string | undefined) => {
+  if (res) {
+    user_id = res;
+  }
+});
+
 export const RecreationRegist: React.FC = () => {
   const [recTitleValue, setRecTitleValue] = useState('');
   const [youtubeUrlValue, setYoutubeUrlValue] = useState('');
@@ -86,7 +93,7 @@ export const RecreationRegist: React.FC = () => {
 
     const api = new RecreationAPI();
     const request: RecreationRequest = {
-      user_id: uuidv4(),
+      user_id: user_id,
       recreation_id: recreation_id,
       genre: isCheckedList,
       title: recTitleValue,
