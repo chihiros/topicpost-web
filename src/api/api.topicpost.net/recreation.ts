@@ -22,8 +22,10 @@ export interface RecreationData {
   youtube_id: string | null;
   target_number: number;
   required_time: number;
+  publish: boolean;
   created_at: string;
   updated_at: string;
+  published_at: string;
   edges: {
     profile: ProfileData;
   };
