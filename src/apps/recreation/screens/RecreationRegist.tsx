@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import axios from 'axios';
-// import Toast from "../../../utils/Toast";
 import Label from "../../../core/components/atoms/Label";
 import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
@@ -15,6 +13,7 @@ import { supabaseClient } from "../../../utils/supabase";
 
 import { TagButton } from "../organisms/RecreationTagButton";
 import { GetUserID } from "../../../utils/supabase";
+import './youtube_frame.css';
 
 export const RecreationRegist: React.FC = () => {
   const [recTitleValue, setRecTitleValue] = useState('');
@@ -379,13 +378,14 @@ export const RecreationRegist: React.FC = () => {
 
           {/* YouTube URL */}
           {youtubeUrlValue && (
-            <div className="mb-4">
-              <div
-                className="youtube-container"
-                dangerouslySetInnerHTML={{
-                  __html: `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${getYouTubeID(youtubeUrlValue)}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
-                }}
-              />
+            <div className="mb-4 flex justify-center">
+              <iframe
+                className="screen"
+                src={`https://www.youtube.com/embed/${getYouTubeID(youtubeUrlValue)}`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
           )}
 

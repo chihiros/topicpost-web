@@ -31,9 +31,7 @@ export const RecreationCards: React.FC<RecreationCardProps> = ({ data, className
     requestAnimationFrame(animate)
   }
 
-
   return (
-    // <div className="relative">
     <div className={`relative ` + className}>
       <div className="flex overflow-x-auto gap-4 mb-4 aaaaaaaaaaa">
         {/* ここはAPIの通信で10個ほどの値を取得する */}
@@ -50,8 +48,8 @@ export const RecreationCards: React.FC<RecreationCardProps> = ({ data, className
           );
         })}
       </div>
-      <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between">
-        <button className="bg-gray-200 hover:bg-gray-300 rounded-full w-12 h-12 opacity-20 hover:opacity-50" onClick={
+      <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between" style={{pointerEvents: 'none'}}>
+        <button className="bg-gray-200 hover:bg-gray-300 rounded-full w-12 h-12 opacity-20 hover:opacity-50" style={{pointerEvents: 'auto'}} onClick={
           function () {
             const element = document.querySelector('.aaaaaaaaaaa')
             if (element) {
@@ -61,7 +59,7 @@ export const RecreationCards: React.FC<RecreationCardProps> = ({ data, className
         }>
           ←
         </button>
-        <button className="bg-gray-200 hover:bg-gray-300 rounded-full w-12 h-12 opacity-20 hover:opacity-50" onClick={
+        <button className="bg-gray-200 hover:bg-gray-300 rounded-full w-12 h-12 opacity-20 hover:opacity-50" style={{pointerEvents: 'auto'}} onClick={
           function () {
             const element = document.querySelector('.aaaaaaaaaaa')
             if (element) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { AiOutlineSearch, AiOutlinePlus } from "react-icons/ai";
 import { BsFilter } from "react-icons/bs";
 import { useHistory } from 'react-router-dom';
@@ -32,6 +32,27 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
     };
   }, [actionsDropdownRef, filterDropdownRef]);
 
+  const recordsPerPage = 10; // この書き方ダサい
+  const totalNumberOfPages = Math.ceil(records! / recordsPerPage);
+  const pageNumbers = Array.from({ length: totalNumberOfPages }, (_, i) => i + 1);
+
+  const handlePageClick = (pageNumber: number) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    setCurrentPage(pageNumber);
+  }
+
+  const handlePageCalc = useCallback(
+    (n: number) => (e: React.MouseEvent) => {
+      e.preventDefault();
+      const totalPages = Math.ceil(records! / recordsPerPage);
+      if (currentPage + n < 1 || currentPage + n > totalPages) {
+        return;
+      }
+      setCurrentPage(currentPage + n);
+    },
+    [currentPage, records, recordsPerPage, setCurrentPage]
+  );
+
   useEffect(() => {
     function handleKeyPress(event: KeyboardEvent) {
       if (event.key === "n" || event.key === "N") {
@@ -46,7 +67,7 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
-  }, [currentPage, records]);
+  }, [handlePageCalc]);
 
   const GetRecreationGenre = (id: number): string => {
     switch (id) {
@@ -64,24 +85,6 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
         return "レクダン"
     }
     return ""
-  }
-
-  const recordsPerPage = 10; // この書き方ダサい
-  const totalNumberOfPages = Math.ceil(records! / recordsPerPage);
-  const pageNumbers = Array.from({ length: totalNumberOfPages }, (_, i) => i + 1);
-
-  const handlePageClick = (pageNumber: number) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    setCurrentPage(pageNumber);
-  }
-
-  const handlePageCalc = (n: number) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    const totalPages = Math.ceil(records! / recordsPerPage);
-    if (currentPage + n < 1 || currentPage + n > totalPages) {
-      return;
-    }
-    setCurrentPage(currentPage + n);
   }
 
   const formatDatetime = (date: string) => {
@@ -134,9 +137,6 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
               >
                 <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                   <li className="flex items-center">
-                    <label className="text-sm font-medium text-gray-900">選択をすべて外す</label>
-                  </li>
-                  <li className="flex items-center">
                     <input id="RecIceBreak" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
                     <label htmlFor="RecIceBreak" className="ml-2 text-sm font-medium text-gray-900">アイスブレイク (0)</label>
                   </li>
@@ -153,8 +153,8 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
                     <label htmlFor="RecGroup" className="ml-2 text-sm font-medium text-gray-900">グループ レク (12)</label>
                   </li>
                   <li className="flex items-center">
-                    <input id="RecGroup" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
-                    <label htmlFor="RecGroup" className="ml-2 text-sm font-medium text-gray-900">静かにする レク (8)</label>
+                    <input id="RecSilent" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
+                    <label htmlFor="RecSilent" className="ml-2 text-sm font-medium text-gray-900">静かにする レク (8)</label>
                   </li>
                   <li className="flex items-center">
                     <input id="RecDan" type="checkbox" value="" className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 focus:ring-2" />
