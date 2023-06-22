@@ -365,7 +365,9 @@ export const RecreationRegist: React.FC = () => {
               >一時保存</Button>
               <SubmitButton className="mr-2">投稿</SubmitButton>
             </div>
-            <div className="text-slate-400 text-sm">自動保存：2023/05/16 0:22.09</div>
+            <div className="text-slate-400 text-sm">
+              {getSaveTime() ? `自動保存：${getSaveTime()}` : ''}
+            </div>
           </div>
         </form>
       </div>
