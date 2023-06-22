@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Label from "../../../core/components/atoms/Label";
 import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
@@ -7,7 +7,7 @@ import { MarkdownPreview } from "../../../core/components/atoms/Markdown";
 import { RiTimerLine } from "react-icons/ri";
 import { BsFillPeopleFill } from "react-icons/bs";
 import getYouTubeID from "get-youtube-id";
-import RecreationAPI, { RecreationRequest } from "../../../api/api.topicpost.net/recreation";
+import RecreationAPI, { RecreationRequest, RecreationResponse } from "../../../api/api.topicpost.net/recreation";
 import { v4 as uuidv4 } from "uuid";
 import { supabaseClient } from "../../../utils/supabase";
 
