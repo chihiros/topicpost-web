@@ -223,7 +223,6 @@ export const RecreationRegist: React.FC = () => {
         <div className="flex mb-5 text-3xl">レクリエーションの投稿</div>
 
         <div className="mb-4">
-          {/* `アイスブレイク` `手遊び レク` `少人数 レク` `グループ レク` `静かにする レク` `レクダン` `その他のレク`  */}
           <Label required>どんな場面で使えるレクですか？（複数選択可）</Label>
           {recreationGenre.map((genre, index) => (
             <TagButton
