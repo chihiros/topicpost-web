@@ -362,7 +362,7 @@ export const RecreationRegist: React.FC = () => {
             ].filter(i => i !== '').join(' ')}
           </MarkdownPreview>
 
-          {/* 対象人数・対象年齢・所要時間を表示する */}
+          {/* 対象人数・所要時間を表示する */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-4">
             <div className="border-b-2">
               <div className="text-sm pl-2 pb-2"><BsFillPeopleFill className="inline w-5 h-5" />：{
