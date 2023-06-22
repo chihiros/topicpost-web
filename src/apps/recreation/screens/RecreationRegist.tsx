@@ -164,6 +164,14 @@ export const RecreationRegist: React.FC = () => {
     saveRecreation(true);
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      saveRecreation(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [lastInputChange, saveRecreation]);
+
   const [uploading, setUploading] = useState(false);
   const [fileUrl, setFileUrl] = useState<string[] | null>(null);
 
