@@ -29,12 +29,7 @@ export const RecreationRegist: React.FC = () => {
   const [messageValue, setMessageValue] = useState('');
   const [targetNumber, setTargetNumber] = useState('');
   const [requiredTime, setRequiredTime] = useState('');
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
-  const [isChecked4, setIsChecked4] = useState(false);
-  const [isChecked5, setIsChecked5] = useState(false);
-  const [isChecked6, setIsChecked6] = useState(false);
+  const [isCheckedList, setIsCheckedList] = useState([false, false, false, false, false, false]);
   const [tagError, setTagError] = useState('');
 
   const targetNumberOptions: { [key: string]: string } = {
@@ -54,6 +49,15 @@ export const RecreationRegist: React.FC = () => {
     "4": "20〜40分",
     "5": "40分以上"
   };
+
+  const recreationGenre = [
+    { id: 1, name: "アイスブレイク" },
+    { id: 2, name: "手遊びレク" },
+    { id: 3, name: "少人数レク" },
+    { id: 4, name: "グループレク" },
+    { id: 5, name: "静かにするレク" },
+    { id: 6, name: "レクダン" },
+  ];
 
   const handleRecTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRecTitleValue(e.target.value);
@@ -75,33 +79,37 @@ export const RecreationRegist: React.FC = () => {
     setRequiredTime(e.target.value);
   };
 
-  const getIsCheckedList = () => {
-    const isCheckedList = [];
-    if (isChecked1) isCheckedList.push(1);
-    if (isChecked2) isCheckedList.push(2);
-    if (isChecked3) isCheckedList.push(3);
-    if (isChecked4) isCheckedList.push(4);
-    if (isChecked5) isCheckedList.push(5);
-    if (isChecked6) isCheckedList.push(6);
-    return isCheckedList;
+  const getCheckedList = () => {
+    const checkedList: number[] = [];
+    for (let i = 0; i < isCheckedList.length; i++) {
+      if (isCheckedList[i]) {
+        checkedList.push(i + 1);
+      }
+    }
+    return checkedList;
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const isCheckedList = getIsCheckedList();
-    console.log(isCheckedList.length);
-    if (isCheckedList.length === 0) {
-      setTagError('↑ 少なくとも1つは選択してください');
-      return;
+    for (let i = 0; i < isCheckedList.length; i++) {
+      if (isCheckedList[i]) {
+        setTagError('');
+        break;
+      } else {
+        if (i === isCheckedList.length - 1) {
+          setTagError('↑ 少なくとも1つは選択してください');
+          return;
+        }
+        continue;
+      }
     }
-    setTagError('');
 
     const api = new RecreationAPI();
     const request: RecreationRequest = {
       user_id: user_id,
       recreation_id: recreation_id,
-      genre: isCheckedList,
+      genre: getCheckedList(),
       title: recTitleValue,
       content: messageValue,
       youtube_id: getYouTubeID(youtubeUrlValue),
