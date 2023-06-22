@@ -103,11 +103,6 @@ export const RecreationRegist: React.FC = () => {
       required_time: Number(requiredTime),
     }
 
-    // const toast = new Toast();
-    // axios.post(url, data)
-    //   .then(response => {
-    //     console.log(response.data);
-    //     toast.success('送信が完了しました');
 
     //     // フォームの初期化
     //     clearForm();
