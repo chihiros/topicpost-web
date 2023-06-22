@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Label from "../../../core/components/atoms/Label";
 import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
-import { SubmitButton } from "../../../core/components/atoms/Button";
+import { Button, SubmitButton } from "../../../core/components/atoms/Button";
 import { MarkdownPreview } from "../../../core/components/atoms/Markdown";
 import { RiTimerLine } from "react-icons/ri";
 import { BsFillPeopleFill } from "react-icons/bs";
