@@ -144,7 +144,8 @@ export const RecreationRegist: React.FC = () => {
           if (!file) return;
           GetUserID().then(async (userID) => {
             if (userID) {
-              const filePath = `${userID}/${uuidv4()}`;
+              const fileExtension = file.name.split(".").pop();
+              const filePath = `${userID}/${uuidv4()}.${fileExtension}`;
               const { error } = await supabaseClient.storage
                 .from('recreation')
                 .upload(filePath, file);
