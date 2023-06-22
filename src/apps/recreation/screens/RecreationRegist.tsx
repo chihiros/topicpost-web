@@ -386,20 +386,12 @@ export const RecreationRegist: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-4">
             <div className="border-b-2">
               <div className="text-sm pl-2 pb-2"><BsFillPeopleFill className="inline w-5 h-5" />：{
-                targetNumber === "1" ? "1〜5人" :
-                  targetNumber === "2" ? "5〜10人" :
-                    targetNumber === "3" ? "10〜20人" :
-                      targetNumber === "4" ? "20〜40人" :
-                        targetNumber === "5" ? "人数に関係なし" : ""
+                targetNumber !== "0" ? targetNumberOptions[targetNumber] : ""
               }</div>
             </div>
             <div className="border-b-2">
               <div className="text-sm pl-2 pb-2"><RiTimerLine className="inline w-5 h-5" />：{
-                requiredTime === "1" ? "5分未満" :
-                  requiredTime === "2" ? "5〜10分" :
-                    requiredTime === "3" ? "10〜20分" :
-                      requiredTime === "4" ? "20〜40分" :
-                        requiredTime === "5" ? "40分以上" : ""
+                requiredTime !== "0" ? requiredTimeOptions[requiredTime] : ""
               }</div>
             </div>
           </div>
