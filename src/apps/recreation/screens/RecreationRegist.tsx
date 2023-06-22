@@ -385,8 +385,6 @@ export const RecreationRegist: React.FC = () => {
           {/* 対象人数・対象年齢・所要時間を表示する */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-4">
             <div className="border-b-2">
-              {/* [1:"1〜5人", 2:"5〜10人", 3:"10〜20人", 4:"20〜40人", 5:"人数に関係なし"] */}
-              {/* <div className="text-sm">対象人数：{targetNumber}</div> */}
               <div className="text-sm pl-2 pb-2"><BsFillPeopleFill className="inline w-5 h-5" />：{
                 targetNumber === "1" ? "1〜5人" :
                   targetNumber === "2" ? "5〜10人" :
@@ -396,8 +394,6 @@ export const RecreationRegist: React.FC = () => {
               }</div>
             </div>
             <div className="border-b-2">
-              {/* [1:"5分未満", 2:"5〜10分", 3:"10〜20分", 4:"20〜40分", 5:"40分以上"]   */}
-              {/* <div className="text-sm">所要時間：{requiredTime}</div> */}
               <div className="text-sm pl-2 pb-2"><RiTimerLine className="inline w-5 h-5" />：{
                 requiredTime === "1" ? "5分未満" :
                   requiredTime === "2" ? "5〜10分" :
