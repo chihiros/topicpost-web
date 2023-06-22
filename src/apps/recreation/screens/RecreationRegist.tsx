@@ -37,6 +37,24 @@ export const RecreationRegist: React.FC = () => {
   const [isChecked6, setIsChecked6] = useState(false);
   const [tagError, setTagError] = useState('');
 
+  const targetNumberOptions: { [key: string]: string } = {
+    "0": "選択してください",
+    "1": "1〜5人",
+    "2": "5〜10人",
+    "3": "10〜20人",
+    "4": "20〜40人",
+    "5": "人数に関係なし"
+  };
+
+  const requiredTimeOptions: { [key: string]: string } = {
+    "0": "選択してください",
+    "1": "5分未満",
+    "2": "5〜10分",
+    "3": "10〜20分",
+    "4": "20〜40分",
+    "5": "40分以上"
+  };
+
   const handleRecTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRecTitleValue(e.target.value);
   };
@@ -265,12 +283,14 @@ export const RecreationRegist: React.FC = () => {
                 value={targetNumber}
                 onChange={handleTargetNumberChange}
               >
-                <option value="0">選択してください</option>
-                <option value="1">1〜5人</option>
-                <option value="2">5〜10人</option>
-                <option value="3">10〜20人</option>
-                <option value="4">20〜40人</option>
-                <option value="5">人数に関係なし</option>
+                {Object.keys(targetNumberOptions).map((key) => (
+                  <option
+                    key={key}
+                    value={key}
+                  >
+                    {targetNumberOptions[key]}
+                  </option>
+                ))}
               </Select>
             </div>
             <div>
@@ -281,12 +301,14 @@ export const RecreationRegist: React.FC = () => {
                 value={requiredTime}
                 onChange={handleRequiredTimeChange}
               >
-                <option value="0">選択してください</option>
-                <option value="1">5分未満</option>
-                <option value="2">5〜10分</option>
-                <option value="3">10〜20分</option>
-                <option value="4">20〜40分</option>
-                <option value="5">40分以上</option>
+                {Object.keys(requiredTimeOptions).map((key) => (
+                  <option
+                    key={key}
+                    value={key}
+                  >
+                    {requiredTimeOptions[key]}
+                  </option>
+                ))}
               </Select>
             </div>
           </div>
