@@ -350,13 +350,6 @@ export const RecreationRegist: React.FC = () => {
             <div className="text-slate-400 text-sm">自動保存：2023/05/16 0:22.09</div>
           </div>
         </form>
-
-        {/* <div className="mb-2 mt-4 text-xl">画像をアップロード</div>
-        <div className="h-60 bg-slate-400 rounded-lg"
-          onDragOver={onDragEnter}
-          onDrop={onDrop}
-        >
-        </div> */}
       </div>
 
       <div className="p-4 bg-gray-50 rounded-lg overflow-auto break-words">
