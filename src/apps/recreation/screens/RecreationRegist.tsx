@@ -266,10 +266,7 @@ export const RecreationRegist: React.FC = () => {
                 onChange={handleTargetNumberChange}
               >
                 {Object.keys(targetNumberOptions).map((key) => (
-                  <option
-                    key={key}
-                    value={key}
-                  >
+                  <option key={key} value={key}>
                     {targetNumberOptions[key]}
                   </option>
                 ))}
@@ -284,10 +281,7 @@ export const RecreationRegist: React.FC = () => {
                 onChange={handleRequiredTimeChange}
               >
                 {Object.keys(requiredTimeOptions).map((key) => (
-                  <option
-                    key={key}
-                    value={key}
-                  >
+                  <option key={key} value={key}>
                     {requiredTimeOptions[key]}
                   </option>
                 ))}
@@ -375,7 +369,7 @@ export const RecreationRegist: React.FC = () => {
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              ></iframe>
+              />
             </div>
           )}
 
