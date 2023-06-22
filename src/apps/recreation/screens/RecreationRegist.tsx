@@ -326,7 +326,7 @@ export const RecreationRegist: React.FC = () => {
           <div className="flex justify-between items-start">
             <div className="flex">
               <Button
-                className="text-green-600 border border-green-600 hover:bg-green-600 hover:text-white font-medium rounded-lg p-2.5 text-center inline-flex items-center mr-2"
+                className="text-green-600 border border-green-600 hover:bg-green-600 hover:text-white mr-2"
               >一時保存</Button>
               <SubmitButton className="mr-2">投稿</SubmitButton>
             </div>
