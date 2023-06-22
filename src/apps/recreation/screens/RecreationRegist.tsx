@@ -229,29 +229,22 @@ export const RecreationRegist: React.FC = () => {
         <div className="mb-4">
           {/* `アイスブレイク` `手遊び レク` `少人数 レク` `グループ レク` `静かにする レク` `レクダン` `その他のレク`  */}
           <Label required>どんな場面で使えるレクですか？（複数選択可）</Label>
-          <TagButton id="check1" isChecked={isChecked1} setIsChecked={setIsChecked1}>
-            アイスブレイク
-          </TagButton>
-
-          <TagButton id="check2" isChecked={isChecked2} setIsChecked={setIsChecked2}>
-            手遊びレク
-          </TagButton>
-
-          <TagButton id="check3" isChecked={isChecked3} setIsChecked={setIsChecked3}>
-            少人数レク
-          </TagButton>
-
-          <TagButton id="check4" isChecked={isChecked4} setIsChecked={setIsChecked4}>
-            グループレク
-          </TagButton>
-
-          <TagButton id="check5" isChecked={isChecked5} setIsChecked={setIsChecked5}>
-            静かにするレク
-          </TagButton>
-
-          <TagButton id="check6" isChecked={isChecked6} setIsChecked={setIsChecked6}>
-            レクダン
-          </TagButton>
+          {recreationGenre.map((genre, index) => (
+            <TagButton
+              key={index}
+              id={`check${index}`}
+              isChecked={isCheckedList[index]}
+              setIsChecked={
+                (b: boolean) => {
+                  const newList = [...isCheckedList];
+                  newList[index] = b;
+                  setIsCheckedList(newList);
+                }
+              }
+            >
+              {genre.name}
+            </TagButton>
+          ))}
           {tagError && <p className="text-orange-600">{tagError}</p>}
         </div>
 
