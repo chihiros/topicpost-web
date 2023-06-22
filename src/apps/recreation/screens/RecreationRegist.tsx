@@ -77,24 +77,12 @@ export const RecreationRegist: React.FC = () => {
 
   const getIsCheckedList = () => {
     const isCheckedList = [];
-    if (isChecked1) {
-      isCheckedList.push(1);
-    }
-    if (isChecked2) {
-      isCheckedList.push(2);
-    }
-    if (isChecked3) {
-      isCheckedList.push(3);
-    }
-    if (isChecked4) {
-      isCheckedList.push(4);
-    }
-    if (isChecked5) {
-      isCheckedList.push(5);
-    }
-    if (isChecked6) {
-      isCheckedList.push(6);
-    }
+    if (isChecked1) isCheckedList.push(1);
+    if (isChecked2) isCheckedList.push(2);
+    if (isChecked3) isCheckedList.push(3);
+    if (isChecked4) isCheckedList.push(4);
+    if (isChecked5) isCheckedList.push(5);
+    if (isChecked6) isCheckedList.push(6);
     return isCheckedList;
   };
 
