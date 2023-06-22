@@ -217,10 +217,6 @@ export const RecreationRegist: React.FC = () => {
     setFileUrl(uploadFilePath);
   }
 
-  useEffect(() => {
-    // console.log("fileUrl:", fileUrl);
-  }, [fileUrl]);
-
   return (
     <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
       <div className="p-4 bg-gray-50 rounded-lg">
