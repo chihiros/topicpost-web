@@ -134,12 +134,10 @@ export const RecreationRegist: React.FC = () => {
     console.log("res:", res);
   };
 
-  // Set up local state for the dropped file
   const [uploading, setUploading] = useState(false);
   const [fileUrl, setFileUrl] = useState<string[] | null>(null);
 
   const onDragEnter = (e: React.DragEvent<HTMLTextAreaElement>) => {
-    // Prevent default behavior (Prevent file from being opened)
     e.preventDefault();
   };
 
