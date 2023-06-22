@@ -137,7 +137,13 @@ export const RecreationRegist: React.FC = () => {
         }
       });
     }
-  };
+
+  const [lastInputChange, setLastInputChange] = useState(Date.now());
+
+  useEffect(() => {
+    setLastInputChange(Date.now());
+  }, [recTitleValue, youtubeUrlValue, messageValue, targetNumber, requiredTime, isCheckedList]);
+
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
