@@ -352,9 +352,9 @@ export const RecreationRegist: React.FC = () => {
 
           <div className="text-sm">こんな場面で使えるレクです</div>
           <MarkdownPreview>
-          {isCheckedList.map((isChecked, index) => ([
-            isChecked ? `\`${recreationGenre[index].name}\`` : '',
-          ])).filter(i => i !== '').join(' ')}
+            {isCheckedList.map((isChecked, index) => (
+              isChecked ? `\`${recreationGenre[index].name}\`` : ''
+            )).filter(i => i !== '').join(' ')}
           </MarkdownPreview>
 
           {/* 対象人数・所要時間を表示する */}
