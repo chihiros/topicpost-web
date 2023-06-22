@@ -328,7 +328,7 @@ export const RecreationRegist: React.FC = () => {
               className="text-green-600 border border-green-600 hover:bg-green-600 hover:text-white font-medium rounded-lg p-2.5 text-center inline-flex items-center mr-2"
             >一時保存</Button>
             <SubmitButton className="mr-2">投稿</SubmitButton>
-            <div className="text-slate-400 text-right text-sm my-1">自動保存：2023/05/16 0:22.09</div>
+            <div className="text-slate-400 text-sm">自動保存：2023/05/16 0:22.09</div>
           </div>
         </form>
 
