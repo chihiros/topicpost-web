@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import Button from './Button';
+import { Button } from './Button';
 
 type ButtonProps = {
   onClick?: () => void;
@@ -22,3 +22,7 @@ export const ErrorButton: React.FC<ButtonProps> = ({ onClick, className, childre
 export const SubmitButton: React.FC<ButtonProps> = ({ onClick, className, children }) => {
   return <Button onClick={onClick} className={className} submit>{children}</Button>;
 };
+
+export {
+  Button,
+}
