@@ -89,6 +89,42 @@ export const RecreationRegist: React.FC = () => {
     return checkedList;
   };
 
+  const saveRecreation = (publish: boolean) => {
+    const api = new RecreationAPI();
+    const request: RecreationRequest = {
+      user_id: user_id,
+      recreation_id: recreation_id,
+      genre: getCheckedList(),
+      title: recTitleValue,
+      content: messageValue,
+      youtube_id: getYouTubeID(youtubeUrlValue),
+      target_number: Number(targetNumber),
+      required_time: Number(requiredTime),
+    }
+
+    if (publish) {
+      api.post(request).then((res: RecreationResponse) => {
+        try {
+          console.log("res:", res);
+          // toast.success('送信が完了しました');
+        } catch (err) {
+          console.error(err);
+          // toast.error('送信に失敗しました');
+        }
+      });
+    } else {
+      api.putDraft(request).then((res: RecreationResponse) => {
+        try {
+          console.log("res:", res);
+          // toast.success('送信が完了しました');
+        } catch (err) {
+          console.error(err);
+          // toast.error('送信に失敗しました');
+        }
+      });
+    }
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -105,29 +141,7 @@ export const RecreationRegist: React.FC = () => {
       }
     }
 
-    const api = new RecreationAPI();
-    const request: RecreationRequest = {
-      user_id: user_id,
-      recreation_id: recreation_id,
-      genre: getCheckedList(),
-      title: recTitleValue,
-      content: messageValue,
-      youtube_id: getYouTubeID(youtubeUrlValue),
-      target_number: Number(targetNumber),
-      required_time: Number(requiredTime),
-    }
-
-
-    //     // フォームの初期化
-    //     clearForm();
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //     toast.error('送信に失敗しました');
-    //   });
-
-    const res = api.post(request);
-    console.log("res:", res);
+    saveRecreation(true);
   };
 
   const [uploading, setUploading] = useState(false);
