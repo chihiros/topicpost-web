@@ -322,10 +322,14 @@ export const RecreationRegist: React.FC = () => {
               onPaste={onPaste}
               disabled={uploading}
             />
-            {/* <div className="text-slate-400 text-right text-sm my-1">自動保存：2023/05/16 0:22.09</div> */}
           </div>
-          {/* <SuccessButton className="mr-2">下書きを保存</SuccessButton> */}
-          <SubmitButton className="mr-2">投稿</SubmitButton>
+          <div className="flex">
+            <Button
+              className="text-green-600 border border-green-600 hover:bg-green-600 hover:text-white font-medium rounded-lg p-2.5 text-center inline-flex items-center mr-2"
+            >一時保存</Button>
+            <SubmitButton className="mr-2">投稿</SubmitButton>
+            <div className="text-slate-400 text-right text-sm my-1">自動保存：2023/05/16 0:22.09</div>
+          </div>
         </form>
 
         {/* <div className="mb-2 mt-4 text-xl">画像をアップロード</div>
