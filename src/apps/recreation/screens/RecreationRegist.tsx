@@ -31,6 +31,7 @@ export const RecreationRegist: React.FC = () => {
   const [requiredTime, setRequiredTime] = useState('');
   const [isCheckedList, setIsCheckedList] = useState([false, false, false, false, false, false]);
   const [tagError, setTagError] = useState('');
+  const [autoSaveTimestamp, setAutoSaveTimestamp] = useState(0);
 
   const targetNumberOptions: { [key: string]: string } = {
     "0": "選択してください",
@@ -89,7 +90,20 @@ export const RecreationRegist: React.FC = () => {
     return checkedList;
   };
 
-  const saveRecreation = (publish: boolean) => {
+  const getSaveTime = () => {
+    if (autoSaveTimestamp === 0) {
+      return undefined;
+    }
+
+    const date = new Date(autoSaveTimestamp);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hour = ("0" + date.getHours()).slice(-2);
+    const minute = ("0" + date.getMinutes()).slice(-2);
+    const second = ("0" + date.getSeconds()).slice(-2);
+    return `${year}/${month}/${day} ${hour}:${minute}:${second}`;
+  }
     const api = new RecreationAPI();
     const request: RecreationRequest = {
       user_id: user_id,
