@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import Label from "../../../core/components/atoms/Label";
 import { Select } from "../../../core/components/atoms/Select";
 import { Text, Textarea } from "../../../core/components/atoms/Input";
@@ -144,9 +144,19 @@ export const RecreationRegist: React.FC = () => {
   };
 
   useEffect(() => {
-    setLastInputChange(Date.now());
-  }, [recTitleValue, youtubeUrlValue, messageValue, targetNumber, requiredTime, isCheckedList]);
+    let timerId: NodeJS.Timeout | null = null;
 
+    timerId = setTimeout(() => {
+      saveRecreation(false);
+    }, 5000);
+
+    return () => {
+      if (timerId) {
+        clearTimeout(timerId);
+        timerId = null;
+      }
+    };
+  }, [recTitleValue, youtubeUrlValue, messageValue]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -166,14 +176,6 @@ export const RecreationRegist: React.FC = () => {
 
     saveRecreation(true);
   };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      saveRecreation(false);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, [lastInputChange, saveRecreation]);
 
   const [uploading, setUploading] = useState(false);
   const [fileUrl, setFileUrl] = useState<string[] | null>(null);
