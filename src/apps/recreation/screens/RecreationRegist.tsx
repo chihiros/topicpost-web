@@ -104,6 +104,8 @@ export const RecreationRegist: React.FC = () => {
     const second = ("0" + date.getSeconds()).slice(-2);
     return `${year}/${month}/${day} ${hour}:${minute}:${second}`;
   }
+
+  const saveRecreation = (publish: boolean) => {
     const api = new RecreationAPI();
     const request: RecreationRequest = {
       user_id: user_id,
@@ -138,7 +140,8 @@ export const RecreationRegist: React.FC = () => {
       });
     }
 
-  const [lastInputChange, setLastInputChange] = useState(Date.now());
+    setAutoSaveTimestamp(Date.now());
+  };
 
   useEffect(() => {
     setLastInputChange(Date.now());
