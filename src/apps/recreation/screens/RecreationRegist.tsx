@@ -379,7 +379,7 @@ export const RecreationRegist: React.FC = () => {
               <SubmitButton className="mr-2">投稿</SubmitButton>
             </div>
             <div className="text-slate-400 text-sm">
-              {getSaveTime() ? `自動保存：${getSaveTime()}` : ''}
+              {getSaveTime() ? `保存時刻：${getSaveTime()}` : ''}
             </div>
           </div>
         </form>
