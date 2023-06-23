@@ -371,11 +371,13 @@ export const RecreationRegist: React.FC = () => {
               disabled={uploading}
             />
           </div>
-          <div className="flex justify-between items-start">
-            <div className="flex">
+          <div className="flex flex-wrap justify-between items-start">
+            <div className="flex flex-wrap">
               <Button
                 className="text-green-600 border border-green-600 hover:bg-green-600 hover:text-white mr-2"
-              >一時保存</Button>
+              >
+                一時保存
+              </Button>
               <SubmitButton className="mr-2">投稿</SubmitButton>
             </div>
             <div className="text-slate-400 text-sm">
