@@ -143,7 +143,15 @@ export const RecreationRegist: React.FC = () => {
     setAutoSaveTimestamp(Date.now());
   };
 
+  const isInitialInput = () => {
+    return recTitleValue === '' && youtubeUrlValue === '' && messageValue === '';
+  };
+
   useEffect(() => {
+    if (isInitialInput()) {
+      return;
+    }
+
     let timerId: NodeJS.Timeout | null = null;
 
     timerId = setTimeout(() => {
