@@ -375,6 +375,9 @@ export const RecreationRegist: React.FC = () => {
             <div className="flex flex-wrap">
               <Button
                 className="text-green-600 border border-green-600 hover:bg-green-600 hover:text-white mr-2"
+                onClick={() => {
+                  saveRecreation(false);
+                }}
               >
                 一時保存
               </Button>
