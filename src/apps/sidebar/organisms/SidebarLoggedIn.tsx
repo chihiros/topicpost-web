@@ -17,7 +17,7 @@ const SidebarLoggedIn: React.FC = () => {
       </style>
       {profileData && ( //データがあれば表示する
         <div className="flex flex-col items-center justify-center hover:bg-gray-100 rounded-md p-3 mx-3 h-24 user-select-none">
-          <img className="w-12 h-12 mb-3 rounded"
+          <img className="w-12 h-12 mb-3 rounded-md"
             src={profileData.icon_url} //状態からアイコンを表示
             alt=""
           />
