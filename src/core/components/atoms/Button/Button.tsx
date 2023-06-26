@@ -17,7 +17,7 @@ const Styles = {
   submit: 'text-white bg-blue-700 hover:bg-blue-800',
 }
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   onClick,
   children,
   className,
@@ -42,5 +42,3 @@ const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
-
-export default Button;

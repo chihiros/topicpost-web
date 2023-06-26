@@ -22,8 +22,10 @@ export interface RecreationData {
   youtube_id: string | null;
   target_number: number;
   required_time: number;
+  publish: boolean;
   created_at: string;
   updated_at: string;
+  published_at: string;
   edges: {
     profile: ProfileData;
   };
@@ -43,11 +45,13 @@ interface RecreationMethods {
   getByRecreationID: (id: string) => Promise<RecreationResponse>;
   post: (body: RecreationRequest) => Promise<RecreationResponse>;
   put: (body: RecreationRequest) => Promise<RecreationResponse>;
+  putDraft: (body: RecreationRequest) => Promise<RecreationResponse>;
   delete: () => Promise<RecreationResponse>;
 }
 
 export default class Recreation implements RecreationMethods {
   topicpost_recreation = new TopicPostAPI("/recreation");
+  topicpost_recreation_draft = new TopicPostAPI("/recreation/draft");
   authRequired = true;
 
   // async get(page: number): Promise<RecreationsResponse> {
@@ -87,6 +91,15 @@ export default class Recreation implements RecreationMethods {
 
   async put(body: RecreationRequest): Promise<RecreationResponse> {
     const res = await this.topicpost_recreation.put<RecreationData>(body, this.authRequired);
+    return {
+      data: res.data,
+      errors: res.errors,
+      status: res.status,
+    };
+  }
+
+  async putDraft(body: RecreationRequest): Promise<RecreationResponse> {
+    const res = await this.topicpost_recreation_draft.put<RecreationData>(body, this.authRequired);
     return {
       data: res.data,
       errors: res.errors,
