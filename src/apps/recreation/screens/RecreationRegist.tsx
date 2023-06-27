@@ -10,6 +10,8 @@ import getYouTubeID from "get-youtube-id";
 import RecreationAPI, { RecreationRequest, RecreationResponse } from "../../../api/api.topicpost.net/recreation";
 import { v4 as uuidv4 } from "uuid";
 import { supabaseClient } from "../../../utils/supabase";
+import { useHistory } from "react-router-dom";
+import { useAuthContext } from "../../../context/AuthContext";
 
 import { TagButton } from "../organisms/RecreationTagButton";
 import { GetUserID } from "../../../utils/supabase";
@@ -32,6 +34,14 @@ export const RecreationRegist: React.FC = () => {
   const [isCheckedList, setIsCheckedList] = useState([false, false, false, false, false, false]);
   const [tagError, setTagError] = useState('');
   const [autoSaveTimestamp, setAutoSaveTimestamp] = useState(0);
+
+  const { isLoggedIn } = useAuthContext();
+  const history = useHistory();
+  useEffect(() => {
+    if (!isLoggedIn) {
+      history.push("/recreation");
+    }
+  }, [isLoggedIn, history]);
 
   const targetNumberOptions: { [key: string]: string } = {
     "0": "選択してください",
