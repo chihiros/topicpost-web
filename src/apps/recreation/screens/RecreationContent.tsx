@@ -62,6 +62,21 @@ export const RecreationContent: React.FC = () => {
               + "---\n"}
           </MarkdownPreview>
 
+          {/* プロフィールの情報を表示する */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-4">
+            <div className="border-b-2">
+              <img
+                src={recreationContent?.data.edges.profile.icon_url}
+                className="inline w-10 h-10 rounded-md"
+              />
+              <div className="text-sm pl-2 pb-2">投稿者：{recreationContent?.data.edges.profile.nickname}</div>
+            </div>
+            <div className="border-b-2">
+              <div className="text-sm pl-2 pb-2">投稿日：{recreationContent?.data.created_at}</div>
+            </div>
+          </div>
+
+
           <div className="text-sm">こんな場面で使えるレクです</div>
           <MarkdownPreview>
             {genreList}
