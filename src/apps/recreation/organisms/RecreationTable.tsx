@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { RecreationsResponse } from '../../../api/api.topicpost.net/recreation';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../../context/AuthContext";
+import Toast from "../../../utils/Toast/";
 
 interface RecreationTableProps {
   data?: RecreationsResponse;
@@ -18,6 +20,8 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
   const actionsDropdownRef = useRef<HTMLDivElement>(null);
   const filterDropdownRef = useRef<HTMLDivElement>(null);
   const history = useHistory();
+  const { isLoggedIn } = useAuthContext();
+  const toast = new Toast();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -170,7 +174,11 @@ export const RecreationTable: React.FC<RecreationTableProps> = ({ data, records,
           {/* レクを投稿する ボタン */}
           <button
             type="button"
-            onClick={() => history.push('/recreation/register')}
+            onClick={
+              !isLoggedIn ?
+                  () => toast.error('投稿するにはログインする必要があります')
+                : () => history.push('/recreation/register')
+            }
             className="w-full sm:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium bg-blue-500 hover:bg-blue-700 text-white focus:outline-none rounded-lg hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200"
           >
             <AiOutlinePlus
