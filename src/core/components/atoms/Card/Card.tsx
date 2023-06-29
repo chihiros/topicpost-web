@@ -75,7 +75,7 @@ const Card: React.FC<CardProps> = ({ title, date, content, recreationId, data })
           <div className='flex items-center justify-end'>
             <img
               src={data.edges.profile.icon_url}
-              className='w-5 h-5 rounded-full inline'
+              className='w-5 h-5 rounded inline'
               alt='ユーザーアイコン'
             />
             <span className='text-sm text-slate-800 pl-2'>{data.edges.profile.nickname}</span>
