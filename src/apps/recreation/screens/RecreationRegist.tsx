@@ -45,6 +45,10 @@ export const RecreationRegist: React.FC = () => {
     return uuidRegex.test(uuid);
   };
 
+  if (validUUID(recreation_id) === false) {
+    history.push("/recreation");
+  }
+
   useEffect(() => {
     if (isLoggedIn === false) {
       history.push("/recreation");
