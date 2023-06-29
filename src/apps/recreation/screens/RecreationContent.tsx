@@ -62,7 +62,7 @@ export const RecreationContent: React.FC = () => {
               + "---\n"}
           </MarkdownPreview>
 
-          {/* プロフィールの情報を表示する */}
+          {/* 投稿者の情報を表示する */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-4">
             <div className="border-b-2">
               <img
