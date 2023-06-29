@@ -50,6 +50,18 @@ export const RecreationContent: React.FC = () => {
     fetchData();
   }, [params.id]);
 
+  const formatDatetime = (datetime: string) => {
+    const date = new Date(datetime);
+
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hour = ("0" + date.getHours()).slice(-2);
+    const minute = ("0" + date.getMinutes()).slice(-2);
+
+    return `${year}年${month}月${day}日 ${hour}:${minute}`;
+  };
+
   const genreList = recreationContent?.data.genre.map((genre) => `\`${RECREATION_GENRES[genre]}\``).join('\n');
 
   return (
