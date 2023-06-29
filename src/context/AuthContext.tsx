@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { supabaseClient, SupabaseEnableProviders } from '../utils/supabase';
-import ProfileAPI, { ProfileResponse } from '../api/api.topicpost.net/profile';
+import ProfileAPI from '../api/api.topicpost.net/profile';
 import { useProfileDataContext } from './ProfileDataContext';
 
 interface AuthContextType {
