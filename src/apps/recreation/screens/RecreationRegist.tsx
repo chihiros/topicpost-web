@@ -38,7 +38,7 @@ export const RecreationRegist: React.FC = () => {
   const { isLoggedIn } = useAuthContext();
   const history = useHistory();
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (isLoggedIn === false) {
       history.push("/recreation");
     }
   }, [isLoggedIn, history]);
