@@ -77,7 +77,6 @@ export const RecreationContent: React.FC = () => {
             </div>
           </div>
 
-
           <div className="text-sm">こんな場面で使えるレクです</div>
           <MarkdownPreview>
             {genreList}
