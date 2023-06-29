@@ -15,9 +15,9 @@ import { useAuthContext } from "../../../context/AuthContext";
 
 import { TagButton } from "../organisms/RecreationTagButton";
 import { GetUserID } from "../../../utils/supabase";
+import { useParams } from "react-router-dom";
 import './youtube_frame.css';
 
-const recreation_id = uuidv4();
 let user_id = "";
 GetUserID().then((res: string | undefined) => {
   if (res) {
@@ -34,9 +34,11 @@ export const RecreationRegist: React.FC = () => {
   const [isCheckedList, setIsCheckedList] = useState([false, false, false, false, false, false]);
   const [tagError, setTagError] = useState('');
   const [autoSaveTimestamp, setAutoSaveTimestamp] = useState(0);
-
   const { isLoggedIn } = useAuthContext();
   const history = useHistory();
+  const { recreation_id } = useParams<{recreation_id: string}>();
+  console.log("recreation_id", recreation_id);
+
   useEffect(() => {
     if (isLoggedIn === false) {
       history.push("/recreation");
