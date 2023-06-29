@@ -4,14 +4,14 @@ import ProfileAPI from '../api/api.topicpost.net/profile';
 import { useProfileDataContext } from './ProfileDataContext';
 
 interface AuthContextType {
-  isLoggedIn: boolean;
-  setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  isLoggedIn: boolean | undefined;
+  setLoggedIn: React.Dispatch<React.SetStateAction<boolean | undefined>>;
   setLoggedInTrue: () => void;
   setLoggedInFalse: () => void;
 }
 
 export const AuthContext = createContext<AuthContextType>({
-  isLoggedIn: false,
+  isLoggedIn: undefined,
   setLoggedIn: () => { },
   setLoggedInTrue: () => { },
   setLoggedInFalse: () => { },
@@ -26,7 +26,7 @@ interface Props {
 }
 
 export const AuthContextProvider: React.FC<Props> = ({ children }) => {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState<boolean | undefined>(undefined);
   const { setProfileData, getProfileData, isProfileDataUndefined } = useProfileDataContext();
 
   const setLoggedInTrue = () => {
