@@ -63,17 +63,24 @@ export const RecreationContent: React.FC = () => {
           </MarkdownPreview>
 
           {/* 投稿者の情報を表示する */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6 mb-4">
-            <div className="border-b-2">
-              <img
-                src={recreationContent?.data.edges.profile.icon_url}
-                className="inline w-10 h-10 rounded-md"
-                alt="icon"
-              />
-              <div className="text-sm pl-2 pb-2">投稿者：{recreationContent?.data.edges.profile.nickname}</div>
-            </div>
-            <div className="border-b-2">
-              <div className="text-sm pl-2 pb-2">投稿日：{recreationContent?.data.created_at}</div>
+          <div className="flex mb-3">
+            <img
+              src={recreationContent?.data.edges.profile.icon_url}
+              className="inline w-10 h-10 rounded-md mr-2"
+              alt="icon"
+            />
+            <div className="flex flex-col text-sm">
+              <div className="px-2">
+                {recreationContent?.data.edges.profile.nickname}
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="pl-2">
+                  投稿日 {formatDatetime(recreationContent?.data.created_at!)}
+                </div>
+                <div className="pl-2">
+                  更新日 {formatDatetime(recreationContent?.data.updated_at!)}
+                </div>
+              </div>
             </div>
           </div>
 
