@@ -73,7 +73,7 @@ export const RecreationContent: React.FC = () => {
               <div className="px-2">
                 {recreationContent?.data.edges.profile.nickname}
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 sm:gap-2">
                 <div className="text-slate-500 pl-2">
                   投稿日 {formatDatetime(recreationContent?.data.created_at!)}
                 </div>
