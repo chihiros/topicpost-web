@@ -42,7 +42,7 @@ const routes: RouteType[] = [
     template: RecreationRegist,
     breadcrumb: [
       { href: '/recreation', context: 'レクリエーション' },
-      { href: '/recreation/register', context: '投稿' },
+      { href: '/recreation/register/:recreation_id', context: '下書き' },
     ]
   }, {
     path: "/recreation/:id",
