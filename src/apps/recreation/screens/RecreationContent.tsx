@@ -68,6 +68,7 @@ export const RecreationContent: React.FC = () => {
               <img
                 src={recreationContent?.data.edges.profile.icon_url}
                 className="inline w-10 h-10 rounded-md"
+                alt="icon"
               />
               <div className="text-sm pl-2 pb-2">投稿者：{recreationContent?.data.edges.profile.nickname}</div>
             </div>
