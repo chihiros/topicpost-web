@@ -4,6 +4,7 @@ import { MarkdownPreview } from "../../../core/components/atoms/Markdown";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { RiTimerLine } from "react-icons/ri";
 import { useParams } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 import './youtube_frame.css';
 
 const RECREATION_GENRES: { [key: number]: string } = {
@@ -66,6 +67,12 @@ export const RecreationContent: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <meta property="og:image" content="https://placehold.jp/1200x630.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      </Helmet>
+
       <div className="p-6 bg-gray-50 rounded-lg overflow-auto break-words">
         <div className="mx-auto max-w-5xl">
           {/* Title */}
