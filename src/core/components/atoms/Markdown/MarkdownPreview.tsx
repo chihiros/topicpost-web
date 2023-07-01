@@ -5,6 +5,7 @@ import rehypeRaw from 'rehype-raw'
 // import rehypeSanitize from 'rehype-sanitize';
 import { Note } from './Note';
 import { Tweet } from 'react-tweet';
+import { ReactTinyLink } from 'react-tiny-link'
 
 type Props = {
   children?: React.ReactNode;
@@ -92,16 +93,32 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
               return match ? match[1] : "";
             }
 
-            return isTweetLink ? (
+            // Check if the link is not a tweet link
+            if (!isTweetLink) {
+              return (
+                <div className="link-preview-container">
+                  {/* <a className="text-blue-600 no-underline" {...props} >
+                    {children || ''}
+                  </a> */}
+                  <ReactTinyLink
+                    cardSize="small"
+                    showGraphic={true}
+                    maxLine={2}
+                    minLine={1}
+                    width="100%"
+                    url={href!}
+                  />
+                </div>
+              );
+            }
+
+            // If it's a tweet link, render the tweet
+            return (
               <div className='non-prose-style flex justify-center' data-theme="light">
                 <Tweet
                   id={extractTweetId(href!)}
                 />
               </div>
-            ) : (
-              <a className="text-blue-600 no-underline" {...props} >
-                {children || ''}
-              </a>
             );
           },
           code: ({ node, inline, className, children, ...props }) => {
