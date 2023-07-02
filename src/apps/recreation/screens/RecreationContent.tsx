@@ -68,12 +68,26 @@ export const RecreationContent: React.FC = () => {
   return (
     <>
       {recreationContent && (
-        <Helmet>
-          <title>{recreationContent.data.title}</title>
-          <meta property="og:image" content="https://placehold.jp/1200x630.png" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-        </Helmet>
+        // <Helmet>
+        //   <title>{recreationContent.data.title}</title>
+        //   <meta property="og:image" content="https://placehold.jp/1200x630.png" />
+        //   <meta property="og:image:width" content="1200" />
+        //   <meta property="og:image:height" content="630" />
+        // </Helmet>
+
+        <Helmet
+          title={recreationContent.data.title}
+          meta={[
+            { name: 'description', content: recreationContent.data.title },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:title', content: recreationContent.data.title },
+            { property: 'og:description', content: recreationContent.data.title },
+            { property: 'og:url', content: window.location.href },
+            { property: 'og:image', content: "https://placehold.jp/1200x630.png" },
+            { property: 'og:image:width', content: "1200" },
+            { property: 'og:image:height', content: "630" },
+          ]}
+        />
       )}
 
       <div className="p-6 bg-gray-50 rounded-lg overflow-auto break-words">
