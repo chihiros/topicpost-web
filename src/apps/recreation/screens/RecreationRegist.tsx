@@ -10,12 +10,14 @@ import getYouTubeID from "get-youtube-id";
 import RecreationAPI, { RecreationRequest, RecreationResponse } from "../../../api/api.topicpost.net/recreation";
 import { v4 as uuidv4 } from "uuid";
 import { supabaseClient } from "../../../utils/supabase";
+import { useHistory } from "react-router-dom";
+import { useAuthContext } from "../../../context/AuthContext";
 
 import { TagButton } from "../organisms/RecreationTagButton";
 import { GetUserID } from "../../../utils/supabase";
+import { useParams } from "react-router-dom";
 import './youtube_frame.css';
 
-const recreation_id = uuidv4();
 let user_id = "";
 GetUserID().then((res: string | undefined) => {
   if (res) {
@@ -32,6 +34,26 @@ export const RecreationRegist: React.FC = () => {
   const [isCheckedList, setIsCheckedList] = useState([false, false, false, false, false, false]);
   const [tagError, setTagError] = useState('');
   const [autoSaveTimestamp, setAutoSaveTimestamp] = useState(0);
+  const { isLoggedIn } = useAuthContext();
+  const history = useHistory();
+  const { recreation_id } = useParams<{recreation_id: string}>();
+  console.log("recreation_id", recreation_id);
+
+  // uuidの形式が正しいかの確認をする
+  const validUUID = (uuid: string) => {
+    const uuidRegex = new RegExp("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$");
+    return uuidRegex.test(uuid);
+  };
+
+  if (validUUID(recreation_id) === false) {
+    history.push("/recreation");
+  }
+
+  useEffect(() => {
+    if (isLoggedIn === false) {
+      history.push("/recreation");
+    }
+  }, [isLoggedIn, history]);
 
   const targetNumberOptions: { [key: string]: string } = {
     "0": "選択してください",

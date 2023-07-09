@@ -4,6 +4,7 @@ import { MarkdownPreview } from "../../../core/components/atoms/Markdown";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { RiTimerLine } from "react-icons/ri";
 import { useParams } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 import './youtube_frame.css';
 
 const RECREATION_GENRES: { [key: number]: string } = {
@@ -50,10 +51,45 @@ export const RecreationContent: React.FC = () => {
     fetchData();
   }, [params.id]);
 
+  const formatDatetime = (datetime: string) => {
+    const date = new Date(datetime);
+
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hour = ("0" + date.getHours()).slice(-2);
+    const minute = ("0" + date.getMinutes()).slice(-2);
+
+    return `${year}年${month}月${day}日 ${hour}:${minute}`;
+  };
+
   const genreList = recreationContent?.data.genre.map((genre) => `\`${RECREATION_GENRES[genre]}\``).join('\n');
 
   return (
     <>
+      {recreationContent && (
+        // <Helmet>
+        //   <title>{recreationContent.data.title}</title>
+        //   <meta property="og:image" content="https://placehold.jp/1200x630.png" />
+        //   <meta property="og:image:width" content="1200" />
+        //   <meta property="og:image:height" content="630" />
+        // </Helmet>
+
+        <Helmet
+          title={recreationContent.data.title}
+          meta={[
+            { name: 'description', content: recreationContent.data.title },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:title', content: recreationContent.data.title },
+            { property: 'og:description', content: recreationContent.data.title },
+            { property: 'og:url', content: window.location.href },
+            { property: 'og:image', content: "https://placehold.jp/1200x630.png" },
+            { property: 'og:image:width', content: "1200" },
+            { property: 'og:image:height', content: "630" },
+          ]}
+        />
+      )}
+
       <div className="p-6 bg-gray-50 rounded-lg overflow-auto break-words">
         <div className="mx-auto max-w-5xl">
           {/* Title */}
@@ -61,6 +97,28 @@ export const RecreationContent: React.FC = () => {
             {"# " + recreationContent?.data.title + "\n"
               + "---\n"}
           </MarkdownPreview>
+
+          {/* 投稿者の情報を表示する */}
+          <div className="flex mb-3">
+            <img
+              src={recreationContent?.data.edges.profile.icon_url}
+              className="inline w-10 h-10 rounded-md mr-2"
+              alt="icon"
+            />
+            <div className="flex flex-col text-sm">
+              <div className="px-2">
+                {recreationContent?.data.edges.profile.nickname}
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 sm:gap-2">
+                <div className="text-slate-500 pl-2">
+                  投稿日 {formatDatetime(recreationContent?.data.created_at!)}
+                </div>
+                <div className="text-slate-500 pl-2">
+                  更新日 {formatDatetime(recreationContent?.data.updated_at!)}
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="text-sm">こんな場面で使えるレクです</div>
           <MarkdownPreview>
