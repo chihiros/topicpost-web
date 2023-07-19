@@ -20,25 +20,25 @@ export const MarkdownPreview: React.FC<Props> = ({ children }) => {
     <>
       <style>
         {`
-              .prose :where(code)::before,
-              .prose :where(code)::after {
-                content: "";
-              }
+          .prose :where(code)::before,
+          .prose :where(code)::after {
+            content: "";
+          }
 
-              .non-prose-style :where(video):not(:where([class~="not-prose"] *)) {
-                margin-top: 0;
-                margin-bottom: 0;
-              }
+          .non-prose-style :where(video):not(:where([class~="not-prose"] *)) {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
 
-              .non-prose-style img {
-                margin: 0;
-              }
+          .non-prose-style img {
+            margin: 0;
+          }
 
-              .prose ul {
-                margin-top: 0;
-                margin-bottom: 8px;
-              }
-            `}
+          .prose ul {
+            margin-top: 0;
+            margin-bottom: 8px;
+          }
+        `}
       </style>
       <ReactMarkdown
         className='max-w-5xl prose'
