@@ -2,7 +2,6 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
-// import rehypeSanitize from 'rehype-sanitize';
 import { Note } from './Note';
 import { Tweet } from 'react-tweet';
 import { ReactTinyLink } from 'react-tiny-link'
